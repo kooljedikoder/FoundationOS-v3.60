@@ -1,0 +1,52 @@
+{
+  "_index-Bic5jYdw.js": {
+    "file": "assets/index-Bic5jYdw.js",
+    "name": "index",
+    "css": [
+      "assets/index-Bn1b7qW6.css"
+    ]
+  },
+  "_index-Bn1b7qW6.css": {
+    "file": "assets/index-Bn1b7qW6.css",
+    "src": "_index-Bn1b7qW6.css"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-BIs29uRX.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CzSciV5-.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "assets/app-B_jTHgD7.css"
+    ]
+  },
+  "resources/js/lara-builder/entry.jsx": {
+    "file": "assets/entry-wnPXhULC.js",
+    "name": "entry",
+    "src": "resources/js/lara-builder/entry.jsx",
+    "isEntry": true,
+    "imports": [
+      "_index-Bic5jYdw.js"
+    ]
+  },
+  "resources/js/lara-builder/post-entry.jsx": {
+    "file": "assets/post-entry-CjAinZ3I.js",
+    "name": "post-entry",
+    "src": "resources/js/lara-builder/post-entry.jsx",
+    "isEntry": true,
+    "imports": [
+      "_index-Bic5jYdw.js"
+    ],
+    "css": [
+      "assets/post-entry-TC8QQP5f.css"
+    ]
+  }
+}

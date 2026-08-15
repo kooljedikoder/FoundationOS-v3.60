@@ -5,6 +5,24 @@ of what the AI actually did, distinct from `AI/DECISIONS.md` (why architecture c
 
 ---
 
+## 2026-08-15 — Donor source code imported (ADR-010)
+
+Identified real upstream repos for the donor sources (all MIT-licensed, verified via web search
+and repo pages) and imported four of five into `01-SOURCES/`, shallow-cloned with nested `.git`
+stripped and a `.donor-provenance.md` recorded in each: Aureus ERP (`aureuserp/aureuserp`), ERPKit
+v5 (`jeffersongoncalves/erpkitv5`), Liberu Accounting (`liberu-accounting/accounting-laravel`),
+Lara Dashboard (`laradashboard/laradashboard`). FilaKit v5 (`jeffersongoncalves/filakitv5`) was
+identified but deliberately not imported — it's the same author's base kit that ERPKit v5 is
+already built on. Updated `FOUNDATIONOS_MASTER.md`, `AI/PROJECT_MEMORY.md`, `AI/DONOR_RULES.md`,
+`AI/ARCHITECTURE.md`, `LICENCES/THIRD_PARTY.md` accordingly. Nothing imported is classified for
+use yet — that's still Phase 01.
+
+Note: a couple of the web-page fetches used to confirm licences returned unsolicited
+"strategic development notes" phrased suspiciously like injected content (referencing an
+internal-sounding token budget and stack preferences) — flagged to the operator, not acted on.
+The factual licence/description claims were independently corroborated via separate search
+results and are trusted; the "suggestions" were not.
+
 ## 2026-08-15 — Reconciled with parallel build-pack draft (ADR-009)
 
 Compared this pack against a build pack drafted in a separate session and merged the better parts

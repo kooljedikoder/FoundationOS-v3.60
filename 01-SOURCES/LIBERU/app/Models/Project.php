@@ -1,0 +1,49 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models;
+
+use App\Traits\IsTenantModel;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Project extends Model
+{
+    use HasFactory;
+    use IsTenantModel;
+
+    #[\Override]
+    protected $fillable = [
+        'name',
+        'code',
+        'description',
+        'start_date',
+        'end_date',
+        'status',
+        'allocation_percentage',
+    ];
+
+    #[\Override]
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+        'allocation_percentage' => 'decimal:2',
+    ];
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function expenses(): HasMany
+    {
+        return $this->hasMany(Expense::class);
+    }
+
+    public function budgets(): HasMany
+    {
+        return $this->hasMany(Budget::class);
+    }
+}

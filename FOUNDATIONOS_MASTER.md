@@ -48,19 +48,20 @@ without being rebuilt per surface.
 
 | Role | Source |
 |---|---|
-| Starting application | Aureus ERP |
-| ERP module donor | ERPKit v5 |
-| Finance/accounting donor | Liberu |
-| Candidate donor (role TBC — Phase 01 audit) | FilaKit |
-| Candidate donor (role TBC — Phase 01 audit) | Lara Dashboard |
+| Starting application | Aureus ERP ([aureuserp/aureuserp](https://github.com/aureuserp/aureuserp)) — ✅ imported to `01-SOURCES/AUREUS` |
+| ERP module donor | ERPKit v5 ([jeffersongoncalves/erpkitv5](https://github.com/jeffersongoncalves/erpkitv5)) — ✅ imported to `01-SOURCES/ERPKIT` |
+| Finance/accounting donor | Liberu Accounting ([liberu-accounting/accounting-laravel](https://github.com/liberu-accounting/accounting-laravel)) — ✅ imported to `01-SOURCES/LIBERU` |
+| Candidate donor (role TBC — Phase 01 audit) | Lara Dashboard ([laradashboard/laradashboard](https://github.com/laradashboard/laradashboard)) — ✅ imported to `01-SOURCES/LARADASHBOARD` |
+| Candidate donor, not imported (ADR-010) | FilaKit v5 ([jeffersongoncalves/filakitv5](https://github.com/jeffersongoncalves/filakitv5)) — ❌ not imported |
 
-FilaKit and Lara Dashboard were added as candidate donors after the initial planning pass (see
-`AI/DECISIONS.md` ADR-008); their exact contribution (UI kit, dashboard scaffold, or something
-else) is unconfirmed and must be established during Phase 01, same as the other donors.
+Lara Dashboard was added as a candidate donor after the initial planning pass (see
+`AI/DECISIONS.md` ADR-008); its exact contribution is unconfirmed and must be established during
+Phase 01, same as the other donors. FilaKit v5 was identified as ERPKit v5's own base starter kit
+(same author) and deliberately not imported separately — see ADR-010.
 
 Donor code lives under `01-SOURCES/` (see §Folder System) and is **read-only**. Nothing under
 `01-SOURCES/` is modified in place — functionality is classified and then adapted into
-FoundationOS proper.
+FoundationOS proper. All licences confirmed MIT on 2026-08-15 — see `LICENCES/THIRD_PARTY.md`.
 
 ## 05. Donor-source rules
 

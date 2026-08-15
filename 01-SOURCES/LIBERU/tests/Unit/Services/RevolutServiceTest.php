@@ -1,0 +1,514 @@
+<?php
+
+namespace Tests\Unit\Services;
+
+use App\Models\BankConnection;
+use App\Services\RevolutService;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Http;
+use Tests\TestCase;
+
+class RevolutServiceTest extends TestCase
+{
+    use RefreshDatabase;
+
+    protected RevolutService $service;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Config::set('services.revolut.client_id', 'test_client_id');
+        Config::set('services.revolut.client_secret', 'test_client_secret');
+        Config::set('services.revolut.environment', 'sandbox');
+        Config::set('services.revolut.redirect_uri', 'https://example.com/revolut/callback');
+        Config::set('services.revolut.webhook_secret', 'test_webhook_secret');
+
+        $this->service = new RevolutService;
+    }
+
+    public function test_get_authorization_url_returns_correct_url(): void
+    {
+        $url = $this->service->getAuthorizationUrl('random_state_string');
+
+        $this->assertStringContainsString('sandbox-business.revolut.com/app-confirm', $url);
+        $this->assertStringContainsString('client_id=test_client_id', $url);
+        $this->assertStringContainsString('response_type=code', $url);
+        $this->assertStringContainsString('state=random_state_string', $url);
+        $this->assertStringContainsString('redirect_uri=', $url);
+    }
+
+    public function test_get_authorization_url_uses_production_url_when_configured(): void
+    {
+        Config::set('services.revolut.environment', 'production');
+        $service = new RevolutService;
+
+        $url = $service->getAuthorizationUrl('state');
+
+        $this->assertStringContainsString('business.revolut.com/app-confirm', $url);
+        $this->assertStringNotContainsString('sandbox-', $url);
+    }
+
+    public function test_exchange_authorization_code_returns_tokens(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/auth/token' => Http::response([
+                'access_token' => 'test_access_token',
+                'refresh_token' => 'test_refresh_token',
+                'expires_in' => 2400,
+                'token_type' => 'Bearer',
+            ], 200),
+        ]);
+
+        $result = $this->service->exchangeAuthorizationCode('test_auth_code');
+
+        $this->assertEquals('test_access_token', $result['access_token']);
+        $this->assertEquals('test_refresh_token', $result['refresh_token']);
+        $this->assertEquals(2400, $result['expires_in']);
+
+        Http::assertSent(fn ($request): bool => str_contains((string) $request->url(), 'auth/token')
+            && $request['grant_type'] === 'authorization_code'
+            && $request['code'] === 'test_auth_code'
+            && $request['client_id'] === 'test_client_id');
+    }
+
+    public function test_exchange_authorization_code_throws_on_failure(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/auth/token' => Http::response([
+                'error' => 'invalid_grant',
+            ], 400),
+        ]);
+
+        $this->expectException(\Exception::class);
+        $this->service->exchangeAuthorizationCode('invalid_code');
+    }
+
+    public function test_refresh_access_token_returns_new_tokens(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/auth/token' => Http::response([
+                'access_token' => 'new_access_token',
+                'refresh_token' => 'new_refresh_token',
+                'expires_in' => 2400,
+            ], 200),
+        ]);
+
+        $result = $this->service->refreshAccessToken('old_refresh_token');
+
+        $this->assertEquals('new_access_token', $result['access_token']);
+
+        Http::assertSent(fn ($request): bool => $request['grant_type'] === 'refresh_token'
+            && $request['refresh_token'] === 'old_refresh_token');
+    }
+
+    public function test_refresh_access_token_throws_on_failure(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/auth/token' => Http::response([
+                'error' => 'invalid_token',
+            ], 401),
+        ]);
+
+        $this->expectException(\Exception::class);
+        $this->service->refreshAccessToken('invalid_refresh_token');
+    }
+
+    public function test_get_valid_access_token_returns_current_token_when_not_expired(): void
+    {
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_access_token',
+            'revolut_refresh_token' => 'refresh_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $token = $this->service->getValidAccessToken($connection);
+
+        $this->assertEquals('valid_access_token', $token);
+    }
+
+    public function test_get_valid_access_token_refreshes_when_expired(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/auth/token' => Http::response([
+                'access_token' => 'refreshed_access_token',
+                'refresh_token' => 'new_refresh_token',
+                'expires_in' => 2400,
+            ], 200),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'expired_access_token',
+            'revolut_refresh_token' => 'old_refresh_token',
+            'revolut_token_expires_at' => now()->subMinute(),
+        ]);
+
+        $token = $this->service->getValidAccessToken($connection);
+
+        $this->assertEquals('refreshed_access_token', $token);
+
+        $connection->refresh();
+        $this->assertEquals('refreshed_access_token', $connection->revolut_access_token);
+    }
+
+    public function test_get_valid_access_token_throws_when_no_refresh_token_and_expired(): void
+    {
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'expired_token',
+            'revolut_refresh_token' => null,
+            'revolut_token_expires_at' => now()->subMinute(),
+        ]);
+
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('Access token expired and no refresh token available');
+
+        $this->service->getValidAccessToken($connection);
+    }
+
+    public function test_get_accounts_returns_account_list(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/accounts' => Http::response([
+                [
+                    'id' => 'acc_001',
+                    'name' => 'GBP Business Account',
+                    'balance' => 10000.00,
+                    'currency' => 'GBP',
+                    'type' => 'current',
+                    'state' => 'active',
+                ],
+            ], 200),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $accounts = $this->service->getAccounts($connection);
+
+        $this->assertIsArray($accounts);
+        $this->assertCount(1, $accounts);
+        $this->assertEquals('acc_001', $accounts[0]['id']);
+        $this->assertEquals('GBP Business Account', $accounts[0]['name']);
+        $this->assertEquals(10000.00, $accounts[0]['balance']);
+
+        Http::assertSent(fn ($request): bool => str_contains((string) $request->url(), '/accounts')
+            && $request->hasHeader('Authorization', 'Bearer valid_token'));
+    }
+
+    public function test_get_accounts_throws_on_failure(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/accounts' => Http::response([
+                'message' => 'Unauthorized',
+            ], 401),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'invalid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $this->expectException(\Exception::class);
+        $this->service->getAccounts($connection);
+    }
+
+    public function test_get_transactions_with_date_range(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/transactions*' => Http::response([
+                [
+                    'id' => 'tx_001',
+                    'type' => 'transfer',
+                    'state' => 'completed',
+                    'reference' => 'Invoice payment',
+                    'legs' => [
+                        [
+                            'amount' => -500.00,
+                            'currency' => 'GBP',
+                        ],
+                    ],
+                    'completed_at' => '2026-01-15T10:30:00Z',
+                ],
+            ], 200),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $transactions = $this->service->getTransactions($connection, '2026-01-01', '2026-01-31');
+
+        $this->assertIsArray($transactions);
+        $this->assertCount(1, $transactions);
+        $this->assertEquals('tx_001', $transactions[0]['id']);
+
+        Http::assertSent(fn ($request): bool => str_contains((string) $request->url(), '/transactions')
+            && str_contains((string) $request->url(), 'from=2026-01-01')
+            && str_contains((string) $request->url(), 'to=2026-01-31'));
+    }
+
+    public function test_get_transactions_count_capped_at_1000(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/transactions*' => Http::response([], 200),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $this->service->getTransactions($connection, null, null, 5000);
+
+        Http::assertSent(fn ($request): bool => str_contains((string) $request->url(), 'count=1000'));
+    }
+
+    public function test_get_transactions_updates_last_synced_at(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/transactions*' => Http::response([], 200),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+            'last_synced_at' => null,
+        ]);
+
+        $this->service->getTransactions($connection);
+
+        $connection->refresh();
+        $this->assertNotNull($connection->last_synced_at);
+    }
+
+    public function test_service_uses_production_base_url_when_configured(): void
+    {
+        Config::set('services.revolut.environment', 'production');
+        $service = new RevolutService;
+
+        Http::fake([
+            'b2b.revolut.com/api/1.0/accounts' => Http::response([], 200),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $service->getAccounts($connection);
+
+        Http::assertSent(fn ($request): bool => str_contains((string) $request->url(), 'b2b.revolut.com'));
+    }
+
+    public function test_verify_webhook_signature_with_valid_signature(): void
+    {
+        $bodyJson = '{"event":"TransactionCreated","data":{"id":"tx_001"}}';
+        $signature = 'v1='.hash_hmac('sha256', $bodyJson, 'test_webhook_secret');
+
+        $result = $this->service->verifyWebhookSignature($bodyJson, $signature);
+
+        $this->assertTrue($result);
+    }
+
+    public function test_send_payment_returns_payment_data(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/pay' => Http::response([
+                'id' => 'pay_001',
+                'state' => 'pending',
+                'created_at' => '2026-01-15T10:00:00Z',
+            ], 200),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $paymentData = [
+            'account_id' => 'acc_001',
+            'receiver' => [
+                'counterparty_id' => 'cp_001',
+                'account_id' => 'cp_acc_001',
+            ],
+            'amount' => 250.00,
+            'currency' => 'GBP',
+            'reference' => 'Invoice #42',
+        ];
+
+        $result = $this->service->sendPayment($connection, $paymentData);
+
+        $this->assertEquals('pay_001', $result['id']);
+        $this->assertEquals('pending', $result['state']);
+
+        Http::assertSent(fn ($request): bool => str_contains((string) $request->url(), '/pay')
+            && $request['account_id'] === $paymentData['account_id']
+            && $request['amount'] === $paymentData['amount']
+            && $request['currency'] === $paymentData['currency']
+            && $request->hasHeader('Authorization', 'Bearer valid_token'));
+    }
+
+    public function test_send_payment_throws_on_failure(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/pay' => Http::response([
+                'message' => 'Insufficient funds',
+            ], 422),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('Failed to send payment');
+
+        $this->service->sendPayment($connection, [
+            'account_id' => 'acc_001',
+            'receiver' => ['counterparty_id' => 'cp_001'],
+            'amount' => 999999.00,
+            'currency' => 'GBP',
+            'reference' => 'Big payment',
+        ]);
+    }
+
+    public function test_send_bulk_payment_returns_draft_data(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/payment-drafts' => Http::response([
+                'id' => 'draft_001',
+                'status' => 'CREATED',
+                'title' => 'Batch January Suppliers',
+            ], 200),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $payments = [
+            [
+                'account_id' => 'acc_001',
+                'receiver' => ['counterparty_id' => 'cp_001', 'account_id' => 'cp_acc_001'],
+                'amount' => 100.00,
+                'currency' => 'GBP',
+                'reference' => 'Supplier A',
+            ],
+            [
+                'account_id' => 'acc_001',
+                'receiver' => ['counterparty_id' => 'cp_002', 'account_id' => 'cp_acc_002'],
+                'amount' => 200.00,
+                'currency' => 'GBP',
+                'reference' => 'Supplier B',
+            ],
+        ];
+
+        $result = $this->service->sendBulkPayment($connection, 'Batch January Suppliers', $payments, '2026-01-31');
+
+        $this->assertEquals('draft_001', $result['id']);
+        $this->assertEquals('CREATED', $result['status']);
+
+        Http::assertSent(fn ($request): bool => str_contains((string) $request->url(), '/payment-drafts')
+            && $request['title'] === 'Batch January Suppliers'
+            && $request['schedule_for'] === '2026-01-31'
+            && count($request['payments']) === count($payments)
+            && $request->hasHeader('Authorization', 'Bearer valid_token'));
+    }
+
+    public function test_send_bulk_payment_without_schedule_date(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/payment-drafts' => Http::response([
+                'id' => 'draft_002',
+                'status' => 'CREATED',
+            ], 200),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $this->service->sendBulkPayment($connection, 'Immediate batch', [
+            [
+                'account_id' => 'acc_001',
+                'receiver' => ['counterparty_id' => 'cp_001'],
+                'amount' => 50.00,
+                'currency' => 'EUR',
+                'reference' => 'Payment now',
+            ],
+        ]);
+
+        Http::assertSent(fn ($request): bool => str_contains((string) $request->url(), '/payment-drafts')
+            && ! isset($request['schedule_for']));
+    }
+
+    public function test_send_bulk_payment_throws_on_failure(): void
+    {
+        Http::fake([
+            'sandbox-b2b.revolut.com/api/1.0/payment-drafts' => Http::response([
+                'message' => 'Bad request',
+            ], 400),
+        ]);
+
+        $connection = BankConnection::factory()->create([
+            'bank_id' => 'revolut',
+            'revolut_access_token' => 'valid_token',
+            'revolut_token_expires_at' => now()->addHour(),
+        ]);
+
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('Failed to send bulk payment');
+
+        $this->service->sendBulkPayment($connection, 'Bad batch', []);
+    }
+
+    public function test_verify_webhook_signature_with_invalid_signature(): void
+    {
+        $bodyJson = '{"event":"TransactionCreated"}';
+
+        $result = $this->service->verifyWebhookSignature($bodyJson, 'v1=invalidsignature');
+
+        $this->assertFalse($result);
+    }
+
+    public function test_verify_webhook_signature_without_secret_configured(): void
+    {
+        Config::set('services.revolut.webhook_secret');
+
+        $bodyJson = '{"event":"TransactionCreated"}';
+        $signature = 'v1='.hash_hmac('sha256', $bodyJson, 'some_secret');
+
+        $result = $this->service->verifyWebhookSignature($bodyJson, $signature);
+
+        $this->assertFalse($result);
+    }
+
+    public function test_verify_webhook_signature_with_empty_signature(): void
+    {
+        $bodyJson = '{"event":"TransactionCreated"}';
+
+        $result = $this->service->verifyWebhookSignature($bodyJson, '');
+
+        $this->assertFalse($result);
+    }
+}

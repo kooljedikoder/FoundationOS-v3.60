@@ -1,0 +1,48 @@
+name: Prod Boot Smoke
+
+# Builds the production Octane/RoadRunner image (the Dockerfile that actually
+# ships — the SQLite test suite never exercises it) and proves the container
+# boots and serves a request. Catches boot-time fatals the unit tests can't:
+# stale committed caches, bad php.ini directives, broken service providers.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prod-boot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build production Octane image
+        run: docker build -t accounting-prod:smoke -f Dockerfile .
+
+      - name: Boot container
+        run: |
+          docker run -d --name prodsmoke \
+            -e APP_KEY="base64:$(openssl rand -base64 32)" \
+            -p 8099:80 accounting-prod:smoke
+
+      - name: Wait for /up to return 200
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" \
+            --retry 30 --retry-delay 2 --retry-connrefused --retry-all-errors \
+            http://127.0.0.1:8099/up)
+          echo "GET /up -> $code"
+          test "$code" = "200"
+
+      - name: Container logs on failure
+        if: failure()
+        run: docker logs prodsmoke || true
+
+      - name: Cleanup
+        if: always()
+        run: docker rm -f prodsmoke || true

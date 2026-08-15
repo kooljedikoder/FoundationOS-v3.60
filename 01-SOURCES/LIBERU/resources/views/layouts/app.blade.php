@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    @php
+        try {
+            $siteName = app(\App\Settings\GeneralSettings::class)->site_name;
+        } catch (\Throwable) {
+            $siteName = config('app.name', 'Accounting');
+        }
+    @endphp
+
+    <title>{{ $siteName }}</title>
+
+    @if(config('googletagmanager.id'))
+        @include('googletagmanager::head')
+    @endif
+
+    @vite('resources/css/app.css')
+    @livewireStyles
+    {{-- Livewire 4: styles injected automatically by Vite, kept for compatibility --}}
+</head>
+<body class="font-sans antialiased">
+    @if(config('googletagmanager.id'))
+        @include('googletagmanager::body')
+    @endif
+
+    <div class="min-h-screen bg-gray-100 flex flex-col">
+        <x-home-navbar />
+        <main class="grow">
+            @yield('content')
+        </main>
+        <x-footer />
+    </div>
+
+    @vite('resources/js/app.js')
+    @livewireScriptConfig{{-- Livewire 4 replacement for @livewireScripts --}}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+
+                if (!toggle || !menu) return;
+
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    menu.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!dropdown.contains(e.target)) {
+                        menu.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+name: Security & Code Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phpcpd:
+    name: Copy-paste detection
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: mbstring
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Run phpcpd
+        run: |
+          curl -sSL https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
+          php phpcpd.phar app/
+
+  php-insights:
+    name: PHP Insights
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: mbstring, pdo, pdo_sqlite, bcmath
+
+      - name: Copy environment file
+        run: cp .env.example .env
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Generate application key
+        run: php artisan key:generate
+
+      - name: Run PHP Insights
+        run: php artisan insights --min-quality=90 --min-complexity=90 --min-architecture=80 --min-style=90 --no-interaction
+
+  security-check:
+    name: Dependency security check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+
+      - name: Audit PHP dependencies
+        run: composer audit
+
+  pint:
+    name: Code style
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: mbstring
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Check code style
+        run: ./vendor/bin/pint --test

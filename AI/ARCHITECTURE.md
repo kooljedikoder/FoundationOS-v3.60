@@ -9,7 +9,7 @@ actually implemented. Empty sections below mean "not yet built."
 | Folder | Purpose | Status |
 |---|---|---|
 | `00-DOCS` | Master specification, decisions, architecture | ✅ this repo |
-| `01-SOURCES` | Downloaded Aureus / ERPKit / Liberu / FilaKit / Lara Dashboard (read-only) | not yet added |
+| `01-SOURCES` | Downloaded Aureus / ERPKit / Liberu / Lara Dashboard (read-only; FilaKit not imported, ADR-010) | ✅ added 2026-08-15 |
 | `02-LICENCES` | Licence and attribution records | ✅ `LICENCES/` |
 | `03-AUDITS` | AI-generated audits of donor projects | not yet added |
 | `04-FOUNDATIONOS` | The actual FoundationOS application | not yet added |

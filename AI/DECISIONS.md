@@ -103,3 +103,29 @@ supplement to the phase/milestone-level ones.
 
 **Why:** Both packs shared identical architecture (same 15-phase roadmap, same core rules), so
 this is reconciliation of two drafts of the same plan, not a redesign.
+
+## ADR-010 — Import donor source code; skip FilaKit as a separate import (2026-08-15)
+
+**What:** Identified and imported real, MIT-licensed upstream repos for four of the five donor
+sources into `01-SOURCES/` (shallow clone, nested `.git` stripped, provenance recorded in each
+folder's `.donor-provenance.md`):
+
+- Aureus ERP → `aureuserp/aureuserp` @ `c817e736`
+- ERPKit v5 → `jeffersongoncalves/erpkitv5` @ `911be3b9`
+- Liberu Accounting → `liberu-accounting/accounting-laravel` @ `d9c9870c`
+- Lara Dashboard → `laradashboard/laradashboard` @ `9dc13358`
+
+FilaKit v5 (`jeffersongoncalves/filakitv5`) was identified but **not imported** as a separate
+source, at the operator's direction.
+
+**Why:** FilaKit v5 is the same author's own base multi-panel starter kit that ERPKit v5 is built
+on top of — importing it separately risked duplicating what ERPKit already carries as a Composer
+dependency. Phase 01's audit should check whether ERPKit's own `composer.json`/vendor tree already
+covers what FilaKit would offer before this decision is revisited.
+
+**Note:** Importing the source code makes it *available to inspect* under `01-SOURCES/` — it does
+not classify or approve any of it for use. `AI/DONOR_RULES.md` still gates every capability behind
+Phase 01 classification; everything imported here remains `DO NOT USE` until then.
+
+**Alternatives considered:** Importing all 5 including FilaKit — rejected per operator instruction,
+on the reasoning above.

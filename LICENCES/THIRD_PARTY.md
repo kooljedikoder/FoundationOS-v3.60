@@ -6,13 +6,13 @@ check is also part of the Phase 01 audit output.
 
 ## Donor sources
 
-| Source | Role | Licence | Notes |
-|---|---|---|---|
-| Aureus ERP | Starting application | _(confirm during Phase 01 audit)_ | Verify licence permits commercial derivative use before Phase 02 adapts anything. |
-| ERPKit v5 | ERP module donor | _(confirm during Phase 01 audit)_ | Same. |
-| Liberu | Finance/accounting donor | _(confirm during Phase 01 audit)_ | Same. |
-| FilaKit | Candidate donor, role TBC | _(confirm during Phase 01 audit)_ | Added post-planning; confirm both licence and actual role before any use. |
-| Lara Dashboard | Candidate donor, role TBC | _(confirm during Phase 01 audit)_ | Added post-planning; confirm both licence and actual role before any use. |
+| Source | Repo | Role | Licence | Notes |
+|---|---|---|---|---|
+| Aureus ERP | [aureuserp/aureuserp](https://github.com/aureuserp/aureuserp) | Starting application | MIT (confirmed 2026-08-15) | Imported into `01-SOURCES/AUREUS` @ `c817e736`. Capability classification still pending Phase 01. |
+| ERPKit v5 | [jeffersongoncalves/erpkitv5](https://github.com/jeffersongoncalves/erpkitv5) | ERP module donor | MIT (confirmed 2026-08-15) | Imported into `01-SOURCES/ERPKIT` @ `911be3b9`. Built on FilaKit v5 (same author) — see FilaKit row. |
+| Liberu Accounting | [liberu-accounting/accounting-laravel](https://github.com/liberu-accounting/accounting-laravel) | Finance/accounting donor | MIT (confirmed 2026-08-15) | Imported into `01-SOURCES/LIBERU` @ `d9c9870c`. |
+| FilaKit v5 | [jeffersongoncalves/filakitv5](https://github.com/jeffersongoncalves/filakitv5) | Not imported | MIT (confirmed 2026-08-15, unimported) | Deliberately not imported separately (ADR-010) — ERPKit v5 is built on it; Phase 01 checks whether ERPKit already carries what's needed before a separate import is considered. |
+| Lara Dashboard | [laradashboard/laradashboard](https://github.com/laradashboard/laradashboard) | Candidate donor, role TBC | MIT (confirmed 2026-08-15) | Imported into `01-SOURCES/LARADASHBOARD` @ `9dc13358`. Role still unconfirmed — see ADR-008. |
 
 ## Key framework/package dependencies
 
