@@ -1,0 +1,2448 @@
+{
+ "generated": "2026-10-04",
+ "source_legend": {
+  "ccc": "CCC",
+  "vo": "VendorOS",
+  "erp": "ERP",
+  "fos": "FOS system",
+  "calc": "Derived",
+  "new": "NEW (not in DB)",
+  "ui": "Static UI"
+ },
+ "stats": {
+  "ccc": 58,
+  "vo": 39,
+  "erp": 53,
+  "fos": 31,
+  "calc": 11,
+  "new": 59,
+  "ui": 7
+ },
+ "pages": {
+  "dashboard": {
+   "title": "Dashboard (internal + vendor home)",
+   "fos": "Main > Dashboard",
+   "route": [
+    "admin.dashboard",
+    "generic"
+   ],
+   "items": [
+    {
+     "l": "Active Vendors",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "vendor_passports.status",
+     "note": "count where status = 'active'"
+    },
+    {
+     "l": "Pending Approvals",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.status",
+     "note": "count of pending steps"
+    },
+    {
+     "l": "Avg. Compliance Score",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "vendor_passports.compliance_score",
+     "note": "AVG"
+    },
+    {
+     "l": "Open Purchase Orders",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "purchases_orders.state",
+     "note": "state in (purchase, sent) and receipt_status != full"
+    },
+    {
+     "l": "Contracts Expiring (30d)",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs contracts table (fos_contracts) with end_date"
+    },
+    {
+     "l": "AI Suggestions",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs suggestion log from AI Data Copilot (NaturalQuery has queries only)"
+    },
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Issue",
+     "k": "col",
+     "src": "calc",
+     "ref": "fos_vendor_compliance_actions.description + fos_vendor_insurance_policies.expiry_date + vendor_documents.expiry_date",
+     "note": "first open compliance action or nearest expiry"
+    },
+    {
+     "l": "Score",
+     "k": "col",
+     "src": "vo",
+     "ref": "vendor_passports.compliance_score",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "calc",
+     "ref": "vendor_passports.compliance_status",
+     "note": ""
+    },
+    {
+     "l": "Recent Activity",
+     "k": "panel",
+     "src": "fos",
+     "ref": "module_activity_logs.action + vendor_passport_state_logs.to_status + vendor_passport_state_logs.from_status + vendor_passport_state_logs.comment + chatter_messages.body",
+     "note": "merge of module activity, passport state logs and chatter"
+    },
+    {
+     "l": "Modules - grouped by edition",
+     "k": "panel",
+     "src": "fos",
+     "ref": "fos_modules.is_enabled",
+     "note": "enabled state from registry; edition entitlement is NEW (no entitlement column)"
+    },
+    {
+     "l": "My Documents",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "vendor_documents.verification_status + fos_required_documents.required",
+     "note": "verified / required for the signed-in vendor's partner"
+    },
+    {
+     "l": "Outstanding Invoices",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "accounts_account_moves.amount_residual",
+     "note": "SUM where move_type = in_invoice and partner_id = vendor"
+    },
+    {
+     "l": "Open RFQs",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "purchases_orders.state",
+     "note": "draft/sent orders for the vendor partner (invitation tracking is NEW)"
+    },
+    {
+     "l": "HSE Compliance",
+     "k": "kpi",
+     "src": "calc",
+     "ref": "fos_certifications.expiry_date + fos_certifications.status",
+     "note": "% of required certificates valid"
+    },
+    {
+     "l": "Certificate Expiring",
+     "k": "kpi",
+     "src": "calc",
+     "ref": "fos_certifications.expiry_date + fos_vendor_insurance_policies.expiry_date",
+     "note": "nearest expiry"
+    },
+    {
+     "l": "Unread Messages",
+     "k": "kpi",
+     "src": "fos",
+     "ref": "service_desk_tickets.last_replied_at + fos_communication_contexts.partner_id",
+     "note": "tickets with unseen staff replies (read state is NEW)"
+    },
+    {
+     "l": "My Action Items",
+     "k": "panel",
+     "src": "calc",
+     "ref": "fos_vendor_compliance_actions.status + vendor_documents.verification_status + fos_certifications.expiry_date",
+     "note": "union of open actions, rejected/expiring documents, due RFQs"
+    },
+    {
+     "l": "Your onboarding journey",
+     "k": "panel",
+     "src": "vo",
+     "ref": "vendor_passports.status + fos_vendor_invitations.status + fos_vendor_stage_reviews.stage",
+     "note": "phase derived from passport status and review stages"
+    }
+   ]
+  },
+  "reg": {
+   "title": "Registration & Onboarding",
+   "fos": "VendorOS > Registration & Onboarding (vendor-registration-workspace)",
+   "route": [
+    "admin.vendor-registration.create",
+    "exists"
+   ],
+   "items": [
+    {
+     "l": "Company",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Stage",
+     "k": "col",
+     "src": "calc",
+     "ref": "vendor_passports.status + fos_vendor_stage_reviews.stage",
+     "note": "current J01 stage"
+    },
+    {
+     "l": "Category",
+     "k": "col",
+     "src": "ccc",
+     "ref": "fos_partner_profiles.vendor_category",
+     "note": ""
+    },
+    {
+     "l": "Submitted",
+     "k": "col",
+     "src": "vo",
+     "ref": "vendor_passports.submitted_at",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "vo",
+     "ref": "vendor_passports.status",
+     "note": ""
+    },
+    {
+     "l": "Onboarding Journey",
+     "k": "panel",
+     "src": "vo",
+     "ref": "vendor_passports.status",
+     "note": "six-stage strip derived from status"
+    },
+    {
+     "l": "In-Progress Registrations",
+     "k": "panel",
+     "src": "vo",
+     "ref": "vendor_passports.status",
+     "note": "status in (draft, submitted, in_review)"
+    },
+    {
+     "l": "New Vendor wizard (16 steps)",
+     "k": "field",
+     "src": "ccc",
+     "ref": "fos_partner_profiles.registration_number",
+     "note": "all fields in data/field_dictionary.json; Declaration step is NEW (G-08)"
+    }
+   ]
+  },
+  "approval": {
+   "title": "Approval",
+   "fos": "VendorOS > Registration & Onboarding > Approval",
+   "route": [
+    "admin.vendor-reviews.index",
+    "partial (same page as Assessment Scoring)"
+   ],
+   "items": [
+    {
+     "l": "Awaiting my decision",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.status + fos_vendor_approval_steps.reviewer_id",
+     "note": "pending steps for the current reviewer"
+    },
+    {
+     "l": "Overdue",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.due_at",
+     "note": "due_at < now and status pending"
+    },
+    {
+     "l": "Approved this month",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.decided_at + fos_vendor_approval_steps.decision",
+     "note": ""
+    },
+    {
+     "l": "Avg. days to approve",
+     "k": "kpi",
+     "src": "calc",
+     "ref": "vendor_passports.submitted_at + vendor_passports.approved_at",
+     "note": "AVG(approved_at - submitted_at)"
+    },
+    {
+     "l": "Reference",
+     "k": "col",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.id",
+     "note": ""
+    },
+    {
+     "l": "Title",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": "vendor name plus stage label"
+    },
+    {
+     "l": "Owner",
+     "k": "col",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.reviewer_role",
+     "note": ""
+    },
+    {
+     "l": "Date",
+     "k": "col",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.due_at",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.status",
+     "note": ""
+    },
+    {
+     "l": "Reason / findings",
+     "k": "field",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.comments",
+     "note": "required to reject or request information"
+    },
+    {
+     "l": "Approval chain",
+     "k": "panel",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.step_order + fos_vendor_approval_steps.parallel_group + fos_vendor_approval_steps.is_required",
+     "note": "per-vendor steps exist; the reusable chain TEMPLATE (stages, SLA, owner role) is NEW"
+    },
+    {
+     "l": "History & audit",
+     "k": "panel",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.decided_at + vendor_passport_state_logs.to_status + vendor_passport_state_logs.from_status + vendor_passport_state_logs.comment",
+     "note": ""
+    },
+    {
+     "l": "Escalation",
+     "k": "field",
+     "src": "vo",
+     "ref": "fos_vendor_approval_steps.escalated_to + fos_vendor_approval_steps.escalation_note + fos_vendor_approval_steps.escalated_at",
+     "note": "columns exist; no UI in mockup yet (add Escalate action)"
+    }
+   ]
+  },
+  "passport": {
+   "title": "Vendor Passport 360 (admin)",
+   "fos": "VendorOS > Vendor Passport 360",
+   "route": [
+    "admin.vendor-passports.show",
+    "exists"
+   ],
+   "items": [
+    {
+     "l": "Performance Score",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "vendor_passports.performance_score",
+     "note": ""
+    },
+    {
+     "l": "Compliance Score",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "vendor_passports.compliance_score",
+     "note": ""
+    },
+    {
+     "l": "Risk Score",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs risk register (fos_risks) or a stored vendor risk rating"
+    },
+    {
+     "l": "Active Contracts",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs contracts table"
+    },
+    {
+     "l": "Company Snapshot",
+     "k": "panel",
+     "src": "ccc",
+     "ref": "partners_partners.name + fos_partner_profiles.vendor_category + partners_partners.street1 + partners_partners.city",
+     "note": ""
+    },
+    {
+     "l": "Digital Vendor Card",
+     "k": "panel",
+     "src": "vo",
+     "ref": "vendor_passports.vendor_number + vendor_passports.status + vendor_passports.approved_at",
+     "note": "QR token for public verification is NEW (no token column)"
+    },
+    {
+     "l": "Document",
+     "k": "col",
+     "src": "ccc",
+     "ref": "vendor_documents.document_type",
+     "note": ""
+    },
+    {
+     "l": "Type",
+     "k": "col",
+     "src": "ccc",
+     "ref": "documents.type",
+     "note": ""
+    },
+    {
+     "l": "Expiry",
+     "k": "col",
+     "src": "ccc",
+     "ref": "vendor_documents.expiry_date",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "ccc",
+     "ref": "vendor_documents.verification_status",
+     "note": ""
+    },
+    {
+     "l": "Contract",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_contracts"
+    },
+    {
+     "l": "Value",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_contracts.value"
+    },
+    {
+     "l": "Renewal",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_contracts.renewal_date"
+    },
+    {
+     "l": "Name",
+     "k": "col",
+     "src": "fos",
+     "ref": "users.name",
+     "note": "vendor staff via users.partner_id"
+    },
+    {
+     "l": "Title",
+     "k": "col",
+     "src": "ccc",
+     "ref": "fos_partner_profiles.designation",
+     "note": ""
+    },
+    {
+     "l": "Access Level",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs vendor membership relation with role/permission set (D-01)"
+    },
+    {
+     "l": "Passport Usage History",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "needs vendor_passport_scans (time, location, scanned_by, result)"
+    },
+    {
+     "l": "Timeline & Activity Log",
+     "k": "panel",
+     "src": "vo",
+     "ref": "vendor_passport_state_logs.to_status + vendor_passport_state_logs.from_status + vendor_passport_state_logs.comment + module_activity_logs.action + chatter_messages.body",
+     "note": ""
+    },
+    {
+     "l": "Communications",
+     "k": "panel",
+     "src": "fos",
+     "ref": "service_desk_tickets.title + fos_communication_contexts.partner_id",
+     "note": "threads linked to the partner"
+    }
+   ]
+  },
+  "docs": {
+   "title": "Document Management & Verification (admin)",
+   "fos": "Contact Control Center > Document Centre (+ VendorOS Document Upload)",
+   "route": [
+    "admin.contact-control-center.document-centre",
+    "exists"
+   ],
+   "items": [
+    {
+     "l": "Documents on File",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "documents.id + vendor_documents.id",
+     "note": "count"
+    },
+    {
+     "l": "Expiring (30d)",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "vendor_documents.expiry_date",
+     "note": ""
+    },
+    {
+     "l": "Verified",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "vendor_documents.verification_status",
+     "note": ""
+    },
+    {
+     "l": "Rejected",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "vendor_documents.verification_status",
+     "note": ""
+    },
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Document",
+     "k": "col",
+     "src": "ccc",
+     "ref": "vendor_documents.document_type",
+     "note": ""
+    },
+    {
+     "l": "Submitted",
+     "k": "col",
+     "src": "ccc",
+     "ref": "documents.created_at",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "ccc",
+     "ref": "vendor_documents.verification_status",
+     "note": "PRD lifecycle has 16 states; column holds free status text. documents has no status/expiry/version (D-02)"
+    },
+    {
+     "l": "Expired",
+     "k": "col",
+     "src": "ccc",
+     "ref": "vendor_documents.expiry_date",
+     "note": ""
+    },
+    {
+     "l": "Actions",
+     "k": "col",
+     "src": "ui",
+     "ref": "",
+     "note": "Approve / Reject / Request replacement; verified_by and verified_at exist"
+    },
+    {
+     "l": "Expiring documents (next 30 days)",
+     "k": "panel",
+     "src": "ccc",
+     "ref": "vendor_documents.expiry_date",
+     "note": ""
+    },
+    {
+     "l": "Document versions",
+     "k": "field",
+     "src": "new",
+     "ref": "",
+     "note": "needs version number + previous version link (documents has none)"
+    }
+   ]
+  },
+  "assessment": {
+   "title": "Supplier Assessment & Due Diligence",
+   "fos": "VendorOS > Registration & Onboarding > Assessment Scoring",
+   "route": [
+    "admin.vendor-reviews.show",
+    "exists"
+   ],
+   "items": [
+    {
+     "l": "Assessment Breakdown (per discipline score)",
+     "k": "panel",
+     "src": "vo",
+     "ref": "fos_vendor_scorecards.dimension_scores + fos_vendor_scorecards.overall_score + fos_vendor_scorecards.formula",
+     "note": "disciplines are JSON keys; weights table in PRD M3"
+    },
+    {
+     "l": "Stage review (stages 23-30)",
+     "k": "field",
+     "src": "vo",
+     "ref": "fos_vendor_stage_reviews.stage + fos_vendor_stage_reviews.score + fos_vendor_stage_reviews.decision + fos_vendor_stage_reviews.findings + fos_vendor_stage_reviews.evidence_reference",
+     "note": ""
+    },
+    {
+     "l": "Recommendation",
+     "k": "field",
+     "src": "vo",
+     "ref": "fos_vendor_recommendations.recommendation + fos_vendor_recommendations.rationale + fos_vendor_recommendations.conditions",
+     "note": ""
+    },
+    {
+     "l": "Verification checks (S19-S20)",
+     "k": "field",
+     "src": "vo",
+     "ref": "fos_vendor_verification_checks.check_name + fos_vendor_verification_checks.result",
+     "note": ""
+    },
+    {
+     "l": "Compliance actions (S22)",
+     "k": "field",
+     "src": "vo",
+     "ref": "fos_vendor_compliance_actions.description + fos_vendor_compliance_actions.vendor_response",
+     "note": ""
+    }
+   ]
+  },
+  "hse": {
+   "title": "Induction & Certification",
+   "fos": "VendorOS > (HSE) - no admin menu entry yet",
+   "route": [
+    "",
+    "none"
+   ],
+   "items": [
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Certificate",
+     "k": "col",
+     "src": "ccc",
+     "ref": "fos_certifications.name",
+     "note": ""
+    },
+    {
+     "l": "Score",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs hse_attempts (score, passed, attempted_at)"
+    },
+    {
+     "l": "Expiry",
+     "k": "col",
+     "src": "ccc",
+     "ref": "fos_certifications.expiry_date",
+     "note": ""
+    },
+    {
+     "l": "Take the Site Safety Induction Test",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "needs hse_courses, hse_questions, hse_attempts"
+    },
+    {
+     "l": "Certification Register",
+     "k": "panel",
+     "src": "ccc",
+     "ref": "fos_certifications.certificate_number + fos_certifications.issuing_body + fos_certifications.status",
+     "note": ""
+    }
+   ]
+  },
+  "audit": {
+   "title": "Audit & Governance (CORE)",
+   "fos": "none yet",
+   "route": [
+    "",
+    "none"
+   ],
+   "items": [
+    {
+     "l": "Overall Compliance",
+     "k": "kpi",
+     "src": "calc",
+     "ref": "vendor_passports.compliance_score",
+     "note": "AVG"
+    },
+    {
+     "l": "Open Findings",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_audit_findings"
+    },
+    {
+     "l": "Overdue Corrective Actions",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_capa"
+    },
+    {
+     "l": "Audits This Quarter",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_audits"
+    },
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Finding",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "fos_audit_findings.description"
+    },
+    {
+     "l": "Severity",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "fos_audit_findings.severity"
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "fos_audit_findings.status"
+    }
+   ]
+  },
+  "erm": {
+   "title": "Enterprise Risk Management (CORE)",
+   "fos": "none yet",
+   "route": [
+    "",
+    "none"
+   ],
+   "items": [
+    {
+     "l": "Low Risk Vendors",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_risks with rating"
+    },
+    {
+     "l": "Medium Risk",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": ""
+    },
+    {
+     "l": "High Risk",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": ""
+    },
+    {
+     "l": "Governance Score",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "definition needed"
+    },
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Risk Category",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "fos_risks.category"
+    },
+    {
+     "l": "Score",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "likelihood x impact"
+    },
+    {
+     "l": "Trend",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs risk history"
+    }
+   ]
+  },
+  "procurement": {
+   "title": "Procurement Workspace",
+   "fos": "ERP > Operations > Purchases",
+   "route": [
+    "filament erp/purchase/orders/purchase-orders",
+    "exists (ERP)"
+   ],
+   "items": [
+    {
+     "l": "Open RFQs",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "purchases_orders.state",
+     "note": "state in (draft, sent)"
+    },
+    {
+     "l": "Awaiting Evaluation",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs bid/quotation records per RFQ"
+    },
+    {
+     "l": "POs Issued (30d)",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "purchases_orders.ordered_at",
+     "note": ""
+    },
+    {
+     "l": "Spend Under Management",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "purchases_orders.total_amount",
+     "note": "SUM"
+    },
+    {
+     "l": "Delivery SLA",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "inventories_operations.deadline + inventories_operations.closed_at",
+     "note": "% closed on or before deadline"
+    },
+    {
+     "l": "Deliveries Due Today",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "inventories_operations.scheduled_at + inventories_operations.state",
+     "note": ""
+    },
+    {
+     "l": "Open Defects",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs receipt inspection / QC records"
+    },
+    {
+     "l": "Payments Due (30d)",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "accounts_account_moves.invoice_date_due + accounts_account_moves.amount_residual",
+     "note": ""
+    },
+    {
+     "l": "RFQ",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.name",
+     "note": ""
+    },
+    {
+     "l": "Description",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.description",
+     "note": ""
+    },
+    {
+     "l": "Vendors Invited",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_rfq_invitations (rfq_id, partner_id, sent_at, response)"
+    },
+    {
+     "l": "Closes",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_requisitions.ends_at",
+     "note": "for tender-type requisitions; plain RFQs use purchases_orders.planned_at"
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.state",
+     "note": ""
+    },
+    {
+     "l": "PO",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.name",
+     "note": ""
+    },
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "purchases_orders.partner_id + partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Value",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.total_amount + purchases_orders.currency_id",
+     "note": ""
+    },
+    {
+     "l": "Actions",
+     "k": "col",
+     "src": "ui",
+     "ref": "",
+     "note": "View, Email to Vendor (ERP email); award action NEW (stage 41)"
+    },
+    {
+     "l": "Delivery & Inspection Workflow",
+     "k": "panel",
+     "src": "erp",
+     "ref": "inventories_operations.state",
+     "note": "receive step exists; inspect/approve steps NEW"
+    }
+   ]
+  },
+  "clm": {
+   "title": "Contract Lifecycle Management (CORE)",
+   "fos": "none yet",
+   "route": [
+    "",
+    "none"
+   ],
+   "items": [
+    {
+     "l": "Contract",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "fos_contracts.reference"
+    },
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Value",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "fos_contracts.value + currency"
+    },
+    {
+     "l": "Renewal",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "fos_contracts.renewal_date"
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "fos_contracts.status"
+    },
+    {
+     "l": "Contract Register",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "also needs fos_contract_obligations, templates; map ERP purchases_requisitions (blanket orders) first"
+    }
+   ]
+  },
+  "warehouse": {
+   "title": "Warehouse & Receiving",
+   "fos": "ERP > Operations > Inventory",
+   "route": [
+    "filament erp/inventory/overview",
+    "exists (ERP)"
+   ],
+   "items": [
+    {
+     "l": "Delivery SLA",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "inventories_operations.deadline + inventories_operations.closed_at",
+     "note": ""
+    },
+    {
+     "l": "Deliveries Due Today",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "inventories_operations.scheduled_at",
+     "note": ""
+    },
+    {
+     "l": "Late Deliveries",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "inventories_operations.has_deadline_issue",
+     "note": ""
+    },
+    {
+     "l": "Awaiting Finance Payment",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "accounts_account_moves.payment_state",
+     "note": ""
+    },
+    {
+     "l": "Reference",
+     "k": "col",
+     "src": "erp",
+     "ref": "inventories_operations.name",
+     "note": ""
+    },
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "inventories_operations.partner_id + partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "PO",
+     "k": "col",
+     "src": "erp",
+     "ref": "inventories_operations.origin",
+     "note": "origin holds the PO name"
+    },
+    {
+     "l": "Received",
+     "k": "col",
+     "src": "erp",
+     "ref": "inventories_operations.closed_at",
+     "note": ""
+    },
+    {
+     "l": "Condition",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_receipt_inspections (result, notes, photos, inspected_by)"
+    },
+    {
+     "l": "Expected",
+     "k": "col",
+     "src": "erp",
+     "ref": "inventories_operations.scheduled_at",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "erp",
+     "ref": "inventories_operations.state",
+     "note": ""
+    },
+    {
+     "l": "Delivery notes archive (photos)",
+     "k": "panel",
+     "src": "ccc",
+     "ref": "media.file_name + media.custom_properties",
+     "note": "photo capture of delivery note via media library"
+    }
+   ]
+  },
+  "finance": {
+   "title": "Finance & Payments",
+   "fos": "ERP > Finance > Accounting / Invoicing",
+   "route": [
+    "filament erp/accounts",
+    "exists (ERP)"
+   ],
+   "items": [
+    {
+     "l": "Invoices This Month",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "accounts_account_moves.invoice_date + accounts_account_moves.move_type",
+     "note": ""
+    },
+    {
+     "l": "Pending Approval",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "accounts_account_moves.state",
+     "note": "state = draft"
+    },
+    {
+     "l": "Paid On Time",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "accounts_account_payments.date + accounts_account_moves.invoice_date_due",
+     "note": "paid on or before due"
+    },
+    {
+     "l": "Disputed",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs dispute flag/reason on vendor invoices"
+    },
+    {
+     "l": "Invoice",
+     "k": "col",
+     "src": "erp",
+     "ref": "accounts_account_moves.name",
+     "note": ""
+    },
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "accounts_account_moves.partner_id + partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Amount",
+     "k": "col",
+     "src": "erp",
+     "ref": "accounts_account_moves.amount_total",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "erp",
+     "ref": "accounts_account_moves.payment_state + accounts_account_moves.state",
+     "note": ""
+    },
+    {
+     "l": "PO/GRN three-way match",
+     "k": "field",
+     "src": "new",
+     "ref": "",
+     "note": "needs match result (purchases_orders + inventories_operations + invoice) stored or computed"
+    }
+   ]
+  },
+  "perf": {
+   "title": "Vendor Performance & SLA",
+   "fos": "VendorOS > Vendor Passport 360 > Performance",
+   "route": [
+    "admin.vendor-passports.show",
+    "partial"
+   ],
+   "items": [
+    {
+     "l": "Vendor",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Overall Score",
+     "k": "col",
+     "src": "vo",
+     "ref": "fos_vendor_performance_reviews.overall_score",
+     "note": ""
+    },
+    {
+     "l": "Delivery",
+     "k": "col",
+     "src": "vo",
+     "ref": "fos_vendor_performance_reviews.delivery_score",
+     "note": ""
+    },
+    {
+     "l": "Quality",
+     "k": "col",
+     "src": "vo",
+     "ref": "fos_vendor_performance_reviews.quality_score",
+     "note": ""
+    },
+    {
+     "l": "SLA / Responsiveness / Cost / HSE scores",
+     "k": "field",
+     "src": "vo",
+     "ref": "fos_vendor_performance_reviews.sla_score + fos_vendor_performance_reviews.responsiveness_score + fos_vendor_performance_reviews.cost_score + fos_vendor_performance_reviews.hse_score",
+     "note": "columns exist but the mockup shows only three scores: add the other four"
+    },
+    {
+     "l": "Review period",
+     "k": "field",
+     "src": "vo",
+     "ref": "fos_vendor_performance_reviews.period_start + fos_vendor_performance_reviews.period_end",
+     "note": "mockup shows no period"
+    },
+    {
+     "l": "Vendor Scorecards",
+     "k": "panel",
+     "src": "vo",
+     "ref": "fos_vendor_scorecards.overall_score",
+     "note": ""
+    }
+   ]
+  },
+  "comms": {
+   "title": "Inbox & Communications",
+   "fos": "FoundationOS > Inbox (service-requests) + Communications module",
+   "route": [
+    "admin.communications.index",
+    "partial (placeholder shell)"
+   ],
+   "items": [
+    {
+     "l": "Unified Inbox",
+     "k": "panel",
+     "src": "fos",
+     "ref": "service_desk_tickets.title + service_desk_tickets.status + service_desk_tickets.priority + service_desk_tickets.assigned_to_id",
+     "note": "per-context scoping through fos_communication_contexts"
+    },
+    {
+     "l": "Direct Messages",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "needs chat adapter (WireChat candidate); not installed"
+    },
+    {
+     "l": "Email",
+     "k": "panel",
+     "src": "fos",
+     "ref": "service_desk_tickets.email_message_id + service_desk_tickets.source",
+     "note": "inbound email threading via ticket source"
+    },
+    {
+     "l": "WhatsApp",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "needs provider adapter and operating cost decision; not in FLEX"
+    },
+    {
+     "l": "Announcements",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "needs announcements table (audience, body, publish_at)"
+    },
+    {
+     "l": "Alerts",
+     "k": "panel",
+     "src": "fos",
+     "ref": "notifications.name + notifications.notification_type",
+     "note": ""
+    },
+    {
+     "l": "AI Summary",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "AI Data Copilot summary of unread threads; not built"
+    },
+    {
+     "l": "SLA timers",
+     "k": "field",
+     "src": "fos",
+     "ref": "service_desk_tickets.first_response_due_at + service_desk_tickets.resolution_due_at + service_desk_tickets.first_response_breached",
+     "note": "columns exist; sla_policies table empty"
+    }
+   ]
+  },
+  "myprofile": {
+   "title": "Company & Passport (vendor)",
+   "fos": "Vendor Hub > Company & Passport (vendor-onboarding.page company-profile / passport)",
+   "route": [
+    "vendor-onboarding.page",
+    "exists (read-only)"
+   ],
+   "items": [
+    {
+     "l": "Compliance Score",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "vendor_passports.compliance_score",
+     "note": ""
+    },
+    {
+     "l": "Onboarded",
+     "k": "kpi",
+     "src": "vo",
+     "ref": "vendor_passports.activated_at",
+     "note": "months since activation"
+    },
+    {
+     "l": "Active Contacts",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "partners_partners.parent_id",
+     "note": "child contacts of the vendor partner"
+    },
+    {
+     "l": "Profile Completeness",
+     "k": "kpi",
+     "src": "calc",
+     "ref": "fos_partner_profiles.registration_number + partners_partners.tax_id + partners_bank_accounts.account_number",
+     "note": "% of required fields present"
+    },
+    {
+     "l": "Company",
+     "k": "field",
+     "src": "ccc",
+     "ref": "partners_partners.name",
+     "note": ""
+    },
+    {
+     "l": "Category",
+     "k": "field",
+     "src": "ccc",
+     "ref": "fos_partner_profiles.vendor_category",
+     "note": ""
+    },
+    {
+     "l": "Registered",
+     "k": "field",
+     "src": "ccc",
+     "ref": "partners_partners.city + partners_partners.country_id",
+     "note": ""
+    },
+    {
+     "l": "Registration no.",
+     "k": "field",
+     "src": "ccc",
+     "ref": "fos_partner_profiles.registration_number + partners_partners.company_registry",
+     "note": ""
+    },
+    {
+     "l": "Primary email",
+     "k": "field",
+     "src": "ccc",
+     "ref": "partners_partners.email",
+     "note": ""
+    },
+    {
+     "l": "Phone",
+     "k": "field",
+     "src": "ccc",
+     "ref": "partners_partners.phone",
+     "note": ""
+    },
+    {
+     "l": "Address",
+     "k": "field",
+     "src": "ccc",
+     "ref": "partners_partners.street1 + partners_partners.street2 + partners_partners.city + partners_partners.zip",
+     "note": ""
+    },
+    {
+     "l": "Bank",
+     "k": "field",
+     "src": "ccc",
+     "ref": "partners_bank_accounts.bank_id + banks.name",
+     "note": ""
+    },
+    {
+     "l": "Account",
+     "k": "field",
+     "src": "ccc",
+     "ref": "partners_bank_accounts.account_number",
+     "note": "masked"
+    },
+    {
+     "l": "Tax ID",
+     "k": "field",
+     "src": "ccc",
+     "ref": "partners_partners.tax_id + fos_partner_profiles.withholding_tax_number",
+     "note": ""
+    },
+    {
+     "l": "Tax clearance",
+     "k": "field",
+     "src": "ccc",
+     "ref": "fos_partner_profiles.tax_clearance_expiry",
+     "note": ""
+    },
+    {
+     "l": "Contacts list (reference, title, type, owner, date)",
+     "k": "col",
+     "src": "ccc",
+     "ref": "partners_partners.name + fos_partner_profiles.designation + partners_partners.email + fos_partner_profiles.status",
+     "note": ""
+    },
+    {
+     "l": "Passport",
+     "k": "field",
+     "src": "vo",
+     "ref": "vendor_passports.vendor_number + vendor_passports.status + vendor_passports.approved_at",
+     "note": ""
+    },
+    {
+     "l": "Staff Access list",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "users.partner_id exists; per-staff access level needs membership relation (D-01)"
+    }
+   ]
+  },
+  "mydocuments": {
+   "title": "Documents (vendor)",
+   "fos": "Vendor Hub > Documents",
+   "route": [
+    "vendor-onboarding.page documents",
+    "exists but 500 until migration 000300 runs"
+   ],
+   "items": [
+    {
+     "l": "Mandatory documents",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "fos_required_documents.required + fos_required_documents.is_active",
+     "note": "active required rules for the section"
+    },
+    {
+     "l": "Verified",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "vendor_documents.verification_status",
+     "note": ""
+    },
+    {
+     "l": "Needs action",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "vendor_documents.verification_status",
+     "note": "missing or replacement required"
+    },
+    {
+     "l": "Under review",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "vendor_documents.verification_status",
+     "note": ""
+    },
+    {
+     "l": "Document",
+     "k": "col",
+     "src": "ccc",
+     "ref": "fos_required_documents.label + vendor_documents.document_type",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "ccc",
+     "ref": "vendor_documents.verification_status",
+     "note": "needs the 16-state lifecycle (documents has none)"
+    },
+    {
+     "l": "Expiry",
+     "k": "col",
+     "src": "ccc",
+     "ref": "vendor_documents.expiry_date",
+     "note": ""
+    },
+    {
+     "l": "Action",
+     "k": "col",
+     "src": "ui",
+     "ref": "",
+     "note": "Upload / Replace / Change request"
+    },
+    {
+     "l": "File (upload, camera)",
+     "k": "field",
+     "src": "ccc",
+     "ref": "media.file_name + media.mime_type + media.size + media.custom_properties",
+     "note": "CCC stores files as media with doc_type in custom_properties; documents is the other path (D-02)"
+    },
+    {
+     "l": "Country pack (Nigeria 15)",
+     "k": "field",
+     "src": "ccc",
+     "ref": "fos_required_documents.section + fos_required_documents.doc_type + fos_required_documents.label",
+     "note": "seeded pack is South African; add Nigeria pack (G-03)"
+    }
+   ]
+  },
+  "mycomms": {
+   "title": "Communications (vendor)",
+   "fos": "Vendor Hub > Communications",
+   "route": [
+    "vendor-onboarding.page communications",
+    "exists (tickets list)"
+   ],
+   "items": [
+    {
+     "l": "Unread",
+     "k": "kpi",
+     "src": "fos",
+     "ref": "service_desk_tickets.last_replied_at",
+     "note": "read state NEW"
+    },
+    {
+     "l": "Active Threads",
+     "k": "kpi",
+     "src": "fos",
+     "ref": "service_desk_tickets.status + fos_communication_contexts.partner_id",
+     "note": ""
+    },
+    {
+     "l": "Announcements",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "announcements table"
+    },
+    {
+     "l": "Alerts",
+     "k": "kpi",
+     "src": "fos",
+     "ref": "notifications.id",
+     "note": "per-user notifications (receiver rows)"
+    },
+    {
+     "l": "Direct Messages",
+     "k": "panel",
+     "src": "fos",
+     "ref": "service_desk_tickets.title + service_desk_ticket_comments.body + service_desk_ticket_comments.is_internal",
+     "note": "replies in ticket comments; is_internal marks private notes that must never reach the vendor"
+    },
+    {
+     "l": "AI Summary",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": ""
+    }
+   ]
+  },
+  "myinvoices": {
+   "title": "Invoices & Payments (vendor)",
+   "fos": "Vendor Hub > Invoices & Payments",
+   "route": [
+    "vendor-onboarding.page invoices-payments",
+    "exists (read-only)"
+   ],
+   "items": [
+    {
+     "l": "Outstanding",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "accounts_account_moves.amount_residual",
+     "note": ""
+    },
+    {
+     "l": "Paid (30d)",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "accounts_account_payments.amount + accounts_account_payments.date",
+     "note": ""
+    },
+    {
+     "l": "Due This Week",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "accounts_account_moves.invoice_date_due",
+     "note": ""
+    },
+    {
+     "l": "Avg. Payment Days",
+     "k": "kpi",
+     "src": "calc",
+     "ref": "accounts_account_payments.date + accounts_account_moves.invoice_date",
+     "note": ""
+    },
+    {
+     "l": "Reference",
+     "k": "col",
+     "src": "erp",
+     "ref": "accounts_account_moves.name",
+     "note": ""
+    },
+    {
+     "l": "Title",
+     "k": "col",
+     "src": "erp",
+     "ref": "accounts_account_moves.invoice_origin + accounts_account_moves.payment_reference",
+     "note": ""
+    },
+    {
+     "l": "Owner",
+     "k": "col",
+     "src": "erp",
+     "ref": "accounts_account_moves.invoice_user_id",
+     "note": ""
+    },
+    {
+     "l": "Date",
+     "k": "col",
+     "src": "erp",
+     "ref": "accounts_account_moves.invoice_date_due",
+     "note": ""
+    },
+    {
+     "l": "Amount",
+     "k": "col",
+     "src": "erp",
+     "ref": "accounts_account_moves.amount_total + accounts_account_moves.currency_id",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "erp",
+     "ref": "accounts_account_moves.payment_state + accounts_account_moves.state",
+     "note": ""
+    },
+    {
+     "l": "Submit Invoice",
+     "k": "field",
+     "src": "new",
+     "ref": "",
+     "note": "vendor creates a draft bill (move_type in_invoice) for their own PO; PO-value cap and flagging are NEW rules"
+    },
+    {
+     "l": "Payment date and reference",
+     "k": "field",
+     "src": "erp",
+     "ref": "accounts_account_payments.date + accounts_account_payments.payment_reference",
+     "note": ""
+    }
+   ]
+  },
+  "myrfqpo": {
+   "title": "Orders & RFQs (vendor)",
+   "fos": "Vendor Hub > Orders & RFQs",
+   "route": [
+    "vendor-onboarding.page rfqs-pos-deliveries",
+    "exists (read-only)"
+   ],
+   "items": [
+    {
+     "l": "Open RFQs",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "purchases_orders.state",
+     "note": ""
+    },
+    {
+     "l": "Active POs",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "purchases_orders.state + purchases_orders.receipt_status",
+     "note": ""
+    },
+    {
+     "l": "Delivered (30d)",
+     "k": "kpi",
+     "src": "erp",
+     "ref": "inventories_operations.closed_at",
+     "note": ""
+    },
+    {
+     "l": "Awaiting Acknowledgement",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs PO acknowledgement (acknowledged_at, acknowledged_by) on purchase orders"
+    },
+    {
+     "l": "Reference",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.name",
+     "note": ""
+    },
+    {
+     "l": "Title",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.description",
+     "note": ""
+    },
+    {
+     "l": "Owner",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.user_id",
+     "note": ""
+    },
+    {
+     "l": "Date",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.planned_at + purchases_requisitions.ends_at",
+     "note": ""
+    },
+    {
+     "l": "Amount",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.total_amount",
+     "note": ""
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "erp",
+     "ref": "purchases_orders.state + purchases_orders.receipt_status + inventories_operations.state",
+     "note": ""
+    },
+    {
+     "l": "Submit Quotation / accept / decline / questions",
+     "k": "field",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_rfq_invitations and fos_rfq_quotations (price lines, validity, attachments)"
+    },
+    {
+     "l": "Delivery acknowledge",
+     "k": "field",
+     "src": "new",
+     "ref": "",
+     "note": "needs delivery acknowledgement on inventories_operations or a VendorOS table"
+    }
+   ]
+  },
+  "myhse": {
+   "title": "Training & HSE (vendor)",
+   "fos": "Vendor Hub > Training & HSE",
+   "route": [
+    "vendor-onboarding.page hse-training",
+    "exists (read-only)"
+   ],
+   "items": [
+    {
+     "l": "Courses Completed",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs hse_enrolments"
+    },
+    {
+     "l": "Pending",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": ""
+    },
+    {
+     "l": "Expiring Soon",
+     "k": "kpi",
+     "src": "ccc",
+     "ref": "fos_certifications.expiry_date",
+     "note": ""
+    },
+    {
+     "l": "Compliance",
+     "k": "kpi",
+     "src": "calc",
+     "ref": "fos_certifications.status + fos_certifications.expiry_date",
+     "note": ""
+    },
+    {
+     "l": "Certificates list",
+     "k": "col",
+     "src": "ccc",
+     "ref": "fos_certifications.name + fos_certifications.certificate_number + fos_certifications.expiry_date + fos_certifications.status",
+     "note": ""
+    },
+    {
+     "l": "Courses list",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "hse_courses"
+    },
+    {
+     "l": "Induction list",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "hse_attempts per staff member (needs staff identity, D-01)"
+    }
+   ]
+  },
+  "requests": {
+   "title": "Requests (vendor)",
+   "fos": "Vendor Hub > Requests",
+   "route": [
+    "vendor-onboarding.actions.store",
+    "exists (creates ticket)"
+   ],
+   "items": [
+    {
+     "l": "Request type",
+     "k": "field",
+     "src": "fos",
+     "ref": "service_desk_tickets.category_id + service_desk_tickets.department_id",
+     "note": "six types map to ticket category/department"
+    },
+    {
+     "l": "Routed to",
+     "k": "field",
+     "src": "fos",
+     "ref": "service_desk_tickets.department_id",
+     "note": ""
+    },
+    {
+     "l": "Priority",
+     "k": "field",
+     "src": "fos",
+     "ref": "service_desk_tickets.priority",
+     "note": ""
+    },
+    {
+     "l": "Details",
+     "k": "field",
+     "src": "fos",
+     "ref": "service_desk_tickets.description",
+     "note": ""
+    },
+    {
+     "l": "My requests list",
+     "k": "col",
+     "src": "fos",
+     "ref": "service_desk_tickets.reference_number + service_desk_tickets.title + service_desk_tickets.status + service_desk_tickets.created_at + fos_communication_contexts.partner_id",
+     "note": ""
+    }
+   ]
+  },
+  "workflow": {
+   "title": "Workflow & Business Process Automation",
+   "fos": "none yet (ERP Activity Plans partly)",
+   "route": [
+    "",
+    "none"
+   ],
+   "items": [
+    {
+     "l": "Automation Rules",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_workflow_rules (trigger, condition, action, active, version); ERP activity_plans/activity_types give task templates only"
+    },
+    {
+     "l": "Vendor Lifecycle Kanban",
+     "k": "panel",
+     "src": "vo",
+     "ref": "vendor_passports.status",
+     "note": "group by status; transitions logged in vendor_passport_state_logs"
+    }
+   ]
+  },
+  "integration": {
+   "title": "Integration Hub & API (CORE)",
+   "fos": "FoundationOS > Settings (email connections exist)",
+   "route": [
+    "admin.email-connections.index",
+    "partial"
+   ],
+   "items": [
+    {
+     "l": "API keys",
+     "k": "panel",
+     "src": "fos",
+     "ref": "personal_access_tokens.name + personal_access_tokens.abilities + personal_access_tokens.last_used_at + personal_access_tokens.expires_at",
+     "note": "Sanctum tokens; scoped abilities"
+    },
+    {
+     "l": "Connectors (ERP, banking, tax, BI)",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_integrations (type, config, last_sync, status)"
+    },
+    {
+     "l": "Webhooks",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_webhooks and delivery log"
+    },
+    {
+     "l": "Email connection",
+     "k": "panel",
+     "src": "fos",
+     "ref": "admin.email-connections",
+     "note": "exists"
+    }
+   ]
+  },
+  "ai": {
+   "title": "AI Copilot",
+   "fos": "AI > AI Data Copilot",
+   "route": [
+    "admin.naturalquery",
+    "exists"
+   ],
+   "items": [
+    {
+     "l": "Table-scoped query",
+     "k": "panel",
+     "src": "fos",
+     "ref": "fos_modules.slug",
+     "note": "NaturalQuery module (ai-data-copilot)"
+    },
+    {
+     "l": "OCR, predictive risk, generative reports",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "not built; keep as roadmap only"
+    }
+   ]
+  },
+  "plusprocure": {
+   "title": "PLUS Procurement Hub",
+   "fos": "none yet",
+   "route": [
+    "",
+    "none"
+   ],
+   "items": [
+    {
+     "l": "Category / Forecast Demand / Current Coverage",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_demand_plans; products_products supplies categories"
+    },
+    {
+     "l": "Event / Type / Suppliers / Est. Value",
+     "k": "col",
+     "src": "new",
+     "ref": "",
+     "note": "needs fos_sourcing_events (RFI, RFP, auction); ERP purchases_requisitions covers call-for-tender only"
+    }
+   ]
+  },
+  "builder": {
+   "title": "Dynamic Form Builder",
+   "fos": "LaraBuilder (Pages / Forms) + CCC Settings (field and tab rules)",
+   "route": [
+    "admin.lara-builder",
+    "exists"
+   ],
+   "items": [
+    {
+     "l": "Form / Linked Module / Fields / Status",
+     "k": "col",
+     "src": "fos",
+     "ref": "posts.title + fos_field_visibility_rules.id + form_submissions.post_id",
+     "note": "forms are LaraBuilder posts; submissions in form_submissions; CCC field rules in fos_field_visibility_rules; shared_process_form_json contract"
+    },
+    {
+     "l": "Custom fields",
+     "k": "field",
+     "src": "fos",
+     "ref": "fos_custom_fields.id",
+     "note": "2 defined"
+    }
+   ]
+  },
+  "admin": {
+   "title": "System Configuration",
+   "fos": "FoundationOS > Access Control (Users, Roles, Permissions) / Settings / Menus",
+   "route": [
+    "admin.users.index admin.roles.index admin.permissions.index admin.settings.index admin.menus.index",
+    "exists"
+   ],
+   "items": [
+    {
+     "l": "User",
+     "k": "col",
+     "src": "fos",
+     "ref": "users.name + users.email",
+     "note": ""
+    },
+    {
+     "l": "Role",
+     "k": "col",
+     "src": "fos",
+     "ref": "users.id",
+     "note": "spatie model_has_roles"
+    },
+    {
+     "l": "Business Unit",
+     "k": "col",
+     "src": "erp",
+     "ref": "companies.name + companies.parent_id",
+     "note": "business unit = child company (CORE); employees_employees.company_id"
+    },
+    {
+     "l": "Status",
+     "k": "col",
+     "src": "fos",
+     "ref": "users.is_active",
+     "note": ""
+    },
+    {
+     "l": "Roles & permissions",
+     "k": "panel",
+     "src": "fos",
+     "ref": "users.id",
+     "note": "spatie roles / permissions; matrix per PRD section 3.2 must be seeded"
+    },
+    {
+     "l": "Business units",
+     "k": "panel",
+     "src": "erp",
+     "ref": "companies.parent_id + companies.name + companies.partner_id",
+     "note": "multi-company (F-E5)"
+    },
+    {
+     "l": "Departments / Teams",
+     "k": "field",
+     "src": "erp",
+     "ref": "employees_departments.name + fos_departments.name + fos_teams.id",
+     "note": "two department tables exist (FOS and ERP): confirm canonical (ERP per data-ownership decision)"
+    }
+   ]
+  },
+  "support": {
+   "title": "Support",
+   "fos": "FoundationOS > Inbox",
+   "route": [
+    "admin.service-requests.index",
+    "exists"
+   ],
+   "items": [
+    {
+     "l": "Open tickets",
+     "k": "kpi",
+     "src": "fos",
+     "ref": "service_desk_tickets.status",
+     "note": ""
+    },
+    {
+     "l": "Avg. response",
+     "k": "kpi",
+     "src": "fos",
+     "ref": "service_desk_tickets.first_responded_at + service_desk_tickets.created_at",
+     "note": ""
+    },
+    {
+     "l": "Satisfaction",
+     "k": "kpi",
+     "src": "new",
+     "ref": "",
+     "note": "needs ticket rating"
+    },
+    {
+     "l": "Knowledge articles",
+     "k": "kpi",
+     "src": "fos",
+     "ref": "service_desk_kb_article_ticket.ticket_id",
+     "note": "KB tables exist; content table check needed"
+    },
+    {
+     "l": "Your Recent Tickets",
+     "k": "col",
+     "src": "fos",
+     "ref": "service_desk_tickets.reference_number + service_desk_tickets.title + service_desk_tickets.status",
+     "note": ""
+    }
+   ]
+  },
+  "selfservice": {
+   "title": "Vendor Portal sitemap and journey map",
+   "fos": "documentation page",
+   "route": [
+    "",
+    "n/a"
+   ],
+   "items": [
+    {
+     "l": "Vendor sitemap",
+     "k": "panel",
+     "src": "ui",
+     "ref": "",
+     "note": "static reference"
+    },
+    {
+     "l": "Global standard fields",
+     "k": "panel",
+     "src": "ui",
+     "ref": "",
+     "note": "static reference"
+    }
+   ]
+  },
+  "role-guide": {
+   "title": "Role Dashboards & Menu Guide",
+   "fos": "documentation page",
+   "route": [
+    "",
+    "n/a"
+   ],
+   "items": [
+    {
+     "l": "Role dashboards and menu scope",
+     "k": "panel",
+     "src": "ui",
+     "ref": "",
+     "note": "static reference; roles must match Spatie roles (D-08)"
+    }
+   ]
+  },
+  "editions": {
+   "title": "Editions & Licensing",
+   "fos": "AppSuite (modules)",
+   "route": [
+    "admin.modules.index",
+    "partial"
+   ],
+   "items": [
+    {
+     "l": "Edition comparison",
+     "k": "panel",
+     "src": "new",
+     "ref": "",
+     "note": "needs entitlement settings (edition -> module -> feature); fos_modules only has is_enabled"
+    }
+   ]
+  },
+  "prd": {
+   "title": "PRD",
+   "fos": "documentation page",
+   "route": [
+    "",
+    "n/a"
+   ],
+   "items": [
+    {
+     "l": "PRD content",
+     "k": "panel",
+     "src": "ui",
+     "ref": "",
+     "note": "static reference"
+    }
+   ]
+  }
+ },
+ "new_data_model": [
+  {
+   "table": "fos_contracts (+ fos_contract_obligations, templates)",
+   "serves": "Contract register, obligations, renewals (M-11)",
+   "columns": "id, partner_id, reference, title, value, currency_id, starts_at, ends_at, renewal_date, status, source (award | blanket order), purchases_requisition_id"
+  },
+  {
+   "table": "fos_audits, fos_audit_findings, fos_capa",
+   "serves": "Audit plans, findings, CAPA (M-09)",
+   "columns": "audit: id, partner_id, scope, auditor_id, planned_at, status; finding: audit_id, severity, description, evidence, status; capa: finding_id, owner_id, due_at, status"
+  },
+  {
+   "table": "fos_risks (+ history)",
+   "serves": "Risk register and scores (M-12); vendor Risk Score on the Passport",
+   "columns": "id, partner_id, category, likelihood, impact, rating, mitigation_owner_id, status, reviewed_at; history for the trend column"
+  },
+  {
+   "table": "hse_courses, hse_questions, hse_attempts, hse_enrolments",
+   "serves": "Induction content, test, attempts, certificate issuing (M-04)",
+   "columns": "course: id, title, pass_mark, validity_months; attempt: partner_id, user_id, course_id, score, passed, attempted_at, certificate_id (link to fos_certifications)"
+  },
+  {
+   "table": "fos_rfq_invitations, fos_rfq_quotations (+ lines)",
+   "serves": "Invite vendors, accept/decline, quotation response, evaluation (stages 39-41)",
+   "columns": "invitation: purchases_order_id | purchases_requisition_id, partner_id, sent_at, opened_at, response, responded_at; quotation: invitation_id, valid_until, total, lines, attachments, score"
+  },
+  {
+   "table": "PO acknowledgement fields",
+   "serves": "Awaiting Acknowledgement KPI and vendor acknowledge action",
+   "columns": "purchases_orders.acknowledged_at, acknowledged_by (or a VendorOS table keyed by order id)"
+  },
+  {
+   "table": "fos_receipt_inspections",
+   "serves": "Delivery condition, QC, damage claims (stage 42)",
+   "columns": "inventories_operation_id, result, notes, photos (media), inspected_by, inspected_at, claim_status"
+  },
+  {
+   "table": "Invoice dispute and three-way match result",
+   "serves": "Disputed KPI, PO/GRN match (stage 43)",
+   "columns": "accounts_account_moves: dispute_status, dispute_reason, match_result (or a VendorOS table keyed by move id)"
+  },
+  {
+   "table": "vendor_passport_scans (+ public QR token)",
+   "serves": "Passport usage history and QR verification",
+   "columns": "vendor_passports.qr_token; scans: vendor_passport_id, scanned_at, location, scanned_by, result"
+  },
+  {
+   "table": "Vendor membership",
+   "serves": "Staff Access list with access level, multi-staff vendors (D-01)",
+   "columns": "vendor_partner_user: partner_id, user_id, access_level (primary | staff | custom permissions), status, invited_by"
+  },
+  {
+   "table": "Document lifecycle columns",
+   "serves": "PRD 16-state lifecycle, versions, expiry on every document (D-02)",
+   "columns": "documents: status, expires_at, version, replaces_document_id, doc_type; or move to vendor_documents as the canonical record"
+  },
+  {
+   "table": "fos_announcements",
+   "serves": "Announcements to vendors (M-13)",
+   "columns": "id, title, body, audience (all | tier | list), publish_at, expires_at, created_by"
+  },
+  {
+   "table": "Read state for conversations",
+   "serves": "Unread counts for vendor and staff",
+   "columns": "per-user last_read_at per ticket"
+  },
+  {
+   "table": "Ticket rating",
+   "serves": "Satisfaction KPI",
+   "columns": "service_desk_tickets.rating, rated_at"
+  },
+  {
+   "table": "fos_workflow_rules (+ runs)",
+   "serves": "Automation rules, versions, run log (M-16)",
+   "columns": "id, name, trigger, condition json, action json, is_active, version, last_run_at; runs: rule_id, status, error"
+  },
+  {
+   "table": "fos_integrations, fos_webhooks (+ deliveries)",
+   "serves": "Connectors, signed webhooks, delivery log (M-17)",
+   "columns": "integration: type, config (encrypted), status, last_sync_at; webhook: url, secret, events, active; delivery: webhook_id, status, response, attempted_at"
+  },
+  {
+   "table": "fos_demand_plans, fos_sourcing_events (PLUS)",
+   "serves": "Demand planning, RFI/RFP/eTender/auction (M-19)",
+   "columns": "plan: category_id, period, forecast_qty, coverage; event: type, status, estimated_value, closes_at, committee"
+  },
+  {
+   "table": "Approval chain template",
+   "serves": "Reusable chain of stages with owner role and SLA (F-A7)",
+   "columns": "fos_approval_chain_templates / _stages: stage_no, parallel_group, role, sla_days, required, tier (flex | core)"
+  },
+  {
+   "table": "Entitlement settings",
+   "serves": "Editions & Licensing, feature gating (M-22)",
+   "columns": "fos_entitlements: edition, module_slug, feature_key, level (std | adv)"
+  },
+  {
+   "table": "Suggestion log for the AI Copilot",
+   "serves": "AI Suggestions KPI",
+   "columns": "fos_ai_suggestions: context, suggestion, accepted_at"
+  },
+  {
+   "table": "Declaration (supplier declarations)",
+   "serves": "Registration step 14 (G-08)",
+   "columns": "fos_partner_declarations: partner_id, version, accepted_at, accepted_by, signatory_name"
+  }
+ ],
+ "menu_map": [
+  {
+   "mock": "Dashboard",
+   "fos": "Main > Dashboard",
+   "route": "admin.dashboard",
+   "status": "Exists (generic); VendorOS KPIs are NEW queries"
+  },
+  {
+   "mock": "Registration & Onboarding",
+   "fos": "VendorOS > Registration & Onboarding (`vendor-registration-workspace`)",
+   "route": "admin.vendor-registration.create",
+   "status": "Exists: CCC wizard, 10 tabs"
+  },
+  {
+   "mock": "  Company Profile / Contacts & Directors / Document Upload",
+   "fos": "same wizard, `step=basic|contact|documents`",
+   "route": "admin.vendor-registration.create",
+   "status": "Exists"
+  },
+  {
+   "mock": "  Assessment Scoring",
+   "fos": "VendorOS > Registration & Onboarding",
+   "route": "admin.vendor-reviews.index",
+   "status": "Exists"
+  },
+  {
+   "mock": "  Approval",
+   "fos": "VendorOS > Registration & Onboarding",
+   "route": "admin.vendor-reviews.index (same page as Assessment)",
+   "status": "Partial: needs its own queue, chain and history page"
+  },
+  {
+   "mock": "  Vendor Passport Issued",
+   "fos": "VendorOS > Registration & Onboarding",
+   "route": "admin.vendor-passports.index",
+   "status": "Exists"
+  },
+  {
+   "mock": "Vendor Passport 360",
+   "fos": "VendorOS > Vendor Passport 360 (`vendor-passport-360`)",
+   "route": "admin.vendor-passports.show",
+   "status": "Exists; its 7 sublinks all point to the index page (placeholders)"
+  },
+  {
+   "mock": "Document Management",
+   "fos": "Contact Control Center > Document Centre",
+   "route": "admin.contact-control-center.document-centre",
+   "status": "Exists; queue, expiring and verification actions partial"
+  },
+  {
+   "mock": "Supplier Assessment",
+   "fos": "VendorOS (review workspace)",
+   "route": "admin.vendor-reviews.show",
+   "status": "Exists"
+  },
+  {
+   "mock": "Induction & Certification",
+   "fos": "none",
+   "route": "-",
+   "status": "NEW: HSE courses, tests, certificates"
+  },
+  {
+   "mock": "Audit & Governance (CORE)",
+   "fos": "none",
+   "route": "-",
+   "status": "NEW"
+  },
+  {
+   "mock": "Enterprise Risk (CORE)",
+   "fos": "none",
+   "route": "-",
+   "status": "NEW"
+  },
+  {
+   "mock": "Procurement Workspace",
+   "fos": "ERP > Operations > Purchases",
+   "route": "filament erp/purchase/orders/purchase-orders",
+   "status": "Exists in ERP; invitations, evaluation, award are NEW"
+  },
+  {
+   "mock": "Contract Lifecycle (CORE)",
+   "fos": "none",
+   "route": "-",
+   "status": "NEW"
+  },
+  {
+   "mock": "Warehouse & Receiving",
+   "fos": "ERP > Operations > Inventory",
+   "route": "filament erp/inventory/overview",
+   "status": "Exists in ERP; inspection result is NEW"
+  },
+  {
+   "mock": "PLUS Procurement Hub",
+   "fos": "none",
+   "route": "-",
+   "status": "NEW (PLUS)"
+  },
+  {
+   "mock": "Finance & Payments",
+   "fos": "ERP > Finance > Accounting / Invoicing",
+   "route": "filament erp/accounts",
+   "status": "Exists in ERP; dispute and match result are NEW"
+  },
+  {
+   "mock": "Performance & SLA",
+   "fos": "VendorOS > Vendor Passport 360 > Performance",
+   "route": "admin.vendor-passports.show",
+   "status": "Partial: review rows exist, no scoring UI or analytics"
+  },
+  {
+   "mock": "Inbox & Communications",
+   "fos": "FoundationOS > Inbox + Communications module",
+   "route": "admin.service-requests.index, admin.communications.index",
+   "status": "Partial: tickets exist; Communications is a placeholder shell"
+  },
+  {
+   "mock": "Vendor Portal (map & preview)",
+   "fos": "VendorOS > Vendor Self-Service Hub (`vendor-self-service-hub`)",
+   "route": "vendor-onboarding.dashboard",
+   "status": "Exists (read-mostly)"
+  },
+  {
+   "mock": "Workflow Automation",
+   "fos": "none",
+   "route": "-",
+   "status": "NEW"
+  },
+  {
+   "mock": "Integration Hub & API (CORE)",
+   "fos": "FoundationOS > Settings > Email connections",
+   "route": "admin.email-connections.index",
+   "status": "Partial: tokens and email connections only"
+  },
+  {
+   "mock": "AI Copilot",
+   "fos": "AI > AI Data Copilot",
+   "route": "admin.naturalquery",
+   "status": "Exists (table-scoped querying)"
+  },
+  {
+   "mock": "Dynamic Form Builder",
+   "fos": "LaraBuilder + CCC Settings (field and tab rules)",
+   "route": "admin.lara-builder.*, admin.contact-control-center.settings",
+   "status": "Exists"
+  },
+  {
+   "mock": "System Configuration > Users",
+   "fos": "FoundationOS > Access Control > Users",
+   "route": "admin.users.index",
+   "status": "Exists"
+  },
+  {
+   "mock": "System Configuration > Roles & Permissions",
+   "fos": "FoundationOS > Access Control > Roles / Permissions",
+   "route": "admin.roles.index, admin.permissions.index",
+   "status": "Exists; PRD matrix not seeded"
+  },
+  {
+   "mock": "System Configuration > Business Units",
+   "fos": "ERP > Administration > Companies",
+   "route": "filament erp companies",
+   "status": "Exists; business-unit semantics partial (CORE)"
+  },
+  {
+   "mock": "Editions & Licensing",
+   "fos": "AppSuite (modules)",
+   "route": "admin.modules.index",
+   "status": "Partial: enable/disable only, no entitlement"
+  },
+  {
+   "mock": "Help & Support",
+   "fos": "FoundationOS > Inbox / ERP > Support > Help",
+   "route": "admin.service-requests.index",
+   "status": "Exists"
+  },
+  {
+   "mock": "Vendor Hub: Home, Company & Passport, Documents, Orders & RFQs, Invoices & Payments, Training & HSE, Communications, Requests, Help",
+   "fos": "Vendor Self-Service Hub (own layout, `VendorMenuService`, Menu location `vendor-sidebar`)",
+   "route": "vendor-onboarding.dashboard, vendor-onboarding.page, vendor-onboarding.register-company, vendor-onboarding.actions.store",
+   "status": "Exists as page shells; real data only on profile, passport, document metadata; Documents pages 500 until migration 2026_10_04_000300 runs"
+  }
+ ]
+}

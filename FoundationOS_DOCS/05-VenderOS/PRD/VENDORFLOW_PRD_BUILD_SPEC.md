@@ -295,7 +295,7 @@ New registration, Existing vendor update, Annual revalidation, Invitation regist
 
 ### 6.2 Registration field dictionary
 
-Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire property names in `ContactWizard`. "Persists to" follows the CCC builder contract (`contact`, `contact_relation`, `custom_value`, `process_value`). Labels are humanised from keys and must be confirmed against the UI. Visibility per contact type is configurable in CCC Settings (field and tab rules); do not hard-code (R10).
+Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire public property names in `ContactWizard` (blade inputs plus the properties behind shared components; 201 fields). "Persists to" follows the CCC builder contract (`contact`, `contact_relation`, `custom_value`, `process_value`). Labels are humanised from keys and must be confirmed against the UI. Visibility per contact type is configurable in CCC Settings (field and tab rules); do not hard-code (R10).
 
 
 #### Basic
@@ -331,6 +331,17 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `newDirectorIdType` | Director ID Type | select |  | optional |  | contact | S05, S06, S08 |
 | `newDirectorIdNumber` | Director ID Number | text |  | optional | Y | contact | S05, S06, S08 |
 | `newDirectorAuthorizedSignatory` | Director Authorized Signatory | checkbox |  | optional |  | contact | S05, S06, S08 |
+| `incorporationDate` | Incorporation Date | date |  | nullable\|date\|before_or_equal:today |  | contact | S05 |
+| `designation` | Designation | text |  | optional |  | contact | S10 |
+| `role` | Role | text |  | optional |  | contact | S10 |
+| `registrationSource` | Registration Source | text |  | optional |  | contact | S01 |
+| `otherContactCategory` | Other Contact Category | select |  | optional |  | contact | - |
+| `locationPreset` | Location Preset | text |  | optional |  | contact | S06 |
+| `city` | City | text |  | optional |  | contact | S06 |
+| `town` | Town | text |  | optional |  | contact | S06 |
+| `countryId` | Country ID | select |  | optional |  | contact | S06 |
+| `vendorCategory` | Vendor Category | select |  | optional |  | contact | S08 |
+| `partnerCategory` | Partner Category | select |  | optional |  | contact | S08 |
 
 #### Work
 
@@ -349,6 +360,18 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `externalNotes` | External Notes | textarea |  | optional |  | contact | S08 |
 | `tagIds` | Tag Ids | checkbox |  | optional |  | contact | S08 |
 | `newTagName` | Tag Name | text |  | optional |  | contact | S08 |
+| `additionalTypes` | Additional Types | text |  | optional |  | contact | - |
+| `teamIds` | Team Ids | text |  | optional |  | contact | - |
+| `governanceBody` | Governance Body | text |  | optional |  | contact | - |
+| `managementBoardRole` | Management Board Role | select |  | optional |  | contact | - |
+| `employmentType` | Employment Type | select |  | optional |  | contact | - |
+| `startDate` | Start Date | date |  | nullable\|date |  | contact | - |
+| `endDate` | End Date | date |  | nullable\|date\|after_or_equal:startDate |  | contact | - |
+| `nextReview` | Next Review | date |  | optional |  | contact | S44 |
+| `contractEnd` | Contract End | date |  | nullable\|date\|after_or_equal:contractStart |  | contact | S41 |
+| `paymentTerms` | Payment Terms | select |  | optional |  | contact | S14 |
+| `discountTier` | Discount Tier | select |  | optional |  | contact | - |
+| `organisationUnit` | Organisation Unit | text |  | optional |  | contact | - |
 
 #### Contact
 
@@ -368,6 +391,13 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `primaryHeadshotPhoto` | Primary Headshot Photo | file |  | optional | Y | contact | S10, S12 |
 | `preferredName` | Preferred Name | text |  | optional |  | contact | S10, S12 |
 | `companyId` | Company ID | select |  | optional |  | contact | S10, S12 |
+| `dateOfBirth` | Date Of Birth | date |  | nullable\|date\|before:today | Y | contact | S10 |
+| `nationalityId` | Nationality ID | select |  | optional |  | contact | S10 |
+| `primaryIdType` | Primary ID Type | select |  | optional | Y | contact | S12 |
+| `primaryIdValidFrom` | Primary ID Valid From | date |  | nullable\|date | Y | contact | S12 |
+| `primaryIdValidTo` | Primary ID Valid To | date |  | nullable\|date\|after_or_equal:primaryIdValidFrom | Y | contact | S12 |
+| `jobTitle` | Job Title | text |  | optional |  | contact | S10 |
+| `preferredMethod` | Preferred Method | select |  | optional |  | contact | S10 |
 
 #### Financials & Identity
 
@@ -383,6 +413,7 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `referenceNumber` | Reference Number | text |  | optional |  | contact | S07, S13, S14 |
 | `currencyId` | Currency ID | select |  | optional |  | contact | S07, S13, S14 |
 | `creditLimit` | Credit Limit | number |  | nullable\|numeric\|min:0 | Y | contact | S07, S13, S14 |
+| `taxClearanceExpiry` | Tax Clearance Expiry | date |  | nullable\|date |  | contact | S14 |
 
 #### Custom Fields
 
@@ -423,6 +454,13 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `newAdditionalContactIdNumber` | Additional Contact ID Number | text |  | optional | Y | contact_relation | S10 |
 | `newAdditionalContactIdPhoto` | Additional Contact ID Photo | file |  | optional | Y | contact_relation | S10 |
 | `newAdditionalContactHeadshotPhoto` | Additional Contact Headshot Photo | file |  | optional |  | contact_relation | S10 |
+| `newAdditionalContactDateOfBirth` | Additional Contact Date Of Birth | date |  | nullable\|date\|before:today | Y | contact_relation | S10 |
+| `newAdditionalContactNationalityId` | Additional Contact Nationality ID | select |  | optional |  | contact_relation | S10 |
+| `newAdditionalContactJobTitle` | Additional Contact Job Title | text |  | optional |  | contact_relation | S10 |
+| `newAdditionalContactPreferredMethod` | Additional Contact Preferred Method | select |  | optional |  | contact_relation | S10 |
+| `newAdditionalContactIdType` | Additional Contact ID Type | select |  | optional | Y | contact_relation | S10 |
+| `newAdditionalContactIdValidFrom` | Additional Contact ID Valid From | date |  | nullable\|date | Y | contact_relation | S10 |
+| `newAdditionalContactIdValidTo` | Additional Contact ID Valid To | date |  | nullable\|date\|after_or_equal:newAdditionalContactIdValidFrom | Y | contact_relation | S10 |
 
 #### Affiliations (repeater: affiliation)
 
@@ -442,6 +480,10 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `newAffiliationVotingRights` | Affiliation Voting Rights | checkbox |  | optional |  | contact_relation | S11 |
 | `newAffiliationExOfficio` | Affiliation Ex Officio | checkbox |  | optional |  | contact_relation | S11 |
 | `newAffiliationIsPrimary` | Affiliation Is Primary | checkbox |  | optional |  | contact_relation | S11 |
+| `newAffiliationScope` | Affiliation Scope | select |  | optional |  | contact_relation | S11 |
+| `newAffiliationStartDate` | Affiliation Start Date | date |  | optional |  | contact_relation | S11 |
+| `newAffiliationEndDate` | Affiliation End Date | date |  | optional |  | contact_relation | S11 |
+| `newAffiliationRenewalDate` | Affiliation Renewal Date | date |  | optional |  | contact_relation | S11 |
 
 #### Assets (repeater: asset)
 
@@ -470,6 +512,9 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `newCertificationIssuingBody` | Certification Issuing Body | text | Y | required |  | contact_relation | S16 |
 | `newCertificationNumber` | Certification Number | text | Y | required |  | contact_relation | S16 |
 | `newCertificationStatus` | Certification Status | select |  | optional |  | contact_relation | S16 |
+| `newCertificationScope` | Certification Scope | select |  | optional |  | contact_relation | S16 |
+| `newCertificationIssuedDate` | Certification Issued Date | date |  | optional |  | contact_relation | S16 |
+| `newCertificationExpiryDate` | Certification Expiry Date | date |  | optional |  | contact_relation | S16 |
 
 #### Contact (repeater: family-member)
 
@@ -477,6 +522,7 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 |---|---|---|:-:|---|:-:|---|---|
 | `newFamilyRelationship` | Family Relationship | select |  | optional |  | contact_relation | - |
 | `newFamilyName` | Family Name | text |  | optional |  | contact_relation | - |
+| `newFamilyDob` | Family Dob | date |  | optional |  | contact_relation | - |
 
 #### Contact (repeater: important-date)
 
@@ -484,6 +530,7 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 |---|---|---|:-:|---|:-:|---|---|
 | `newDateType` | Date Type | select |  | optional |  | contact_relation | - |
 | `newDateLabel` | Date Label | text |  | optional |  | contact_relation | - |
+| `newDateValue` | Date Value | date | Y | required\|date |  | contact_relation | - |
 
 #### Basic (repeater: location)
 
@@ -496,6 +543,8 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `newLocationStateId` | Location State ID | select |  | optional |  | contact_relation | S06 |
 | `newLocationZip` | Location Zip | text |  | optional |  | contact_relation | S06 |
 | `newLocationPhone` | Location Phone | tel |  | optional |  | contact_relation | S06 |
+| `newLocationCity` | Location City | text |  | optional |  | contact_relation | S06 |
+| `newLocationTown` | Location Town | text |  | optional |  | contact_relation | S06 |
 
 #### Financials & Identity (repeater: vendor-insurance)
 
@@ -506,6 +555,8 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `newInsurancePolicyNumber` | Insurance Policy Number | text |  | optional |  | contact_relation | S15 |
 | `newInsuranceCoverageAmount` | Insurance Coverage Amount | number |  | nullable\|numeric\|min:0 |  | contact_relation | S15 |
 | `newInsuranceBroker` | Insurance Broker | text |  | optional |  | contact_relation | S15 |
+| `newInsuranceEffectiveDate` | Insurance Effective Date | date |  | nullable\|date |  | contact_relation | S15 |
+| `newInsuranceExpiryDate` | Insurance Expiry Date | date |  | nullable\|date\|after_or_equal:newInsuranceEffectiveDate |  | contact_relation | S15 |
 
 #### Work (repeater: vendor-offering)
 
@@ -515,6 +566,8 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `newOfferingPrice` | Offering Price | number |  | nullable\|numeric\|min:0 |  | contact_relation | S09 |
 | `newOfferingMinimumQuantity` | Offering Minimum Quantity | number |  | nullable\|numeric\|min:0 |  | contact_relation | S09 |
 | `newOfferingLeadTime` | Offering Lead Time | number |  | nullable\|integer\|min:0 |  | contact_relation | S09 |
+| `newOfferingProductName` | Offering Product Name | text |  | optional |  | contact_relation | S09 |
+| `newOfferingProductCode` | Offering Product Code | text |  | optional |  | contact_relation | S09 |
 
 #### Affiliations (repeater: vendor-reference)
 
@@ -526,6 +579,20 @@ Machine-readable copy: `data/field_dictionary.json`. Keys are the Livewire prope
 | `newReferencePhone` | Reference Phone | tel |  | optional |  | contact_relation | S11 |
 | `newReferenceRelationship` | Reference Relationship | text |  | optional |  | contact_relation | S11 |
 | `newReferenceProductsSupplied` | Reference Products Supplied | text |  | optional |  | contact_relation | S11 |
+
+#### Basic (repeater: directors)
+
+| Key | Label | Input | Req | Validation | Sensitive | Persists to | J01 |
+|---|---|---|:-:|---|:-:|---|---|
+| `newDirectorDob` | Director Dob | date |  | optional | Y | contact_relation | S12 |
+
+#### Documents
+
+| Key | Label | Input | Req | Validation | Sensitive | Persists to | J01 |
+|---|---|---|:-:|---|:-:|---|---|
+| `newDocumentTitle` | Document Title | text |  | optional |  | contact_relation | S17 |
+| `newDocumentType` | Document Type | select |  | optional |  | contact_relation | S17 |
+| `newDocumentExpiryDate` | Document Expiry Date | date |  | optional |  | contact_relation | S17 |
 
 ## 7. Mandatory documents (vendor registration pack)
 
@@ -3070,7 +3137,7 @@ Save status always visible: Saving... → Saved → Offline → Sync Pending →
 | G-06 | Roles | Mockup role scope blocks Finance and Audit from the vendor review queue; Warehouse sees CLM/PLUS | Med | **Mockup fixed 2026-10-04** (Finance and Audit see the vendor queue; Executive loses automation/admin; Warehouse loses CLM/PLUS). Real permissions still need D-08 |
 | G-07 | Dead ends | Approval, Timeline & Activity Log, Expiring Documents, Roles & Permissions, Business Units, vendor Communications link are toast-only | Med | **Mockup fixed 2026-10-04**: Approval page (queue, chain, history, findings required), Passport Communications and Timeline tabs, Expiring Documents, Roles & Permissions, Business Units (CORE). Real app pages still to build |
 | G-08 | Registration | No Declaration step or fields (conflict of interest, anti-bribery, accuracy, consent) | High | Add fields to field dictionary and CCC |
-| G-09 | Registration | Registration details step: `incorporationDate` is validated in code but not in the extracted field list; verify the UI has it | Low | Verify, add |
+| G-09 | Registration | ~~`incorporationDate` missing from the field list~~ | Low | **Resolved 2026-10-04**: it is a public property of `ContactWizard` and validated; the first extraction missed fields rendered through shared components (57 added, dictionary now 201 fields) |
 | G-10 | Registration | PRD lists 14 supported vendor types (multi-select, admin-configurable); CCC `companyType` is a single select; confirm categories | Med | Verify and align |
 | G-11 | Data | Mockup demo data is Botswana/pula; CCC is Nigeria-first; seeded vendor mixes ZA phone/tax ID with a Lagos city | Low | **Mockup fixed 2026-10-04** (Lagos, Nigeria, naira). App seed still mixes ZA phone and tax ID with a Lagos city |
 | G-12 | Documents | PRD M2 lifecycle has no Rejected / Replacement Required state although it has a Reject action | Med | **PRD page and spec fixed 2026-10-04**; add the two states to the document model |
@@ -3082,8 +3149,11 @@ Save status always visible: Saving... → Saved → Offline → Sync Pending →
 | G-18 | Communications | Module is a disabled placeholder; vendor actions create tickets but no inbox, scoping tests or email ingestion | Med | Follow communications README rollout |
 | G-19 | Demo data | Only 30 basic contacts and one demo vendor; no multi-staff vendors, reviews or ERP transactions | Med | Idempotent seeder after D-01 |
 | G-21 | Uploads | Per-section upload slots (§7.1) are not in the CCC wizard; it has only the Documents tab plus ID and headshot photo fields | High | Add slots to CCC sections, backed by the same `documents` record and the required-document rules |
-| G-22 | Registration | Certification and insurance expiry dates: certification expiry is not in the extracted CCC fields | Med | Verify and add `newCertificationExpiryDate` |
+| G-22 | Registration | ~~Certification and insurance expiry not in CCC~~ | Med | **Withdrawn 2026-10-04**: `newCertificationIssuedDate`, `newCertificationExpiryDate`, `newInsuranceEffectiveDate`, `newInsuranceExpiryDate`, `taxClearanceExpiry` and `newDocumentExpiryDate` all exist in CCC. Re-run the dictionary extraction whenever the wizard changes |
 | G-23 | Documents | Mockup and PRD describe image/PDF validation, camera capture, virus scan, duplicate and corrupt checks; none is implemented in the app | Med | Build per §7.1 |
+| G-24 | Data model | 59 mockup items have no data source today (contracts, audits/findings/CAPA, risk register, HSE courses and tests, RFQ invitations and quotations, receipt inspections, QR scans, vendor membership, announcements, workflow rules, integrations, sourcing events, entitlements). Consolidated in MOCKUP_FIELD_AUDIT.md section 4 | High | Design the new tables per section 4 before building those pages |
+| G-25 | FOS menu | VendorOS menu items in the real admin sidebar: Approval points at the same page as Assessment Scoring; all 7 Passport 360 sublinks point at the passport index; no menu entries exist for HSE, Audit, Risk, Contracts, Workflow, Performance | Med | Give each sublink a real page or tab target (see audit section 2) |
+| G-26 | Data | Most vendor lifecycle tables are empty in the dev database (reviews, approvals, scorecards, performance, insurance, references, directors, documents: 0 rows) | Med | Idempotent demo seeder after D-01 (see G-19) |
 | G-20 | Platform | CCC/VendorOS cannot boot without Filament (Partner model implements `FilamentUser`) | Low | Defer; only if Laravel-only distribution is prioritised |
 
 
