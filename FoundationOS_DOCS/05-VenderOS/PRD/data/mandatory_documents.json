@@ -1,0 +1,207 @@
+{
+  "pack": "Nigeria baseline vendor registration pack (supplied by the project owner, 2026-10-04)",
+  "note": "All 15 are mandatory. Rules live in fos_required_documents (section, doc_type, label, required, is_active, sort_order). The app currently seeds a South African-style pack (tax clearance, BBBEE); this Nigeria pack must be added as a selectable country/customer pack.",
+  "status_vocabulary_j01_stage18": [
+    "Missing",
+    "Uploaded",
+    "Under Review",
+    "Verified",
+    "Rejected",
+    "Expired",
+    "Replacement Required"
+  ],
+  "source_status_mapping": {
+    "Done": "Verified (or Uploaded until reviewed)",
+    "older version": "Replacement Required",
+    "Pending": "Missing"
+  },
+  "summary": {
+    "Verified": 6,
+    "Replacement Required": 2,
+    "Missing": 6,
+    "Under Review": 1
+  },
+  "documents": [
+    {
+      "n": 1,
+      "name": "Letter of Introduction",
+      "category": "Company",
+      "mandatory": true,
+      "action": "",
+      "j01_stage": "S17",
+      "ccc_mapping": "Documents",
+      "assigned_to": "",
+      "status_j01": "Verified",
+      "status_prd_lifecycle": "Approved"
+    },
+    {
+      "n": 2,
+      "name": "Certificate of Registration",
+      "category": "Company",
+      "mandatory": true,
+      "action": "",
+      "j01_stage": "S07, S17",
+      "ccc_mapping": "Documents + Financials (registrationNumber)",
+      "assigned_to": "",
+      "status_j01": "Verified",
+      "status_prd_lifecycle": "Approved"
+    },
+    {
+      "n": 3,
+      "name": "Company Profile",
+      "category": "Company",
+      "mandatory": true,
+      "action": "",
+      "j01_stage": "S05, S17",
+      "ccc_mapping": "Documents",
+      "assigned_to": "",
+      "status_j01": "Verified",
+      "status_prd_lifecycle": "Approved"
+    },
+    {
+      "n": 4,
+      "name": "Memorandum & Articles of Association",
+      "category": "Company",
+      "mandatory": true,
+      "action": "Older version on file. Upload the current signed copy.",
+      "j01_stage": "S12, S17",
+      "ccc_mapping": "Documents",
+      "assigned_to": "Idowu",
+      "status_j01": "Replacement Required",
+      "status_prd_lifecycle": "Replacement Required"
+    },
+    {
+      "n": 5,
+      "name": "CAC Documents (CAC 2/2.5, CAC 2.1, CAC 7/2.3)",
+      "category": "Company",
+      "mandatory": true,
+      "action": "Three forms; store as one document set or three typed files.",
+      "j01_stage": "S07, S12, S17",
+      "ccc_mapping": "Documents + Contact (directors)",
+      "assigned_to": "",
+      "status_j01": "Verified",
+      "status_prd_lifecycle": "Approved"
+    },
+    {
+      "n": 6,
+      "name": "Tax Compliance Evidence",
+      "category": "Tax",
+      "mandatory": true,
+      "action": "Older version on file. Upload the current tax compliance evidence.",
+      "j01_stage": "S14, S17",
+      "ccc_mapping": "Documents + Financials (taxId)",
+      "assigned_to": "Idowu",
+      "status_j01": "Replacement Required",
+      "status_prd_lifecycle": "Replacement Required"
+    },
+    {
+      "n": 7,
+      "name": "VAT Registration Certificate",
+      "category": "Tax",
+      "mandatory": true,
+      "action": "Obtain and upload.",
+      "j01_stage": "S07, S14, S17",
+      "ccc_mapping": "Documents + Financials (vatNumber)",
+      "assigned_to": "Idowu",
+      "status_j01": "Missing",
+      "status_prd_lifecycle": "Pending Upload"
+    },
+    {
+      "n": 8,
+      "name": "Cancelled Cheque",
+      "category": "Banking",
+      "mandatory": true,
+      "action": "Obtain and upload. Proof of the bank account entered in Banking.",
+      "j01_stage": "S13, S17",
+      "ccc_mapping": "Documents + bank-account repeater",
+      "assigned_to": "Idowu",
+      "status_j01": "Missing",
+      "status_prd_lifecycle": "Pending Upload"
+    },
+    {
+      "n": 9,
+      "name": "Bank Reference Letter",
+      "category": "Banking",
+      "mandatory": true,
+      "action": "Instruction letter must be checked and signed by the authorised signatory before upload.",
+      "j01_stage": "S13, S17",
+      "ccc_mapping": "Documents + bank-account repeater",
+      "assigned_to": "Idowu",
+      "status_j01": "Missing",
+      "status_prd_lifecycle": "Pending Upload"
+    },
+    {
+      "n": 10,
+      "name": "Recommendation Letter from Client",
+      "category": "Commercial",
+      "mandatory": true,
+      "action": "",
+      "j01_stage": "S11, S17",
+      "ccc_mapping": "Documents + vendor-reference repeater",
+      "assigned_to": "",
+      "status_j01": "Verified",
+      "status_prd_lifecycle": "Approved"
+    },
+    {
+      "n": 11,
+      "name": "Director's Passport Photograph",
+      "category": "Identity",
+      "mandatory": true,
+      "action": "Photo needed.",
+      "j01_stage": "S12, S17",
+      "ccc_mapping": "Documents + director (primaryHeadshotPhoto)",
+      "assigned_to": "Idowu",
+      "status_j01": "Missing",
+      "status_prd_lifecycle": "Pending Upload"
+    },
+    {
+      "n": 12,
+      "name": "Valid Identification Card",
+      "category": "Identity",
+      "mandatory": true,
+      "action": "Marked done in the source list, but the NIN photo still needs checking, so treat as Under Review until verified.",
+      "j01_stage": "S12, S17",
+      "ccc_mapping": "Documents + Financials (nin, primaryIdPhoto)",
+      "assigned_to": "Idowu",
+      "status_j01": "Under Review",
+      "status_prd_lifecycle": "Pending Verification"
+    },
+    {
+      "n": 13,
+      "name": "Price List",
+      "category": "Commercial",
+      "mandatory": true,
+      "action": "Popular products and prices with a valid-till date; can be customised on request. Expires.",
+      "j01_stage": "S09, S17",
+      "ccc_mapping": "Documents + vendor-offering repeater",
+      "assigned_to": "Idowu",
+      "status_j01": "Missing",
+      "status_prd_lifecycle": "Pending Upload"
+    },
+    {
+      "n": 14,
+      "name": "Client LPO / Letter of Award of Contract",
+      "category": "Commercial",
+      "mandatory": true,
+      "action": "Uploaded.",
+      "j01_stage": "S11, S17",
+      "ccc_mapping": "Documents + vendor-reference repeater",
+      "assigned_to": "",
+      "status_j01": "Verified",
+      "status_prd_lifecycle": "Approved"
+    },
+    {
+      "n": 15,
+      "name": "Duly Filled Registration Form",
+      "category": "Forms",
+      "mandatory": true,
+      "action": "Source list conflicts: item 15 appears under both Completed and Pending. Treat as Missing until the signed form is uploaded and checked.",
+      "j01_stage": "S17",
+      "ccc_mapping": "Documents (generated from the wizard)",
+      "assigned_to": "Idowu",
+      "status_j01": "Missing",
+      "status_prd_lifecycle": "Pending Upload"
+    }
+  ],
+  "status_note": "status_j01 is the reviewer-facing outcome (J01 stage 18). status_prd_lifecycle is the stored lifecycle state (PRD M2 + Rejected and Replacement Required added). Store the lifecycle state, derive the outcome."
+}
