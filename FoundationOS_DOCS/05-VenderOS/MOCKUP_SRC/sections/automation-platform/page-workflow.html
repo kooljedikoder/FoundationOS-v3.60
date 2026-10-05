@@ -1,0 +1,56 @@
+<div class="page" id="page-workflow">
+        <div class="page-header"><div><div class="page-title">Workflow &amp; Business Process Automation</div><div class="page-sub">Visual low-code/no-code designer that orchestrates every VendorOS business process.</div></div></div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'wf-rules')">Automation Rules</div>
+          <div class="tab" onclick="switchTab(this,'wf-kanban')">Vendor Lifecycle Kanban</div>
+        </div>
+        <div class="tab-panel active" id="wf-rules">
+          <div class="panel">
+            <h3><i data-lucide="workflow"></i>Auto-Escalate Expiring Insurance</h3>
+            <div class="stepper">
+              <div class="step done"><div class="step-dot"><i data-lucide="zap" style="width:14px;height:14px"></i></div><div class="step-label">Trigger: Document expires in 7 days</div></div>
+              <div class="step-connector"></div>
+              <div class="step done"><div class="step-dot"><i data-lucide="mail" style="width:14px;height:14px"></i></div><div class="step-label">Notify vendor + buyer</div></div>
+              <div class="step-connector"></div>
+              <div class="step current"><div class="step-dot">3</div><div class="step-label">Escalate if unresolved</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">4</div><div class="step-label">Suspend PO issuance</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="wf-kanban">
+          <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px">Every vendor's journey from first registration to active supplier, in one board — pulled live from Registration, Assessment, Approval and Performance.</p>
+          <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;overflow-x:auto">
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Draft <span class="badge badge-grey">1</span></div>
+              <div class="mod-card" style="padding:12px"><h4 style="font-size:12.5px">Bright Path Catering</h4><p>Hospitality</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Documents <span class="badge badge-blue">1</span></div>
+              <div class="mod-card" style="padding:12px"><h4 style="font-size:12.5px">Maru Fleet Services</h4><p>Transport</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Assessment <span class="badge badge-orange">1</span></div>
+              <div class="mod-card" style="padding:12px"><h4 style="font-size:12.5px">Phoenix Scaffolding</h4><p>Construction</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Approval <span class="badge badge-green">1</span></div>
+              <div class="mod-card" style="padding:12px"><h4 style="font-size:12.5px">Sable IT Networks</h4><p>IT Services</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Active <span class="badge badge-green">2</span></div>
+              <div class="mod-card" style="padding:12px;margin-bottom:8px"><h4 style="font-size:12.5px">Kalahari Logistics</h4><p>Transport</p></div>
+              <div class="mod-card" style="padding:12px"><h4 style="font-size:12.5px">Northgate Office Supplies</h4><p>Retail</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Under Review <span class="badge badge-red">1</span></div>
+              <div class="mod-card" style="padding:12px"><h4 style="font-size:12.5px">Delta Civils &amp; Plant Hire</h4><p>Construction — HSE flag</p></div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="panel"><h3><i data-lucide="workflow"></i>Automation rules</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:8px">Trigger, condition and action. Every edit creates a new version and keeps the old one; runs are logged.</p><div class="table-wrap" data-vf="rules"></div></div>
+      </div>
+
+      <!-- INTEGRATION -->
+      

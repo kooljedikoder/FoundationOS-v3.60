@@ -1,0 +1,440 @@
+
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- LOGIN / ROLE SELECTION OVERLAY -->
+<div id="loginOverlay">
+  <button class="login-theme-toggle" onclick="toggleLoginTheme()"><i data-lucide="moon" id="loginThemeIcon"></i></button>
+  <div class="login-form-side">
+    <div class="login-brand"><div class="login-brand-mark"><i data-lucide="shield-v" style="width:20px;height:20px;color:#fff"></i></div><div class="login-brand-name">VendorOS</div></div>
+    <div class="login-title">One account. The right apps.</div>
+    <div class="login-sub">The product uses one account, then shows apps and records allowed by role and organisation membership. Choose a persona below only to preview this mockup.</div>
+    <div class="login-grid">
+      <div class="login-card" data-role="executive" onclick="selectLoginCard(this,'executive')"><div class="login-card-icon"><i data-lucide="bar-chart-3"></i></div><div class="login-card-title">Executive</div><div class="login-card-sub">Company KPIs &amp; risk</div></div>
+      <div class="login-card" data-role="vendor" onclick="selectLoginCard(this,'vendor')"><div class="login-card-icon"><i data-lucide="user-plus"></i></div><div class="login-card-title">Vendor Admin</div><div class="login-card-sub">Registration &amp; passports</div></div>
+      <div class="login-card" data-role="procurement" onclick="selectLoginCard(this,'procurement')"><div class="login-card-icon"><i data-lucide="shopping-cart"></i></div><div class="login-card-title">Procurement</div><div class="login-card-sub">RFQs, POs, sourcing</div></div>
+      <div class="login-card" data-role="finance" onclick="selectLoginCard(this,'finance')"><div class="login-card-icon"><i data-lucide="banknote"></i></div><div class="login-card-title">Finance</div><div class="login-card-sub">Invoices &amp; payments</div></div>
+      <div class="login-card" data-role="audit" onclick="selectLoginCard(this,'audit')"><div class="login-card-icon"><i data-lucide="scale"></i></div><div class="login-card-title">Audit</div><div class="login-card-sub">Compliance &amp; governance</div></div>
+      <div class="login-card" data-role="warehouse" onclick="selectLoginCard(this,'warehouse')"><div class="login-card-icon"><i data-lucide="hard-hat"></i></div><div class="login-card-title">Warehouse</div><div class="login-card-sub">Deliveries &amp; inspection</div></div>
+      <div class="login-card" data-role="useradmin" onclick="selectLoginCard(this,'useradmin')"><div class="login-card-icon"><i data-lucide="settings"></i></div><div class="login-card-title">User Admin</div><div class="login-card-sub">Users, roles, config</div></div>
+      <div class="login-card" data-role="superadmin" onclick="selectLoginCard(this,'superadmin')"><div class="login-card-icon"><i data-lucide="shield"></i></div><div class="login-card-title">Super Admin</div><div class="login-card-sub">Full unrestricted access</div></div>
+      <div class="login-card" data-role="vendorportal" onclick="selectLoginCard(this,'vendorportal')"><div class="login-card-icon"><i data-lucide="badge-check"></i></div><div class="login-card-title">Vendor (Portal)</div><div class="login-card-sub">External supplier login</div></div>
+    </div>
+    <div class="login-form-fields">
+      <div class="login-field"><label>Name</label><input id="loginNameField" readonly placeholder="Select a persona above…"/></div>
+      <div class="login-field"><label>Role</label><input id="loginRoleField" readonly placeholder="—"/></div>
+      <button class="login-btn" id="loginSubmitBtn" onclick="performLogin()">Login</button>
+    </div>
+    <button type="button" class="login-matrix-link" onclick="showProductMatrix()"><i data-lucide="layers" style="width:15px;height:15px"></i>View Product Matrix</button>
+    <button type="button" class="login-matrix-link" onclick="showImplementationMap()"><i data-lucide="list-checks" style="width:15px;height:15px"></i>What Exists, Reuses &amp; Needs Work</button>
+    <div class="login-footer">Prototype only: persona selection is not authentication. Vendor data must be scoped to the vendor organisation linked to the signed-in user.</div>
+  </div>
+  <div class="login-image-side">
+    <div class="login-watermark" id="loginWatermark"></div>
+    <div class="login-image-inner">
+      <div class="li-icon"><i data-lucide="shield-v"></i></div>
+      <h3>One platform. Every role. Full visibility.</h3>
+      <p>Vendor onboarding, procurement, finance, audit and warehouse workflows — all in a single enterprise workspace that adapts to who's signed in.</p>
+    </div>
+  </div>
+</div>
+
+<div id="productMatrixPage" class="product-matrix-overlay hidden" aria-hidden="true">
+  <header class="matrix-topbar">
+    <div class="matrix-brand"><span class="matrix-brand-mark"><i data-lucide="shield-v"></i></span><span>VendorOS <span style="color:var(--muted);font-weight:500">Product Matrix</span></span></div>
+    <button type="button" class="matrix-back" onclick="returnToLogin()"><i data-lucide="arrow-left" style="width:15px;height:15px"></i>Back to Login</button>
+  </header>
+  <main class="matrix-content">
+    <div class="matrix-heading">
+      <div>
+        <div class="matrix-eyebrow">Target Product Editions</div>
+        <h1>One complete lifecycle. Three levels of scale.</h1>
+        <p>FLEX, CORE and PLUS describe target product scope. Check the Implementation &amp; Reuse Map for what this FoundationOS project already has, what is partial, and what still needs work.</p>
+      </div>
+      <div class="matrix-page-actions">
+        <button type="button" class="btn btn-primary btn-sm" onclick="returnToLogin()"><i data-lucide="log-in"></i>Continue to Login</button>
+      </div>
+    </div>
+
+    <div class="matrix-legend" aria-label="Feature availability legend">
+      <span><b class="matrix-mark matrix-included"><i>✓</i></b>Included</span>
+      <span><b class="matrix-mark matrix-inherited"><i>✓</i></b>Inherited from lower edition</span>
+      <span><b class="matrix-mark matrix-excluded"><i>×</i></b>Not included</span>
+    </div>
+    <div class="matrix-menu">
+      <details class="matrix-accordion" open>
+        <summary><i data-lucide="git-commit-horizontal"></i><span><span class="matrix-group-title">Vendor lifecycle &amp; registration</span><span class="matrix-group-sub">Target edition scope for J01; implementation progress is tracked separately.</span></span><span class="matrix-group-count">8 capabilities</span></summary>
+        <div class="matrix-accordion-body"><table class="matrix-table"><thead><tr><th>Feature</th><th class="matrix-cell">FLEX</th><th class="matrix-cell">CORE</th><th class="matrix-cell">PLUS</th></tr></thead><tbody>
+          <tr><th>Vendor discovery, secure invitation &amp; expiry</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Account creation, email verification &amp; onboarding dashboard</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>CCC company profile, locations, contacts &amp; ownership</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Banking, tax, products, references &amp; declarations</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Identity verification, duplicate checks &amp; verification timeline</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Multi-discipline assessment, scoring &amp; recommendations</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Sequential/parallel approvals, audit history &amp; escalation</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Vendor number, Passport 360, activation &amp; revalidation</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+        </tbody></table></div>
+      </details>
+
+      <details class="matrix-accordion">
+        <summary><i data-lucide="folder"></i><span><span class="matrix-group-title">Documents, compliance &amp; HSE</span><span class="matrix-group-sub">FLEX includes vendor-ready document, verification and safety essentials.</span></span><span class="matrix-group-count">8 capabilities</span></summary>
+        <div class="matrix-accordion-body"><table class="matrix-table"><thead><tr><th>Feature</th><th class="matrix-cell">FLEX</th><th class="matrix-cell">CORE</th><th class="matrix-cell">PLUS</th></tr></thead><tbody>
+          <tr><th>Mandatory document centre, upload, version &amp; expiry tracking</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Document validation, reviewer status &amp; replacement requests</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Insurance, tax clearance &amp; certification renewal monitoring</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Compliance centre, customer rules &amp; corrective actions</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Standard</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Advanced</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>HSE induction, safety training &amp; certification</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Audit plans, findings, evidence &amp; governance controls</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Enterprise risk register &amp; risk analytics</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>ESG management, multi-company governance &amp; enterprise CAPA</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+        </tbody></table></div>
+      </details>
+
+      <details class="matrix-accordion">
+        <summary><i data-lucide="shopping-cart"></i><span><span class="matrix-group-title">Procurement, finance &amp; delivery</span><span class="matrix-group-sub">FLEX covers the operational supplier transaction lifecycle; ERP remains the transaction source.</span></span><span class="matrix-group-count">7 capabilities</span></summary>
+        <div class="matrix-accordion-body"><table class="matrix-table"><thead><tr><th>Feature</th><th class="matrix-cell">FLEX</th><th class="matrix-cell">CORE</th><th class="matrix-cell">PLUS</th></tr></thead><tbody>
+          <tr><th>Purchase requests, RFQs &amp; quotations</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Purchase orders, acceptance &amp; delivery tracking</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Warehouse receiving, inspection &amp; goods receipt</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Vendor invoices, PO/GRN matching &amp; payment status</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Payment terms, tax handling &amp; finance controls</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Standard</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Enterprise controls</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Stage 41 award &amp; supplier commercial relationship</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Core lifecycle</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Contract lifecycle workspace &amp; obligation management</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+        </tbody></table></div>
+      </details>
+
+      <details class="matrix-accordion">
+        <summary><i data-lucide="gauge"></i><span><span class="matrix-group-title">Performance, collaboration &amp; administration</span><span class="matrix-group-sub">Standard operations in FLEX, with advanced enterprise controls added in CORE.</span></span><span class="matrix-group-count">7 capabilities</span></summary>
+        <div class="matrix-accordion-body"><table class="matrix-table"><thead><tr><th>Feature</th><th class="matrix-cell">FLEX</th><th class="matrix-cell">CORE</th><th class="matrix-cell">PLUS</th></tr></thead><tbody>
+          <tr><th>Vendor performance scorecards &amp; periodic reviews</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Standard</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Advanced analytics</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>SLA tracking, renewal &amp; continuous revalidation</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Standard</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Advanced SLA</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Vendor self-service profile, documents &amp; requests</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Vendor collaboration &amp; supplier communications</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Standard</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Enterprise collaboration</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Workflow automation &amp; lifecycle task routing</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Basic</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Advanced</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Basic users, roles, administration &amp; standard reporting</th><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Advanced admin/reporting</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Advanced security, integrations &amp; executive analytics</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>Included</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+        </tbody></table></div>
+      </details>
+
+      <details class="matrix-accordion">
+        <summary><i data-lucide="landmark"></i><span><span class="matrix-group-title">CORE enterprise governance</span><span class="matrix-group-sub">CORE adds these enterprise capabilities; PLUS inherits them.</span></span><span class="matrix-group-count">6 capabilities</span></summary>
+        <div class="matrix-accordion-body"><table class="matrix-table"><thead><tr><th>Feature</th><th class="matrix-cell">FLEX</th><th class="matrix-cell">CORE</th><th class="matrix-cell">PLUS</th></tr></thead><tbody>
+          <tr><th>Enterprise risk management &amp; risk register</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>CORE</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Audit management, compliance centre &amp; governance</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>CORE</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>ESG management, sustainability &amp; human-rights oversight</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>CORE</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Corrective and preventive action (CAPA)</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>CORE</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Multi-company, business-unit &amp; enterprise governance</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>CORE</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+          <tr><th>Advanced security, integrations, workflow &amp; reporting</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>CORE</span></td><td class="matrix-cell"><span class="matrix-mark matrix-inherited"><i>✓</i>Inherited</span></td></tr>
+        </tbody></table></div>
+      </details>
+
+      <details class="matrix-accordion">
+        <summary><i data-lucide="rocket"></i><span><span class="matrix-group-title">PLUS strategic sourcing &amp; source-to-pay</span><span class="matrix-group-sub">PLUS includes FLEX and CORE plus the strategic procurement hub.</span></span><span class="matrix-group-count">9 capabilities</span></summary>
+        <div class="matrix-accordion-body"><table class="matrix-table"><thead><tr><th>Feature</th><th class="matrix-cell">FLEX</th><th class="matrix-cell">CORE</th><th class="matrix-cell">PLUS</th></tr></thead><tbody>
+          <tr><th>Strategic sourcing workspace &amp; sourcing pipeline</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>PLUS</span></td></tr>
+          <tr><th>Category management &amp; category strategies</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>PLUS</span></td></tr>
+          <tr><th>Spend analytics &amp; procurement intelligence</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>PLUS</span></td></tr>
+          <tr><th>RFI, RFP &amp; electronic tendering (eTender)</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>PLUS</span></td></tr>
+          <tr><th>Reverse auctions &amp; structured negotiations</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>PLUS</span></td></tr>
+          <tr><th>Evaluation committees &amp; bid comparison</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>PLUS</span></td></tr>
+          <tr><th>Award management &amp; strategic sourcing decisions</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>PLUS</span></td></tr>
+          <tr><th>Contract workspace for strategic awards</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>PLUS</span></td></tr>
+          <tr><th>Supplier collaboration, forecasts &amp; commitments</th><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-excluded"><i>×</i>—</span></td><td class="matrix-cell"><span class="matrix-mark matrix-included"><i>✓</i>PLUS</span></td></tr>
+        </tbody></table></div>
+      </details>
+    </div>
+    <p class="matrix-footnote"><strong>FLEX is a complete vendor lifecycle, not a reduced onboarding tier.</strong> CORE inherits every FLEX capability; PLUS inherits FLEX and CORE. Platform extensions such as VendorOS Studio operate across editions and do not replace these product tiers. This matrix defines target edition scope; it does not claim every listed feature is already implemented.</p>
+  </main>
+</div>
+
+<div id="implementationMapPage" class="implementation-map-overlay hidden" aria-hidden="true">
+  <header class="matrix-topbar">
+    <div class="matrix-brand"><span class="matrix-brand-mark"><i data-lucide="list-checks"></i></span><span>FoundationOS <span style="color:var(--muted);font-weight:500">Implementation &amp; Reuse Map</span></span></div>
+    <button type="button" class="matrix-back" onclick="closeImplementationMap()"><i data-lucide="arrow-left" style="width:15px;height:15px"></i>Back</button>
+  </header>
+  <main class="implementation-map-content">
+    <div class="implementation-map-heading">
+      <div>
+        <div class="matrix-eyebrow">Current project vs. VendorOS target</div>
+        <h1>Reuse what works. Build only the VendorOS gaps.</h1>
+        <p>FoundationOS remains the running Laravel + Filament + ERP application. All apps use the same database. Reusable apps own shared capabilities and records; VendorOS adds supplier-specific workflow and access rules around them.</p>
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="closeImplementationMap();showProductMatrix()"><i data-lucide="layers"></i>Edition Scope</button>
+    </div>
+    <div class="implementation-map-tools" aria-label="Filter implementation map">
+      <input id="implementationMapSearch" type="search" placeholder="Search apps, capabilities or next steps" oninput="filterImplementationMapRows()"/>
+      <select id="implementationMapScope" aria-label="Filter by app scope" onchange="filterImplementationMapRows()">
+        <option value="all">All app scopes</option><option value="reusable">Reusable FoundationOS apps</option><option value="vendor">VendorOS-specific</option>
+      </select>
+      <select id="implementationMapStatus" aria-label="Filter by implementation status" onchange="filterImplementationMapRows()">
+        <option value="all">All statuses</option><option value="existing">Exists</option><option value="partial">Partial</option><option value="needed">Needed</option>
+      </select>
+    </div>
+    <div class="implementation-map-counts" aria-live="polite">
+      <span class="map-count">Showing <b id="mapVisibleCount">0</b> of <b id="mapTotalCount">0</b></span>
+      <span class="map-status existing">Exists <b id="mapExistingCount">0</b></span>
+      <span class="map-status partial">Partial <b id="mapPartialCount">0</b></span>
+      <span class="map-status needed">Needed <b id="mapNeededCount">0</b></span>
+    </div>
+    <div class="table-wrap" style="background:var(--surface);border:1px solid var(--border)">
+      <table class="implementation-map-table" id="implementationMapTable">
+        <thead><tr><th>App / capability</th><th>What exists here</th><th>Reusable boundary</th><th>Status</th><th>What still needs doing</th></tr></thead>
+        <tbody>
+          <tr data-map-scope="reusable" data-map-status="partial"><th>Users, roles &amp; universal app access</th><td>Laravel Users/Roles and authentication exist. The mockup persona picker is only a simulation.</td><td>One account can enter enabled apps according to permissions; do not create separate vendor identities.</td><td><span class="map-scope reusable">Reusable app</span> <span class="map-status partial">Partial</span></td><td class="map-next">Show the signed-in user's permitted apps. Resolve organisation membership so vendor staff see only their linked vendor records.</td></tr>
+          <tr data-map-scope="reusable" data-map-status="existing"><th>Contact Control Center (CCC)</th><td>Native Laravel registration, directory and profiles use the shared Partner/contact records.</td><td>Reusable contact/company/person front door for VendorOS, ERP and other apps; vendor/customer/staff are related roles, not copied identities.</td><td><span class="map-scope reusable">Reusable app</span> <span class="map-status existing">Exists</span></td><td class="map-next">Extend CCC where a workflow needs extra fields; keep one canonical contact record.</td></tr>
+          <tr data-map-scope="reusable" data-map-status="partial"><th>Documents &amp; media</th><td>Document entity and Filament resource exist; CCC has document/media surfaces. A complete Laravel-native Document Manager is not present as a standalone app.</td><td>Shared document records, media and file handling can serve CCC, VendorOS, ERP and other apps.</td><td><span class="map-scope reusable">Reusable app</span> <span class="map-status partial">Partial</span></td><td class="map-next">Expose a Laravel Document Manager over existing records; add VendorOS-specific required-document rules, review requests and expiry tasks without a second file source.</td></tr>
+          <tr data-map-scope="reusable" data-map-status="existing"><th>Products</th><td>Products module and ERP product records already exist.</td><td>Reusable product catalogue and shared product identity; VendorOS can associate a vendor with offered products.</td><td><span class="map-scope reusable">Reusable app</span> <span class="map-status existing">Exists</span></td><td class="map-next">Connect vendor offerings to the existing product records; do not create a VendorOS product master.</td></tr>
+          <tr data-map-scope="reusable" data-map-status="existing"><th>Services</th><td>Services module and ERP service records already exist.</td><td>Reusable service catalogue; VendorOS can link vendor capabilities to it.</td><td><span class="map-scope reusable">Reusable app</span> <span class="map-status existing">Exists</span></td><td class="map-next">Reuse service records in vendor capability/profile screens rather than duplicating the catalogue.</td></tr>
+          <tr data-map-scope="reusable" data-map-status="existing"><th>ERP purchasing, finance &amp; receiving</th><td>Existing Filament ERP surfaces own purchase orders, receipts, bills and finance records.</td><td>VendorOS reads or launches the ERP workflow over the same database; ERP remains intact and authoritative for its transactions.</td><td><span class="map-scope reusable">Reusable app</span> <span class="map-status existing">Exists</span></td><td class="map-next">Add VendorOS-facing links/status views where needed; do not rebuild purchasing or create duplicate transaction records.</td></tr>
+          <tr data-map-scope="reusable" data-map-status="partial"><th>AppSuite app visibility</th><td>The AppSuite catalogue brings together FOS modules, native modules, Composer plugins and ERP plugins, each with its own existing control.</td><td>Reuse the current registries and their adapters; present one clear app catalogue without a fifth registry.</td><td><span class="map-scope reusable">Reusable platform</span> <span class="map-status partial">Partial</span></td><td class="map-next">Make enabled state control navigation and authorization consistently. Decouple VendorOS menu visibility from ERP Purchases being active.</td></tr>
+          <tr data-map-scope="vendor" data-map-status="partial"><th>Vendor invitations &amp; membership</th><td>Admin invitation form and token acceptance routes exist; current Partner association is not a complete multi-staff membership model.</td><td>Use shared Users and CCC Partners; VendorOS owns invitation rules and vendor membership/access.</td><td><span class="map-scope vendor">VendorOS app</span> <span class="map-status partial">Partial</span></td><td class="map-next">Support several authorized users per vendor and safe invitation lifecycle. Do not treat email match alone as ongoing authorization.</td></tr>
+          <tr data-map-scope="vendor" data-map-status="partial"><th>Vendor verification, assessment &amp; approval</th><td>CCC verification/compliance and VendorOS review workspace implement substantial stages 19–38; live workflow coverage and data are incomplete.</td><td>Reuse CCC identity, Documents, permissions and audit facilities; VendorOS owns supplier assessment and approval stages.</td><td><span class="map-scope vendor">VendorOS app</span> <span class="map-status partial">Partial</span></td><td class="map-next">Complete review queue, assignments, decision transitions and evidence links; verify authorization and audit trail end to end.</td></tr>
+          <tr data-map-scope="vendor" data-map-status="needed"><th>Vendor Portal home &amp; self-service</th><td>Invite/account routes and a basic onboarding shell exist; no complete Partner-scoped portal task/profile/document workspace.</td><td>Compose shared CCC, Documents, Products, Services and ERP data behind vendor-specific views.</td><td><span class="map-scope vendor">VendorOS app</span> <span class="map-status needed">Needed</span></td><td class="map-next">Build a vendor-scoped home with profile completion, assigned tasks, document requests and permitted transaction views after membership is defined.</td></tr>
+          <tr data-map-scope="vendor" data-map-status="needed"><th>J01 stages 39–43</th><td>ERP order, receipt and bill records exist; VendorOS reads some of them. Full sourcing-to-award and vendor delivery flow is not implemented.</td><td>Keep ERP transaction records; VendorOS supplies supplier invitations, bids, evaluations and award workflow around them.</td><td><span class="map-scope vendor">VendorOS app</span> <span class="map-status needed">Needed</span></td><td class="map-next">Implement opportunity/RFQ response, bid evaluation, award/contract handoff, delivery/QC and three-way match integration.</td></tr>
+          <tr data-map-scope="vendor" data-map-status="partial"><th>Performance &amp; lifecycle (44–45)</th><td>Manual review, scoring and lifecycle transition logic exist; performance is not fully calculated from live ERP outcomes.</td><td>Reuse shared orders, receipts, invoices and CCC profile; VendorOS owns supplier scorecards and lifecycle decisions.</td><td><span class="map-scope vendor">VendorOS app</span> <span class="map-status partial">Partial</span></td><td class="map-next">Connect scorecards to transaction outcomes and complete scheduled reviews, renewal and revalidation tasks.</td></tr>
+          <tr data-map-scope="vendor" data-map-status="needed"><th>Risk, CLM &amp; HSE workspaces</th><td>Compliance fields and review foundations exist; complete enterprise risk register, contract obligations and HSE course/training workspaces do not.</td><td>Build reusable platform capabilities only where multiple apps need them; VendorOS owns supplier-specific assessments and evidence rules.</td><td><span class="map-scope vendor">VendorOS + shared apps</span> <span class="map-status needed">Needed</span></td><td class="map-next">Define shared capability boundaries, then add the missing workspaces over CCC and Document records; ERP remains the transaction source.</td></tr>
+          <tr data-map-scope="vendor" data-map-status="partial"><th>Communications, reports &amp; unified work queue</th><td>Chatter, Service Desk, ERP reports and AI Copilot exist in separate contexts; there is no unified VendorOS-scoped inbox, BI or task queue.</td><td>Prefer shared communications/reporting/task apps with app and Partner context instead of VendorOS-only copies.</td><td><span class="map-scope vendor">Shared + VendorOS</span> <span class="map-status partial">Partial</span></td><td class="map-next">Connect existing facilities first; add shared app/Partner filtering and only build missing VendorOS-specific views.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="map-note"><strong>One source of truth:</strong> this map proposes no duplicate Users, contacts, documents, products, services or ERP transactions. Reusable apps own shared records; VendorOS contributes supplier workflow, app navigation and access scope. Status describes this project's implementation, not edition entitlement. All dashboard numbers elsewhere in this mockup are illustrative.</p>
+  </main>
+</div>
+
+<div id="app">
+  <!-- TOPBAR -->
+  <header id="topbar">
+    <button class="tb-btn" id="mobileToggle" title="Menu"><i data-lucide="menu"></i></button>
+    <div class="brand">
+      <div class="brand-mark"><i data-lucide="shield-v" style="width:20px;height:20px;color:#fff"></i></div>
+      <div class="brand-name">Vendor<span>OS</span></div>
+    </div>
+    <div class="search-wrap">
+      <i class="si" data-lucide="search"></i>
+      <input id="searchInput" placeholder="Search vendors, RFQs, contracts, documents…" autocomplete="off"/>
+    </div>
+    <div class="edition-switch" id="editionSwitch" data-tip="Switch plan tier to preview what each edition unlocks">
+      <span class="edition-pill" id="editionPill"></span>
+      <button class="edition-btn" data-edition="flex" onclick="setEdition('flex')">FLEX</button>
+      <button class="edition-btn" data-edition="core" onclick="setEdition('core')">CORE</button>
+      <button class="edition-btn" data-edition="plus" onclick="setEdition('plus')">PLUS</button>
+    </div>
+    <div class="tb-actions">
+      <button class="tb-btn" title="AI Copilot" onclick="openSlidePanel('copilotPanel')"><i data-lucide="bot"></i></button>
+      <button class="tb-btn" title="Notifications" onclick="openSlidePanel('notifPanel')"><i data-lucide="bell"></i><span class="tb-badge">3</span></button>
+      <button class="tb-btn" id="dataMapBtn" title="Show data sources: CCC, VendorOS, ERP, FOS, derived, NEW" aria-pressed="false" onclick="toggleDataMap()"><i data-lucide="database"></i></button>
+      <button class="tb-btn dark-btn" id="darkBtn" title="Toggle dark mode"><i data-lucide="moon" id="darkIcon"></i></button>
+      <div style="position:relative">
+        <button class="profile-btn" onclick="toggleRoleMenu()">
+          <div class="avatar" id="profileAvatar">TM</div>
+          <span class="profile-name" id="profileName">Thabo M.</span>
+          <i data-lucide="chevron-down" style="width:14px;height:14px;color:var(--muted)"></i>
+        </button>
+        <div class="role-menu" id="roleMenu">
+          <div class="role-menu-hdr">Internal Users</div>
+          <div class="role-item" data-role="executive" onclick="switchRole('executive',this)"><i data-lucide="bar-chart-3"></i>Executive</div>
+          <div class="role-item active" data-role="vendor" onclick="switchRole('vendor',this)"><i data-lucide="user-plus"></i>Vendor Admin</div>
+          <div class="role-item" data-role="procurement" onclick="switchRole('procurement',this)"><i data-lucide="shopping-cart"></i>Procurement User</div>
+          <div class="role-item" data-role="finance" onclick="switchRole('finance',this)"><i data-lucide="banknote"></i>Finance</div>
+          <div class="role-item" data-role="audit" onclick="switchRole('audit',this)"><i data-lucide="scale"></i>Audit</div>
+          <div class="role-item" data-role="warehouse" onclick="switchRole('warehouse',this)"><i data-lucide="hard-hat"></i>Warehouse</div>
+          <div class="role-item" data-role="useradmin" onclick="switchRole('useradmin',this)"><i data-lucide="settings"></i>User Admin</div>
+          <div class="role-item" data-role="superadmin" onclick="switchRole('superadmin',this)"><i data-lucide="shield"></i>Super Admin</div>
+          <div class="role-menu-hdr">External</div>
+          <div class="role-item" data-role="vendorportal" onclick="switchRole('vendorportal',this)"><i data-lucide="badge-check"></i>Vendor (Portal)</div>
+          <div class="role-item" onclick="logout()" style="color:var(--danger)"><i data-lucide="alert-circle" style="color:var(--danger)"></i>Log Out</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <div class="sidebar-hdr">
+      <span class="nav-section-title" style="margin:0;padding:0">Navigation</span>
+      <span class="edition-tag" id="sidebarEditionTag">CORE</span>
+    </div>
+
+    <div class="mob-tools" id="mobTools">
+      <div class="mob-edition"><span>Edition preview</span><div><button type="button" onclick="setEdition('flex')">FLEX</button><button type="button" onclick="setEdition('core')">CORE</button><button type="button" onclick="setEdition('plus')">PLUS</button></div></div>
+      <button type="button" class="mob-btn" onclick="toggleDataMap()"><i data-lucide="database"></i>Data map</button>
+    </div>
+
+    <div class="nav-section" data-section="vendorhub"><div class="nav-section-title" style="cursor:default">Supplier Portal</div><div class="nav-section-body">
+      <div class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')"><i data-lucide="layout-dashboard"></i><span class="nav-label">Home</span></div>
+      <div class="nav-item" data-page="myprofile" onclick="showPage('myprofile')"><i data-lucide="building-2"></i><span class="nav-label">Company &amp; Passport</span></div>
+      <div class="nav-item" data-page="mydocuments" onclick="showPage('mydocuments')"><i data-lucide="folder"></i><span class="nav-label">Documents</span><span class="nav-count warn" id="navDocsCount">8</span></div>
+      <div class="nav-item" data-page="myrfqpo" onclick="showPage('myrfqpo')"><i data-lucide="shopping-cart"></i><span class="nav-label">Orders &amp; RFQs</span><span class="nav-count">2</span></div>
+      <div class="nav-item" data-page="myinvoices" onclick="showPage('myinvoices')"><i data-lucide="banknote"></i><span class="nav-label">Invoices &amp; Payments</span></div>
+      <div class="nav-item" data-page="myhse" onclick="showPage('myhse')"><i data-lucide="graduation-cap"></i><span class="nav-label">Training &amp; HSE</span><span class="nav-count warn">1</span></div>
+      <div class="nav-item" data-page="mycomms" onclick="showPage('mycomms')"><i data-lucide="message-square"></i><span class="nav-label">Communications</span><span class="nav-count">1</span></div>
+      <div class="nav-item" data-page="requests" onclick="showPage('requests')"><i data-lucide="clipboard-check"></i><span class="nav-label">Requests</span></div>
+      <div class="nav-item" data-page="support" onclick="showPage('support')"><i data-lucide="help-circle"></i><span class="nav-label">Help &amp; Support</span></div>
+    </div></div>
+    <div class="nav-section" data-section="dashboard">
+      <div class="nav-item active" data-page="dashboard" data-tier="flex" onclick="navClick(this)"><i data-lucide="layout-dashboard"></i><span class="nav-label">Dashboard</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+    </div>
+
+    <div class="nav-section" data-section="vendor"><div class="nav-section-title" onclick="toggleSection(this)">Vendor Management<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-vendor">
+
+      <div class="nav-item" data-page="reg" data-tier="flex" onclick="navGroupClick(this,'g-reg')"><i data-lucide="user-plus"></i><span class="nav-label">Registration &amp; Onboarding</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-reg"></i></div>
+      <div class="nav-sub-wrap" id="g-reg"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('reg',{})"><i data-lucide="building-2"></i><span class="nav-label">Company Profile</span></div>
+        <div class="nav-item" onclick="subNav('reg',{})"><i data-lucide="users"></i><span class="nav-label">Contacts &amp; Directors</span></div>
+        <div class="nav-item" onclick="subNav('reg',{})"><i data-lucide="folder"></i><span class="nav-label">Document Upload</span></div>
+        <div class="nav-item" onclick="subNav('reg',{})"><i data-lucide="clipboard-check"></i><span class="nav-label">Assessment Scoring</span></div>
+        <div class="nav-item" onclick="showPage('approval')"><i data-lucide="check-circle"></i><span class="nav-label">Approval</span></div>
+        <div class="nav-item" onclick="subNav('passport',{})"><i data-lucide="badge-check"></i><span class="nav-label">Vendor Passport Issued</span></div>
+      </div></div>
+
+      <div class="nav-item" data-page="passport" data-tier="flex" onclick="navGroupClick(this,'g-passport')"><i data-lucide="badge-check"></i><span class="nav-label">Vendor Passport 360</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron open" id="chev-g-passport"></i></div>
+      <div class="nav-sub-wrap open" id="g-passport"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('passport',{tab:'vp-overview'})"><i data-lucide="building-2"></i><span class="nav-label">Overview</span></div>
+
+        <div class="nav-item" onclick="toggleGroup(this,'g-passport-docs')"><i data-lucide="folder"></i><span class="nav-label">Documents</span><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-passport-docs"></i></div>
+        <div class="nav-sub-wrap" id="g-passport-docs"><div class="nav-sub">
+          <div class="nav-item" onclick="subNav('passport',{tab:'vp-docs'})"><i data-lucide="file-text"></i><span class="nav-label">Certificate of Incorporation</span></div>
+          <div class="nav-item" onclick="subNav('passport',{tab:'vp-docs'})"><i data-lucide="file-text"></i><span class="nav-label">Insurance</span></div>
+          <div class="nav-item" onclick="subNav('passport',{tab:'vp-docs'})"><i data-lucide="file-text"></i><span class="nav-label">Tax Clearance</span></div>
+        </div></div>
+
+        <div class="nav-item" onclick="subNav('passport',{tab:'vp-perf'})"><i data-lucide="gauge"></i><span class="nav-label">Performance</span></div>
+        <div class="nav-item" onclick="subNav('passport',{tab:'vp-contracts'})"><i data-lucide="file-text"></i><span class="nav-label">Contracts</span></div>
+        <div class="nav-item" onclick="subNav('passport',{tab:'vp-staff'})"><i data-lucide="users"></i><span class="nav-label">Staff Access (List/Card)</span></div>
+        <div class="nav-item" onclick="subNav('passport',{tab:'vp-comms'})"><i data-lucide="message-square"></i><span class="nav-label">Communications</span></div>
+        <div class="nav-item" onclick="subNav('passport',{tab:'vp-timeline'})"><i data-lucide="activity"></i><span class="nav-label">Timeline &amp; Activity Log</span></div>
+      </div></div>
+
+      <div class="nav-item" data-page="docs" data-tier="flex" onclick="navGroupClick(this,'g-docs')"><i data-lucide="folder"></i><span class="nav-label">Document Management</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-docs"></i></div>
+      <div class="nav-sub-wrap" id="g-docs"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('docs',{target:'docs-queue',tier:'flex'})"><i data-lucide="list"></i><span class="nav-label">Document Queue</span></div>
+        <div class="nav-item" onclick="subNav('docs',{tier:'flex'});setTimeout(function(){docWizardReset();openModal('docModal')},260)"><i data-lucide="plus"></i><span class="nav-label">Upload Document</span></div>
+        <div class="nav-item" onclick="subNav('docs',{target:'docs-expiring',tier:'flex'})"><i data-lucide="clock"></i><span class="nav-label">Expiring Documents</span></div>
+      </div></div>
+
+      <div class="nav-item" data-page="assessment" data-tier="flex" onclick="navGroupClick(this,'g-assess')"><i data-lucide="clipboard-check"></i><span class="nav-label">Supplier Assessment</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-assess"></i></div>
+      <div class="nav-sub-wrap" id="g-assess"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('assessment',{target:'sa-procurement',tier:'flex'})"><i data-lucide="shopping-cart"></i><span class="nav-label">Procurement</span></div>
+        <div class="nav-item" onclick="subNav('assessment',{target:'sa-technical',tier:'flex'})"><i data-lucide="gauge"></i><span class="nav-label">Technical</span></div>
+        <div class="nav-item" onclick="subNav('assessment',{target:'sa-finance',tier:'flex'})"><i data-lucide="banknote"></i><span class="nav-label">Finance</span></div>
+        <div class="nav-item" onclick="subNav('assessment',{target:'sa-legal',tier:'flex'})"><i data-lucide="scale"></i><span class="nav-label">Legal</span></div>
+        <div class="nav-item" onclick="subNav('assessment',{target:'sa-compliance',tier:'flex'})"><i data-lucide="shield-check"></i><span class="nav-label">Compliance</span></div>
+        <div class="nav-item" onclick="subNav('assessment',{target:'sa-hse',tier:'flex'})"><i data-lucide="hard-hat"></i><span class="nav-label">HSE</span></div>
+        <div class="nav-item" onclick="subNav('assessment',{target:'sa-esg',tier:'core',label:'ESG review'})"><i data-lucide="line-chart"></i><span class="nav-label">ESG</span></div>
+        <div class="nav-item" onclick="subNav('assessment',{target:'sa-infosec',tier:'flex'})"><i data-lucide="lock"></i><span class="nav-label">Information Security</span></div>
+      </div></div>
+    </div></div>
+
+    <div class="nav-section" data-section="hse"><div class="nav-section-title" onclick="toggleSection(this)">HSE &amp; Risk<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-hse">
+
+      <div class="nav-item" data-page="hse" data-tier="flex" onclick="navGroupClick(this,'g-hse')"><i data-lucide="shield-check"></i><span class="nav-label">Induction &amp; Certification</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-hse"></i></div>
+      <div class="nav-sub-wrap" id="g-hse"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('hse',{target:'hse-sitesafety',tier:'core'})"><i data-lucide="shield-check"></i><span class="nav-label">Site Safety Induction</span></div>
+        <div class="nav-item" onclick="subNav('hse',{target:'hse-heights',tier:'core'})"><i data-lucide="hard-hat"></i><span class="nav-label">Working at Heights</span></div>
+        <div class="nav-item" onclick="subNav('hse',{target:'hse-hotwork',tier:'core'})"><i data-lucide="flame"></i><span class="nav-label">Hot Work Permit</span></div>
+        <div class="nav-item" onclick="subNav('hse',{target:'hse-quizpanel',tier:'core'})"><i data-lucide="graduation-cap"></i><span class="nav-label">Take Certification Test</span></div>
+
+        <div class="nav-item" onclick="toggleGroup(this,'g-hse-reg')"><i data-lucide="award"></i><span class="nav-label">Certification Register</span><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-hse-reg"></i></div>
+        <div class="nav-sub-wrap" id="g-hse-reg"><div class="nav-sub">
+          <div class="nav-item" onclick="subNav('hse',{target:'hse-certtable',tier:'core'})"><i data-lucide="badge-check"></i><span class="nav-label">Kalahari Logistics</span></div>
+          <div class="nav-item" onclick="subNav('hse',{target:'hse-certtable',tier:'core'})"><i data-lucide="alert-circle"></i><span class="nav-label">Delta Civils &amp; Plant Hire</span></div>
+        </div></div>
+      </div></div>
+
+      <div class="nav-item" data-page="audit" data-tier="core" onclick="navClick(this)"><i data-lucide="scale"></i><span class="nav-label">Audit &amp; Governance</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div class="nav-item" data-page="erm" data-tier="core" onclick="navClick(this)"><i data-lucide="alert-triangle"></i><span class="nav-label">Enterprise Risk Mgmt</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i></div>
+    </div></div>
+
+    <div class="nav-section" data-section="procurement"><div class="nav-section-title" onclick="toggleSection(this)">Procurement &amp; Contracts<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-procurement">
+
+      <div class="nav-item" data-page="procurement" data-tier="flex" onclick="navGroupClick(this,'g-proc')"><i data-lucide="shopping-cart"></i><span class="nav-label">Procurement Workspace</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-proc"></i></div>
+      <div class="nav-sub-wrap" id="g-proc"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('procurement',{tab:'proc-rfq'})"><i data-lucide="file-text"></i><span class="nav-label">RFQs</span></div>
+        <div class="nav-item" onclick="subNav('procurement',{tab:'proc-po'})"><i data-lucide="clipboard-check"></i><span class="nav-label">Purchase Orders</span></div>
+      </div></div>
+
+      <div class="nav-item" data-page="clm" data-hide-roles="warehouse" data-tier="core" onclick="navClick(this)"><i data-lucide="file-text"></i><span class="nav-label">Contract Lifecycle Mgmt</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div class="nav-item" data-page="warehouse" data-tier="flex" onclick="navClick(this)"><i data-lucide="hard-hat"></i><span class="nav-label">Warehouse &amp; Receiving</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+
+      <div class="nav-item" data-page="plusprocure" data-hide-roles="warehouse" data-tier="plus" onclick="navGroupClick(this,'g-plus')"><i data-lucide="rocket"></i><span class="nav-label">PLUS Procurement Hub</span><span class="tier-chip plus">P</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-plus"></i></div>
+      <div class="nav-sub-wrap" id="g-plus"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-demand',tier:'plus'})"><i data-lucide="line-chart"></i><span class="nav-label">Demand Planning</span></div>
+        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-sourcing',tier:'plus'})"><i data-lucide="shopping-cart"></i><span class="nav-label">Sourcing Events</span></div>
+        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-collab',tier:'plus'})"><i data-lucide="users"></i><span class="nav-label">Supplier Collaboration</span></div>
+        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-analytics',tier:'plus'})"><i data-lucide="bar-chart-3"></i><span class="nav-label">Analytics</span></div>
+      </div></div>
+    </div></div>
+
+    <div class="nav-section" data-section="financeperf"><div class="nav-section-title" onclick="toggleSection(this)">Finance &amp; Performance<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-financeperf">
+      <div class="nav-item" data-page="finance" data-tier="flex" onclick="navClick(this)"><i data-lucide="banknote"></i><span class="nav-label">Finance &amp; Payments</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div class="nav-item" data-page="perf" data-tier="flex" onclick="navClick(this)"><i data-lucide="gauge"></i><span class="nav-label">Performance &amp; SLA</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+    </div></div>
+
+    <div class="nav-section" data-section="collab"><div class="nav-section-title" onclick="toggleSection(this)">Collaboration<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-collab">
+      <div class="nav-item" data-page="comms" data-tier="flex" onclick="navClick(this)"><i data-lucide="message-square"></i><span class="nav-label">Inbox &amp; Communications</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+
+      <div class="nav-item" data-page="selfservice" data-tier="flex" onclick="navClick(this)"><i data-lucide="users"></i><span class="nav-label">Vendor Portal (map &amp; preview)</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+    </div></div>
+
+    <div class="nav-section" data-section="automation"><div class="nav-section-title" onclick="toggleSection(this)">Automation &amp; Platform<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-automation">
+
+      <div class="nav-item" data-page="workflow" data-tier="flex" onclick="navGroupClick(this,'g-wf')"><i data-lucide="workflow"></i><span class="nav-label">Workflow Automation</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-wf"></i></div>
+      <div class="nav-sub-wrap" id="g-wf"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('workflow',{tab:'wf-rules',tier:'flex'})"><i data-lucide="zap"></i><span class="nav-label">Automation Rules</span></div>
+        <div class="nav-item" onclick="subNav('workflow',{tab:'wf-kanban',tier:'flex'})"><i data-lucide="layout-template"></i><span class="nav-label">Vendor Lifecycle Kanban</span></div>
+      </div></div>
+
+      <div class="nav-item" data-page="integration" data-tier="core" onclick="navClick(this)"><i data-lucide="plug"></i><span class="nav-label">Integration Hub &amp; API</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div class="nav-item" data-page="ai" data-tier="platform" onclick="navClick(this)"><i data-lucide="bot"></i><span class="nav-label">AI Copilot</span><span class="tier-chip platform" title="Platform extension (all editions)">S</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div class="nav-item" data-page="builder" data-tier="platform" onclick="navClick(this)"><i data-lucide="layout-template"></i><span class="nav-label">Dynamic Form Builder</span><span class="tier-chip platform" title="Platform extension (all editions)">S</span><i data-lucide="lock" class="lock-ic"></i></div>
+    </div></div>
+
+    <div class="nav-section" data-section="admin"><div class="nav-section-title" onclick="toggleSection(this)">Administration<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-admin">
+
+      <div class="nav-item" data-page="ccc" data-tier="flex" onclick="navGroupClick(this,'g-ccc')"><i data-lucide="contact"></i><span class="nav-label">Contact Control Center</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-ccc"></i></div>
+      <div class="nav-sub-wrap" id="g-ccc"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-dash'})"><i data-lucide="chevron-right"></i><span class="nav-label">Dashboard</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-dir'})"><i data-lucide="chevron-right"></i><span class="nav-label">Directory</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-prof'})"><i data-lucide="chevron-right"></i><span class="nav-label">Vendor profile</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-wiz'})"><i data-lucide="chevron-right"></i><span class="nav-label">Registration wizard</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-form'})"><i data-lucide="chevron-right"></i><span class="nav-label">Contact form</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-assets'})"><i data-lucide="chevron-right"></i><span class="nav-label">Assets</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-docs'})"><i data-lucide="chevron-right"></i><span class="nav-label">Document Centre</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-set'})"><i data-lucide="chevron-right"></i><span class="nav-label">Settings</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-setf'})"><i data-lucide="chevron-right"></i><span class="nav-label">Settings forms</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-users'})"><i data-lucide="chevron-right"></i><span class="nav-label">Users and access</span></div>
+        <div class="nav-item" onclick="subNav('ccc',{tab:'cc-cmp'})"><i data-lucide="chevron-right"></i><span class="nav-label">Compare</span></div>
+      </div></div>
+
+      <div class="nav-item" data-page="admin" data-tier="flex" onclick="navGroupClick(this,'g-admin')"><i data-lucide="settings"></i><span class="nav-label">System Configuration</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-admin"></i></div>
+      <div class="nav-sub-wrap" id="g-admin"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('admin',{})"><i data-lucide="users"></i><span class="nav-label">Users</span></div>
+        <div class="nav-item" onclick="subNav('admin',{target:'admin-roles'})"><i data-lucide="shield"></i><span class="nav-label">Roles &amp; Permissions</span></div>
+        <div class="nav-item" onclick="subNav('admin',{target:'admin-bu',tier:'core',label:'Business Units'})"><i data-lucide="building-2"></i><span class="nav-label">Business Units</span></div>
+      </div></div>
+
+      <div class="nav-item" data-page="editions" data-tier="flex" onclick="navClick(this)"><i data-lucide="layers"></i><span class="nav-label">Editions &amp; Licensing</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div class="nav-item" data-page="role-guide" data-tier="flex" onclick="navClick(this)"><i data-lucide="users"></i><span class="nav-label">Role &amp; Menu Guide</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+
+      <div class="nav-item" data-page="prd" data-tier="flex" onclick="navGroupClick(this,'g-help')"><i data-lucide="help-circle"></i><span class="nav-label">Help &amp; Support</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-help"></i></div>
+      <div class="nav-sub-wrap open" id="g-help"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('prd',{})"><i data-lucide="file-text"></i><span class="nav-label">PRD — Full Specification</span></div>
+        <div class="nav-item" onclick="subNav('support',{})"><i data-lucide="message-square"></i><span class="nav-label">Support</span></div>
+      </div></div>
+    </div></div>
+
+    </aside>
+
+  <!-- MAIN -->
+  <main id="main">
+    <div id="workspace">
+      <div class="skeleton-overlay" id="skeleton">
+        <div class="sk-block" style="height:100px"></div>
+        <div class="sk-block" style="height:70px"></div>
+        <div class="sk-block" style="height:240px"></div>
+      </div>
+
+      <!-- DASHBOARD -->
+      

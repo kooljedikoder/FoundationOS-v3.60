@@ -1,0 +1,64 @@
+<div class="page" id="page-myprofile">
+        <div class="page-header"><div><div class="page-title">Company &amp; Passport</div><div class="page-sub">Your company details and Vendor Passport as every VendorOS module sees them. Editable up to stage 18; after that, request a change.</div></div><button class="btn btn-primary btn-create" onclick="crudAction('edit','Company Profile')"><i data-lucide="edit-2"></i>Edit Profile</button></div>
+        <div class="kpis kpis-4">
+          <div class="kpi accent-purple"><div class="kpi-label">Compliance Score</div><div class="kpi-val">91%</div></div>
+          <div class="kpi accent-green"><div class="kpi-label">Onboarded</div><div class="kpi-val">14 mo</div></div>
+          <div class="kpi accent-blue"><div class="kpi-label">Active Contacts</div><div class="kpi-val">2</div></div>
+          <div class="kpi accent-orange"><div class="kpi-label">Profile Completeness</div><div class="kpi-val">96%</div></div>
+        </div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'mp-overview')">Overview</div>
+          <div class="tab" onclick="switchTab(this,'mp-contacts')">Contacts</div>
+          <div class="tab" onclick="switchTab(this,'mp-banking')">Banking &amp; Tax</div>
+          <div class="tab" onclick="switchTab(this,'mp-passport')">Passport</div>
+          <div class="tab" onclick="switchTab(this,'mp-staff')">Staff Access</div>
+        </div>
+        <div class="tab-panel active" id="mp-overview"><div class="panel">
+          <dl class="vf-fields">
+            <div class="vf-f"><dt>Company</dt><dd>Kalahari Logistics (Pty) Ltd</dd></div>
+            <div class="vf-f"><dt>Category</dt><dd>Transport &amp; Logistics</dd></div>
+            <div class="vf-f"><dt>Registered</dt><dd>Lagos, Nigeria</dd></div>
+            <div class="vf-f"><dt>Registration no.</dt><dd>RC1234567</dd></div>
+            <div class="vf-f"><dt>Primary email</dt><dd>accounts@kalaharilogistics.com.ng</dd></div>
+            <div class="vf-f"><dt>Phone</dt><dd>+234 803 555 0142</dd></div>
+            <div class="vf-f full"><dt>Address</dt><dd>Plot 4471, Broadhurst Industrial, Gaborone</dd></div>
+          </dl>
+          <span class="badge badge-green">Bank verified</span> <span class="badge badge-green">Tax clearance current</span>
+        </div></div>
+        <div class="tab-panel" id="mp-contacts">
+          <div class="page-header" style="margin-bottom:10px"><div></div><button class="btn btn-primary btn-sm" onclick="crudAction('view','New Contact')"><i data-lucide="plus"></i>Add Contact</button></div>
+          <div class="table-wrap" data-vf="contacts"></div>
+        </div>
+        <div class="tab-panel" id="mp-banking"><div class="panel">
+          <dl class="vf-fields">
+            <div class="vf-f"><dt>Bank</dt><dd>First Bank of Nigeria</dd></div>
+            <div class="vf-f"><dt>Account</dt><dd>&bull;&bull;&bull;&bull; 4471 (verified)</dd></div>
+            <div class="vf-f"><dt>Tax ID</dt><dd>TIN C0049981</dd></div>
+            <div class="vf-f"><dt>Tax clearance</dt><dd>Valid through Nov 2026</dd></div>
+          </dl>
+          <p style="font-size:12px;color:var(--muted)">Bank and tax details are masked and read-only. Use <b>Requests</b> to change them.</p>
+        </div></div>
+        <div class="tab-panel" id="mp-passport"><div class="panel">
+          <div class="vf-pass">
+            <div class="vf-pass-qr"><i data-lucide="qr-code"></i></div>
+            <div>
+              <h3 style="margin-bottom:6px">Vendor Passport VP-00842 <span class="badge badge-green">Approved Vendor</span></h3>
+              <dl class="vf-fields" style="margin-bottom:10px">
+                <div class="vf-f"><dt>Issued</dt><dd>14 months ago</dd></div>
+                <div class="vf-f"><dt>Valid until</dt><dd>Next revalidation in 10 months</dd></div>
+              </dl>
+              <div class="vf-actions">
+                <button class="btn btn-primary btn-sm" onclick="showPage('passport')"><i data-lucide="badge-check"></i>Open full Passport</button>
+                <button class="btn btn-secondary btn-sm" onclick="vfNewRequest('New Passport')"><i data-lucide="refresh-cw"></i>Request new Passport</button>
+              </div>
+            </div>
+          </div>
+        </div></div>
+        <div class="tab-panel" id="mp-staff">
+          <p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">People at your company who can sign in to this portal. The primary contact controls this list.</p>
+          <div class="table-wrap" data-vf="staff"></div>
+        </div>
+      </div>
+
+      <!-- MY DOCUMENTS -->
+      

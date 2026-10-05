@@ -1,0 +1,93 @@
+<div class="page" id="page-warehouse">
+        <div class="page-header"><div><div class="page-title">Warehouse &amp; Receiving</div><div class="page-sub">The Warehouse Manager's own workspace — receive, inspect and approve deliveries here, then forward to Procurement, who forward to Finance for payment.</div></div><div class="page-actions"><button class="btn btn-primary btn-sm" onclick="openModal('dnModal')"><i data-lucide="plus"></i>Upload Delivery Note</button></div></div>
+        <div class="edition-note"><i data-lucide="info"></i>This is a separate space from <span style="color:var(--primary);font-weight:700;cursor:pointer" onclick="showPage('procurement')">Procurement Workspace</span> — Warehouse owns physical receipt and inspection; Procurement owns RFQs/POs; Finance owns payment. Approving a delivery here sends it to Procurement, who confirm and forward it to Finance to pay.</div>
+
+        <div class="kpis kpis-4">
+          <div class="kpi accent-blue"><div class="kpi-label">Delivery SLA</div><div class="kpi-val">96%</div></div>
+          <div class="kpi accent-orange"><div class="kpi-label">Deliveries Due Today</div><div class="kpi-val">5</div></div>
+          <div class="kpi accent-red"><div class="kpi-label">Late Deliveries</div><div class="kpi-val">1</div></div>
+          <div class="kpi accent-green"><div class="kpi-label">Awaiting Finance Payment</div><div class="kpi-val">₦34m</div></div>
+        </div>
+
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'wh-workflow')">Receiving Workflow</div>
+          <div class="tab" onclick="switchTab(this,'wh-notes')">Delivery Notes Archive</div>
+          <div class="tab" onclick="switchTab(this,'wh-expected')">Expected Deliveries</div>
+        </div>
+
+        <div class="tab-panel active" id="wh-workflow">
+          <div class="panel">
+            <h3><i data-lucide="workflow"></i>Receive → Approve → Procurement → Finance</h3>
+            <div class="stepper">
+              <div class="step done"><div class="step-dot"><i data-lucide="check" style="width:14px;height:14px"></i></div><div class="step-label">Delivery Scheduled</div></div>
+              <div class="step-connector"></div>
+              <div class="step done"><div class="step-dot"><i data-lucide="check" style="width:14px;height:14px"></i></div><div class="step-label">Received &amp; Note Captured</div></div>
+              <div class="step-connector"></div>
+              <div class="step current"><div class="step-dot">3</div><div class="step-label">Inspection</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">4</div><div class="step-label">Warehouse Manager Approval</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">5</div><div class="step-label">Sent to Procurement</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">6</div><div class="step-label">Procurement Confirms</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">7</div><div class="step-label">Sent to Finance</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">8</div><div class="step-label">Finance Pays Vendor</div></div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;overflow-x:auto">
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Received <span class="badge badge-blue">1</span></div>
+              <div class="mod-card" style="padding:12px;cursor:pointer" onclick="showPage('passport')" data-tip="View vendor passport"><h4 style="font-size:12.5px">PO-8821 · Northgate Office Supplies</h4><p>Delivery note captured</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Inspection <span class="badge badge-orange">1</span></div>
+              <div class="mod-card" style="padding:12px;cursor:pointer" onclick="showPage('passport')" data-tip="View vendor passport"><h4 style="font-size:12.5px">PO-8817 · Phoenix Scaffolding</h4><p>Quality check in progress</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Warehouse Approved → Procurement <span class="badge badge-green">1</span></div>
+              <div class="mod-card" style="padding:12px;cursor:pointer" onclick="showPage('passport')" data-tip="View vendor passport"><h4 style="font-size:12.5px">PO-8815 · Kalahari Logistics</h4><p>Approved, forwarded to Procurement</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Procurement → Finance <span class="badge badge-purple">1</span></div>
+              <div class="mod-card" style="padding:12px"><h4 style="font-size:12.5px">PO-8809 · Delta Civils</h4><p>Confirmed by Procurement, awaiting payment</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="wh-notes">
+          <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Every captured delivery note is archived here — searchable proof of what arrived, when, and in what condition.</p>
+          <div class="fm-toolbar">
+            <span style="font-size:12px;color:var(--muted);font-weight:600">4 delivery notes on file</span>
+            <div class="fm-view-toggle">
+              <button class="fm-view-btn active" onclick="setDnView('list',this)"><i data-lucide="list"></i>List</button>
+              <button class="fm-view-btn" onclick="setDnView('cards',this)"><i data-lucide="grid-2x2"></i>Cards</button>
+            </div>
+          </div>
+          <div id="dnListView"><div class="table-wrap"><table><thead><tr><th>Reference</th><th>Vendor</th><th>PO</th><th>Received</th><th>Condition</th><th class="actions-col">Action</th></tr></thead><tbody>
+            <tr><td>DN-4471</td><td>Kalahari Logistics</td><td>PO-8815</td><td>3 days ago</td><td><span class="badge badge-green">Good</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4471')">View</button></td></tr>
+            <tr><td>DN-4468</td><td>Northgate Office Supplies</td><td>PO-8821</td><td>Today</td><td><span class="badge badge-blue">Pending Inspection</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4468')">View</button></td></tr>
+            <tr><td>DN-4460</td><td>Delta Civils &amp; Plant Hire</td><td>PO-8809</td><td>1 week ago</td><td><span class="badge badge-orange">2 Units Damaged</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4460')">View</button></td></tr>
+            <tr><td>DN-4455</td><td>Sable IT Networks</td><td>PO-8790</td><td>2 weeks ago</td><td><span class="badge badge-green">Good</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4455')">View</button></td></tr>
+          </tbody></table></div></div>
+          <div id="dnCardsView" class="fm-grid hidden">
+            <div class="fm-card"><div class="fm-card-thumb"><i data-lucide="file-text"></i></div><div class="fm-card-name">DN-4471 · Kalahari Logistics</div><div class="fm-card-meta">PO-8815 &middot; <span class="badge badge-green">Good</span></div><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4471')">View</button></div>
+            <div class="fm-card"><div class="fm-card-thumb"><i data-lucide="file-text"></i></div><div class="fm-card-name">DN-4468 · Northgate Office Supplies</div><div class="fm-card-meta">PO-8821 &middot; <span class="badge badge-blue">Pending Inspection</span></div><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4468')">View</button></div>
+            <div class="fm-card"><div class="fm-card-thumb"><i data-lucide="file-text"></i></div><div class="fm-card-name">DN-4460 · Delta Civils &amp; Plant Hire</div><div class="fm-card-meta">PO-8809 &middot; <span class="badge badge-orange">2 Units Damaged</span></div><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4460')">View</button></div>
+            <div class="fm-card"><div class="fm-card-thumb"><i data-lucide="file-text"></i></div><div class="fm-card-name">DN-4455 · Sable IT Networks</div><div class="fm-card-meta">PO-8790 &middot; <span class="badge badge-green">Good</span></div><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4455')">View</button></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="wh-expected">
+          <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Expected delivery dates from every open Purchase Order — late ones are flagged automatically so you can reschedule with the vendor.</p>
+          <div class="table-wrap"><table><thead><tr><th>PO</th><th>Vendor</th><th>Expected</th><th>Status</th><th class="actions-col">Action</th></tr></thead><tbody>
+            <tr><td>PO-8833</td><td>Maru Fleet Services</td><td>Thursday</td><td><span class="badge badge-blue">On Track</span></td><td class="actions-col">—</td></tr>
+            <tr><td>PO-8830</td><td>Sable IT Networks</td><td>Tomorrow, 9am</td><td><span class="badge badge-blue">On Track</span></td><td class="actions-col">—</td></tr>
+            <tr id="poLateRow"><td>PO-8799</td><td>Phoenix Scaffolding</td><td><span id="poLateDate">2 days overdue</span></td><td><span class="badge badge-red">Late</span></td><td class="actions-col"><button class="btn btn-primary btn-sm" onclick="rescheduleDelivery()">Reschedule</button></td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+
+      <!-- FINANCE -->
+      

@@ -1,0 +1,231 @@
+
+
+    </div>
+  </main>
+</div>
+
+<!-- New Vendor Modal -->
+<div class="modal" id="vendorModal">
+  <div class="modal-box vw-box" role="dialog" aria-labelledby="vwHeading">
+    <div class="modal-head"><h2 id="vwHeading">Register New Vendor</h2><span class="vw-save" id="vwSave">Draft &middot; not saved yet</span><button class="modal-close" onclick="closeModal('vendorModal')" aria-label="Close"><i data-lucide="x"></i></button></div>
+    <div class="vw-shell">
+      <nav class="vw-steps" id="vwSteps" aria-label="Registration steps"></nav>
+      <div class="vw-main">
+        <div class="vw-title"><span id="vwTitle"></span><span class="vw-meta" id="vwMeta"></span></div>
+        <div class="vw-intro" id="vwIntro"></div>
+        <div id="vwForm"></div>
+      </div>
+    </div>
+    <div class="wizard-actions">
+      <button class="btn btn-secondary" id="wizardBackBtn" onclick="wizardBack()" style="visibility:hidden"><i data-lucide="chevron-right" style="transform:rotate(180deg)"></i>Back</button>
+      <div style="display:flex;gap:8px"><button class="btn btn-secondary" onclick="vwSaveDraft(true)"><i data-lucide="save"></i>Save draft</button><button class="btn btn-primary" id="wizardNextBtn" onclick="wizardNext()">Next<i data-lucide="chevron-right"></i></button></div>
+    </div>
+  </div>
+</div>
+
+<!-- Document Upload Wizard -->
+<div class="modal" id="docModal">
+  <div class="modal-box" style="width:min(560px,100%)">
+    <div class="modal-head"><h2>Upload Document</h2><button class="modal-close" onclick="closeModal('docModal')"><i data-lucide="x"></i></button></div>
+    <div class="stepper" id="docStepper" style="margin-bottom:4px">
+      <div class="step current" data-dstep="1"><div class="step-dot">1</div><div class="step-label">Select Type</div></div>
+      <div class="step-connector"></div>
+      <div class="step" data-dstep="2"><div class="step-dot">2</div><div class="step-label">Upload</div></div>
+      <div class="step-connector"></div>
+      <div class="step" data-dstep="3"><div class="step-dot">3</div><div class="step-label">Verify</div></div>
+    </div>
+    <div class="wizard-body active" id="dbody-1">
+      <div class="form-grid">
+        <div class="field full"><label>Vendor</label><select><option>Kalahari Logistics (Pty) Ltd</option><option>Delta Civils &amp; Plant Hire</option><option>Maru Fleet Services</option></select></div>
+        <div class="field full"><label>Document Type</label><select><option>Public Liability Insurance</option><option>Tax Clearance Certificate</option><option>Certificate of Incorporation</option><option>BEE Certificate</option></select></div>
+      </div>
+    </div>
+    <div class="wizard-body" id="dbody-2">
+      <div class="canvas-drop" style="min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted)" onclick="showToast('File picker is a demo stub in this prototype','folder')">
+        <i data-lucide="folder" style="width:28px;height:28px"></i>
+        <span style="font-size:13px;font-weight:600">Click to choose a file, or drag it here</span>
+        <span style="font-size:11.5px">PDF, JPG or PNG — up to 10MB</span>
+      </div>
+    </div>
+    <div class="wizard-body" id="dbody-3">
+      <div class="quiz-result show pass" style="padding:20px">
+        <i data-lucide="check-circle" style="width:30px;height:30px;color:var(--success)"></i>
+        <div style="font-size:14.5px;font-weight:700;margin-top:8px">Document captured &amp; auto-verified</div>
+        <p style="font-size:12.5px;color:var(--muted);margin-top:6px">OCR extracted the expiry date automatically. It now appears in the Document Queue awaiting final sign-off.</p>
+      </div>
+    </div>
+    <div class="wizard-actions">
+      <button class="btn btn-secondary" id="docBackBtn" onclick="docWizardBack()" style="visibility:hidden"><i data-lucide="chevron-right" style="transform:rotate(180deg)"></i>Back</button>
+      <button class="btn btn-primary" id="docNextBtn" onclick="docWizardNext()">Next<i data-lucide="chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- Upgrade Modal -->
+<div class="modal" id="upgradeModal">
+  <div class="modal-box" style="text-align:center">
+    <div class="modal-head"><h2>This module needs a higher edition</h2><button class="modal-close" onclick="closeModal('upgradeModal')"><i data-lucide="x"></i></button></div>
+    <div class="locked-orb amber" style="margin:0 auto 16px"><i data-lucide="lock"></i></div>
+    <p id="upgradeModalText" style="font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:18px">This module is part of a higher edition.</p>
+    <div class="modal-footer" style="justify-content:center">
+      <button class="btn btn-secondary" onclick="closeModal('upgradeModal')">Stay on current plan</button>
+      <button class="btn btn-amber" id="upgradeModalBtn" onclick="confirmUpgrade()"><i data-lucide="arrow-up-circle"></i>Preview that edition</button>
+    </div>
+  </div>
+</div>
+
+<!-- ID Card Modal -->
+<div class="modal" id="idCardModal">
+  <div class="modal-box" style="width:min(400px,100%);background:transparent;box-shadow:none;padding:0">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:8px"><button class="modal-close" style="background:rgba(255,255,255,.15);color:#fff" onclick="closeModal('idCardModal')"><i data-lucide="x"></i></button></div>
+    <div class="id-card-modal-box">
+      <div style="position:relative;z-index:1">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px">
+          <div><div style="font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.5)">VendorOS</div><div style="font-size:11px;color:rgba(255,255,255,.6)">Digital Vendor ID</div></div>
+          <div style="width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center"><i data-lucide="shield-v" style="width:15px;height:15px;color:#fff"></i></div>
+        </div>
+        <div style="font-size:19px;font-weight:800;margin-bottom:2px">Kalahari Logistics (Pty) Ltd</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:18px">Vendor VP-00842</div>
+        <div style="width:120px;height:120px;background:#fff;border-radius:14px;margin:0 auto 18px"><div class="qr-pattern" id="qrPatternBig"></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:11px;color:rgba(255,255,255,.6);border-top:1px solid rgba(255,255,255,.15);padding-top:14px">
+          <div><div style="text-transform:uppercase;letter-spacing:.4px;font-size:9.5px;margin-bottom:2px">Valid Until</div><div style="color:#fff;font-weight:700;font-size:12.5px">14 Aug 2027</div></div>
+          <div><div style="text-transform:uppercase;letter-spacing:.4px;font-size:9.5px;margin-bottom:2px">Compliance</div><div style="color:#fff;font-weight:700;font-size:12.5px">91%</div></div>
+          <div style="grid-column:1/-1"><div style="text-transform:uppercase;letter-spacing:.4px;font-size:9.5px;margin-bottom:2px">Holder</div><div style="color:#fff;font-weight:700;font-size:12.5px">David K. &middot; Company Representative</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delivery Note Upload Modal (Warehouse) -->
+<div class="modal" id="dnModal">
+  <div class="modal-box" style="width:min(520px,100%)">
+    <div class="modal-head"><h2>Upload Delivery Note</h2><button class="modal-close" onclick="closeModal('dnModal')"><i data-lucide="x"></i></button></div>
+    <div class="form-grid">
+      <div class="field"><label>Purchase Order</label><select><option>PO-8821 — Northgate Office Supplies</option><option>PO-8817 — Phoenix Scaffolding</option><option>PO-8809 — Delta Civils &amp; Plant Hire</option></select></div>
+      <div class="field"><label>Condition</label><select><option>Good</option><option>Minor Damage</option><option>Major Damage / Reject</option></select></div>
+      <div class="field full"><label>Notes</label><textarea placeholder="e.g. All 40 units received, packaging intact"></textarea></div>
+      <div class="field full"><label>Delivery note file</label>
+        <div class="canvas-drop" style="min-height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted)" onclick="showToast('File picker is a demo stub in this prototype','folder')">
+          <i data-lucide="folder" style="width:22px;height:22px"></i>
+          <span style="font-size:12.5px;font-weight:600">Click to attach the signed delivery note</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('dnModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="closeModal('dnModal');showToast('Delivery note captured — added to the archive and routed to Inspection','check')"><i data-lucide="check"></i>Capture Delivery Note</button>
+    </div>
+  </div>
+</div>
+
+<!-- Compose Email Modal -->
+<div class="modal" id="composeEmailModal">
+  <div class="modal-box" style="width:min(520px,100%)">
+    <div class="modal-head"><h2>Compose Email</h2><button class="modal-close" onclick="closeModal('composeEmailModal')"><i data-lucide="x"></i></button></div>
+    <div class="form-grid">
+      <div class="field full"><label>To</label><input id="composeTo" placeholder="vendor@company.com"/></div>
+      <div class="field full"><label>Subject</label><input id="composeSubject" placeholder="Subject"/></div>
+      <div class="field full"><label>Message</label><textarea id="composeBody" placeholder="Write your email…"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('composeEmailModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="sendComposedEmail()"><i data-lucide="send"></i>Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- Generic Request Modal (Requests page) -->
+<div class="modal" id="requestTypeModal">
+  <div class="modal-box" style="width:min(480px,100%)">
+    <div class="modal-head"><h2 id="reqModalTitle">Submit Request</h2><button class="modal-close" onclick="closeModal('requestTypeModal')"><i data-lucide="x"></i></button></div>
+    <p style="font-size:12.5px;color:var(--muted);margin-bottom:12px">Routed to: <b id="reqModalRoute">—</b></p>
+    <div class="form-grid">
+      <div class="field full"><label>Details</label><textarea id="reqModalDetails" placeholder="Describe what you need…"></textarea></div>
+      <div class="field"><label>Priority</label><select id="reqModalPriority"><option>Normal</option><option>Urgent</option></select></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('requestTypeModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitRequestType()"><i data-lucide="check"></i>Submit Request</button>
+    </div>
+  </div>
+</div>
+
+<!-- Change Request Modal (Vendor Portal document flow) -->
+<div class="modal" id="changeReqModal">
+  <div class="modal-box" style="width:min(520px,100%)">
+    <div class="modal-head"><h2>Request Document Change</h2><button class="modal-close" onclick="closeModal('changeReqModal')"><i data-lucide="x"></i></button></div>
+    <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px">Document: <b id="changeReqDocName">—</b></p>
+    <div class="form-grid">
+      <div class="field full"><label>Reason for change</label><textarea id="changeReqReason" placeholder="e.g. Insurance certificate renewed with new expiry date"></textarea></div>
+      <div class="field full"><label>Replacement file</label>
+        <div class="canvas-drop" style="min-height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted)" onclick="showToast('File picker is a demo stub in this prototype','folder')">
+          <i data-lucide="folder" style="width:22px;height:22px"></i>
+          <span style="font-size:12.5px;font-weight:600">Click to attach a file</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('changeReqModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitChangeRequest()"><i data-lucide="check"></i>Submit Request</button>
+    </div>
+  </div>
+</div>
+
+<div class="panel-overlay" id="panelOverlay" onclick="closeAllSlidePanels()"></div>
+
+<!-- VENDOR DETAIL DRAWER (standard for every vendor list) -->
+<div class="slide-panel" id="vfDrawer">
+  <div class="sp-head"><h3 id="vfDrawerTitle"><i data-lucide="file-text" style="width:16px;height:16px;color:var(--primary)"></i>Details</h3><button class="sp-close" onclick="closeSlidePanel('vfDrawer')"><i data-lucide="x"></i></button></div>
+  <div class="sp-body" id="vfDrawerBody"></div>
+</div>
+
+<!-- NOTIFICATIONS SLIDE PANEL -->
+<div class="slide-panel" id="notifPanel">
+  <div class="sp-head"><h3><i data-lucide="bell" style="width:16px;height:16px;color:var(--primary)"></i>Notifications</h3><button class="sp-close" onclick="closeSlidePanel('notifPanel')"><i data-lucide="x"></i></button></div>
+  <div class="sp-body">
+    <div class="notif-item" onclick="showPage('reg')">
+      <div class="notif-icon crit"><i data-lucide="alert-triangle"></i></div>
+      <div><div class="notif-title">SLA Breach Risk — Phoenix Scaffolding</div><div class="notif-desc">HSE assessment score is 55% — below the approval threshold.</div><div class="notif-time">12 minutes ago</div></div>
+    </div>
+    <div class="notif-item" onclick="showPage('docs')">
+      <div class="notif-icon warn"><i data-lucide="clock"></i></div>
+      <div><div class="notif-title">Insurance certificate expiring</div><div class="notif-desc">Kalahari Logistics' Public Liability Insurance expires in 6 days.</div><div class="notif-time">1 hour ago</div></div>
+    </div>
+    <div class="notif-item" onclick="showPage('warehouse')">
+      <div class="notif-icon info"><i data-lucide="folder"></i></div>
+      <div><div class="notif-title">Delivery note captured</div><div class="notif-desc">DN-4468 from Northgate Office Supplies is ready for inspection.</div><div class="notif-time">3 hours ago</div></div>
+    </div>
+    <div class="notif-item" onclick="showPage('procurement')">
+      <div class="notif-icon success"><i data-lucide="check-circle"></i></div>
+      <div><div class="notif-title">RFQ-1039 awarded</div><div class="notif-desc">Office furniture RFQ awarded to Sable IT Networks.</div><div class="notif-time">Yesterday</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- AI COPILOT SLIDE PANEL -->
+<div class="slide-panel" id="copilotPanel">
+  <div class="sp-head">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="copilot-orb"><i data-lucide="bot"></i></div>
+      <div><h3 style="font-size:13.5px">VendorOS AI Copilot</h3><div class="copilot-status">Online &amp; ready</div></div>
+    </div>
+    <button class="sp-close" onclick="closeSlidePanel('copilotPanel')"><i data-lucide="x"></i></button>
+  </div>
+  <div class="chat-body" id="copilotChatBody" style="flex:1">
+    <div class="chat-bubble-row"><div class="chat-av">AI</div><div><div class="chat-bubble">Hi! I can summarise incidents, check vendor compliance, draft messages or pull a quick report. What do you need?</div><div class="chat-meta">Copilot · now</div></div></div>
+  </div>
+  <div class="chat-ai-row">
+    <div class="chat-ai-chip" onclick="copilotAsk('Summarise open risks')"><i data-lucide="sparkles"></i>Summarise open risks</div>
+    <div class="chat-ai-chip" onclick="copilotAsk('Which vendors are expiring soon?')"><i data-lucide="sparkles"></i>Expiring documents</div>
+  </div>
+  <div class="chat-composer">
+    <input id="copilotInput" placeholder="Ask the Copilot…" onkeydown="if(event.key==='Enter')sendCopilotMessage()"/>
+    <button class="chat-send-btn" onclick="sendCopilotMessage()"><i data-lucide="send"></i></button>
+  </div>
+</div>
+
+<div id="dmLegend" role="note" aria-label="Data source legend"><b>Data map</b><span class="dm-chip dm-ccc">CCC</span><span class="dm-chip dm-vo">VendorOS</span><span class="dm-chip dm-erp">ERP</span><span class="dm-chip dm-fos">FOS</span><span class="dm-chip dm-calc">Derived</span><span class="dm-chip dm-new">NEW: not in DB</span><span class="dm-dots"><i class="dm-dot ok"></i>menu exists <i class="dm-dot partial"></i>partial <i class="dm-dot new"></i>to build</span></div>
+<nav id="bottomNav" aria-label="Primary"></nav>
+<div id="toast"></div>
+

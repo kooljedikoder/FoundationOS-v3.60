@@ -1,0 +1,36 @@
+<div class="page" id="page-plusprocure">
+        <div class="page-header"><div><div class="page-title">VendorOS PLUS — Enterprise Procurement Hub</div><div class="page-sub">A complete standalone Source-to-Pay platform, beyond the standard Procurement Workspace: demand planning, sourcing, supplier collaboration and ERP-grade analytics.</div></div></div>
+        <div class="kpis kpis-4">
+          <div class="kpi accent-purple"><div class="kpi-label">Sourcing Events (open)</div><div class="kpi-val">9</div></div>
+          <div class="kpi accent-green"><div class="kpi-label">Savings Realized (YTD)</div><div class="kpi-val">₦210m</div></div>
+          <div class="kpi accent-blue"><div class="kpi-label">Demand Plan Accuracy</div><div class="kpi-val">89%</div></div>
+          <div class="kpi accent-orange"><div class="kpi-label">Suppliers in Collaboration</div><div class="kpi-val">64</div></div>
+        </div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'pp-demand')">Demand Planning</div>
+          <div class="tab" onclick="switchTab(this,'pp-sourcing')">Sourcing Events</div>
+          <div class="tab" onclick="switchTab(this,'pp-collab')">Supplier Collaboration</div>
+          <div class="tab" onclick="switchTab(this,'pp-analytics')">Analytics</div>
+        </div>
+        <div class="tab-panel active" id="pp-demand">
+          <div class="table-wrap"><table><thead><tr><th>Category</th><th>Forecast Demand</th><th>Current Coverage</th><th>Action</th></tr></thead><tbody>
+            <tr><td>Fleet Tyres</td><td>1,200 units / qtr</td><td>78%</td><td><span class="badge badge-orange">Raise RFQ</span></td></tr>
+            <tr><td>Office Consumables</td><td>₦34m / qtr</td><td>96%</td><td><span class="badge badge-green">On Track</span></td></tr>
+          </tbody></table></div>
+        </div>
+        <div class="tab-panel" id="pp-sourcing">
+          <div class="table-wrap"><table><thead><tr><th>Event</th><th>Type</th><th>Suppliers</th><th>Est. Value</th><th>Status</th></tr></thead><tbody>
+            <tr><td>SRC-4021</td><td>Reverse Auction</td><td>8</td><td>₦320m</td><td><span class="badge badge-blue">Live</span></td></tr>
+            <tr><td>SRC-4018</td><td>RFP</td><td>5</td><td>₦89m</td><td><span class="badge badge-green">Awarded</span></td></tr>
+          </tbody></table></div>
+        </div>
+        <div class="tab-panel" id="pp-collab">
+          <div class="empty-state" style="border:1px dashed var(--border);border-radius:var(--radius-lg)"><i data-lucide="users"></i><p>Two-way supplier collaboration portal — shared forecasts, capacity commitments and joint improvement plans render here.</p></div>
+        </div>
+        <div class="tab-panel" id="pp-analytics">
+          <div class="empty-state" style="border:1px dashed var(--border);border-radius:var(--radius-lg)"><i data-lucide="bar-chart-3"></i><p>Spend-under-management, savings pipeline and category analytics dashboards render here, fed by the Integration Hub.</p></div>
+        </div>
+      </div>
+
+      <!-- DYNAMIC BUILDER -->
+      

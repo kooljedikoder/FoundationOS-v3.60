@@ -1,0 +1,125 @@
+<div class="page active" id="page-dashboard">
+        <div class="page-breadcrumb"><i data-lucide="home"></i><span>Home</span><i data-lucide="chevron-right"></i><span>Dashboard</span></div>
+        <div class="hero">
+          <div class="hero-content">
+            <div class="hero-eyebrow">Supplier Lifecycle Management</div>
+            <h1 id="heroTitle">Welcome to <span>VendorOS</span></h1>
+            <p class="hero-sub" id="heroSub">One platform, multiple editions, unlimited growth. Onboard, assess, procure, pay and manage every supplier relationship from a single workspace.</p>
+            <div class="hero-actions" id="heroActionsInternal">
+              <button class="btn btn-primary" onclick="wizardReset();openModal('vendorModal')"><i data-lucide="user-plus"></i>New Vendor</button>
+              <button class="btn btn-ghost" onclick="showPage('procurement')"><i data-lucide="shopping-cart"></i>New RFQ</button>
+              <button class="btn btn-ghost" onclick="showProductMatrix()"><i data-lucide="layers"></i>View Product Matrix</button>
+              <button class="btn btn-ghost" onclick="showPage('ccc')"><i data-lucide="contact"></i>Contact Control Center</button>
+              <button class="btn btn-ghost" onclick="showPage('role-guide')"><i data-lucide="users"></i>Role &amp; Menu Guide</button>
+              <button class="btn btn-ghost" onclick="showPage('editions')"><i data-lucide="layers"></i>Compare Editions</button>
+              <button class="btn btn-ghost" onclick="showImplementationMap()"><i data-lucide="list-checks"></i>What Exists &amp; Needs Work</button>
+            </div>
+            <div class="hero-actions hidden" id="heroActionsVendor">
+              <button class="btn btn-primary" onclick="showPage('mydocuments')"><i data-lucide="folder"></i>Documents</button>
+              <button class="btn btn-ghost" onclick="showPage('myrfqpo')"><i data-lucide="shopping-cart"></i>Orders &amp; RFQs</button>
+              <button class="btn btn-ghost" onclick="showPage('requests')"><i data-lucide="clipboard-check"></i>Requests</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="edition-strip" id="editionStripSection">
+          <div class="edition-strip-icon"><i data-lucide="layers"></i></div>
+          <div class="edition-strip-body">
+            <div class="edition-strip-title">You're previewing the <b id="editionStripName">CORE</b> edition — <span id="editionStripCount">18 of 20</span> modules unlocked</div>
+            <div class="edition-strip-sub" id="editionStripSub">Upgrade to PLUS to unlock the Enterprise Procurement Hub and multi-entity licensing controls.</div>
+          </div>
+          <div class="edition-bar"><div class="edition-bar-fill" id="editionBarFill" style="width:90%"></div></div>
+          <button class="btn btn-amber btn-sm" id="editionStripBtn" onclick="setEdition('plus')"><i data-lucide="arrow-up-circle"></i>Upgrade</button>
+        </div>
+
+        <div class="kpis" id="internalKpis">
+          <div class="kpi accent-purple"><div class="kpi-label"><i data-lucide="building-2"></i>Active Vendors</div><div class="kpi-val">428</div></div>
+          <div class="kpi accent-orange"><div class="kpi-label"><i data-lucide="clock"></i>Pending Approvals</div><div class="kpi-val">34</div></div>
+          <div class="kpi accent-green"><div class="kpi-label"><i data-lucide="check-circle"></i>Avg. Compliance Score</div><div class="kpi-val">91%</div></div>
+          <div class="kpi accent-blue"><div class="kpi-label"><i data-lucide="shopping-cart"></i>Open Purchase Orders</div><div class="kpi-val">156</div></div>
+          <div class="kpi accent-red"><div class="kpi-label"><i data-lucide="file-text"></i>Contracts Expiring (30d)</div><div class="kpi-val">12</div></div>
+          <div class="kpi accent-purple"><div class="kpi-label"><i data-lucide="bot"></i>AI Suggestions</div><div class="kpi-val">9</div></div>
+        </div>
+
+        <div class="kpis hidden" id="vendorKpis">
+          <div class="kpi accent-blue"><div class="kpi-label"><i data-lucide="folder"></i>My Documents</div><div class="kpi-val" id="vkDocs">6/15 Verified</div></div>
+          <div class="kpi accent-orange"><div class="kpi-label"><i data-lucide="banknote"></i>Outstanding Invoices</div><div class="kpi-val">₦6,240,000</div></div>
+          <div class="kpi accent-purple"><div class="kpi-label"><i data-lucide="shopping-cart"></i>Open RFQs</div><div class="kpi-val">2</div></div>
+          <div class="kpi accent-green"><div class="kpi-label"><i data-lucide="graduation-cap"></i>HSE Compliance</div><div class="kpi-val">92%</div></div>
+          <div class="kpi accent-red"><div class="kpi-label"><i data-lucide="alert-triangle"></i>Certificate Expiring</div><div class="kpi-val">6 days</div></div>
+          <div class="kpi accent-blue"><div class="kpi-label"><i data-lucide="message-square"></i>Unread Messages</div><div class="kpi-val">1</div></div>
+        </div>
+        <div class="panel vf-journey hidden" id="vendorJourney">
+          <h3><i data-lucide="route"></i>Your onboarding journey</h3>
+          <div class="stepper">
+            <div class="step done"><div class="step-dot"><i data-lucide="check" style="width:14px;height:14px"></i></div><div class="step-label">Invited &amp; account<small>Stages 1–4</small></div></div><div class="step-connector"></div>
+            <div class="step done"><div class="step-dot"><i data-lucide="check" style="width:14px;height:14px"></i></div><div class="step-label">Registration<small>Stages 5–18</small></div></div><div class="step-connector"></div>
+            <div class="step done"><div class="step-dot"><i data-lucide="check" style="width:14px;height:14px"></i></div><div class="step-label">Verification<small>Stages 19–22</small></div></div><div class="step-connector"></div>
+            <div class="step done"><div class="step-dot"><i data-lucide="check" style="width:14px;height:14px"></i></div><div class="step-label">Reviews &amp; approval<small>Stages 23–34</small></div></div><div class="step-connector"></div>
+            <div class="step done"><div class="step-dot"><i data-lucide="check" style="width:14px;height:14px"></i></div><div class="step-label">Passport &amp; activation<small>Stages 35–38</small></div></div><div class="step-connector"></div>
+            <div class="step current"><div class="step-dot">6</div><div class="step-label">RFQ to payment<small>Stages 39–43</small></div></div><div class="step-connector"></div>
+            <div class="step"><div class="step-dot">7</div><div class="step-label">Performance &amp; renewal<small>Stages 44–45</small></div></div>
+          </div>
+          <p style="font-size:12.5px;color:var(--muted)">You can edit anything up to stage 18. From stage 19 your documents and details are read-only while the buyer reviews them; use <b>Requests</b> to ask for a change.</p>
+        </div>
+
+        <div id="moduleGridSection">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:14px;letter-spacing:-.02em">Modules — grouped by edition</h3>
+        <div class="modules" id="moduleGrid"></div>
+        </div>
+
+        <div class="dash-grid" id="internalDashGrid">
+          <div class="panel">
+            <h3><i data-lucide="alert-circle"></i>Vendors Needing Attention</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Vendor</th><th>Issue</th><th>Score</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><b>Kalahari Logistics (Pty) Ltd</b></td><td>Insurance certificate expires in 6 days</td><td>88%</td><td><span class="badge badge-orange">Action Needed</span></td></tr>
+                  <tr><td><b>Delta Civils &amp; Plant Hire</b></td><td>HSE induction not yet completed</td><td>71%</td><td><span class="badge badge-red">Blocked</span></td></tr>
+                  <tr><td><b>Northgate Office Supplies</b></td><td>Bank verification pending</td><td>94%</td><td><span class="badge badge-blue">In Review</span></td></tr>
+                  <tr><td><b>Tswana IT Solutions</b></td><td>Tax clearance renewal due</td><td>90%</td><td><span class="badge badge-orange">Action Needed</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <h3><i data-lucide="activity"></i>Recent Activity</h3>
+            <div class="timeline">
+              <div class="tl-item"><div class="tl-dot"><i data-lucide="badge-check"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">09:40 AM</div><div class="tl-text"><b>Kalahari Logistics</b> approved as vendor — Passport VP-00842 issued</div><div class="tl-meta">Vendor Registration</div></div></div>
+              <div class="tl-item"><div class="tl-dot"><i data-lucide="shield-check"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">09:12 AM</div><div class="tl-text"><b>Delta Civils</b> failed HSE induction assessment (62%)</div><div class="tl-meta">HSE Centre</div></div></div>
+              <div class="tl-item"><div class="tl-dot"><i data-lucide="file-text"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">08:55 AM</div><div class="tl-text">Contract CTR-2291 renewed with <b>Tswana IT Solutions</b></div><div class="tl-meta">Contract Lifecycle</div></div></div>
+              <div class="tl-item"><div class="tl-dot"><i data-lucide="bot"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">08:20 AM</div><div class="tl-text">AI Copilot flagged 3 duplicate vendor records for review</div><div class="tl-meta">AI Copilot</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-grid hidden" id="vendorDashGrid">
+          <div class="panel">
+            <h3><i data-lucide="alert-circle"></i>My Action Items</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Item</th><th>Detail</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><b>Insurance Certificate</b></td><td>Expires in 6 days — upload renewal</td><td><span class="badge badge-orange">Action Needed</span></td></tr>
+                  <tr><td><b>Invoice INV-55040</b></td><td>Awaiting payment from Finance</td><td><span class="badge badge-blue">In Review</span></td></tr>
+                  <tr><td><b>RFQ-1042</b></td><td>Quotation due in 3 days</td><td><span class="badge badge-orange">Action Needed</span></td></tr>
+                  <tr><td><b>Working at Heights Cert</b></td><td>Expired — retraining required</td><td><span class="badge badge-red">Blocked</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <h3><i data-lucide="activity"></i>My Recent Activity</h3>
+            <div class="timeline">
+              <div class="tl-item"><div class="tl-dot"><i data-lucide="badge-check"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">Today</div><div class="tl-text">Delivery note <b>DN-4471</b> signed off for PO-8815</div><div class="tl-meta">Deliveries</div></div></div>
+              <div class="tl-item"><div class="tl-dot"><i data-lucide="mail"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">1 hour ago</div><div class="tl-text">Invoice <b>INV-55040</b> submitted for PO-8821</div><div class="tl-meta">Invoices</div></div></div>
+              <div class="tl-item"><div class="tl-dot"><i data-lucide="message-square"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">Today</div><div class="tl-text">New message from <b>Lesego K. (Compliance)</b></div><div class="tl-meta">Communications</div></div></div>
+              <div class="tl-item"><div class="tl-dot"><i data-lucide="graduation-cap"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">Yesterday</div><div class="tl-text">Working at Heights certificate marked expired</div><div class="tl-meta">HSE Training</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROLE DASHBOARDS & MENU GUIDE -->
+      

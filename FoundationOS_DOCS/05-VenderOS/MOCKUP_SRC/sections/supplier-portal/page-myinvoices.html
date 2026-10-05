@@ -1,0 +1,20 @@
+<div class="page" id="page-myinvoices">
+        <div class="page-header"><div><div class="page-title">Invoices &amp; Payments</div><div class="page-sub">Invoices are matched to your Purchase Orders and paid by VendorOS Finance according to agreed terms.</div></div><button class="btn btn-primary btn-create" onclick="vfNewRequest('Invoice')"><i data-lucide="plus"></i>Submit Invoice</button></div>
+        <div class="kpis kpis-4">
+          <div class="kpi accent-purple"><div class="kpi-label">Outstanding</div><div class="kpi-val">₦6,240,000</div></div>
+          <div class="kpi accent-green"><div class="kpi-label">Paid (30d)</div><div class="kpi-val">₦21,000,000</div></div>
+          <div class="kpi accent-orange"><div class="kpi-label">Due This Week</div><div class="kpi-val">1</div></div>
+          <div class="kpi accent-blue"><div class="kpi-label">Avg. Payment Days</div><div class="kpi-val">28</div></div>
+        </div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'inv-all')">All</div>
+          <div class="tab" onclick="switchTab(this,'inv-outstanding')">Outstanding</div>
+          <div class="tab" onclick="switchTab(this,'inv-paid')">Paid</div>
+        </div>
+        <div class="tab-panel active" id="inv-all"><div class="table-wrap" data-vf="invoice"></div></div>
+        <div class="tab-panel" id="inv-outstanding"><div class="table-wrap" data-vf="invoice" data-grp="outstanding"></div></div>
+        <div class="tab-panel" id="inv-paid"><div class="table-wrap" data-vf="invoice" data-grp="paid"></div></div>
+      </div>
+
+      <!-- ORDERS & RFQs -->
+      

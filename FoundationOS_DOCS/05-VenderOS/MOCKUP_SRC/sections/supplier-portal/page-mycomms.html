@@ -1,0 +1,46 @@
+<div class="page" id="page-mycomms">
+        <div class="page-header"><div><div class="page-title">Communications</div><div class="page-sub">Direct messages, announcements and alerts from VendorOS staff.</div></div><button class="btn btn-primary btn-create" onclick="document.getElementById('chatInput').focus()"><i data-lucide="plus"></i>New Message</button></div>
+        <div class="kpis kpis-4">
+          <div class="kpi accent-purple"><div class="kpi-label">Unread</div><div class="kpi-val">1</div></div>
+          <div class="kpi accent-blue"><div class="kpi-label">Active Threads</div><div class="kpi-val">1</div></div>
+          <div class="kpi accent-orange"><div class="kpi-label">Announcements</div><div class="kpi-val">2</div></div>
+          <div class="kpi accent-red"><div class="kpi-label">Alerts</div><div class="kpi-val">1</div></div>
+        </div>
+        <div class="panel" style="background:linear-gradient(135deg,var(--p50),var(--surface));border-color:var(--p200)">
+          <h3><i data-lucide="sparkles" style="color:var(--primary)"></i>AI Summary</h3>
+          <p style="font-size:13px;color:var(--text-2);line-height:1.7">Compliance is waiting on your insurance certificate renewal — that's the one item needing action. Everything else (HSE policy update, portal maintenance notice) is informational only.</p>
+        </div>
+        <div class="chat-shell">
+          <div class="chat-subtabs">
+            <div class="chat-subtab active" onclick="setCommsChannel('dm',this)"><i data-lucide="message-square" style="width:13px;height:13px"></i>Direct Messages</div>
+            <div class="chat-subtab" onclick="setCommsChannel('news',this)"><i data-lucide="bell" style="width:13px;height:13px"></i>Announcements<span class="badge badge-blue">2</span></div>
+            <div class="chat-subtab" onclick="setCommsChannel('alerts',this)"><i data-lucide="alert-triangle" style="width:13px;height:13px"></i>Alerts<span class="badge badge-orange">1</span></div>
+          </div>
+          <div id="commsChannelDm" style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+            <div class="chat-body" id="chatBody">
+              <div class="chat-bubble-row"><div class="chat-av">LK</div><div><div class="chat-bubble">Hi David — just checking in on the Public Liability Insurance renewal. Any update from your broker?</div><div class="chat-meta">Lesego K. · Compliance · 09:12</div></div></div>
+              <div class="chat-bubble-row me"><div class="chat-av">DK</div><div><div class="chat-bubble">We've requested the updated certificate — expect it within 48 hours.</div><div class="chat-meta">You · 09:20</div></div></div>
+              <div class="chat-bubble-row"><div class="chat-av">LK</div><div><div class="chat-bubble">Thanks — flagging your account so procurement holds any new PO until it's received.</div><div class="chat-meta">Lesego K. · Compliance · 09:21</div></div></div>
+            </div>
+            <div class="chat-ai-row">
+              <span style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.3px;align-self:center">AI Suggests</span>
+              <div class="chat-ai-chip" onclick="fillChatInput('Certificate uploaded — please confirm receipt.')"><i data-lucide="sparkles"></i>Certificate uploaded — please confirm</div>
+              <div class="chat-ai-chip" onclick="fillChatInput('Can you give me an update on the RFQ evaluation timeline?')"><i data-lucide="sparkles"></i>Ask about RFQ timeline</div>
+            </div>
+            <div class="chat-composer">
+              <input id="chatInput" placeholder="Write a message…" onkeydown="if(event.key==='Enter')sendChatMessage()"/>
+              <button class="chat-send-btn" onclick="sendChatMessage()"><i data-lucide="send"></i></button>
+            </div>
+          </div>
+          <div id="commsChannelNews" class="hidden" style="flex:1;overflow-y:auto;padding:16px">
+            <div class="announce-card"><div class="announce-icon"><i data-lucide="bell"></i></div><div><div style="font-size:13px;font-weight:700;margin-bottom:3px">New HSE policy effective 1 September</div><div style="font-size:12px;color:var(--text-2)">All site visitors must complete the updated Working at Heights refresher before that date.</div><div class="chat-meta">2 days ago</div></div></div>
+            <div class="announce-card"><div class="announce-icon"><i data-lucide="bell"></i></div><div><div style="font-size:13px;font-weight:700;margin-bottom:3px">Vendor Portal maintenance — Saturday 11pm–1am</div><div style="font-size:12px;color:var(--text-2)">Brief downtime expected. Any in-progress RFQ drafts are auto-saved.</div><div class="chat-meta">5 days ago</div></div></div>
+          </div>
+          <div id="commsChannelAlerts" class="hidden" style="flex:1;overflow-y:auto;padding:16px">
+            <div class="announce-card"><div class="announce-icon" style="background:var(--warning-bg)"><i data-lucide="alert-triangle" style="color:var(--warning)"></i></div><div><div style="font-size:13px;font-weight:700;margin-bottom:3px">Insurance certificate expires in 6 days</div><div style="font-size:12px;color:var(--text-2)">Upload a renewed certificate to avoid a hold on new Purchase Orders.</div><div class="chat-meta">Today</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INVOICES & PAYMENTS -->
+      

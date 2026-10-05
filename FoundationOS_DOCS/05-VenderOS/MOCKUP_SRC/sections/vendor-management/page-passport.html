@@ -1,0 +1,115 @@
+<div class="page" id="page-passport">
+        <div class="page-breadcrumb"><i data-lucide="home"></i><span>Home</span><i data-lucide="chevron-right"></i><span>Vendor Management</span><i data-lucide="chevron-right"></i><span>Vendor Passport 360</span></div>
+        <div class="page-header">
+          <div><div class="page-title">Kalahari Logistics (Pty) Ltd</div><div class="page-sub">Vendor Passport VP-00842 — the supplier's permanent digital identity across every workspace</div></div>
+          <div class="page-actions"><span class="badge badge-green">Approved Vendor</span><span class="badge badge-blue">Compliance 91%</span></div>
+        </div>
+        <div class="edition-note"><i data-lucide="badge-check"></i>The Vendor Passport is always the full 360° record on every edition — FLEX never trims what a vendor's own profile shows.</div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'vp-overview')">Overview</div>
+          <div class="tab" onclick="switchTab(this,'vp-docs')">Documents</div>
+          <div class="tab" onclick="switchTab(this,'vp-perf')">Performance</div>
+          <div class="tab" onclick="switchTab(this,'vp-contracts')">Contracts</div>
+          <div class="tab" onclick="switchTab(this,'vp-staff')">Staff Access</div>
+          <div class="tab" onclick="switchTab(this,'vp-comms')">Communications</div>
+          <div class="tab" onclick="switchTab(this,'vp-timeline')">Timeline &amp; Activity Log</div>
+        </div>
+        <div class="tab-panel active" id="vp-overview">
+          <div class="kpis kpis-4">
+            <div class="kpi accent-green"><div class="kpi-label">Performance Score</div><div class="kpi-val">88%</div></div>
+            <div class="kpi accent-blue"><div class="kpi-label">Compliance Score</div><div class="kpi-val">91%</div></div>
+            <div class="kpi accent-orange"><div class="kpi-label">Risk Score</div><div class="kpi-val">Low</div></div>
+            <div class="kpi accent-purple"><div class="kpi-label">Active Contracts</div><div class="kpi-val">3</div></div>
+          </div>
+          <div class="panel"><h3><i data-lucide="building-2"></i>Company Snapshot</h3><p style="font-size:13.5px;color:var(--text-2);line-height:1.7">Category: Transport &amp; Logistics · Registered: Lagos, Nigeria · Onboarded: 14 months ago · Primary contact: Kagiso Molefe (Operations Director) · Bank verified · Tax clearance current.</p></div>
+
+          <div class="panel">
+            <h3><i data-lucide="badge-check"></i>Digital Vendor Card</h3>
+            <div style="background:linear-gradient(135deg,var(--nav-bg) 0%,var(--nav-bg2) 60%,var(--primary-dark) 100%);border-radius:var(--radius-lg);padding:22px 26px;color:#fff;display:flex;gap:20px;align-items:center;flex-wrap:wrap;position:relative;overflow:hidden">
+              <div style="position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)"></div>
+              <div style="width:56px;height:56px;border-radius:12px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1"><i data-lucide="badge-check" style="width:28px;height:28px;color:#fff"></i></div>
+              <div style="flex:1;min-width:220px;position:relative;z-index:1">
+                <div style="font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.55)">Digital Vendor Card</div>
+                <div style="font-size:17px;font-weight:800;margin-top:2px">Kalahari Logistics (Pty) Ltd</div>
+                <div style="font-size:12.5px;color:rgba(255,255,255,.75);margin-top:4px">Vendor VP-00842 &middot; Valid until 14 Aug 2027 &middot; Compliance 91%</div>
+                <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:6px" id="vendorCardHolder">Signed in as <b style="color:#fff">David K.</b> &middot; Company Representative &middot; +267 71 234 567</div>
+              </div>
+              <div style="width:68px;height:68px;background:#fff;border-radius:10px;flex-shrink:0;position:relative;z-index:1;cursor:pointer" data-tip="Click to view full ID card" onclick="openIdCardModal()"><div class="qr-pattern" id="qrPatternMini"></div></div>
+            </div>
+
+            <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+              <button class="btn btn-secondary btn-sm" onclick="openIdCardModal()"><i data-lucide="eye"></i>View ID Card</button>
+              <button class="btn btn-secondary btn-sm" onclick="crudAction('edit','Vendor Passport VP-00842')"><i data-lucide="edit-2"></i>Edit Passport Details</button>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:14px">
+              <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <span style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px">Viewing As</span>
+                <div class="fm-view-toggle" id="vendorViewerToggle">
+                  <button class="fm-view-btn active" onclick="setVendorViewer('staff',this)"><i data-lucide="users"></i>Staff Member</button>
+                  <button class="fm-view-btn" onclick="setVendorViewer('ceo',this)"><i data-lucide="badge-check"></i>CEO / Primary Contact</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="edition-note" style="margin-top:12px"><i data-lucide="info"></i>More than one staff member can hold a login for this vendor. Only the <b>CEO / primary contact</b> has visibility into every RFQ, invoice and document, and can request or remove a Vendor Passport — other staff see only what they're assigned to.</div>
+
+            <div id="ceoActions" class="hidden" style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+              <button class="btn btn-primary btn-sm" onclick="requestNewPassport()"><i data-lucide="plus"></i>Request New Passport</button>
+              <button class="btn btn-danger btn-sm" onclick="removePassport()"><i data-lucide="alert-circle"></i>Remove Passport</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3><i data-lucide="activity"></i>Passport Usage History</h3>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Every time this vendor's QR code is scanned or the passport is verified, it's logged here.</p>
+            <div class="table-wrap"><table><thead><tr><th>Date</th><th>Action</th><th>Location / By</th><th>Result</th></tr></thead><tbody>
+              <tr><td>Today, 08:12</td><td>QR Scan — Site Access</td><td>Lagos Warehouse Gate</td><td><span class="badge badge-green">Verified</span></td></tr>
+              <tr><td>Yesterday, 14:30</td><td>Passport Viewed</td><td>Thabo M. (Vendor Admin)</td><td><span class="badge badge-blue">Viewed</span></td></tr>
+              <tr><td>3 days ago</td><td>QR Scan — Delivery Sign-off</td><td>Warona W. (Warehouse)</td><td><span class="badge badge-green">Verified</span></td></tr>
+              <tr><td>2 weeks ago</td><td>Passport Reissued</td><td>System — Annual Revalidation</td><td><span class="badge badge-grey">Completed</span></td></tr>
+            </tbody></table></div>
+          </div>
+        </div>
+        <div class="tab-panel" id="vp-docs">
+          <div class="table-wrap"><table><thead><tr><th>Document</th><th>Type</th><th>Expiry</th><th>Status</th></tr></thead><tbody>
+            <tr><td>Certificate of Incorporation</td><td>Statutory</td><td>—</td><td><span class="badge badge-green">Verified</span></td></tr>
+            <tr><td>Public Liability Insurance</td><td>Insurance</td><td>In 6 days</td><td><span class="badge badge-orange">Expiring</span></td></tr>
+            <tr><td>Tax Clearance Certificate</td><td>Compliance</td><td>4 months</td><td><span class="badge badge-green">Verified</span></td></tr>
+          </tbody></table></div>
+        </div>
+        <div class="tab-panel" id="vp-perf">
+          <div class="empty-state"><i data-lucide="line-chart"></i><p>Delivery, quality and SLA scorecards for this vendor will render here once a KPI period is closed.</p></div>
+        </div>
+        <div class="tab-panel" id="vp-contracts">
+          <div class="table-wrap"><table><thead><tr><th>Contract</th><th>Value</th><th>Renewal</th><th>Status</th></tr></thead><tbody>
+            <tr><td>CTR-2201 — Freight Services SLA</td><td>₦120m / yr</td><td>8 months</td><td><span class="badge badge-green">Active</span></td></tr>
+            <tr><td>CTR-2287 — Warehousing Agreement</td><td>₦48m / yr</td><td>2 months</td><td><span class="badge badge-orange">Renewal Due</span></td></tr>
+          </tbody></table></div>
+        </div>
+        <div class="tab-panel" id="vp-staff">
+          <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Staff members holding a login for this vendor. Only the CEO / primary contact can approve new access or revoke it.</p>
+          <div class="fm-toolbar">
+            <span style="font-size:12px;color:var(--muted);font-weight:600">3 staff logins</span>
+            <div class="fm-view-toggle">
+              <button class="fm-view-btn active" onclick="setStaffView('list',this)"><i data-lucide="list"></i>List</button>
+              <button class="fm-view-btn" onclick="setStaffView('cards',this)"><i data-lucide="grid-2x2"></i>Cards</button>
+            </div>
+          </div>
+          <div id="staffListView"><div class="table-wrap"><table><thead><tr><th>Name</th><th>Title</th><th>Access Level</th><th>Status</th><th class="actions-col">Action</th></tr></thead><tbody id="staffListBody">
+            <tr data-staff="s1"><td>David K.</td><td>Company Representative</td><td>Standard</td><td><span class="badge badge-green">Active</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="revokeStaffAccess(this,'David K.')">Revoke</button></td></tr>
+            <tr data-staff="s2"><td>Kagiso Molefe</td><td>Operations Director (CEO)</td><td>Full — Primary Contact</td><td><span class="badge badge-green">Active</span></td><td class="actions-col"><span class="badge badge-grey">Primary Contact</span></td></tr>
+            <tr data-staff="s3"><td>Palesa N.</td><td>Accounts Clerk</td><td>Invoices Only</td><td><span class="badge badge-blue">Pending Approval</span></td><td class="actions-col"><button class="btn btn-primary btn-sm" onclick="approveStaffAccess(this,'Palesa N.')">Approve</button></td></tr>
+          </tbody></table></div></div>
+          <div id="staffCardsView" class="fm-grid hidden">
+            <div class="fm-card"><div class="fm-card-icon"><i data-lucide="user-plus"></i></div><div class="fm-card-name">David K.</div><div class="fm-card-meta">Company Representative &middot; <span class="badge badge-green">Active</span></div><button class="btn btn-secondary btn-sm" onclick="revokeStaffAccess(this,'David K.')">Revoke</button></div>
+            <div class="fm-card"><div class="fm-card-icon"><i data-lucide="badge-check"></i></div><div class="fm-card-name">Kagiso Molefe</div><div class="fm-card-meta">Operations Director (CEO) &middot; <span class="badge badge-green">Active</span></div><span class="badge badge-grey">Primary Contact</span></div>
+            <div class="fm-card"><div class="fm-card-icon"><i data-lucide="banknote"></i></div><div class="fm-card-name">Palesa N.</div><div class="fm-card-meta">Accounts Clerk &middot; <span class="badge badge-blue">Pending Approval</span></div><button class="btn btn-primary btn-sm" onclick="approveStaffAccess(this,'Palesa N.')">Approve</button></div>
+          </div>
+        </div>
+        <div class="tab-panel" id="vp-comms"><div class="table-wrap" data-vf="vthreads"></div></div>
+        <div class="tab-panel" id="vp-timeline"><div class="table-wrap" data-vf="timeline"></div></div>
+      </div>
+
+      <!-- DOCUMENT MANAGEMENT -->
+      

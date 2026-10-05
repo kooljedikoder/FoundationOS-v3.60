@@ -1,0 +1,20 @@
+<div class="page" id="page-approval">
+        <div class="page-breadcrumb"><i data-lucide="home"></i><span>Home</span><i data-lucide="chevron-right"></i><span>Registration &amp; Onboarding</span><i data-lucide="chevron-right"></i><span>Approval</span></div>
+        <div class="page-header"><div><div class="page-title">Approval</div><div class="page-sub">Review decisions and final management approval (J01 stages 23-34). A reject or request-for-information needs written findings.</div></div></div>
+        <div class="kpis kpis-4">
+          <div class="kpi accent-orange"><div class="kpi-label">Awaiting my decision</div><div class="kpi-val">4</div></div>
+          <div class="kpi accent-red"><div class="kpi-label">Overdue</div><div class="kpi-val">1</div></div>
+          <div class="kpi accent-green"><div class="kpi-label">Approved this month</div><div class="kpi-val">9</div></div>
+          <div class="kpi accent-blue"><div class="kpi-label">Avg. days to approve</div><div class="kpi-val">6.5</div></div>
+        </div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'ap-queue')">Queue</div>
+          <div class="tab" onclick="switchTab(this,'ap-chain')">Approval chain</div>
+          <div class="tab" onclick="switchTab(this,'ap-history')">History &amp; audit</div>
+        </div>
+        <div class="tab-panel active" id="ap-queue"><div class="table-wrap" data-vf="approval"></div></div>
+        <div class="tab-panel" id="ap-chain"><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Reviews run sequentially or in parallel; management approval opens only when every required review is decided. ESG and risk reviews apply in CORE.</p><div class="table-wrap" data-vf="chain"></div></div>
+        <div class="tab-panel" id="ap-history"><div class="table-wrap" data-vf="history"></div></div>
+      </div>
+
+      

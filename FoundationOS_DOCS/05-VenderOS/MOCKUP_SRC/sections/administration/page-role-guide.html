@@ -1,0 +1,75 @@
+<div class="page" id="page-role-guide">
+        <div class="page-header">
+          <div><div class="page-title">Role Dashboards &amp; Menu Guide</div><div class="page-sub">A full-version reference for who sees each workspace and which operating metrics belong on their dashboard.</div></div>
+          <div class="page-actions"><button class="btn btn-secondary btn-sm" onclick="showProductMatrix()"><i data-lucide="layers"></i>View Product Matrix</button></div>
+        </div>
+        <div class="edition-note"><i data-lucide="shield-check"></i>Menu visibility is role-based. Super Admin configures the platform; staff see assigned workspaces; vendors see only their own supplier account.</div>
+        <div class="tabs" role="tablist" aria-label="Role dashboards">
+          <button class="tab active" type="button" role="tab" onclick="switchTab(this,'role-superadmin')">Super Admin</button>
+          <button class="tab" type="button" role="tab" onclick="switchTab(this,'role-useradmin')">User Admin</button>
+          <button class="tab" type="button" role="tab" onclick="switchTab(this,'role-executive')">Executive</button>
+          <button class="tab" type="button" role="tab" onclick="switchTab(this,'role-vendoradmin')">Vendor Admin</button>
+          <button class="tab" type="button" role="tab" onclick="switchTab(this,'role-procurement')">Procurement</button>
+          <button class="tab" type="button" role="tab" onclick="switchTab(this,'role-finance')">Finance</button>
+          <button class="tab" type="button" role="tab" onclick="switchTab(this,'role-audit')">Audit</button>
+          <button class="tab" type="button" role="tab" onclick="switchTab(this,'role-warehouse')">Warehouse</button>
+          <button class="tab" type="button" role="tab" onclick="switchTab(this,'role-vendorportal')">Vendor Portal</button>
+        </div>
+
+        <div class="tab-panel active" id="role-superadmin">
+          <div class="page-header"><div><div class="page-title" style="font-size:17px">Super Admin Dashboard</div><div class="page-sub">Platform health, organization access, security and every enabled workspace.</div></div><button class="btn btn-primary btn-sm" onclick="switchRole('superadmin',document.querySelector('.role-item[data-role=superadmin]'))">Preview Super Admin</button></div>
+          <div class="kpis"><div class="kpi accent-green"><div class="kpi-label">Platform Uptime</div><div class="kpi-val">99.98%</div></div><div class="kpi accent-blue"><div class="kpi-label">Organizations</div><div class="kpi-val">12</div></div><div class="kpi accent-purple"><div class="kpi-label">Active Users</div><div class="kpi-val">1,248</div></div><div class="kpi accent-red"><div class="kpi-label">Security Alerts</div><div class="kpi-val">3</div></div></div>
+          <div class="panel"><h3><i data-lucide="shield"></i>Menu Scope</h3><p>Dashboard · Vendor Management · HSE &amp; Risk · Procurement &amp; Contracts · Finance &amp; Performance · Collaboration · Automation &amp; Platform · Administration · Editions</p></div>
+        </div>
+
+        <div class="tab-panel" id="role-useradmin">
+          <div class="page-header"><div><div class="page-title" style="font-size:17px">User Admin Dashboard</div><div class="page-sub">Identity lifecycle, invitations, role assignment and access reviews.</div></div><button class="btn btn-primary btn-sm" onclick="switchRole('useradmin',document.querySelector('.role-item[data-role=useradmin]'))">Preview User Admin</button></div>
+          <div class="kpis"><div class="kpi accent-blue"><div class="kpi-label">Active Users</div><div class="kpi-val">1,248</div></div><div class="kpi accent-orange"><div class="kpi-label">Invitations Pending</div><div class="kpi-val">18</div></div><div class="kpi accent-red"><div class="kpi-label">Access Reviews Due</div><div class="kpi-val">7</div></div><div class="kpi accent-purple"><div class="kpi-label">Disabled Accounts</div><div class="kpi-val">4</div></div></div>
+          <div class="panel"><h3><i data-lucide="settings"></i>Menu Scope</h3><p>Dashboard · User Management · Roles &amp; Permissions · Departments · Business Units · Security · Login Audit · Configuration</p></div>
+        </div>
+
+        <div class="tab-panel" id="role-executive">
+          <div class="page-header"><div><div class="page-title" style="font-size:17px">Executive Dashboard</div><div class="page-sub">Portfolio performance, enterprise exposure, spend and supplier continuity.</div></div><button class="btn btn-primary btn-sm" onclick="switchRole('executive',document.querySelector('.role-item[data-role=executive]'))">Preview Executive</button></div>
+          <div class="kpis"><div class="kpi accent-green"><div class="kpi-label">Active Suppliers</div><div class="kpi-val">428</div></div><div class="kpi accent-red"><div class="kpi-label">High/Critical Risk</div><div class="kpi-val">12</div></div><div class="kpi accent-blue"><div class="kpi-label">Spend Under Contract</div><div class="kpi-val">78%</div></div><div class="kpi accent-purple"><div class="kpi-label">Supplier SLA</div><div class="kpi-val">94%</div></div></div>
+          <div class="panel"><h3><i data-lucide="bar-chart-3"></i>Menu Scope</h3><p>Executive Dashboard · Vendor Portfolio · Enterprise Risk · Sourcing Pipeline · Finance Summary · Performance · Audit Exceptions · Executive Reports</p></div>
+        </div>
+
+        <div class="tab-panel" id="role-vendoradmin">
+          <div class="page-header"><div><div class="page-title" style="font-size:17px">Vendor Admin Dashboard</div><div class="page-sub">CCC registration queue, completeness, reviews, approvals and renewals.</div></div><button class="btn btn-primary btn-sm" onclick="switchRole('vendor',document.querySelector('.role-item[data-role=vendor]'))">Preview Vendor Admin</button></div>
+          <div class="kpis"><div class="kpi accent-orange"><div class="kpi-label">Registrations in Review</div><div class="kpi-val">34</div></div><div class="kpi accent-blue"><div class="kpi-label">Documents to Review</div><div class="kpi-val">21</div></div><div class="kpi accent-purple"><div class="kpi-label">Approvals Waiting</div><div class="kpi-val">8</div></div><div class="kpi accent-red"><div class="kpi-label">Renewals Due (30d)</div><div class="kpi-val">14</div></div></div>
+          <div class="panel"><h3><i data-lucide="user-plus"></i>Menu Scope</h3><p>Dashboard · CCC Registration · Vendor Invitations · Passport 360 · Documents · Assessments · Reviews &amp; Approvals · HSE &amp; Risk · Communications</p></div>
+        </div>
+
+        <div class="tab-panel" id="role-procurement">
+          <div class="page-header"><div><div class="page-title" style="font-size:17px">Procurement Dashboard</div><div class="page-sub">Competitive events, bid evaluation, purchase commitments and category outcomes.</div></div><button class="btn btn-primary btn-sm" onclick="switchRole('procurement',document.querySelector('.role-item[data-role=procurement]'))">Preview Procurement</button></div>
+          <div class="kpis"><div class="kpi accent-blue"><div class="kpi-label">Open RFQs</div><div class="kpi-val">9</div></div><div class="kpi accent-orange"><div class="kpi-label">Bids Due This Week</div><div class="kpi-val">4</div></div><div class="kpi accent-purple"><div class="kpi-label">PO Delivery On Time</div><div class="kpi-val">91%</div></div><div class="kpi accent-green"><div class="kpi-label">Category Savings</div><div class="kpi-val">12.4%</div></div></div>
+          <div class="panel"><h3><i data-lucide="shopping-cart"></i>Menu Scope</h3><p>Dashboard · Supplier Assessments · RFQs &amp; Quotations · Bid Evaluation · Purchase Orders · Supplier Contracts · Delivery Tracking · PLUS Sourcing</p></div>
+        </div>
+
+        <div class="tab-panel" id="role-finance">
+          <div class="page-header"><div><div class="page-title" style="font-size:17px">Finance Dashboard</div><div class="page-sub">Invoice exceptions, three-way matching, payment approvals and exposure.</div></div><button class="btn btn-primary btn-sm" onclick="switchRole('finance',document.querySelector('.role-item[data-role=finance]'))">Preview Finance</button></div>
+          <div class="kpis"><div class="kpi accent-orange"><div class="kpi-label">Invoices Pending</div><div class="kpi-val">42</div></div><div class="kpi accent-blue"><div class="kpi-label">Payments Due</div><div class="kpi-val">18</div></div><div class="kpi accent-green"><div class="kpi-label">PO/GRN Match Rate</div><div class="kpi-val">96%</div></div><div class="kpi accent-red"><div class="kpi-label">Payment Exceptions</div><div class="kpi-val">6</div></div></div>
+          <div class="panel"><h3><i data-lucide="banknote"></i>Menu Scope</h3><p>Dashboard · Vendor Banking · Invoices · PO/GRN Matching · Payment Approvals · Tax &amp; Withholding · Finance Reports</p></div>
+        </div>
+
+        <div class="tab-panel" id="role-audit">
+          <div class="page-header"><div><div class="page-title" style="font-size:17px">Audit Dashboard</div><div class="page-sub">Independent view of findings, corrective actions, compliance exceptions and evidence.</div></div><button class="btn btn-primary btn-sm" onclick="switchRole('audit',document.querySelector('.role-item[data-role=audit]'))">Preview Audit</button></div>
+          <div class="kpis"><div class="kpi accent-orange"><div class="kpi-label">Open Findings</div><div class="kpi-val">17</div></div><div class="kpi accent-red"><div class="kpi-label">Overdue CAPA</div><div class="kpi-val">3</div></div><div class="kpi accent-green"><div class="kpi-label">Compliance Complete</div><div class="kpi-val">91%</div></div><div class="kpi accent-purple"><div class="kpi-label">High-Risk Suppliers</div><div class="kpi-val">12</div></div></div>
+          <div class="panel"><h3><i data-lucide="scale"></i>Menu Scope</h3><p>Dashboard · Compliance Centre · Audit Plans · Findings · CAPA · ESG Evidence · Risk Register · Approval History · Reports</p></div>
+        </div>
+
+        <div class="tab-panel" id="role-warehouse">
+          <div class="page-header"><div><div class="page-title" style="font-size:17px">Warehouse Dashboard</div><div class="page-sub">Expected deliveries, inspection workload, goods receipt and exceptions.</div></div><button class="btn btn-primary btn-sm" onclick="switchRole('warehouse',document.querySelector('.role-item[data-role=warehouse]'))">Preview Warehouse</button></div>
+          <div class="kpis"><div class="kpi accent-blue"><div class="kpi-label">Inbound Today</div><div class="kpi-val">23</div></div><div class="kpi accent-orange"><div class="kpi-label">GRN Pending</div><div class="kpi-val">8</div></div><div class="kpi accent-red"><div class="kpi-label">Quality Holds</div><div class="kpi-val">3</div></div><div class="kpi accent-green"><div class="kpi-label">Receipts Accepted</div><div class="kpi-val">92%</div></div></div>
+          <div class="panel"><h3><i data-lucide="hard-hat"></i>Menu Scope</h3><p>Dashboard · Purchase Orders · Expected Deliveries · Goods Receipt · Quality Inspection · Rejected/Short Deliveries · Reports</p></div>
+        </div>
+
+        <div class="tab-panel" id="role-vendorportal">
+          <div class="page-header"><div><div class="page-title" style="font-size:17px">Vendor Portal Dashboard</div><div class="page-sub">A supplier sees only its own CCC-linked profile, tasks, documents and transactions.</div></div><button class="btn btn-primary btn-sm" onclick="switchRole('vendorportal',document.querySelector('.role-item[data-role=vendorportal]'))">Preview Vendor Portal</button></div>
+          <div class="kpis"><div class="kpi accent-blue"><div class="kpi-label">Profile Complete</div><div class="kpi-val">83%</div></div><div class="kpi accent-orange"><div class="kpi-label">My Action Items</div><div class="kpi-val">4</div></div><div class="kpi accent-purple"><div class="kpi-label">Open RFQ Invites</div><div class="kpi-val">2</div></div><div class="kpi accent-green"><div class="kpi-label">Invoices Awaiting</div><div class="kpi-val">3</div></div></div>
+          <div class="panel"><h3><i data-lucide="badge-check"></i>Menu Scope</h3><p>Home · Company &amp; Passport · Documents · Orders &amp; RFQs · Invoices &amp; Payments · Training &amp; HSE · Communications · Requests · Help &amp; Support. One sidebar, one level, every page uses the same tabs, list and detail drawer.</p></div>
+        </div>
+      </div>
+
+      <!-- VENDOR REGISTRATION & ONBOARDING -->
+      

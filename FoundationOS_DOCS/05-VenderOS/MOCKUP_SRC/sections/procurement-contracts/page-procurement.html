@@ -1,0 +1,76 @@
+<div class="page" id="page-procurement">
+        <div class="page-header"><div><div class="page-title">Procurement Workspace</div><div class="page-sub">RFQs, quotations, purchase orders and delivery tracking in one enterprise workspace.</div></div><div class="page-actions"><button class="btn btn-primary btn-sm"><i data-lucide="plus"></i>New RFQ</button></div></div>
+        <div class="edition-note flex-only"><i data-lucide="layers"></i><b>FLEX</b> includes Purchase Requests, RFQs and Purchase Orders. Multi-round negotiation and supplier collaboration unlock in CORE — full Source-to-Pay lives in the PLUS Procurement Hub.</div>
+        <div class="kpis kpis-4">
+          <div class="kpi accent-blue"><div class="kpi-label">Open RFQs</div><div class="kpi-val">7</div></div>
+          <div class="kpi accent-orange"><div class="kpi-label">Awaiting Evaluation</div><div class="kpi-val">3</div></div>
+          <div class="kpi accent-green"><div class="kpi-label">POs Issued (30d)</div><div class="kpi-val">62</div></div>
+          <div class="kpi accent-purple"><div class="kpi-label">Spend Under Management</div><div class="kpi-val">₦480m</div></div>
+        </div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'proc-rfq')">RFQs</div>
+          <div class="tab" onclick="switchTab(this,'proc-po')">Purchase Orders</div>
+          <div class="tab" onclick="switchTab(this,'proc-delivery')">Deliveries &amp; Inspection</div>
+        </div>
+        <div class="tab-panel active" id="proc-rfq"><div class="table-wrap"><table><thead><tr><th>RFQ</th><th>Description</th><th>Vendors Invited</th><th>Closes</th><th>Status</th><th class="actions-col">Actions</th></tr></thead><tbody>
+          <tr><td>RFQ-1042</td><td>Fleet tyre supply — annual contract</td><td>6</td><td>3 days</td><td><span class="badge badge-blue">Open</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showPage('passport')"><i data-lucide="badge-check"></i>View Vendor</button> <button class="btn btn-secondary btn-sm" onclick="emailToVendor('RFQ-1042','Kalahari Logistics','procurement@kalaharilogistics.com.ng')"><i data-lucide="mail"></i>Email to Vendor</button></td></tr>
+          <tr><td>RFQ-1039</td><td>Office furniture — HQ refurbishment</td><td>4</td><td>Closed</td><td><span class="badge badge-green">Awarded</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showPage('passport')"><i data-lucide="badge-check"></i>View Vendor</button></td></tr>
+        </tbody></table></div></div>
+        <div class="tab-panel" id="proc-po"><div class="table-wrap"><table><thead><tr><th>PO</th><th>Vendor</th><th>Value</th><th>Status</th><th class="actions-col">Actions</th></tr></thead><tbody>
+          <tr><td>PO-8821</td><td>Northgate Office Supplies</td><td>₦6,240,000</td><td><span class="badge badge-blue">Awaiting Delivery</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showPage('passport')"><i data-lucide="badge-check"></i>View Vendor</button> <button class="btn btn-secondary btn-sm" onclick="emailToVendor('PO-8821','Northgate Office Supplies','accounts@northgate.com.ng')"><i data-lucide="mail"></i>Email to Vendor</button></td></tr>
+          <tr><td>PO-8815</td><td>Kalahari Logistics</td><td>₦21,000,000</td><td><span class="badge badge-green">Delivered</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showPage('passport')"><i data-lucide="badge-check"></i>View Vendor</button></td></tr>
+        </tbody></table></div></div>
+        <div class="tab-panel" id="proc-delivery">
+          <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px">Warehouse workflow: every delivery moves through inspection and defect capture before it's approved to go to Finance for payment.</p>
+          <div class="kpis kpis-4">
+            <div class="kpi accent-blue"><div class="kpi-label">Delivery SLA</div><div class="kpi-val">96%</div></div>
+            <div class="kpi accent-orange"><div class="kpi-label">Deliveries Due Today</div><div class="kpi-val">5</div></div>
+            <div class="kpi accent-red"><div class="kpi-label">Open Defects</div><div class="kpi-val">2</div></div>
+            <div class="kpi accent-green"><div class="kpi-label">Payments Due (30d)</div><div class="kpi-val">₦34m</div></div>
+          </div>
+          <div class="panel">
+            <h3><i data-lucide="workflow"></i>Delivery &amp; Inspection Workflow</h3>
+            <div class="stepper">
+              <div class="step done"><div class="step-dot"><i data-lucide="check" style="width:14px;height:14px"></i></div><div class="step-label">Delivery Scheduled</div></div>
+              <div class="step-connector"></div>
+              <div class="step done"><div class="step-dot"><i data-lucide="check" style="width:14px;height:14px"></i></div><div class="step-label">Delivery Note Captured</div></div>
+              <div class="step-connector"></div>
+              <div class="step current"><div class="step-dot">3</div><div class="step-label">Inspection</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">4</div><div class="step-label">Defect Capture (if any)</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">5</div><div class="step-label">GRN Approval</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">6</div><div class="step-label">Sent to Finance</div></div>
+              <div class="step-connector"></div>
+              <div class="step"><div class="step-dot">7</div><div class="step-label">Payment Released</div></div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;overflow-x:auto">
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Scheduled <span class="badge badge-grey">2</span></div>
+              <div class="mod-card" style="padding:12px;margin-bottom:8px"><h4 style="font-size:12.5px">PO-8830 · Sable IT Networks</h4><p>Due tomorrow, 9am</p></div>
+              <div class="mod-card" style="padding:12px;cursor:pointer" onclick="showPage('passport')" data-tip="View vendor passport"><h4 style="font-size:12.5px">PO-8833 · Maru Fleet Services</h4><p>Due Thursday</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Received <span class="badge badge-blue">1</span></div>
+              <div class="mod-card" style="padding:12px;cursor:pointer" onclick="showPage('passport')" data-tip="View vendor passport"><h4 style="font-size:12.5px">PO-8821 · Northgate Office Supplies</h4><p>Delivery note captured</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Inspection <span class="badge badge-orange">1</span></div>
+              <div class="mod-card" style="padding:12px;cursor:pointer" onclick="showPage('passport')" data-tip="View vendor passport"><h4 style="font-size:12.5px">PO-8817 · Phoenix Scaffolding</h4><p>Quality check in progress</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Defect Found <span class="badge badge-red">1</span></div>
+              <div class="mod-card" style="padding:12px;cursor:pointer" onclick="showPage('passport')" data-tip="View vendor passport"><h4 style="font-size:12.5px">PO-8809 · Delta Civils</h4><p>2 damaged units — vendor notified</p></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Approved → Finance <span class="badge badge-green">1</span></div>
+              <div class="mod-card" style="padding:12px;cursor:pointer" onclick="showPage('passport')" data-tip="View vendor passport"><h4 style="font-size:12.5px">PO-8815 · Kalahari Logistics</h4><p>GRN approved, awaiting payment</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLM -->
+      

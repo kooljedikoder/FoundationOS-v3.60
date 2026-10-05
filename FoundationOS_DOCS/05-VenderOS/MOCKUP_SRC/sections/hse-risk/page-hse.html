@@ -1,0 +1,49 @@
+<div class="page" id="page-hse">
+        <div class="page-header"><div><div class="page-title">Induction &amp; Certification</div><div class="page-sub">Every supplier representative understands HSSE requirements before setting foot on site.</div></div></div>
+        <div class="modules" style="grid-template-columns:repeat(3,1fr)">
+          <div class="mod-card" id="hse-sitesafety"><div class="mod-icon"><i data-lucide="shield-check"></i></div><h4>Site Safety Induction</h4><p>Mandatory before any site visit</p><div class="prog-bar"><div class="prog-fill success" style="width:100%"></div></div><span class="badge badge-green" style="margin-top:6px;width:fit-content">Completed — 412 vendors</span></div>
+          <div class="mod-card" id="hse-heights"><div class="mod-icon"><i data-lucide="hard-hat"></i></div><h4>Working at Heights</h4><p>Required for scaffolding &amp; roofing trades</p><div class="prog-bar"><div class="prog-fill warning" style="width:64%"></div></div><span class="badge badge-orange" style="margin-top:6px;width:fit-content">64% completion</span></div>
+          <div class="mod-card" id="hse-hotwork"><div class="mod-icon"><i data-lucide="flame"></i></div><h4>Hot Work Permit Training</h4><p>Welding, cutting and grinding contractors</p><div class="prog-bar"><div class="prog-fill danger" style="width:38%"></div></div><span class="badge badge-red" style="margin-top:6px;width:fit-content">38% completion</span></div>
+        </div>
+        <div class="panel" id="hse-quizpanel">
+          <h3><i data-lucide="graduation-cap"></i>Take the Site Safety Induction Test</h3>
+          <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px">3 questions · 70% required to pass · certificate issues automatically on a pass, per the HSE Induction &amp; Certification module.</p>
+          <div id="hseQuizForm">
+            <div class="quiz-q" data-correct="b">
+              <div class="q-text">1. Before entering an active site, a contractor representative must:</div>
+              <label class="quiz-opt"><input type="radio" name="q1" value="a"/> Wait for a supervisor to notice them</label>
+              <label class="quiz-opt"><input type="radio" name="q1" value="b"/> Complete the site safety induction and sign in at the gate</label>
+              <label class="quiz-opt"><input type="radio" name="q1" value="c"/> Only wear a hard hat</label>
+            </div>
+            <div class="quiz-q" data-correct="a">
+              <div class="q-text">2. Who is responsible for reporting a near-miss incident?</div>
+              <label class="quiz-opt"><input type="radio" name="q2" value="a"/> Anyone who witnesses it, immediately</label>
+              <label class="quiz-opt"><input type="radio" name="q2" value="b"/> Only the site HSE officer</label>
+              <label class="quiz-opt"><input type="radio" name="q2" value="c"/> Only if someone is injured</label>
+            </div>
+            <div class="quiz-q" data-correct="c">
+              <div class="q-text">3. A Hot Work Permit is required for:</div>
+              <label class="quiz-opt"><input type="radio" name="q3" value="a"/> Office administration tasks</label>
+              <label class="quiz-opt"><input type="radio" name="q3" value="b"/> Deliveries and offloading</label>
+              <label class="quiz-opt"><input type="radio" name="q3" value="c"/> Welding, cutting or grinding work</label>
+            </div>
+            <button class="btn btn-primary" onclick="submitHseQuiz()"><i data-lucide="check"></i>Submit Test</button>
+          </div>
+          <div class="quiz-result" id="hseResult">
+            <div class="qr-score" id="hseScoreText">0%</div>
+            <div id="hseResultLabel" style="font-size:14px;font-weight:700;margin:6px 0"></div>
+            <p style="font-size:12.5px;color:var(--muted)" id="hseResultSub"></p>
+            <button class="btn btn-secondary btn-sm" style="margin-top:12px" onclick="resetHseQuiz()"><i data-lucide="workflow"></i>Retake Test</button>
+          </div>
+        </div>
+        <div class="panel" id="hse-certtable"><h3><i data-lucide="award"></i>Certification Register</h3><div class="table-wrap"><table><thead><tr><th>Vendor</th><th>Certificate</th><th>Score</th><th>Expiry</th></tr></thead><tbody>
+          <tr><td>Kalahari Logistics</td><td>Site Safety Induction</td><td>94%</td><td>11 months</td></tr>
+          <tr><td>Delta Civils &amp; Plant Hire</td><td>Working at Heights</td><td>Failed (62%)</td><td>—</td></tr>
+        </tbody></table></div></div>
+      
+        <div class="panel"><h3><i data-lucide="graduation-cap"></i>Courses</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:8px">Content, pass mark and validity are set here; vendors take the test in Training & HSE.</p><div class="table-wrap" data-vf="courses"></div></div>
+        <div class="panel"><h3><i data-lucide="clipboard-check"></i>Test attempts</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:8px">Every attempt is recorded with score and staff member; a pass issues a certificate with an expiry date.</p><div class="table-wrap" data-vf="attempts"></div></div>
+      </div>
+
+      <!-- AUDIT -->
+      

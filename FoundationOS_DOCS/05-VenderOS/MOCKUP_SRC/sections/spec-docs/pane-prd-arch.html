@@ -1,0 +1,26 @@
+<div class="prd-pane" id="prd-arch">
+              <span class="prd-tag">Overview</span>
+              <h2>Two-Level Workspace Architecture</h2>
+              <p>Rather than ~250 disconnected screens, VendorOS is built as <b>10 enterprise workspaces</b> (daily-use, tabbed, dashboard-first) sitting on top of a <b>detailed workflow engine</b> — the step-by-step process screens (like the 45-step Registration &amp; Onboarding journey) that a workspace drills down into.</p>
+              <div class="prd-cards" style="grid-template-columns:1fr 1fr">
+                <div class="prd-card" style="background:#4f46e5;padding:16px"><div class="pc-label">Layer 1</div><div class="pc-val" style="font-size:14px">Operational Workspaces</div><div style="font-size:11px;font-weight:500;margin-top:4px;opacity:.9">Daily use · tabbed · dashboard-first</div></div>
+                <div class="prd-card" style="background:#dc2626;padding:16px"><div class="pc-label">Layer 2</div><div class="pc-val" style="font-size:14px">Detailed Workflow Engine</div><div style="font-size:11px;font-weight:500;margin-top:4px;opacity:.9">Step-by-step process screens</div></div>
+              </div>
+              <pre class="prd-pre">VendorOS
+├── Executive Dashboard
+├── Vendor Passport ──────────► View Registration Journey (detailed workflow)
+├── Performance & Compliance ──► Risk, Audit, CAPA, Scoring detail screens
+├── Contracts & Commercial ────► Contract Management detail screens
+├── Procurement
+├── Training & Competency
+├── Communications ────────────► Vendor Portal + Communications Centre detail
+├── Vendor Portal
+├── Administration
+└── Reports & BI
+
+Detailed Workflow Engine (drill-down layer)
+└── Registration & Onboarding Journey — v1 through v45</pre>
+              <p>This gives two audiences what they need from the same platform: <b>operational workspaces</b> for daily use, and <b>detailed process screens</b> for processing and audit. It's the same pattern ServiceNow, SAP and Oracle use. In this prototype, the sidebar tree you're using now <i>is</i> the operational layer — sub-links that scroll to a table row or open a modal are the beginning of that drill-down layer.</p>
+            </div>
+
+            

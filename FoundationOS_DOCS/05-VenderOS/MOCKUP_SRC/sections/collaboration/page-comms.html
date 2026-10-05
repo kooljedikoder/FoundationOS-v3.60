@@ -1,0 +1,122 @@
+<div class="page" id="page-comms">
+        <div class="page-header"><div><div class="page-title">Inbox &amp; Communications</div><div class="page-sub">Unified inbox — Direct Messages, Email, WhatsApp, Announcements and Alerts in one place, linked to the relevant vendor, RFQ, contract or invoice.</div></div></div>
+
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'comms-unified')">Unified Inbox</div>
+          <div class="tab" onclick="switchTab(this,'comms-dm')">Direct Messages</div>
+          <div class="tab" onclick="switchTab(this,'comms-email')">Email<span class="badge badge-blue" style="margin-left:5px">2</span></div>
+          <div class="tab" onclick="switchTab(this,'comms-wa')">WhatsApp</div>
+          <div class="tab" onclick="switchTab(this,'comms-news')">Announcements</div>
+          <div class="tab" onclick="switchTab(this,'comms-alerts')">Alerts</div>
+        </div>
+
+        <div class="tab-panel active" id="comms-unified">
+          <div class="panel" style="background:linear-gradient(135deg,var(--p50),var(--surface));border-color:var(--p200)">
+            <h3><i data-lucide="sparkles" style="color:var(--primary)"></i>AI Summary</h3>
+            <p style="font-size:13px;color:var(--text-2);line-height:1.7">You have <b>7 unread items</b> across channels. Priority: Kalahari Logistics still owes an insurance certificate (Direct Message + Alert), Northgate submitted invoice INV-55040 by email, and Delta Civils' WhatsApp confirms Thursday delivery. Everything else is routine.</p>
+          </div>
+          <div class="fm-toolbar"><span style="font-size:12px;color:var(--muted);font-weight:600">All channels, most recent first</span></div>
+          <div class="notif-item" onclick="switchTab(document.querySelectorAll('#page-comms .tab')[1],'comms-dm')">
+            <div class="notif-icon warn"><i data-lucide="message-square"></i></div>
+            <div><div class="notif-title">Kalahari Logistics · Direct Message</div><div class="notif-desc">We've requested the updated certificate from our broker…</div><div class="notif-time">20 minutes ago</div></div>
+          </div>
+          <div class="notif-item" onclick="switchTab(document.querySelectorAll('#page-comms .tab')[2],'comms-email')">
+            <div class="notif-icon info"><i data-lucide="mail"></i></div>
+            <div><div class="notif-title">accounts@northgate.com.ng · Email</div><div class="notif-desc">Invoice INV-55040 submitted for PO-8821…</div><div class="notif-time">1 hour ago</div></div>
+          </div>
+          <div class="notif-item" onclick="switchTab(document.querySelectorAll('#page-comms .tab')[3],'comms-wa')">
+            <div class="notif-icon success"><i data-lucide="message-square"></i></div>
+            <div><div class="notif-title">Kalahari Logistics · WhatsApp</div><div class="notif-desc">Confirming truck arrives 9am Thursday for PO-8821 🚚</div><div class="notif-time">Today, 08:40</div></div>
+          </div>
+          <div class="notif-item" onclick="switchTab(document.querySelectorAll('#page-comms .tab')[4],'comms-news')">
+            <div class="notif-icon info"><i data-lucide="bell"></i></div>
+            <div><div class="notif-title">Company Announcement</div><div class="notif-desc">New HSE policy effective 1 September…</div><div class="notif-time">2 days ago</div></div>
+          </div>
+          <div class="notif-item" onclick="switchTab(document.querySelectorAll('#page-comms .tab')[5],'comms-alerts')">
+            <div class="notif-icon warn"><i data-lucide="alert-triangle"></i></div>
+            <div><div class="notif-title">System Alert</div><div class="notif-desc">Kalahari Logistics' Public Liability Insurance expires in 6 days</div><div class="notif-time">1 hour ago</div></div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="comms-dm">
+        <div class="inbox-shell">
+          <div class="inbox-list">
+            <div id="commsThreads">
+              <div class="inbox-row active" onclick="openThread(this,0)"><div class="inbox-dot" style="background:var(--warning)"></div><div><div class="inbox-row-from">Kalahari Logistics</div><div class="inbox-row-sub">RE: Insurance certificate renewal</div><div class="inbox-row-prev">We've requested the updated certificate from our broker…</div></div></div>
+              <div class="inbox-row" onclick="openThread(this,1)"><div class="inbox-dot" style="background:var(--danger)"></div><div><div class="inbox-row-from">Delta Civils &amp; Plant Hire</div><div class="inbox-row-sub">HSE induction re-scheduling</div><div class="inbox-row-prev">Can we book the retake for Thursday morning?</div></div></div>
+              <div class="inbox-row" onclick="openThread(this,2)"><div class="inbox-dot" style="background:var(--success)"></div><div><div class="inbox-row-from">Sable IT Networks</div><div class="inbox-row-sub">RFQ-1042 — clarification</div><div class="inbox-row-prev">Confirmed, we can meet the 3-day turnaround.</div></div></div>
+            </div>
+          </div>
+          <div class="inbox-reading">
+            <div class="inbox-reading-head">
+              <div style="font-size:14.5px;font-weight:800" id="threadTitle">Kalahari Logistics — Insurance certificate renewal</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:3px">Linked to Vendor Passport VP-00842</div>
+            </div>
+            <div class="inbox-reading-body" id="threadBody">
+              <div class="inbox-msg"><div class="inbox-msg-av">KL</div><div><div style="font-size:12.5px;font-weight:700;margin-bottom:2px">Kalahari Logistics</div><div class="inbox-msg-text">We've requested the updated Public Liability Insurance certificate from our broker — expect it within 48 hours.</div></div></div>
+              <div class="inbox-msg"><div class="inbox-msg-av">LK</div><div><div style="font-size:12.5px;font-weight:700;margin-bottom:2px">Lesego K. (Compliance)</div><div class="inbox-msg-text">Thanks — flagging the account so procurement holds any new PO until it's received.</div></div></div>
+            </div>
+            <div class="inbox-reply">
+              <textarea id="dmReplyInput" placeholder="Write a reply…"></textarea>
+              <button class="btn btn-primary btn-sm" onclick="sendDmReply()"><i data-lucide="check"></i>Send</button>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="tab-panel" id="comms-email">
+          <div class="inbox-shell">
+            <div class="inbox-list">
+              <div class="inbox-list-head" style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+                <span style="font-size:12px;font-weight:700;color:var(--muted)">INBOX</span>
+                <button class="btn btn-primary btn-sm" onclick="openComposeEmail()"><i data-lucide="plus"></i>Compose</button>
+              </div>
+              <div id="emailThreads">
+                <div class="inbox-row active" onclick="openEmail(this,0)"><div class="inbox-dot" style="background:var(--warning)"></div><div><div class="inbox-row-from">procurement@kalaharilogistics.com.ng</div><div class="inbox-row-sub">RE: PO-8821 delivery confirmation</div><div class="inbox-row-prev">Confirming delivery for Thursday, please advise dock number…</div></div></div>
+                <div class="inbox-row" onclick="openEmail(this,1)"><div class="inbox-dot" style="background:var(--info)"></div><div><div class="inbox-row-from">accounts@northgate.com.ng</div><div class="inbox-row-sub">Invoice INV-55040 submitted</div><div class="inbox-row-prev">Please find attached invoice for PO-8821, due in 30 days…</div></div></div>
+                <div class="inbox-row" onclick="openEmail(this,2)"><div class="inbox-dot" style="background:var(--success)"></div><div><div class="inbox-row-from">compliance@sableit.com.ng</div><div class="inbox-row-sub">Updated ISO certificate attached</div><div class="inbox-row-prev">Please find our renewed ISO 9001 certificate for your records…</div></div></div>
+              </div>
+            </div>
+            <div class="inbox-reading">
+              <div class="inbox-reading-head">
+                <div style="font-size:14.5px;font-weight:800" id="emailSubject">RE: PO-8821 delivery confirmation</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:3px" id="emailMeta">From procurement@kalaharilogistics.com.ng · To buyer@vendorflow.example</div>
+              </div>
+              <div class="inbox-reading-body" id="emailBody">
+                <div class="inbox-msg"><div class="inbox-msg-av">KL</div><div><div style="font-size:12.5px;font-weight:700;margin-bottom:2px">Kalahari Logistics</div><div class="inbox-msg-text">Confirming delivery for Thursday morning — please advise which dock number to use and who will sign for the goods.</div></div></div>
+              </div>
+              <div class="inbox-reply">
+                <textarea id="emailReplyInput" placeholder="Write an email reply…"></textarea>
+                <button class="btn btn-primary btn-sm" onclick="sendEmailReply()"><i data-lucide="send"></i>Send Email</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="comms-wa">
+          <div class="chat-shell" style="height:420px">
+            <div class="chat-subtabs"><div class="chat-subtab active"><i data-lucide="message-square" style="width:13px;height:13px"></i>Kalahari Logistics — +267 71 234 567</div></div>
+            <div class="chat-body" id="waChatBody">
+              <div class="chat-bubble-row"><div class="chat-av">KL</div><div><div class="chat-bubble">Hi, just confirming our truck arrives at 9am Thursday for PO-8821 🚚</div><div class="chat-meta">Kalahari Logistics · 08:40</div></div></div>
+              <div class="chat-bubble-row me"><div class="chat-av">TM</div><div><div class="chat-bubble">Perfect, dock 3 — ask for Warona at reception.</div><div class="chat-meta">You · 08:52</div></div></div>
+            </div>
+            <div class="chat-composer">
+              <input id="waInput" placeholder="Write a WhatsApp message…" onkeydown="if(event.key==='Enter')sendWaMessage()"/>
+              <button class="chat-send-btn" onclick="sendWaMessage()"><i data-lucide="send"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="comms-news">
+          <div class="announce-card"><div class="announce-icon"><i data-lucide="bell"></i></div><div><div style="font-size:13px;font-weight:700;margin-bottom:3px">New HSE policy effective 1 September</div><div style="font-size:12px;color:var(--text-2)">All site visitors must complete the updated Working at Heights refresher before that date.</div><div class="chat-meta">2 days ago</div></div></div>
+          <div class="announce-card"><div class="announce-icon"><i data-lucide="bell"></i></div><div><div style="font-size:13px;font-weight:700;margin-bottom:3px">Vendor Portal maintenance — Saturday 11pm–1am</div><div style="font-size:12px;color:var(--text-2)">Brief downtime expected. Any in-progress RFQ drafts are auto-saved.</div><div class="chat-meta">5 days ago</div></div></div>
+        </div>
+
+        <div class="tab-panel" id="comms-alerts">
+          <div class="announce-card"><div class="announce-icon" style="background:var(--danger-bg)"><i data-lucide="alert-triangle" style="color:var(--danger)"></i></div><div><div style="font-size:13px;font-weight:700;margin-bottom:3px">SLA Breach Risk — Phoenix Scaffolding</div><div style="font-size:12px;color:var(--text-2)">HSE assessment score is 55% — below the approval threshold.</div><div class="chat-meta">12 minutes ago</div></div></div>
+          <div class="announce-card"><div class="announce-icon" style="background:var(--warning-bg)"><i data-lucide="alert-triangle" style="color:var(--warning)"></i></div><div><div style="font-size:13px;font-weight:700;margin-bottom:3px">Insurance certificate expires in 6 days</div><div style="font-size:12px;color:var(--text-2)">Kalahari Logistics' Public Liability Insurance needs renewal.</div><div class="chat-meta">1 hour ago</div></div></div>
+        </div>
+      </div>
+
+      <!-- VENDOR PORTAL MAP -->
+      

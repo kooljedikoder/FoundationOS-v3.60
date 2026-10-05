@@ -1,0 +1,38 @@
+<div class="page" id="page-builder">
+        <div class="page-header"><div><div class="page-title">Dynamic Form Builder</div><div class="page-sub">Click a field type to add it to the canvas. No developer required, core code never touched.</div></div><div class="page-actions"><button class="btn btn-primary btn-sm" onclick="publishForm()"><i data-lucide="check"></i>Publish</button></div></div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'builder-new')">New Form</div>
+          <div class="tab" onclick="switchTab(this,'builder-existing')">Existing Forms</div>
+        </div>
+        <div class="tab-panel active" id="builder-new">
+        <div class="builder-shell">
+          <div class="builder-pane">
+            <h4>Field Types</h4>
+            <div class="field-tile" onclick="addBuilderField('Text Field','text','type')"><i data-lucide="file-text"></i>Text Field</div>
+            <div class="field-tile" onclick="addBuilderField('Dropdown','dropdown','type')"><i data-lucide="list"></i>Dropdown</div>
+            <div class="field-tile" onclick="addBuilderField('Date Picker','date','calendar')"><i data-lucide="clock"></i>Date Picker</div>
+            <div class="field-tile" onclick="addBuilderField('File Upload','file','folder')"><i data-lucide="folder"></i>File Upload</div>
+            <div class="field-tile" onclick="addBuilderField('Checkbox','checkbox','check')"><i data-lucide="check"></i>Checkbox</div>
+            <div class="field-tile" onclick="addBuilderField('Score / Number','number','gauge')"><i data-lucide="gauge"></i>Score / Number</div>
+          </div>
+          <div class="builder-pane">
+            <h4>New Supplier Assessment Form — Canvas</h4>
+            <div class="canvas-drop" id="builderCanvas"></div>
+          </div>
+          <div class="builder-pane">
+            <h4>Live Schema Preview</h4>
+            <pre class="schema-pre" id="schemaPreview">[]</pre>
+          </div>
+        </div>
+        </div>
+        <div class="tab-panel" id="builder-existing">
+          <div class="table-wrap"><table><thead><tr><th>Form</th><th>Linked Module</th><th>Fields</th><th>Status</th><th class="actions-col">Actions</th></tr></thead><tbody>
+            <tr><td><b style="color:var(--primary)">Supplier Assessment Form</b></td><td>Supplier Assessment</td><td>14</td><td><span class="badge badge-green">Published</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showToast('Opening for edit…','file-text')">Edit</button></td></tr>
+            <tr><td><b style="color:var(--primary)">Site Inspection Checklist</b></td><td>HSE Induction</td><td>22</td><td><span class="badge badge-green">Published</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showToast('Opening for edit…','file-text')">Edit</button></td></tr>
+            <tr><td><b style="color:var(--primary)">Vendor Onboarding Extras</b></td><td>Registration &amp; Onboarding</td><td>8</td><td><span class="badge badge-grey">Draft</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showToast('Opening for edit…','file-text')">Edit</button></td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+
+      <!-- ADMIN -->
+      

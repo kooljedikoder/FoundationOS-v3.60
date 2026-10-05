@@ -1,0 +1,20 @@
+<div class="page" id="page-requests">
+        <div class="page-header"><div><div class="page-title">Requests</div><div class="page-sub">One place to ask Procurement, Compliance or HSE for something. Pick the type; it is routed for you.</div></div></div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'rq-new')">New request</div>
+          <div class="tab" onclick="switchTab(this,'rq-list')">My requests</div>
+        </div>
+        <div class="tab-panel active" id="rq-new"><div class="panel">
+          <div class="form-grid">
+            <div class="field"><label>Request type</label><select id="rqType" onchange="vfRqRoute()"></select></div>
+            <div class="field"><label>Routed to</label><input id="rqRoute" readonly/></div>
+            <div class="field"><label>Priority</label><select id="rqPriority"><option>Normal</option><option>Urgent</option></select></div>
+            <div class="field full"><label>Details</label><textarea id="rqDetails" placeholder="Describe what you need&hellip;"></textarea></div>
+          </div>
+          <div class="vf-actions"><button class="btn btn-primary" onclick="vfSubmitRequest()"><i data-lucide="send"></i>Submit request</button></div>
+        </div></div>
+        <div class="tab-panel" id="rq-list"><div class="table-wrap" data-vf="request"></div></div>
+      </div>
+
+      <!-- WORKFLOW -->
+      

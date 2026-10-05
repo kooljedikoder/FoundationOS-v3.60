@@ -1,0 +1,20 @@
+<div class="page" id="page-myrfqpo">
+        <div class="page-header"><div><div class="page-title">Orders &amp; RFQs</div><div class="page-sub">Respond to quote requests, track purchase orders and confirm deliveries in one place.</div></div><button class="btn btn-primary btn-create" onclick="vfOpen('rfq','RFQ-1042')"><i data-lucide="plus"></i>Submit Quotation</button></div>
+        <div class="kpis kpis-4">
+          <div class="kpi accent-blue"><div class="kpi-label">Open RFQs</div><div class="kpi-val">2</div></div>
+          <div class="kpi accent-purple"><div class="kpi-label">Active POs</div><div class="kpi-val">2</div></div>
+          <div class="kpi accent-green"><div class="kpi-label">Delivered (30d)</div><div class="kpi-val">4</div></div>
+          <div class="kpi accent-orange"><div class="kpi-label">Awaiting Acknowledgement</div><div class="kpi-val">1</div></div>
+        </div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'rp-rfqs')">RFQs</div>
+          <div class="tab" onclick="switchTab(this,'rp-pos')">Purchase Orders</div>
+          <div class="tab" onclick="switchTab(this,'rp-deliveries')">Deliveries</div>
+        </div>
+        <div class="tab-panel active" id="rp-rfqs"><div class="table-wrap" data-vf="rfq"></div></div>
+        <div class="tab-panel" id="rp-pos"><div class="table-wrap" data-vf="po"></div></div>
+        <div class="tab-panel" id="rp-deliveries"><div class="table-wrap" data-vf="delivery"></div></div>
+      </div>
+
+      <!-- TRAINING & HSE -->
+      

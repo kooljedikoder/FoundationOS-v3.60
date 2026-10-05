@@ -1,0 +1,5 @@
+<div class="tab-panel" id="cc-users">
+<div class="edition-note"><div><b>Users and access (live).</b> Staff, departments and users share one database with the contacts. Deactivate or activate any login from here; the change is written to the copied <code>users.is_active</code> column and logged.</div></div>
+<div class="cc-toolbar"><input class="cc-in cc-grow" placeholder="Search name or email" aria-label="Search users" oninput="cccUsersFilter(this.value)"><select class="cc-in" style="max-width:170px" aria-label="Status" onchange="cccUsersFilter(undefined,this.value)"><option value="">All users</option><option value="1">Active</option><option value="0">Inactive</option></select></div>
+<div id="ccUsersBody"></div></div>
+        

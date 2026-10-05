@@ -1,0 +1,132 @@
+<div class="page" id="page-prd">
+        <div class="page-header"><div><div class="page-title">PRD — Full Specification</div><div class="page-sub">Every section below is drawn directly from the 20-file VendorOS Gold Build Specification — this is the source of truth, not a paraphrase.</div></div></div>
+
+        <div class="prd-shell">
+          <div class="prd-nav">
+            <div class="prd-nav-group">Overview</div>
+            <div class="prd-nav-item active" onclick="selectPrd(this,'prd-sitemap')"><span class="prd-dot done"></span>Suite Sitemap (v2)</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-arch')"><span class="prd-dot done"></span>Workspace Architecture</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-editions')"><span class="prd-dot done"></span>Editions Summary</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-roles')"><span class="prd-dot done"></span>User Roles &amp; Lifecycles</div>
+
+            <div class="prd-nav-group">Modules 1–9</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m1')"><span class="prd-dot done"></span>M1 · Registration &amp; Onboarding</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m2')"><span class="prd-dot done"></span>M2 · Document Management</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m3')"><span class="prd-dot done"></span>M3 · Supplier Assessment</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m4')"><span class="prd-dot done"></span>M4 · HSE Induction &amp; Cert.</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m5')"><span class="prd-dot done"></span>M5 · Vendor Passport</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m6')"><span class="prd-dot done"></span>M6 · Procurement Workspace</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m7')"><span class="prd-dot done"></span>M7 · Finance &amp; Payments</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m8')"><span class="prd-dot done"></span>M8 · Performance &amp; SLA</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m9')"><span class="prd-dot done"></span>M9 · Audit &amp; Compliance</div>
+
+            <div class="prd-nav-group">Modules 11–19</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m11')"><span class="prd-dot done"></span>M11 · Contract Lifecycle</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m12')"><span class="prd-dot done"></span>M12 · Enterprise Risk Mgmt</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m13')"><span class="prd-dot done"></span>M13 · Communication Centre</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m14')"><span class="prd-dot done"></span>M14 · Vendor Self-Service</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m15')"><span class="prd-dot done"></span>M15 · System Configuration</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m16')"><span class="prd-dot done"></span>M16 · Workflow Automation</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m17')"><span class="prd-dot done"></span>M17 · Integration Hub &amp; API</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m18')"><span class="prd-dot done"></span>M18 · AI Copilot</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m19')"><span class="prd-dot done"></span>M19 · PLUS Procurement Hub</div>
+
+            <div class="prd-nav-group">Modules 21–22</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m21')"><span class="prd-dot done"></span>M21 · Dynamic Page Builder</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-m22')"><span class="prd-dot done"></span>M22 · Editions &amp; Commercial</div>
+            <div class="prd-nav-group">Build Spec v2</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-howto')"><span class="prd-dot done"></span>How to use · Rules</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-matrix')"><span class="prd-dot done"></span>Feature Matrix (F-IDs)</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-roles')"><span class="prd-dot done"></span>Roles &amp; Approvals</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-states')"><span class="prd-dot done"></span>State Machines</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-stages')"><span class="prd-dot done"></span>J01 Stage Map (45)</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-reg')"><span class="prd-dot done"></span>Registration &amp; Fields</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-docs')"><span class="prd-dot done"></span>Mandatory Documents</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-ui')"><span class="prd-dot done"></span>UI Standards</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-data')"><span class="prd-dot done"></span>Data · Events · NFR</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-gaps')"><span class="prd-dot done"></span>Gaps &amp; Decisions</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-audit')"><span class="prd-dot done"></span>Mockup Data Audit</div>
+            <div class="prd-nav-item" onclick="selectPrd(this,'prd-spec-ccc')"><span class="prd-dot done"></span>CCC Change List</div>
+
+           
+
+           
+
+           
+
+           
+
+           
+
+           
+
+           
+
+           
+
+          </div>
+
+          <div class="prd-content">
+
+            <div class="prd-pane active" id="prd-sitemap">
+              <span class="prd-tag">Overview</span>
+              <h2>VendorOS Enterprise v2 Sitemap</h2>
+              <p>The full navigation tree behind this prototype — 10 main workspaces, each exposing its functionality through tabs, drawers and forms rather than hundreds of disconnected pages.</p>
+              <div class="prd-cards" style="grid-template-columns:repeat(4,1fr)">
+                <div class="prd-card" style="background:#7c3aed"><div class="pc-label">Main Workspaces</div><div class="pc-val">10</div></div>
+                <div class="prd-card" style="background:#0284c7"><div class="pc-label">Workspace Pages</div><div class="pc-val">~95</div></div>
+                <div class="prd-card" style="background:#16a34a"><div class="pc-label">Reusable Forms</div><div class="pc-val">35</div></div>
+                <div class="prd-card" style="background:#d97706"><div class="pc-label">Total Logical Screens</div><div class="pc-val">~250</div></div>
+              </div>
+              <h4>The 10 workspaces</h4>
+              <div class="cs-features">
+                <span class="cs-feat" style="background:#7c3aed;color:#fff;border:none">Dashboard</span>
+                <span class="cs-feat" style="background:#4f46e5;color:#fff;border:none">Vendor Management</span>
+                <span class="cs-feat" style="background:#0284c7;color:#fff;border:none">Procurement</span>
+                <span class="cs-feat" style="background:#0891b2;color:#fff;border:none">Risk &amp; Compliance</span>
+                <span class="cs-feat" style="background:#0d9488;color:#fff;border:none">Contracts &amp; Commercial</span>
+                <span class="cs-feat" style="background:#16a34a;color:#fff;border:none">Performance</span>
+                <span class="cs-feat" style="background:#65a30d;color:#fff;border:none">Training &amp; Competency</span>
+                <span class="cs-feat" style="background:#ca8a04;color:#fff;border:none">Communications</span>
+                <span class="cs-feat" style="background:#d97706;color:#fff;border:none">Vendor Portal</span>
+                <span class="cs-feat" style="background:#dc2626;color:#fff;border:none">Reports &amp; BI</span>
+              </div>
+              <h4>Full tree</h4>
+              <pre class="prd-pre">VendorOS
+├── Dashboard (Executive Overview, KPIs, Vendor Health, Spend, Compliance, Risk, Activity, Tasks, Watch List)
+├── Vendor Management
+│   ├── Vendor Directory · Vendor Passport 360 (Overview, Company, Contacts, Directors, Banking, Tax,
+│   │   Documents, Certifications, Insurance, Products & Services, Branches, Performance, Contracts,
+│   │   Communications, Timeline, Activity Log, Notes)
+│   ├── New Vendor Wizard (Company→Contacts→Directors→Banking→Tax→Documents→Certifications→
+│   │   Insurance→Products→Review→Submit)
+│   └── Vendor Categories · Preferred · Blacklisted · Archived
+├── Procurement (Dashboard, RFQs, Quotations, Bid/Technical/Commercial Evaluation, Finance Review,
+│   Procurement Review, Recommendation, Approval, Awards, POs, Contracts, Reports)
+├── Risk & Compliance (Dashboard, Compliance Reviews, Risk Assessments, Site Inspections, Audits,
+│   CAPA, ESG, Vendor Scoring, Health Score, Renewals, Expiring Documents, Reports)
+├── Contracts & Commercial (Dashboard, Contracts, Templates, Pricing, Terms, SLAs, Renewals,
+│   Digital Signatures, Spend Analysis, Reports)
+├── Performance (Dashboard, KPI Scorecards, Ratings, Delivery/Quality/Financial Performance,
+│   Corrective Actions, Improvement Plans, Benchmarking, Trends)
+├── Training & Competency (Dashboard, Courses, Learning Centre, Induction, Assessments,
+│   Competency Matrix, Certificates, Expiry Tracking, Reports)
+├── Communications (Dashboard, Messages, Announcements, Meetings, Tasks, Support Tickets,
+│   Surveys, Improvement Plans, Document Sharing, Activity Feed)
+├── Vendor Portal (Home, Profile, Documents, Contracts, Orders, Invoices, Payments, RFQs,
+│   Training, Support, Notifications)
+├── Reports & BI (Executive, Vendor, Spend, Procurement, Compliance, Risk, Performance,
+│   Contract Reports, Scheduled Reports, Export Centre, BI Analytics)
+├── Administration (Dashboard, Users, Roles, Departments, Teams, Workflow Designer,
+│   Approval Matrix, Categories, Templates, Integrations, API Keys, Audit Logs, System/Theme Settings)
+├── Global Search · Notification Centre · Task Centre · Calendar · Help Centre
+└── User Profile (My Account, Preferences, Security, Activity, Logout)</pre>
+              <h4>Common patterns reused across every workspace</h4>
+              <ul>
+                <li><b>Shared tabs:</b> Overview, Details, Documents, Timeline, Activity, Comments, Attachments, History, Audit Log</li>
+                <li><b>Shared drawers:</b> View Vendor, Quick Edit, Approve, Reject, Assign Reviewer, Upload Documents, Add Note, Send Message, View History</li>
+                <li><b>Shared forms:</b> Vendor Registration, Company/Contact/Director Details, Bank Details, Tax Info, Insurance, Certification Upload, Site Inspection Checklist, Risk Assessment, Technical/Financial Evaluation, Contract Creation, Performance Review, CAPA, Training Record, Support Ticket, User Administration</li>
+              </ul>
+            </div>
+
+            
