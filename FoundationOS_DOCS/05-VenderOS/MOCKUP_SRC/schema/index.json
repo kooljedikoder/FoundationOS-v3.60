@@ -210,6 +210,16 @@
    "tabs": 5,
    "schemaTabs": 5,
    "legacyTabs": 0
+  },
+  {
+   "id": "erpview",
+   "title": "ERP (embedded)",
+   "workspace": "10-administration",
+   "package": null,
+   "origin": "generated",
+   "tabs": 1,
+   "schemaTabs": 1,
+   "legacyTabs": 0
   }
  ]
 }

@@ -39,6 +39,7 @@ async function distSave(){
 }
 document.addEventListener('click', function(ev){ if(ev.target.closest && ev.target.closest('[data-tab="appsuite-tab-distribution"],[onclick*="appsuite-tab-distribution"]')) setTimeout(distRender, 0); });
 setTimeout(distRender, 600);
+function erpOpen(path){ showPage('erpview'); const fr = document.getElementById('erpFrame'); if(!fr) return; const rel = (path.charAt(0)==='/'?path.slice(1):path); fr.dataset.full = rel; fr.src = rel + (rel.indexOf('?')>=0?'&':'?') + 'embedded=1'; const a = document.getElementById('erpFull'); if(a) a.href = rel; const sel = document.getElementById('erpPick'); if(sel && [...sel.options].some(o=>o.value===path)) sel.value = path; }
 `;
 const rel = 'js/206-distribution.js';
 E.write(rel, js);
