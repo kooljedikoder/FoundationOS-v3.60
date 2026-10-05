@@ -14,6 +14,7 @@ $db = new PDO('sqlite:' . $dbFile, null, null, [PDO::ATTR_ERRMODE => PDO::ERRMOD
 $db->exec('PRAGMA busy_timeout=4000');
 
 $r = $_GET['r'] ?? '';
+if (isset($_GET['type']) && $_GET['type'] === 'employee') { $_GET['type'] = 'staff'; } // the shared tables store Employee as staff
 $body = json_decode(file_get_contents('php://input') ?: '[]', true) ?: [];
 $actor = 'superadmin@example.com';
 
@@ -84,6 +85,21 @@ if ($r === 'users') {
     if (!empty($_GET['q'])) { $w[] = '(u.name LIKE ? OR u.email LIKE ?)'; $like = '%' . $_GET['q'] . '%'; array_push($par, $like, $like); }
     out(q($db, 'SELECT u.id, u.name, u.email, u.is_active, u.partner_id, (SELECT GROUP_CONCAT(t.name, ", ") FROM user_team ut JOIN teams t ON t.id = ut.team_id WHERE ut.user_id = u.id) AS teams, (SELECT GROUP_CONCAT(r.name, ", ") FROM model_has_roles m JOIN roles r ON r.id = m.role_id WHERE m.model_id = u.id) AS roles FROM users u WHERE ' . implode(' AND ', $w) . ' ORDER BY u.name LIMIT 200', $par));
 }
+if ($r === 'dashboard') {
+    $counts = q($db, 'SELECT f.primary_type t, COUNT(*) c FROM partners_partners p LEFT JOIN fos_partner_profiles f ON f.partner_id = p.id WHERE p.deleted_at IS NULL GROUP BY 1');
+    $latest = q($db, 'SELECT p.id, p.name, p.email, p.created_at, f.primary_type FROM partners_partners p LEFT JOIN fos_partner_profiles f ON f.partner_id = p.id WHERE p.deleted_at IS NULL ORDER BY p.id DESC LIMIT 6');
+    $onb = one($db, "SELECT SUM(status='pending') pending, SUM(status='inactive') inactive FROM fos_partner_profiles WHERE primary_type = 'vendor'");
+    out(['counts' => array_column($counts, 'c', 't'), 'latest' => $latest, 'vendor_pending' => (int) ($onb['pending'] ?? 0), 'vendor_inactive' => (int) ($onb['inactive'] ?? 0), 'docs_pending' => (int) one($db, "SELECT COUNT(*) c FROM media WHERE model_type = 'partner' AND custom_properties LIKE '%\"pending\"%'")['c'], 'users_inactive' => (int) one($db, 'SELECT COUNT(*) c FROM users WHERE is_active = 0 AND deleted_at IS NULL')['c']]);
+}
+if ($r === 'assets') {
+    $w = ['1=1']; $par = [];
+    if (!empty($_GET['q'])) { $w[] = '(a.asset_tag LIKE ? OR a.brand_model LIKE ? OR a.serial_number LIKE ?)'; $like = '%' . $_GET['q'] . '%'; array_push($par, $like, $like, $like); }
+    out(q($db, 'SELECT a.*, p.name AS assigned_to FROM fos_assets a LEFT JOIN partners_partners p ON p.id = a.partner_id WHERE ' . implode(' AND ', $w) . ' ORDER BY a.asset_tag LIMIT 200', $par));
+}
+if ($r === 'organisations') { out(q($db, 'SELECT o.*, c.name AS country FROM fos_organisations o LEFT JOIN countries c ON c.id = o.country_id ORDER BY o.name')); }
+if ($r === 'affiliation_taxonomies') { out(q($db, 'SELECT * FROM fos_affiliation_taxonomies ORDER BY category, sort_order, name')); }
+if ($r === 'rules') { out(q($db, 'SELECT * FROM fos_field_visibility_rules ORDER BY "group", COALESCE("order", 999), id')); }
+if ($r === 'setting_get') { $row = one($db, 'SELECT v FROM proto_settings WHERE k = ?', [$_GET['k'] ?? '']); out(['value' => $row['v'] ?? null]); }
 if ($r === 'audit') { out(q($db, 'SELECT * FROM proto_audit ORDER BY id DESC LIMIT 100')); }
 if ($r === 'document_file') {
     $row = one($db, 'SELECT file_name, mime_type, custom_properties FROM media WHERE id = ?', [(int) ($_GET['id'] ?? 0)]);
@@ -121,7 +137,7 @@ $alias = [
     'firstName' => 'name', 'phoneDialCode' => null,
 ];
 if ($r === 'contact_save') {
-    $type = (string) ($body['type'] ?? 'vendor');
+    $type = (string) ($body['type'] ?? 'vendor'); if ($type === 'employee') { $type = 'staff'; }
     $data = (array) ($body['data'] ?? []);
     $id = (int) ($body['id'] ?? 0);
     $pc = cols($db, 'partners_partners'); $fc = cols($db, 'fos_partner_profiles');
@@ -223,11 +239,28 @@ if ($r === 'type_labels') {
     q($db, "INSERT OR REPLACE INTO proto_settings (k, v) VALUES ('type_labels', ?)", [json_encode($body['labels'] ?? null)]);
     audit($db, $actor, 'settings.type_labels', 'settings'); out(['ok' => true]);
 }
+if ($r === 'rule_save') {
+    $types = array_values(array_intersect((array) ($body['contact_types'] ?? []), ['staff', 'individual', 'vendor', 'customer', 'partner', 'driver', 'other']));
+    q($db, 'UPDATE fos_field_visibility_rules SET contact_types = ?, updated_at = ? WHERE id = ?', [json_encode($types), date('Y-m-d H:i:s'), (int) ($body['id'] ?? 0)]);
+    audit($db, $actor, 'settings.rule', 'rule:' . (int) ($body['id'] ?? 0), $types); out(['ok' => true]);
+}
+if ($r === 'rule_move') {
+    $row = one($db, 'SELECT id, "order" o FROM fos_field_visibility_rules WHERE id = ?', [(int) ($body['id'] ?? 0)]);
+    if ($row) { $n = max(1, (int) ($row['o'] ?? 1) + ((int) ($body['dir'] ?? 0))); q($db, 'UPDATE fos_field_visibility_rules SET "order" = ? WHERE id = ?', [$n, $row['id']]); audit($db, $actor, 'settings.rule_order', 'rule:' . $row['id'], ['order' => $n]); }
+    out(['ok' => true]);
+}
+if ($r === 'setting_set') {
+    $k = (string) ($body['k'] ?? ''); if (!in_array($k, ['default_country'], true)) { out(['error' => 'unknown setting'], 422); }
+    q($db, 'INSERT OR REPLACE INTO proto_settings (k, v) VALUES (?, ?)', [$k, (string) ($body['v'] ?? '')]); audit($db, $actor, 'settings.' . $k, 'settings', $body['v'] ?? null); out(['ok' => true]);
+}
 // generic settings lists (whitelisted)
 $lists = [
     'banks' => ['banks', ['name', 'code']], 'titles' => ['partners_titles', ['name', 'short_name']], 'tags' => ['partners_tags', ['name', 'color']],
     'departments' => ['fos_departments', ['name', 'parent_id', 'color']], 'teams' => ['fos_teams', ['name', 'description', 'team_lead_user_id']],
     'picklist' => ['fos_picklist_options', ['category', 'value', 'sort_order', 'is_active']], 'custom_fields' => ['fos_custom_fields', ['code', 'label', 'type', 'options', 'default_value', 'required', 'visible']],
+    'organisations' => ['fos_organisations', ['name', 'description', 'email', 'phone', 'website', 'color', 'founded_date', 'currency_id', 'parent_id', 'street1', 'street2', 'city', 'zip', 'state_id', 'country_id', 'is_active']],
+    'affiliation_taxonomies' => ['fos_affiliation_taxonomies', ['category', 'name', 'description', 'sort_order', 'is_active']],
+    'assets' => ['fos_assets', ['asset_tag', 'asset_type', 'brand_model', 'serial_number', 'status', 'location', 'partner_id', 'notes']],
     'required_documents' => ['fos_required_documents', ['section', 'doc_type', 'label', 'required', 'is_active', 'sort_order']],
 ];
 if (preg_match('/^list_(add|update|delete)$/', $r, $m) && isset($lists[$body['list'] ?? ''])) {
