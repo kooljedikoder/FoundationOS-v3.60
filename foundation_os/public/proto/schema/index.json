@@ -1,0 +1,215 @@
+{
+ "schemaVersion": 1,
+ "pages": [
+  {
+   "id": "passport",
+   "title": "Kalahari Logistics (Pty) Ltd",
+   "workspace": "01-vendor-management",
+   "package": "vendoros",
+   "origin": "restructured",
+   "tabs": 16,
+   "schemaTabs": 9,
+   "legacyTabs": 7
+  },
+  {
+   "id": "procurement",
+   "title": "Procurement Workspace",
+   "workspace": "02-procurement",
+   "package": "commerce",
+   "origin": "restructured",
+   "tabs": 13,
+   "schemaTabs": 10,
+   "legacyTabs": 3
+  },
+  {
+   "id": "finance",
+   "title": "Finance & Payments",
+   "workspace": "02-procurement",
+   "package": "commerce",
+   "origin": "restructured",
+   "tabs": 3,
+   "schemaTabs": 2,
+   "legacyTabs": 1
+  },
+  {
+   "id": "audit",
+   "title": "Audit & Governance",
+   "workspace": "03-risk-compliance",
+   "package": "risk",
+   "origin": "restructured",
+   "tabs": 12,
+   "schemaTabs": 11,
+   "legacyTabs": 1
+  },
+  {
+   "id": "erm",
+   "title": "Enterprise Risk Management",
+   "workspace": "03-risk-compliance",
+   "package": "risk",
+   "origin": "restructured",
+   "tabs": 3,
+   "schemaTabs": 2,
+   "legacyTabs": 1
+  },
+  {
+   "id": "clm",
+   "title": "Contract Lifecycle Management",
+   "workspace": "04-contracts-commercial",
+   "package": "commerce",
+   "origin": "restructured",
+   "tabs": 10,
+   "schemaTabs": 9,
+   "legacyTabs": 1
+  },
+  {
+   "id": "perf",
+   "title": "Vendor Performance & SLA",
+   "workspace": "05-performance",
+   "package": "insights",
+   "origin": "restructured",
+   "tabs": 10,
+   "schemaTabs": 9,
+   "legacyTabs": 1
+  },
+  {
+   "id": "hse",
+   "title": "Induction & Certification",
+   "workspace": "06-training-competency",
+   "package": "training",
+   "origin": "restructured",
+   "tabs": 9,
+   "schemaTabs": 8,
+   "legacyTabs": 1
+  },
+  {
+   "id": "comms",
+   "title": "Inbox & Communications",
+   "workspace": "07-communications",
+   "package": "collaboration",
+   "origin": "restructured",
+   "tabs": 14,
+   "schemaTabs": 8,
+   "legacyTabs": 6
+  },
+  {
+   "id": "myprofile",
+   "title": "Company & Passport",
+   "workspace": "08-vendor-portal",
+   "package": "vendorportal",
+   "origin": "restructured",
+   "tabs": 6,
+   "schemaTabs": 1,
+   "legacyTabs": 5
+  },
+  {
+   "id": "mycomms",
+   "title": "Communications",
+   "workspace": "08-vendor-portal",
+   "package": "vendorportal",
+   "origin": "restructured",
+   "tabs": 3,
+   "schemaTabs": 2,
+   "legacyTabs": 1
+  },
+  {
+   "id": "support",
+   "title": "Support",
+   "workspace": "12-spec-docs",
+   "package": null,
+   "origin": "restructured",
+   "tabs": 3,
+   "schemaTabs": 2,
+   "legacyTabs": 1
+  },
+  {
+   "id": "builder",
+   "title": "Dynamic Form Builder",
+   "workspace": "10-administration",
+   "package": "automation",
+   "origin": "restructured",
+   "tabs": 3,
+   "schemaTabs": 1,
+   "legacyTabs": 2
+  },
+  {
+   "id": "vendors",
+   "title": "Vendor Directory",
+   "workspace": "01-vendor-management",
+   "package": "vendoros",
+   "origin": "generated",
+   "tabs": 5,
+   "schemaTabs": 5,
+   "legacyTabs": 0
+  },
+  {
+   "id": "tasks",
+   "title": "Task Centre",
+   "workspace": "00-dashboard",
+   "package": "collaboration",
+   "origin": "generated",
+   "tabs": 3,
+   "schemaTabs": 3,
+   "legacyTabs": 0
+  },
+  {
+   "id": "calendar",
+   "title": "Calendar",
+   "workspace": "00-dashboard",
+   "package": "collaboration",
+   "origin": "generated",
+   "tabs": 2,
+   "schemaTabs": 2,
+   "legacyTabs": 0
+  },
+  {
+   "id": "profile",
+   "title": "My Account",
+   "workspace": "00-dashboard",
+   "package": null,
+   "origin": "generated",
+   "tabs": 4,
+   "schemaTabs": 4,
+   "legacyTabs": 0
+  },
+  {
+   "id": "myhome",
+   "title": "Home",
+   "workspace": "08-vendor-portal",
+   "package": "vendorportal",
+   "origin": "generated",
+   "tabs": 3,
+   "schemaTabs": 3,
+   "legacyTabs": 0
+  },
+  {
+   "id": "mynotifications",
+   "title": "Notifications",
+   "workspace": "08-vendor-portal",
+   "package": "vendorportal",
+   "origin": "generated",
+   "tabs": 2,
+   "schemaTabs": 2,
+   "legacyTabs": 0
+  },
+  {
+   "id": "reports",
+   "title": "Reports and BI",
+   "workspace": "09-reports-bi",
+   "package": "insights",
+   "origin": "generated",
+   "tabs": 11,
+   "schemaTabs": 11,
+   "legacyTabs": 0
+  },
+  {
+   "id": "appsuite",
+   "title": "AppSuite",
+   "workspace": "10-administration",
+   "package": null,
+   "origin": "generated",
+   "tabs": 3,
+   "schemaTabs": 3,
+   "legacyTabs": 0
+  }
+ ]
+}

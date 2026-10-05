@@ -1,0 +1,95 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "support",
+ "title": "Support",
+ "subtitle": null,
+ "workspace": "12-spec-docs",
+ "package": null,
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "sp-chat",
+   "label": "Chat",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "support-tab-email",
+   "label": "Email",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_email_the_service_desk",
+      "version": 1,
+      "title": "Email the Service Desk",
+      "fields": [
+       {
+        "key": "subject",
+        "label": "Subject",
+        "type": "text",
+        "inputType": "text",
+        "placeholder": "What do you need help with?",
+        "full": false
+       },
+       {
+        "key": "category",
+        "label": "Category",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Registration",
+         "Documents",
+         "Orders and RFQs",
+         "Invoices and payments",
+         "Other"
+        ],
+        "full": false
+       },
+       {
+        "key": "message",
+        "label": "Message",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "Describe the problem. Attach files after sending.",
+        "full": true
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "mail",
+     "sub": "Replies go to your registered email. Target response: 4 hours.",
+     "buttons": [
+      {
+       "label": "Send email",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "support-tab-kb",
+   "label": "Knowledge base",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "kb_articles",
+     "title": "Knowledge base",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  }
+ ]
+}

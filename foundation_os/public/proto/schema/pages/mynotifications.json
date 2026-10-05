@@ -1,0 +1,102 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "mynotifications",
+ "title": "Notifications",
+ "subtitle": "Everything the buyer team and the system have told you.",
+ "workspace": "08-vendor-portal",
+ "package": "vendorportal",
+ "origin": "generated",
+ "actions": [
+  {
+   "label": "Mark all read",
+   "style": "btn-secondary",
+   "onclick": null,
+   "icon": "check"
+  }
+ ],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "mynotifications-tab-all",
+   "label": "All",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "mynotif_all",
+     "title": "Notifications",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "mynotifications-tab-settings",
+   "label": "Settings",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_how_we_contact_you",
+      "version": 1,
+      "title": "How we contact you",
+      "fields": [
+       {
+        "key": "email_me_about",
+        "label": "Email me about",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Everything",
+         "Actions and alerts only",
+         "Nothing"
+        ],
+        "full": false
+       },
+       {
+        "key": "sms_alerts",
+        "label": "SMS alerts",
+        "type": "toggle",
+        "inputType": "check",
+        "text": "Send SMS for urgent alerts",
+        "full": false
+       },
+       {
+        "key": "po_alerts",
+        "label": "PO alerts",
+        "type": "toggle",
+        "inputType": "check",
+        "text": "Tell me when a purchase order is issued",
+        "full": false
+       },
+       {
+        "key": "compliance_reminders",
+        "label": "Compliance reminders",
+        "type": "toggle",
+        "inputType": "check",
+        "text": "Remind me before documents expire",
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "bell",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Save settings",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

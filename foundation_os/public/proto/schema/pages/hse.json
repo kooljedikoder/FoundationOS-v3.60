@@ -1,0 +1,413 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "hse",
+ "title": "Induction & Certification",
+ "subtitle": null,
+ "workspace": "06-training-competency",
+ "package": "training",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "hse-tab-dash",
+   "label": "Dashboard",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Courses",
+       "value": "12",
+       "accent": "purple"
+      },
+      {
+       "label": "Certified vendors",
+       "value": "38",
+       "accent": "green"
+      },
+      {
+       "label": "Expiring (30 days)",
+       "value": "5",
+       "accent": "orange"
+      },
+      {
+       "label": "Test pass rate",
+       "value": "91%",
+       "accent": "blue"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Induction completion",
+       "icon": "bar-chart-2",
+       "sub": null,
+       "rows": [
+        {
+         "label": "Site Safety Induction",
+         "percent": 100,
+         "tone": "success",
+         "value": "412 vendors"
+        },
+        {
+         "label": "Working at Heights",
+         "percent": 62,
+         "tone": "warning",
+         "value": "71 vendors"
+        },
+        {
+         "label": "Hot Work Permit",
+         "percent": 41,
+         "tone": "warning",
+         "value": "29 vendors"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "tr_actions",
+       "title": "Needs your action",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hse-tab-courses",
+   "label": "Courses",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "courses",
+     "title": "Courses",
+     "icon": "graduation-cap",
+     "sub": "Content, pass mark and validity are set per course. Vendors take the test in Training and HSE.",
+     "reuse": true
+    }
+   ]
+  },
+  {
+   "id": "hse-tab-learn",
+   "label": "Learning centre",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "cards",
+     "title": "Learning centre",
+     "icon": null,
+     "sub": "Learning material is shared with vendors in their Training and HSE area.",
+     "items": [
+      {
+       "title": "Site safety basics",
+       "value": "12 min",
+       "text": "Video and 10-question quiz",
+       "colour": "green",
+       "badge": "Mandatory"
+      },
+      {
+       "title": "Working at heights",
+       "value": "25 min",
+       "text": "Practical guide and test",
+       "colour": "orange",
+       "badge": "Trade"
+      },
+      {
+       "title": "Hot work permits",
+       "value": "18 min",
+       "text": "Permit steps and quiz",
+       "colour": "orange",
+       "badge": "Trade"
+      },
+      {
+       "title": "Anti-bribery and conduct",
+       "value": "15 min",
+       "text": "Policy and declaration",
+       "colour": "blue",
+       "badge": "All vendors"
+      },
+      {
+       "title": "Data protection",
+       "value": "10 min",
+       "text": "Short guide",
+       "colour": "grey",
+       "badge": "Optional"
+      }
+     ]
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_add_learning_material",
+      "version": 1,
+      "title": "Add learning material",
+      "fields": [
+       {
+        "key": "title",
+        "label": "Title",
+        "type": "text",
+        "inputType": "text",
+        "placeholder": "For example: Fire safety on site",
+        "full": false
+       },
+       {
+        "key": "type",
+        "label": "Type",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Video",
+         "Document",
+         "Quiz"
+        ],
+        "full": false
+       },
+       {
+        "key": "audience",
+        "label": "Audience",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "All vendors",
+         "Trade vendors",
+         "Staff"
+        ],
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "plus",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Add material",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hse-tab-induction",
+   "label": "Induction",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "hse-tab-assess",
+   "label": "Assessments",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "attempts",
+     "title": "Test attempts",
+     "icon": "clipboard-check",
+     "sub": "Every attempt is recorded with score and staff member; a pass issues a certificate with an expiry date.",
+     "reuse": true
+    }
+   ]
+  },
+  {
+   "id": "hse-tab-matrix",
+   "label": "Competency matrix",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "matrix",
+     "title": "Competency by vendor and course",
+     "icon": "grid",
+     "sub": "Shows the best valid score per vendor and course. n/a means the course is not required for that trade.",
+     "columns": [
+      "Site safety",
+      "Heights",
+      "Hot work",
+      "Anti-bribery"
+     ],
+     "rows": [
+      {
+       "name": "Kalahari Logistics",
+       "values": [
+        96,
+        "n/a",
+        "n/a",
+        92
+       ]
+      },
+      {
+       "name": "Delta Civils and Plant Hire",
+       "values": [
+        88,
+        62,
+        "expired",
+        80
+       ]
+      },
+      {
+       "name": "Phoenix Scaffolding",
+       "values": [
+        90,
+        84,
+        "n/a",
+        76
+       ]
+      },
+      {
+       "name": "Sable IT Networks",
+       "values": [
+        94,
+        "n/a",
+        "n/a",
+        95
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hse-tab-certs",
+   "label": "Certificates",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "tr_certs",
+     "title": "Certificate register",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "hse-tab-expiry",
+   "label": "Expiry tracking",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Expiring in 30 days",
+       "value": "5",
+       "accent": "orange"
+      },
+      {
+       "label": "Expiring in 60 days",
+       "value": "11",
+       "accent": "blue"
+      },
+      {
+       "label": "Expired",
+       "value": "3",
+       "accent": "red"
+      },
+      {
+       "label": "Reminders sent",
+       "value": "19",
+       "accent": "green"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "tr_expiry",
+     "title": "Expiry tracking",
+     "icon": null,
+     "sub": "Reminders go out at 30, 7 and 1 days, or at the intervals set in Administration.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "hse-tab-reports",
+   "label": "Reports",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "cards",
+     "title": "Training reports",
+     "icon": null,
+     "sub": null,
+     "items": [
+      {
+       "title": "Compliance",
+       "value": "",
+       "text": "Opens in Reports and BI with these filters set",
+       "colour": "purple",
+       "badge": "Report"
+      },
+      {
+       "title": "Performance",
+       "value": "",
+       "text": "Opens in Reports and BI with these filters set",
+       "colour": "purple",
+       "badge": "Report"
+      }
+     ]
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_run_a_report",
+      "version": 1,
+      "title": "Run a report",
+      "fields": [
+       {
+        "key": "report",
+        "label": "Report",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Compliance",
+         "Performance"
+        ],
+        "full": false
+       },
+       {
+        "key": "period",
+        "label": "Period",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Last 30 days",
+         "This quarter",
+         "This year"
+        ],
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "bar-chart-2",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Open in Reports and BI",
+       "style": "btn-primary",
+       "onclick": "showPage('reports')"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

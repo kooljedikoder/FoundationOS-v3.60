@@ -1,0 +1,419 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "clm",
+ "title": "Contract Lifecycle Management",
+ "subtitle": null,
+ "workspace": "04-contracts-commercial",
+ "package": "commerce",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "clm-tab-dash",
+   "label": "Dashboard",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Active contracts",
+       "value": "64",
+       "accent": "purple"
+      },
+      {
+       "label": "Expiring (30 days)",
+       "value": "12",
+       "accent": "orange"
+      },
+      {
+       "label": "Obligations due",
+       "value": "9",
+       "accent": "red"
+      },
+      {
+       "label": "Annual value",
+       "value": "₦1.9bn",
+       "accent": "green"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Value by category",
+       "icon": "bar-chart-2",
+       "sub": null,
+       "rows": [
+        {
+         "label": "Transport",
+         "percent": 38,
+         "tone": "",
+         "value": null
+        },
+        {
+         "label": "IT services",
+         "percent": 29,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Civils",
+         "percent": 18,
+         "tone": "warning",
+         "value": null
+        },
+        {
+         "label": "Other",
+         "percent": 15,
+         "tone": "",
+         "value": null
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "ct_actions",
+       "title": "Needs your action",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clm-register",
+   "label": "Contracts",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "clm-tab-templates",
+   "label": "Templates",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "cards",
+     "title": "Contract templates",
+     "icon": null,
+     "sub": "Templates keep their clauses in the clause library. A change creates a new version.",
+     "items": [
+      {
+       "title": "Framework agreement",
+       "value": "",
+       "text": "Annual framework with schedule of rates",
+       "colour": "blue",
+       "badge": "v4"
+      },
+      {
+       "title": "Service agreement",
+       "value": "",
+       "text": "Fixed scope, SLA and KPIs",
+       "colour": "green",
+       "badge": "v3"
+      },
+      {
+       "title": "Supply agreement",
+       "value": "",
+       "text": "Goods, delivery terms and returns",
+       "colour": "purple",
+       "badge": "v2"
+      },
+      {
+       "title": "Non-disclosure agreement",
+       "value": "",
+       "text": "One-way and mutual",
+       "colour": "grey",
+       "badge": "v5"
+      }
+     ]
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_new_template",
+      "version": 1,
+      "title": "New template",
+      "fields": [
+       {
+        "key": "name",
+        "label": "Name",
+        "type": "text",
+        "inputType": "text",
+        "placeholder": "For example: Equipment hire agreement",
+        "full": false
+       },
+       {
+        "key": "based_on",
+        "label": "Based on",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Blank",
+         "Framework agreement",
+         "Service agreement"
+        ],
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "file-text",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Create template",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clm-tab-pricing",
+   "label": "Pricing",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "ct_pricing",
+     "title": "Agreed prices",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "clm-tab-terms",
+   "label": "Terms",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "ct_terms",
+     "title": "Standard terms",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "clm-tab-slas",
+   "label": "SLAs",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "SLAs tracked",
+       "value": "38",
+       "accent": "purple"
+      },
+      {
+       "label": "Met this month",
+       "value": "34",
+       "accent": "green"
+      },
+      {
+       "label": "Breached",
+       "value": "3",
+       "accent": "red"
+      },
+      {
+       "label": "At risk",
+       "value": "1",
+       "accent": "orange"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "ct_slas",
+     "title": "Service level agreements",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "clm-tab-renewals",
+   "label": "Renewals",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "obligations",
+     "title": "Obligations and renewals",
+     "icon": "calendar",
+     "sub": "The same obligations list as the Contracts tab; renewals are obligations with a renewal date.",
+     "reuse": true
+    }
+   ]
+  },
+  {
+   "id": "clm-tab-sign",
+   "label": "Digital signatures",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "ct_sign",
+     "title": "Signatures",
+     "icon": null,
+     "sub": "Signing limits come from the director records in Contact Control Center.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "clm-tab-spend",
+   "label": "Spend analysis",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "bars",
+     "title": "Contract spend vs commitment",
+     "icon": "bar-chart-2",
+     "sub": null,
+     "rows": [
+      {
+       "label": "Kalahari Logistics",
+       "percent": 82,
+       "tone": "success",
+       "value": "₦39m of ₦48m"
+      },
+      {
+       "label": "Sable IT Networks",
+       "percent": 64,
+       "tone": "",
+       "value": "₦70m of ₦110m"
+      },
+      {
+       "label": "Delta Civils and Plant Hire",
+       "percent": 91,
+       "tone": "warning",
+       "value": "₦31m of ₦34m"
+      },
+      {
+       "label": "Northgate Office Supplies",
+       "percent": 40,
+       "tone": "",
+       "value": "₦2.5m of ₦6.2m"
+      }
+     ]
+    },
+    {
+     "type": "cards",
+     "title": "Savings",
+     "icon": null,
+     "sub": null,
+     "items": [
+      {
+       "title": "Negotiated savings",
+       "value": "₦14.2m",
+       "text": "This year against list prices",
+       "colour": "green",
+       "badge": "+6.1%"
+      },
+      {
+       "title": "Off-contract spend",
+       "value": "₦9.8m",
+       "text": "Bought outside a contract",
+       "colour": "orange",
+       "badge": "2.0%"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clm-tab-reports",
+   "label": "Reports",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "cards",
+     "title": "Contract reports",
+     "icon": null,
+     "sub": null,
+     "items": [
+      {
+       "title": "Contract report",
+       "value": "",
+       "text": "Register, renewals, obligations",
+       "colour": "purple",
+       "badge": "Reports and BI"
+      },
+      {
+       "title": "Spend report",
+       "value": "",
+       "text": "Spend vs commitment",
+       "colour": "blue",
+       "badge": "Reports and BI"
+      }
+     ]
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_run_a_report",
+      "version": 1,
+      "title": "Run a report",
+      "fields": [
+       {
+        "key": "report",
+        "label": "Report",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Contract",
+         "Spend"
+        ],
+        "full": false
+       },
+       {
+        "key": "period",
+        "label": "Period",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Last 30 days",
+         "This quarter",
+         "This year"
+        ],
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "bar-chart-2",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Open in Reports and BI",
+       "style": "btn-primary",
+       "onclick": "showPage('reports')"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

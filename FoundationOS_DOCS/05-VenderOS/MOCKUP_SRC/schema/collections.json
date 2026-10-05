@@ -1,0 +1,4166 @@
+{
+ "schemaVersion": 1,
+ "note": "Each collection is a standard list (rule R12). In the prototype they live in proto_records; in the port each maps to its real table through dataSource.",
+ "collections": [
+  {
+   "id": "award_approvals",
+   "store": "proto_records",
+   "dataSource": "NEW award_approvals",
+   "rows": 3,
+   "usedBy": [
+    "procurement"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "awards",
+   "store": "proto_records",
+   "dataSource": "NEW awards",
+   "rows": 3,
+   "usedBy": [
+    "procurement"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "cal_agenda",
+   "store": "proto_records",
+   "dataSource": "NEW cal_agenda",
+   "rows": 4,
+   "usedBy": [
+    "calendar"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "cm_actions",
+   "store": "proto_records",
+   "dataSource": "NEW cm_actions",
+   "rows": 2,
+   "usedBy": [
+    "comms"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "cm_meetings",
+   "store": "proto_records",
+   "dataSource": "NEW cm_meetings",
+   "rows": 3,
+   "usedBy": [
+    "comms"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "cm_share",
+   "store": "proto_records",
+   "dataSource": "NEW cm_share",
+   "rows": 2,
+   "usedBy": [
+    "comms"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "cm_surveys",
+   "store": "proto_records",
+   "dataSource": "NEW cm_surveys",
+   "rows": 2,
+   "usedBy": [
+    "comms"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "cm_tickets",
+   "store": "proto_records",
+   "dataSource": "NEW cm_tickets",
+   "rows": 3,
+   "usedBy": [
+    "comms"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "comp_reviews",
+   "store": "proto_records",
+   "dataSource": "NEW comp_reviews",
+   "rows": 3,
+   "usedBy": [
+    "audit"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "ct_actions",
+   "store": "proto_records",
+   "dataSource": "NEW ct_actions",
+   "rows": 1,
+   "usedBy": [
+    "clm"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "ct_pricing",
+   "store": "proto_records",
+   "dataSource": "NEW ct_pricing",
+   "rows": 3,
+   "usedBy": [
+    "clm"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "ct_sign",
+   "store": "proto_records",
+   "dataSource": "NEW ct_sign",
+   "rows": 3,
+   "usedBy": [
+    "clm"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "ct_slas",
+   "store": "proto_records",
+   "dataSource": "NEW ct_slas",
+   "rows": 2,
+   "usedBy": [
+    "clm"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "ct_terms",
+   "store": "proto_records",
+   "dataSource": "NEW ct_terms",
+   "rows": 3,
+   "usedBy": [
+    "clm"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "esg_items",
+   "store": "proto_records",
+   "dataSource": "NEW esg_items",
+   "rows": 1,
+   "usedBy": [
+    "audit"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "evaluations",
+   "store": "proto_records",
+   "dataSource": "NEW evaluations",
+   "rows": 3,
+   "usedBy": [
+    "procurement"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "fin_reviews",
+   "store": "proto_records",
+   "dataSource": "NEW fin_reviews",
+   "rows": 3,
+   "usedBy": [
+    "procurement"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "health_watch",
+   "store": "proto_records",
+   "dataSource": "NEW health_watch",
+   "rows": 2,
+   "usedBy": [
+    "audit"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "inspections",
+   "store": "proto_records",
+   "dataSource": "NEW inspections",
+   "rows": 3,
+   "usedBy": [
+    "audit"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "kb_articles",
+   "store": "proto_records",
+   "dataSource": "NEW kb_articles",
+   "rows": 4,
+   "usedBy": [
+    "support"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "mc_alerts",
+   "store": "proto_records",
+   "dataSource": "NEW mc_alerts",
+   "rows": 2,
+   "usedBy": [
+    "mycomms"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "mc_news",
+   "store": "proto_records",
+   "dataSource": "NEW mc_news",
+   "rows": 2,
+   "usedBy": [
+    "mycomms"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "mitigations",
+   "store": "proto_records",
+   "dataSource": "NEW mitigations",
+   "rows": 3,
+   "usedBy": [
+    "erm"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "myhome_actions",
+   "store": "proto_records",
+   "dataSource": "NEW myhome_actions",
+   "rows": 3,
+   "usedBy": [
+    "myhome"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "mynotif_all",
+   "store": "proto_records",
+   "dataSource": "NEW mynotif_all",
+   "rows": 3,
+   "usedBy": [
+    "mynotifications"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "pay_approvals",
+   "store": "proto_records",
+   "dataSource": "NEW pay_approvals",
+   "rows": 2,
+   "usedBy": [
+    "finance"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "payments",
+   "store": "proto_records",
+   "dataSource": "NEW payments",
+   "rows": 3,
+   "usedBy": [
+    "finance"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "perf_plans",
+   "store": "proto_records",
+   "dataSource": "NEW perf_plans",
+   "rows": 3,
+   "usedBy": [
+    "perf"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "perf_ratings",
+   "store": "proto_records",
+   "dataSource": "NEW perf_ratings",
+   "rows": 3,
+   "usedBy": [
+    "perf"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "pp_banks",
+   "store": "proto_records",
+   "dataSource": "NEW pp_banks",
+   "rows": 2,
+   "usedBy": [
+    "passport"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "pp_branches",
+   "store": "proto_records",
+   "dataSource": "NEW pp_branches",
+   "rows": 3,
+   "usedBy": [
+    "passport"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "pp_certs",
+   "store": "proto_records",
+   "dataSource": "NEW pp_certs",
+   "rows": 3,
+   "usedBy": [
+    "passport"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "pp_contacts",
+   "store": "proto_records",
+   "dataSource": "NEW pp_contacts",
+   "rows": 3,
+   "usedBy": [
+    "passport"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "pp_directors",
+   "store": "proto_records",
+   "dataSource": "NEW pp_directors",
+   "rows": 3,
+   "usedBy": [
+    "passport"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "pp_insurance",
+   "store": "proto_records",
+   "dataSource": "NEW pp_insurance",
+   "rows": 2,
+   "usedBy": [
+    "passport"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "pp_products",
+   "store": "proto_records",
+   "dataSource": "NEW pp_products",
+   "rows": 3,
+   "usedBy": [
+    "passport"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "proc_actions",
+   "store": "proto_records",
+   "dataSource": "NEW proc_actions",
+   "rows": 3,
+   "usedBy": [
+    "procurement"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "proc_reviews",
+   "store": "proto_records",
+   "dataSource": "NEW proc_reviews",
+   "rows": 3,
+   "usedBy": [
+    "procurement"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "profile_sessions",
+   "store": "proto_records",
+   "dataSource": "NEW profile_sessions",
+   "rows": 2,
+   "usedBy": [
+    "profile"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "quotations",
+   "store": "proto_records",
+   "dataSource": "NEW quotations",
+   "rows": 5,
+   "usedBy": [
+    "procurement"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rc_actions",
+   "store": "proto_records",
+   "dataSource": "NEW rc_actions",
+   "rows": 2,
+   "usedBy": [
+    "audit"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rc_renewals",
+   "store": "proto_records",
+   "dataSource": "NEW rc_renewals",
+   "rows": 3,
+   "usedBy": [
+    "audit"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "recommendations",
+   "store": "proto_records",
+   "dataSource": "NEW recommendations",
+   "rows": 3,
+   "usedBy": [
+    "procurement"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_compliance",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_compliance",
+   "rows": 2,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_contracts",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_contracts",
+   "rows": 2,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_exec",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_exec",
+   "rows": 2,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_exports",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_exports",
+   "rows": 3,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_performance",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_performance",
+   "rows": 2,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_procurement",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_procurement",
+   "rows": 2,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_risk",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_risk",
+   "rows": 2,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_sched",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_sched",
+   "rows": 3,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_spend",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_spend",
+   "rows": 2,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "rpt_vendor",
+   "store": "proto_records",
+   "dataSource": "NEW rpt_vendor",
+   "rows": 2,
+   "usedBy": [
+    "reports"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "tasks_done",
+   "store": "proto_records",
+   "dataSource": "NEW tasks_done",
+   "rows": 1,
+   "usedBy": [
+    "tasks"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "tasks_mine",
+   "store": "proto_records",
+   "dataSource": "NEW tasks_mine",
+   "rows": 4,
+   "usedBy": [
+    "tasks"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "tasks_team",
+   "store": "proto_records",
+   "dataSource": "NEW tasks_team",
+   "rows": 2,
+   "usedBy": [
+    "tasks"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "tr_actions",
+   "store": "proto_records",
+   "dataSource": "NEW tr_actions",
+   "rows": 2,
+   "usedBy": [
+    "hse"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "tr_certs",
+   "store": "proto_records",
+   "dataSource": "NEW tr_certs",
+   "rows": 3,
+   "usedBy": [
+    "hse"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "tr_expiry",
+   "store": "proto_records",
+   "dataSource": "NEW tr_expiry",
+   "rows": 2,
+   "usedBy": [
+    "hse"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "vendors_all",
+   "store": "proto_records",
+   "dataSource": "NEW vendors_all",
+   "rows": 4,
+   "usedBy": [
+    "vendors"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "vendors_arch",
+   "store": "proto_records",
+   "dataSource": "NEW vendors_arch",
+   "rows": 2,
+   "usedBy": [
+    "vendors"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "vendors_black",
+   "store": "proto_records",
+   "dataSource": "NEW vendors_black",
+   "rows": 2,
+   "usedBy": [
+    "vendors"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "vendors_cat",
+   "store": "proto_records",
+   "dataSource": "NEW vendors_cat",
+   "rows": 2,
+   "usedBy": [
+    "vendors"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  },
+  {
+   "id": "vendors_pref",
+   "store": "proto_records",
+   "dataSource": "NEW vendors_pref",
+   "rows": 2,
+   "usedBy": [
+    "vendors"
+   ],
+   "fields": [
+    {
+     "key": "ref",
+     "type": "text",
+     "required": true,
+     "unique": true
+    },
+    {
+     "key": "title",
+     "type": "text",
+     "required": true
+    },
+    {
+     "key": "type",
+     "type": "text"
+    },
+    {
+     "key": "owner",
+     "type": "text"
+    },
+    {
+     "key": "date",
+     "type": "text"
+    },
+    {
+     "key": "amount",
+     "type": "text"
+    },
+    {
+     "key": "status",
+     "type": "badge",
+     "shape": "[colour, text]",
+     "colours": [
+      "grey",
+      "blue",
+      "orange",
+      "red",
+      "green"
+     ]
+    },
+    {
+     "key": "stage",
+     "type": "text",
+     "note": "journey stage chip, for example S41"
+    },
+    {
+     "key": "next",
+     "type": "text",
+     "note": "the single next action shown in the drawer"
+    },
+    {
+     "key": "actions",
+     "type": "actions",
+     "note": "optional decision buttons, for example Approve, Reject"
+    }
+   ]
+  }
+ ]
+}

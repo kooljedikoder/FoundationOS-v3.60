@@ -1,0 +1,277 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "fos-page.schema.json",
+ "title": "FOS page schema",
+ "description": "A page is a workspace page: header, optional KPI strip, tabs, and blocks inside each tab. Forms use the FormFlow field vocabulary (SPECS/FORMFLOW.md). Every app and module ships its pages in this shape so the builder can read, create and edit them.",
+ "type": "object",
+ "required": [
+  "schemaVersion",
+  "id",
+  "title",
+  "tabs"
+ ],
+ "properties": {
+  "schemaVersion": {
+   "const": 1
+  },
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9-]+$"
+  },
+  "title": {
+   "type": "string"
+  },
+  "subtitle": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "workspace": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "package": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "AppSuite package that owns the page"
+  },
+  "origin": {
+   "enum": [
+    "generated",
+    "restructured",
+    "builder"
+   ]
+  },
+  "actions": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/action"
+   }
+  },
+  "kpis": {
+   "oneOf": [
+    {
+     "type": "null"
+    },
+    {
+     "$ref": "#/$defs/block"
+    }
+   ]
+  },
+  "tabs": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/tab"
+   }
+  }
+ },
+ "$defs": {
+  "action": {
+   "type": "object",
+   "required": [
+    "label"
+   ],
+   "properties": {
+    "label": {
+     "type": "string"
+    },
+    "style": {
+     "type": "string"
+    },
+    "onclick": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "icon": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  },
+  "tab": {
+   "type": "object",
+   "required": [
+    "id",
+    "label",
+    "source"
+   ],
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "label": {
+     "type": "string"
+    },
+    "source": {
+     "enum": [
+      "schema",
+      "legacy"
+     ]
+    },
+    "note": {
+     "type": "string"
+    },
+    "blocks": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/block"
+     }
+    }
+   }
+  },
+  "block": {
+   "type": "object",
+   "required": [
+    "type"
+   ],
+   "properties": {
+    "type": {
+     "enum": [
+      "kpis",
+      "list",
+      "bars",
+      "cards",
+      "matrix",
+      "form",
+      "flow",
+      "timeline",
+      "kv",
+      "note",
+      "html",
+      "columns"
+     ]
+    },
+    "title": {
+     "type": "string"
+    },
+    "sub": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "icon": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "collection": {
+     "type": "string",
+     "description": "list blocks: a collection id from collections.json"
+    },
+    "items": {
+     "type": "array"
+    },
+    "rows": {
+     "type": "array"
+    },
+    "columns": {
+     "type": "array"
+    },
+    "steps": {
+     "type": "array"
+    },
+    "formflow": {
+     "$ref": "#/$defs/formflow"
+    },
+    "buttons": {
+     "type": "array"
+    },
+    "html": {
+     "type": "string"
+    },
+    "blocks": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/block"
+     }
+    }
+   }
+  },
+  "formflow": {
+   "type": "object",
+   "required": [
+    "id",
+    "version",
+    "fields"
+   ],
+   "properties": {
+    "id": {
+     "type": "string"
+    },
+    "version": {
+     "type": "integer"
+    },
+    "title": {
+     "type": "string"
+    },
+    "fields": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "key",
+       "label",
+       "type"
+      ],
+      "properties": {
+       "key": {
+        "type": "string"
+       },
+       "label": {
+        "type": "string"
+       },
+       "type": {
+        "enum": [
+         "text",
+         "textarea",
+         "number",
+         "currency",
+         "date",
+         "time",
+         "select",
+         "radio",
+         "checkbox",
+         "toggle",
+         "relationship",
+         "repeater",
+         "file",
+         "image",
+         "audio",
+         "signature",
+         "location"
+        ]
+       },
+       "options": {
+        "type": "array"
+       },
+       "required": {
+        "type": "boolean"
+       },
+       "table": {
+        "type": "string",
+        "description": "real table when the field maps to a column"
+       },
+       "column": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "submit": {
+     "type": "object"
+    }
+   }
+  }
+ }
+}

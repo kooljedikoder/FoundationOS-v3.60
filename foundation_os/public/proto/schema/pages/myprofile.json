@@ -1,0 +1,59 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "myprofile",
+ "title": "Company & Passport",
+ "subtitle": null,
+ "workspace": "08-vendor-portal",
+ "package": "vendorportal",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "mp-overview",
+   "label": "Overview",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "mp-contacts",
+   "label": "Contacts",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "mp-banking",
+   "label": "Banking & Tax",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "mp-passport",
+   "label": "Passport",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "mp-staff",
+   "label": "Staff Access",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "myprofile-tab-contracts",
+   "label": "Contracts",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "contracts",
+     "title": "Your contracts",
+     "icon": "file-text",
+     "sub": "Contracts you have with the buyer. Obligations and renewal dates are shown in the drawer.",
+     "reuse": true
+    }
+   ]
+  }
+ ]
+}

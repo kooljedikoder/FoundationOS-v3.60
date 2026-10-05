@@ -1,0 +1,169 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "appsuite",
+ "title": "AppSuite",
+ "subtitle": "Turn packages on or off. Each package declares what it provides and what it needs, and each need can use the FOS tables or the package's own tables.",
+ "workspace": "10-administration",
+ "package": null,
+ "origin": "generated",
+ "actions": [
+  {
+   "label": "Install a package",
+   "style": "btn-primary",
+   "onclick": "subNav('appsuite',{tab:'appsuite-tab-install'})",
+   "icon": "plus"
+  }
+ ],
+ "kpis": {
+  "type": "kpis",
+  "items": [
+   {
+    "label": "Packages",
+    "value": "11",
+    "accent": "purple"
+   },
+   {
+    "label": "On",
+    "value": "11",
+    "accent": "green"
+   },
+   {
+    "label": "Shared apps",
+    "value": "6",
+    "accent": "blue"
+   },
+   {
+    "label": "Using FOS tables",
+    "value": "7",
+    "accent": "orange"
+   }
+  ]
+ },
+ "tabs": [
+  {
+   "id": "appsuite-tab-packages",
+   "label": "Packages",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "html",
+     "title": "Installed packages",
+     "icon": "layers",
+     "sub": "FOS Core is always on. This list is the mockup of the FOS module registry (fos_modules).",
+     "html": "<div class=\"table-wrap\"><table><thead><tr><th>Package</th><th>Needs</th><th>Data</th><th>On</th></tr></thead><tbody><tr data-pkg-row=\"core\"><td><b>FOS Core</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Access control (users, roles, permissions), settings, products and services, custom fields, media, module registry, audit log, search</div></td><td>-</td><td><select aria-label=\"Data mode for FOS Core\" onchange=\"pkgMode('core',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\" selected>Use FOS tables</option><option value=\"own\">App's own tables</option><option value=\"hybrid\">Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked disabled onchange=\"pkgToggle('core',this.checked)\" aria-label=\"Turn FOS Core on or off\"><span></span></label></td></tr><tr data-pkg-row=\"ccc\"><td><b>Contact Control Center</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Contacts, directory, profiles, assets, settings lists</div></td><td>core</td><td><select aria-label=\"Data mode for Contact Control Center\" onchange=\"pkgMode('ccc',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\" selected>Use FOS tables</option><option value=\"own\">App's own tables</option><option value=\"hybrid\">Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('ccc',this.checked)\" aria-label=\"Turn Contact Control Center on or off\"><span></span></label></td></tr><tr data-pkg-row=\"documents\"><td><b>Documents</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Uploads, review, expiry, per-section slots, document centre</div></td><td>core, ccc</td><td><select aria-label=\"Data mode for Documents\" onchange=\"pkgMode('documents',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\" selected>Use FOS tables</option><option value=\"own\">App's own tables</option><option value=\"hybrid\">Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('documents',this.checked)\" aria-label=\"Turn Documents on or off\"><span></span></label></td></tr><tr data-pkg-row=\"collaboration\"><td><b>Collaboration</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Inbox, direct messages, email, WhatsApp, announcements, meetings, tasks, surveys, tickets</div></td><td>core, ccc<div style=\"font-size:11px;color:var(--muted)\">works with: documents</div></td><td><select aria-label=\"Data mode for Collaboration\" onchange=\"pkgMode('collaboration',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\" selected>Use FOS tables</option><option value=\"own\">App's own tables</option><option value=\"hybrid\">Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('collaboration',this.checked)\" aria-label=\"Turn Collaboration on or off\"><span></span></label></td></tr><tr data-pkg-row=\"training\"><td><b>Training and Competency</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Courses, tests, certificates, competency matrix, expiry</div></td><td>core, ccc<div style=\"font-size:11px;color:var(--muted)\">works with: documents, collaboration</div></td><td><select aria-label=\"Data mode for Training and Competency\" onchange=\"pkgMode('training',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\">Use FOS tables</option><option value=\"own\" selected>App's own tables</option><option value=\"hybrid\">Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('training',this.checked)\" aria-label=\"Turn Training and Competency on or off\"><span></span></label></td></tr><tr data-pkg-row=\"insights\"><td><b>Insights (KPIs, scorecards, reports)</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">KPI definitions and targets, scorecards, dashboards, reports, schedules, exports, BI</div></td><td>core</td><td><select aria-label=\"Data mode for Insights (KPIs, scorecards, reports)\" onchange=\"pkgMode('insights',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\" selected>Use FOS tables</option><option value=\"own\">App's own tables</option><option value=\"hybrid\">Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('insights',this.checked)\" aria-label=\"Turn Insights (KPIs, scorecards, reports) on or off\"><span></span></label></td></tr><tr data-pkg-row=\"commerce\"><td><b>Commerce</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Quotations, RFQs, purchase orders, receiving, invoices, expenses, payments, contracts, templates, SLAs, signatures</div></td><td>core, ccc, documents<div style=\"font-size:11px;color:var(--muted)\">works with: insights</div></td><td><select aria-label=\"Data mode for Commerce\" onchange=\"pkgMode('commerce',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\">Use FOS tables</option><option value=\"own\">App's own tables</option><option value=\"hybrid\" selected>Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('commerce',this.checked)\" aria-label=\"Turn Commerce on or off\"><span></span></label></td></tr><tr data-pkg-row=\"risk\"><td><b>Risk and Compliance</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Audits, findings, CAPA, risk register, inspections, ESG</div></td><td>core, ccc, documents<div style=\"font-size:11px;color:var(--muted)\">works with: insights, training</div></td><td><select aria-label=\"Data mode for Risk and Compliance\" onchange=\"pkgMode('risk',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\">Use FOS tables</option><option value=\"own\" selected>App's own tables</option><option value=\"hybrid\">Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('risk',this.checked)\" aria-label=\"Turn Risk and Compliance on or off\"><span></span></label></td></tr><tr data-pkg-row=\"automation\"><td><b>Automation and Platform</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Workflow rules, approval chains, integrations, AI copilot, form builder</div></td><td>core</td><td><select aria-label=\"Data mode for Automation and Platform\" onchange=\"pkgMode('automation',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\" selected>Use FOS tables</option><option value=\"own\">App's own tables</option><option value=\"hybrid\">Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('automation',this.checked)\" aria-label=\"Turn Automation and Platform on or off\"><span></span></label></td></tr><tr data-pkg-row=\"vendoros\"><td><b>VendorOS Core</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Vendor lifecycle: directory, registration, approval, passport, assessment</div></td><td>core, ccc, documents, collaboration<div style=\"font-size:11px;color:var(--muted)\">works with: commerce, training, risk, contracts, insights</div></td><td><select aria-label=\"Data mode for VendorOS Core\" onchange=\"pkgMode('vendoros',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\">Use FOS tables</option><option value=\"own\">App's own tables</option><option value=\"hybrid\" selected>Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('vendoros',this.checked)\" aria-label=\"Turn VendorOS Core on or off\"><span></span></label></td></tr><tr data-pkg-row=\"vendorportal\"><td><b>Vendor Portal</b><div class=\"cc-key\" style=\"font-size:11px;color:var(--muted)\">Vendor-facing home, company, documents, orders, invoices, training, messages, notifications</div></td><td>vendoros, collaboration<div style=\"font-size:11px;color:var(--muted)\">works with: commerce, training</div></td><td><select aria-label=\"Data mode for Vendor Portal\" onchange=\"pkgMode('vendorportal',this.value)\" style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option value=\"fos\" selected>Use FOS tables</option><option value=\"own\">App's own tables</option><option value=\"hybrid\">Choose per port</option></select></td><td><label class=\"pkg-sw\"><input type=\"checkbox\" checked onchange=\"pkgToggle('vendorportal',this.checked)\" aria-label=\"Turn Vendor Portal on or off\"><span></span></label></td></tr></tbody></table></div><p id=\"pkgMsg\" style=\"font-size:12.5px;color:var(--muted);margin-top:10px\">Turning a package off hides its menu entries and tabs. Its data stays. A package that others need cannot be turned off until they are.</p>"
+    }
+   ]
+  },
+  {
+   "id": "appsuite-tab-engines",
+   "label": "Shared apps",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "flow",
+     "title": "How VendorOS Core sits on the other apps",
+     "icon": "workflow",
+     "sub": "VendorOS Core needs FOS Core, Contact Control Center, Documents and Collaboration. It works with Commerce, Training, Risk and Insights when they are on, and hides their tabs when they are off.",
+     "steps": [
+      {
+       "label": "FOS Core",
+       "colour": "#475569"
+      },
+      {
+       "label": "Contact Control Center",
+       "colour": "#2563eb"
+      },
+      {
+       "label": "Documents",
+       "colour": "#7c3aed"
+      },
+      {
+       "label": "Collaboration",
+       "colour": "#0d9488"
+      },
+      {
+       "label": "VendorOS Core",
+       "colour": "#4f46e5"
+      },
+      {
+       "label": "Vendor Portal",
+       "colour": "#16a34a"
+      }
+     ]
+    },
+    {
+     "type": "cards",
+     "title": "Apps that other apps reuse",
+     "icon": null,
+     "sub": "An app is built once and mounted at different levels (tenant, vendor, project, contract). The level is a context value, not a copy of the app.",
+     "items": [
+      {
+       "title": "Contact Control Center",
+       "value": "Everything",
+       "text": "One contact book for staff, customers, vendors and partners",
+       "colour": "purple",
+       "badge": "Reused"
+      },
+      {
+       "title": "Documents",
+       "value": "6 apps",
+       "text": "Vendor documents, contract files, HSE certificates, shared files",
+       "colour": "purple",
+       "badge": "Reused"
+      },
+      {
+       "title": "Collaboration",
+       "value": "4 apps",
+       "text": "Tenant inbox, vendor threads, contract and PO conversations",
+       "colour": "purple",
+       "badge": "Reused"
+      },
+      {
+       "title": "Training and Competency",
+       "value": "3 apps",
+       "text": "Vendor induction, staff training, site access rules",
+       "colour": "purple",
+       "badge": "Reused"
+      },
+      {
+       "title": "Commerce",
+       "value": "4 apps",
+       "text": "Quotations, invoices, expenses and contracts for vendors, customers and projects",
+       "colour": "blue",
+       "badge": "Reused"
+      },
+      {
+       "title": "Insights",
+       "value": "Every app",
+       "text": "KPIs, scorecards, reports; every dashboard strip reads from it",
+       "colour": "blue",
+       "badge": "Reused"
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "KPIs are a service, not a menu app",
+     "icon": "bar-chart-2",
+     "sub": null,
+     "html": "<p style=\"font-size:13px\">Each app registers its KPIs (name, query, target) with Insights. Dashboards, scorecards and the strip at the top of every workspace read them. Turn an app off and its KPIs disappear from the dashboards; the history stays.</p>"
+    }
+   ]
+  },
+  {
+   "id": "appsuite-tab-install",
+   "label": "Install",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "html",
+     "title": "Install a package",
+     "icon": "plus",
+     "sub": "Installing registers the package switched off. An administrator turns it on, which runs its migrations. Inside FOS the default is the FOS tables, so there is one database and no copies.",
+     "html": "<div class=\"form-grid\"><div class=\"field\"><label>Package</label><select><option>Procure to Pay</option><option>Hybrid Comms</option><option>Contracts</option></select></div><div class=\"field\"><label>Where it runs</label><select><option>Inside FOS (parent app)</option><option>Standalone</option></select></div></div><h4 style=\"margin:14px 0 6px;font-size:13px\">Where does each need get its data?</h4><div class=\"table-wrap\"><table><thead><tr><th>Need</th><th>Interface</th><th>Use</th></tr></thead><tbody><tr><td><b>Contacts</b></td><td><code>ContactStore</code></td><td><select style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option>FOS: partners_partners + fos_partner_profiles</option><option>Own: contacts_own</option></select></td></tr><tr><td><b>Documents</b></td><td><code>DocumentStore</code></td><td><select style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option>FOS: documents + media</option><option>Own: documents_own</option></select></td></tr><tr><td><b>Conversations</b></td><td><code>ConversationStore</code></td><td><select style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option>FOS: communications engine + fos_communication_contexts</option><option>Own: conversations_own</option></select></td></tr><tr><td><b>Approvals</b></td><td><code>ApprovalStore</code></td><td><select style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option>FOS: fos_vendor_approval_steps</option><option>Own: approvals_own</option></select></td></tr><tr><td><b>Audit</b></td><td><code>AuditLog</code></td><td><select style=\"padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface-2)\"><option>FOS: module_activity_logs</option><option>Own: audit_own</option></select></td></tr></tbody></table></div><div class=\"page-actions\" style=\"margin-top:12px\"><button class=\"btn btn-primary btn-sm\" onclick=\"showToast('Package installed disabled; enable it from Packages (prototype)','check-circle')\">Install (disabled by default)</button></div>"
+    }
+   ]
+  }
+ ]
+}

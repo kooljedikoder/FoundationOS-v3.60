@@ -6,15 +6,8 @@
           <div class="kpi accent-green"><div class="kpi-label">Verified</div><div class="kpi-val">96%</div></div>
           <div class="kpi accent-red"><div class="kpi-label">Rejected</div><div class="kpi-val">8</div></div>
         </div>
-        <div class="panel" id="docs-queue"><h3><i data-lucide="folder"></i>Document Queue</h3><div class="table-wrap"><table><thead><tr><th>Vendor</th><th>Document</th><th>Submitted</th><th>Status</th></tr></thead><tbody>
-          <tr><td>Delta Civils &amp; Plant Hire</td><td>Public Liability Insurance</td><td>Today</td><td><span class="badge badge-blue">Pending Review</span></td></tr>
-          <tr><td>Sable IT Networks</td><td>BEE Certificate</td><td>Yesterday</td><td><span class="badge badge-green">Verified</span></td></tr>
-          <tr><td>Maru Fleet Services</td><td>Fleet Registration</td><td>2 days ago</td><td><span class="badge badge-red">Rejected — Illegible</span></td></tr>
-        </tbody></table></div></div>
-        <div class="panel" id="docs-expired"><h3><i data-lucide="alert-triangle"></i>Expired Documents</h3><div class="table-wrap"><table><thead><tr><th>Vendor</th><th>Document</th><th>Expired</th><th class="actions-col">Actions</th></tr></thead><tbody>
-          <tr><td>Phoenix Scaffolding</td><td>Working at Heights Certificate</td><td>12 days ago</td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showToast('Renewal reminder sent to Phoenix Scaffolding','mail')">Send Reminder</button> <button class="btn btn-danger btn-sm" onclick="showToast('Phoenix Scaffolding flagged — new POs on hold until renewed','alert-circle')">Escalate</button></td></tr>
-          <tr><td>Northgate Office Supplies</td><td>Tax Clearance Certificate</td><td>3 days ago</td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showToast('Renewal reminder sent to Northgate Office Supplies','mail')">Send Reminder</button> <button class="btn btn-danger btn-sm" onclick="showToast('Northgate Office Supplies flagged — new POs on hold until renewed','alert-circle')">Escalate</button></td></tr>
-        </tbody></table></div></div>
+        <div class="panel" id="docs-queue"><h3><i data-lucide="folder"></i>Document Queue</h3><div class="table-wrap" data-vf="docs_t1"></div></div>
+        <div class="panel" id="docs-expired"><h3><i data-lucide="alert-triangle"></i>Expired Documents</h3><div class="table-wrap" data-vf="docs_t2"></div></div>
       
         <div class="panel" id="docs-expiring"><h3><i data-lucide="clock"></i>Expiring documents (next 30 days)</h3><div class="table-wrap" data-vf="expiring"></div></div>
       </div>

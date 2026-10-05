@@ -1,0 +1,90 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "tasks",
+ "title": "Task Centre",
+ "subtitle": "Everything waiting for you across every workspace, in one list.",
+ "workspace": "00-dashboard",
+ "package": "collaboration",
+ "origin": "generated",
+ "actions": [
+  {
+   "label": "New task",
+   "style": "btn-primary",
+   "onclick": null,
+   "icon": "plus"
+  }
+ ],
+ "kpis": {
+  "type": "kpis",
+  "items": [
+   {
+    "label": "Open tasks",
+    "value": "14",
+    "accent": "purple"
+   },
+   {
+    "label": "Due today",
+    "value": "4",
+    "accent": "orange"
+   },
+   {
+    "label": "Overdue",
+    "value": "2",
+    "accent": "red"
+   },
+   {
+    "label": "Done this week",
+    "value": "23",
+    "accent": "green"
+   }
+  ]
+ },
+ "tabs": [
+  {
+   "id": "tasks-tab-mine",
+   "label": "My tasks",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "tasks_mine",
+     "title": "My tasks",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "tasks-tab-team",
+   "label": "My team",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "tasks_team",
+     "title": "Team tasks",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "tasks-tab-done",
+   "label": "Done",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "tasks_done",
+     "title": "Completed this week",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  }
+ ]
+}

@@ -65,12 +65,7 @@
               <button class="fm-view-btn" onclick="setDnView('cards',this)"><i data-lucide="grid-2x2"></i>Cards</button>
             </div>
           </div>
-          <div id="dnListView"><div class="table-wrap"><table><thead><tr><th>Reference</th><th>Vendor</th><th>PO</th><th>Received</th><th>Condition</th><th class="actions-col">Action</th></tr></thead><tbody>
-            <tr><td>DN-4471</td><td>Kalahari Logistics</td><td>PO-8815</td><td>3 days ago</td><td><span class="badge badge-green">Good</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4471')">View</button></td></tr>
-            <tr><td>DN-4468</td><td>Northgate Office Supplies</td><td>PO-8821</td><td>Today</td><td><span class="badge badge-blue">Pending Inspection</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4468')">View</button></td></tr>
-            <tr><td>DN-4460</td><td>Delta Civils &amp; Plant Hire</td><td>PO-8809</td><td>1 week ago</td><td><span class="badge badge-orange">2 Units Damaged</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4460')">View</button></td></tr>
-            <tr><td>DN-4455</td><td>Sable IT Networks</td><td>PO-8790</td><td>2 weeks ago</td><td><span class="badge badge-green">Good</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4455')">View</button></td></tr>
-          </tbody></table></div></div>
+          <div id="dnListView"><div class="table-wrap" data-vf="warehouse_t1"></div></div>
           <div id="dnCardsView" class="fm-grid hidden">
             <div class="fm-card"><div class="fm-card-thumb"><i data-lucide="file-text"></i></div><div class="fm-card-name">DN-4471 · Kalahari Logistics</div><div class="fm-card-meta">PO-8815 &middot; <span class="badge badge-green">Good</span></div><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4471')">View</button></div>
             <div class="fm-card"><div class="fm-card-thumb"><i data-lucide="file-text"></i></div><div class="fm-card-name">DN-4468 · Northgate Office Supplies</div><div class="fm-card-meta">PO-8821 &middot; <span class="badge badge-blue">Pending Inspection</span></div><button class="btn btn-secondary btn-sm" onclick="vfOpen('dn','DN-4468')">View</button></div>
@@ -81,11 +76,7 @@
 
         <div class="tab-panel" id="wh-expected">
           <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Expected delivery dates from every open Purchase Order — late ones are flagged automatically so you can reschedule with the vendor.</p>
-          <div class="table-wrap"><table><thead><tr><th>PO</th><th>Vendor</th><th>Expected</th><th>Status</th><th class="actions-col">Action</th></tr></thead><tbody>
-            <tr><td>PO-8833</td><td>Maru Fleet Services</td><td>Thursday</td><td><span class="badge badge-blue">On Track</span></td><td class="actions-col">—</td></tr>
-            <tr><td>PO-8830</td><td>Sable IT Networks</td><td>Tomorrow, 9am</td><td><span class="badge badge-blue">On Track</span></td><td class="actions-col">—</td></tr>
-            <tr id="poLateRow"><td>PO-8799</td><td>Phoenix Scaffolding</td><td><span id="poLateDate">2 days overdue</span></td><td><span class="badge badge-red">Late</span></td><td class="actions-col"><button class="btn btn-primary btn-sm" onclick="rescheduleDelivery()">Reschedule</button></td></tr>
-          </tbody></table></div>
+          <div class="table-wrap" data-vf="warehouse_t2"></div>
         </div>
       </div>
 

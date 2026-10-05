@@ -7,10 +7,10 @@ const reportsTab = (title, names) => [cards(title, names.map(n => [n, '', 'Opens
 const trainingPages = [{
   id: 'hse', wrap: { panel: 'hse-tab-induction' }, tabs: [
     { label: 'Dashboard', id: 'dash', blocks: [kpis([['Courses', '12', 'purple'], ['Certified vendors', '38', 'green'], ['Expiring (30 days)', '5', 'orange'], ['Test pass rate', '91%', 'blue']]), two(bars('Induction completion', [['Site Safety Induction', 100, 'success', '412 vendors'], ['Working at Heights', 62, 'warning', '71 vendors'], ['Hot Work Permit', 41, 'warning', '29 vendors']]), list('tr_actions', 'Needs your action', [R('CRT-77', 'Working at Heights certificate expires in 12 days: Delta Civils', 'Expiry', 'HSE Team', 'In 12 days', '', ['orange', 'Expiring'], 'S27', 'Send reminder'), R('ATT-905', 'Delta Civils staff failed Working at Heights (62%)', 'Test attempt', 'HSE Team', '2 weeks ago', '', ['red', 'Failed'], 'S27', 'Allow retake')]))] },
-    { label: 'Courses', id: 'courses', blocks: [panel('Courses', 'graduation-cap', '<div class="table-wrap" data-vf="courses"></div>', 'Content, pass mark and validity are set per course. Vendors take the test in Training and HSE.')] },
+    { label: 'Courses', id: 'courses', blocks: [L.listRef('courses', 'Courses', 'Content, pass mark and validity are set per course. Vendors take the test in Training and HSE.', 'graduation-cap')] },
     { label: 'Learning centre', id: 'learn', blocks: [cards('Learning centre', [['Site safety basics', '12 min', 'Video and 10-question quiz', 'green', 'Mandatory'], ['Working at heights', '25 min', 'Practical guide and test', 'orange', 'Trade'], ['Hot work permits', '18 min', 'Permit steps and quiz', 'orange', 'Trade'], ['Anti-bribery and conduct', '15 min', 'Policy and declaration', 'blue', 'All vendors'], ['Data protection', '10 min', 'Short guide', 'grey', 'Optional']], { sub: 'Learning material is shared with vendors in their Training and HSE area.' }), form('Add learning material', [['Title', 'text', 'For example: Fire safety on site'], ['Type', 'select', ['Video', 'Document', 'Quiz']], ['Audience', 'select', ['All vendors', 'Trade vendors', 'Staff']]], [['Add material', 'btn-primary']], { icon: 'plus' })] },
     { label: 'Induction', id: 'wrap' },
-    { label: 'Assessments', id: 'assess', blocks: [panel('Test attempts', 'clipboard-check', '<div class="table-wrap" data-vf="attempts"></div>', 'Every attempt is recorded with score and staff member; a pass issues a certificate with an expiry date.')] },
+    { label: 'Assessments', id: 'assess', blocks: [L.listRef('attempts', 'Test attempts', 'Every attempt is recorded with score and staff member; a pass issues a certificate with an expiry date.', 'clipboard-check')] },
     { label: 'Competency matrix', id: 'matrix', blocks: [matrix('Competency by vendor and course', ['Site safety', 'Heights', 'Hot work', 'Anti-bribery'], [['Kalahari Logistics', [96, 'n/a', 'n/a', 92]], ['Delta Civils and Plant Hire', [88, 62, 'expired', 80]], ['Phoenix Scaffolding', [90, 84, 'n/a', 76]], ['Sable IT Networks', [94, 'n/a', 'n/a', 95]]], { sub: 'Shows the best valid score per vendor and course. n/a means the course is not required for that trade.' })] },
     { label: 'Certificates', id: 'certs', blocks: [list('tr_certs', 'Certificate register', [
       R('CRT-81', 'Kalahari Logistics: Site Safety Induction', 'Certificate', 'HSE Team', 'Expires Oct next year', '', ['green', 'Valid'], 'S27', ''),
@@ -46,7 +46,7 @@ const commsPages = [{
 const portalPages = [
   { id: 'myprofile', tabs: [
     { label: 'Overview', existing: 'mp-overview' }, { label: 'Contacts', existing: 'mp-contacts' }, { label: 'Banking & Tax', existing: 'mp-banking' }, { label: 'Passport', existing: 'mp-passport' }, { label: 'Staff Access', existing: 'mp-staff' },
-    { label: 'Contracts', id: 'contracts', blocks: [panel('Your contracts', 'file-text', '<div class="table-wrap" data-vf="contracts"></div>', 'Contracts you have with the buyer. Obligations and renewal dates are shown in the drawer.')] }
+    { label: 'Contracts', id: 'contracts', blocks: [L.listRef('contracts', 'Your contracts', 'Contracts you have with the buyer. Obligations and renewal dates are shown in the drawer.', 'file-text')] }
   ] },
   { id: 'mycomms', wrap: { panel: 'mc-messages' }, tabs: [
     { label: 'Messages', id: 'wrap' },

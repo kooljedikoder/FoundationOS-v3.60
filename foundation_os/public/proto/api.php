@@ -286,6 +286,65 @@ if ($r === 'setting_set') {
     $k = (string) ($body['k'] ?? ''); if (!in_array($k, ['default_country'], true)) { out(['error' => 'unknown setting'], 422); }
     q($db, 'INSERT OR REPLACE INTO proto_settings (k, v) VALUES (?, ?)', [$k, (string) ($body['v'] ?? '')]); audit($db, $actor, 'settings.' . $k, 'settings', $body['v'] ?? null); out(['ok' => true]);
 }
+// ---------------------------------------------------------------- generic record store (standard lists and forms)
+$db->exec("CREATE TABLE IF NOT EXISTS proto_records (id INTEGER PRIMARY KEY AUTOINCREMENT, collection TEXT NOT NULL, ref TEXT NOT NULL, data TEXT NOT NULL, created_at TEXT, updated_at TEXT, UNIQUE(collection, ref))");
+$db->exec("CREATE TABLE IF NOT EXISTS proto_form_submissions (id INTEGER PRIMARY KEY AUTOINCREMENT, form_key TEXT, page TEXT, data TEXT, created_at TEXT)");
+function rec_rows(PDO $db, string $c): array { return array_map(fn ($x) => json_decode($x['data'], true), q($db, 'SELECT data FROM proto_records WHERE collection = ? ORDER BY id', [$c])); }
+function rec_ok(string $c): bool { return (bool) preg_match('/^[a-z0-9_]{1,40}$/', $c); }
+if ($r === 'records') {
+    $out = [];
+    foreach (array_filter(explode(',', (string) ($_GET['c'] ?? ''))) as $c) { if (rec_ok($c)) { $out[$c] = rec_rows($db, $c); } }
+    out($out);
+}
+if ($r === 'records_seed') {
+    $c = (string) ($body['c'] ?? ''); if (!rec_ok($c)) { out(['error' => 'bad collection'], 422); }
+    $n = 0; $now = date('Y-m-d H:i:s');
+    if ((int) one($db, 'SELECT COUNT(*) c FROM proto_records WHERE collection = ?', [$c])['c'] === 0) {
+        foreach (array_slice((array) ($body['rows'] ?? []), 0, 500) as $row) {
+            if (empty($row['ref'])) { continue; }
+            q($db, 'INSERT OR IGNORE INTO proto_records (collection, ref, data, created_at, updated_at) VALUES (?,?,?,?,?)', [$c, (string) $row['ref'], json_encode($row), $now, $now]); $n++;
+        }
+    }
+    out(['ok' => true, 'seeded' => $n]);
+}
+if ($r === 'record_save') {
+    $c = (string) ($body['c'] ?? ''); $row = (array) ($body['row'] ?? []); if (!rec_ok($c) || empty($row['ref'])) { out(['error' => 'collection and ref are required'], 422); }
+    $now = date('Y-m-d H:i:s');
+    q($db, 'INSERT INTO proto_records (collection, ref, data, created_at, updated_at) VALUES (?,?,?,?,?) ON CONFLICT(collection, ref) DO UPDATE SET data = excluded.data, updated_at = excluded.updated_at', [$c, (string) $row['ref'], json_encode($row), $now, $now]);
+    audit($db, $actor, 'record.save', $c . ':' . $row['ref']); out(['ok' => true, 'row' => $row]);
+}
+if ($r === 'record_delete') {
+    $c = (string) ($body['c'] ?? ''); if (!rec_ok($c)) { out(['error' => 'bad collection'], 422); }
+    q($db, 'DELETE FROM proto_records WHERE collection = ? AND ref = ?', [$c, (string) ($body['ref'] ?? '')]); audit($db, $actor, 'record.delete', $c . ':' . ($body['ref'] ?? '')); out(['ok' => true]);
+}
+if ($r === 'record_decide') {
+    $c = (string) ($body['c'] ?? ''); $ref = (string) ($body['ref'] ?? ''); $action = (string) ($body['action'] ?? ''); $reason = trim((string) ($body['reason'] ?? ''));
+    $row = rec_ok($c) ? one($db, 'SELECT data FROM proto_records WHERE collection = ? AND ref = ?', [$c, $ref]) : null;
+    if (!$row) { out(['error' => 'record not found'], 404); }
+    if (!in_array($action, ['Approve', 'Accept'], true) && mb_strlen($reason) < 5) { out(['error' => 'Findings are required (at least 5 characters) to ' . strtolower($action)], 422); }
+    $d = json_decode($row['data'], true);
+    $d['status'] = in_array($action, ['Approve', 'Accept'], true) ? ['green', $action === 'Accept' ? 'Accepted' : 'Approved'] : ($action === 'Reject' ? ['red', 'Rejected'] : ($action === 'Escalate' ? ['orange', 'Escalated to Head of Procurement'] : ['blue', 'Information requested']));
+    unset($d['actions']); $d['next'] = '';
+    q($db, 'UPDATE proto_records SET data = ?, updated_at = ? WHERE collection = ? AND ref = ?', [json_encode($d), date('Y-m-d H:i:s'), $c, $ref]);
+    audit($db, $actor, 'record.' . strtolower(str_replace(' ', '_', $action)), $c . ':' . $ref, ['reason' => $reason]); out(['ok' => true, 'row' => $d]);
+}
+if ($r === 'record_act') {
+    $c = (string) ($body['c'] ?? ''); $ref = (string) ($body['ref'] ?? ''); $label = trim((string) ($body['label'] ?? ''));
+    $row = rec_ok($c) ? one($db, 'SELECT data FROM proto_records WHERE collection = ? AND ref = ?', [$c, $ref]) : null;
+    if (!$row) { out(['error' => 'record not found'], 404); }
+    $d = json_decode($row['data'], true); $d['status'] = ['blue', $label ?: 'Action started']; $d['next'] = '';
+    q($db, 'UPDATE proto_records SET data = ?, updated_at = ? WHERE collection = ? AND ref = ?', [json_encode($d), date('Y-m-d H:i:s'), $c, $ref]);
+    audit($db, $actor, 'record.action', $c . ':' . $ref, ['label' => $label]); out(['ok' => true, 'row' => $d]);
+}
+if ($r === 'form_submit') {
+    $form = substr((string) ($body['form'] ?? 'form'), 0, 80); $data = (array) ($body['data'] ?? []);
+    q($db, 'INSERT INTO proto_form_submissions (form_key, page, data, created_at) VALUES (?,?,?,?)', [$form, substr((string) ($body['page'] ?? ''), 0, 60), json_encode($data), date('Y-m-d H:i:s')]);
+    $id = (int) $db->lastInsertId(); audit($db, $actor, 'form.submit', $form . ':' . $id); out(['ok' => true, 'id' => $id]);
+}
+if ($r === 'form_submissions') { out(array_map(fn ($x) => $x + ['data' => json_decode($x['data'], true)], q($db, 'SELECT * FROM proto_form_submissions ORDER BY id DESC LIMIT 100'))); }
+if ($r === 'db_status') {
+    out(['collections' => q($db, 'SELECT collection, COUNT(*) AS rows FROM proto_records GROUP BY collection ORDER BY collection'), 'forms' => (int) one($db, 'SELECT COUNT(*) c FROM proto_form_submissions')['c']]);
+}
 // generic settings lists (whitelisted)
 $lists = [
     'banks' => ['banks', ['name', 'code']], 'titles' => ['partners_titles', ['name', 'short_name']], 'tags' => ['partners_tags', ['name', 'color']],

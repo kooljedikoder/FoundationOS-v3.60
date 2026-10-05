@@ -1,0 +1,457 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "perf",
+ "title": "Vendor Performance & SLA",
+ "subtitle": null,
+ "workspace": "05-performance",
+ "package": "insights",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "perf-dash",
+   "label": "Dashboard",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "perf-tab-score",
+   "label": "Scorecards",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "matrix",
+     "title": "KPI scorecards",
+     "icon": "grid",
+     "sub": "Scores are the weighted KPIs set in Administration. Open a vendor for its full scorecard.",
+     "columns": [
+      "Delivery",
+      "Quality",
+      "Financial",
+      "Overall"
+     ],
+     "rows": [
+      {
+       "name": "Kalahari Logistics",
+       "values": [
+        92,
+        88,
+        90,
+        90
+       ]
+      },
+      {
+       "name": "Sable IT Networks",
+       "values": [
+        85,
+        90,
+        88,
+        88
+       ]
+      },
+      {
+       "name": "Northgate Office Supplies",
+       "values": [
+        78,
+        80,
+        82,
+        80
+       ]
+      },
+      {
+       "name": "Phoenix Scaffolding",
+       "values": [
+        70,
+        65,
+        72,
+        69
+       ]
+      },
+      {
+       "name": "Delta Civils and Plant Hire",
+       "values": [
+        58,
+        62,
+        55,
+        58
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "perf-tab-ratings",
+   "label": "Ratings",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "perf_ratings",
+     "title": "Buyer ratings",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "perf-tab-delivery",
+   "label": "Delivery",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "On-time delivery",
+       "value": "91%",
+       "accent": "green"
+      },
+      {
+       "label": "Late deliveries",
+       "value": "14",
+       "accent": "orange"
+      },
+      {
+       "label": "Average delay",
+       "value": "1.8 d",
+       "accent": "blue"
+      },
+      {
+       "label": "Short deliveries",
+       "value": "5",
+       "accent": "red"
+      }
+     ]
+    },
+    {
+     "type": "bars",
+     "title": "On-time delivery by vendor",
+     "icon": "bar-chart-2",
+     "sub": null,
+     "rows": [
+      {
+       "label": "Kalahari Logistics",
+       "percent": 96,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Sable IT Networks",
+       "percent": 92,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Northgate Office Supplies",
+       "percent": 84,
+       "tone": "",
+       "value": null
+      },
+      {
+       "label": "Phoenix Scaffolding",
+       "percent": 71,
+       "tone": "warning",
+       "value": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "perf-tab-quality",
+   "label": "Quality",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "First-pass acceptance",
+       "value": "94%",
+       "accent": "green"
+      },
+      {
+       "label": "Defect rate",
+       "value": "2.1%",
+       "accent": "orange"
+      },
+      {
+       "label": "Returns",
+       "value": "7",
+       "accent": "red"
+      },
+      {
+       "label": "Inspections",
+       "value": "58",
+       "accent": "blue"
+      }
+     ]
+    },
+    {
+     "type": "bars",
+     "title": "Acceptance at inspection",
+     "icon": "bar-chart-2",
+     "sub": null,
+     "rows": [
+      {
+       "label": "Kalahari Logistics",
+       "percent": 98,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Northgate Office Supplies",
+       "percent": 93,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Phoenix Scaffolding",
+       "percent": 81,
+       "tone": "warning",
+       "value": null
+      },
+      {
+       "label": "Delta Civils and Plant Hire",
+       "percent": 74,
+       "tone": "danger",
+       "value": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "perf-tab-financial",
+   "label": "Financial",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Invoice accuracy",
+       "value": "97%",
+       "accent": "green"
+      },
+      {
+       "label": "Disputed invoices",
+       "value": "2",
+       "accent": "red"
+      },
+      {
+       "label": "Early-payment discounts",
+       "value": "₦1.1m",
+       "accent": "purple"
+      },
+      {
+       "label": "Credit notes",
+       "value": "6",
+       "accent": "blue"
+      }
+     ]
+    },
+    {
+     "type": "bars",
+     "title": "Invoice accuracy",
+     "icon": "bar-chart-2",
+     "sub": null,
+     "rows": [
+      {
+       "label": "Kalahari Logistics",
+       "percent": 99,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Sable IT Networks",
+       "percent": 98,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Northgate Office Supplies",
+       "percent": 92,
+       "tone": "warning",
+       "value": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "perf-tab-actions",
+   "label": "Corrective actions",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "capa",
+     "title": "Corrective actions",
+     "icon": "wrench",
+     "sub": "Corrective actions are CAPA records, shared with Risk and Compliance.",
+     "reuse": true
+    }
+   ]
+  },
+  {
+   "id": "perf-tab-plans",
+   "label": "Improvement plans",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "perf_plans",
+     "title": "Improvement plans",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_start_an_improvement_plan",
+      "version": 1,
+      "title": "Start an improvement plan",
+      "fields": [
+       {
+        "key": "vendor",
+        "label": "Vendor",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Delta Civils and Plant Hire",
+         "Phoenix Scaffolding"
+        ],
+        "full": false
+       },
+       {
+        "key": "goal",
+        "label": "Goal",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "What should improve, and by when",
+        "full": true
+       },
+       {
+        "key": "review_date",
+        "label": "Review date",
+        "type": "date",
+        "inputType": "date",
+        "placeholder": "",
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "target",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Create plan",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "perf-tab-bench",
+   "label": "Benchmarking",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "bars",
+     "title": "Overall score against category average",
+     "icon": "bar-chart-2",
+     "sub": "Benchmarks compare a vendor with the average of its own category.",
+     "rows": [
+      {
+       "label": "Kalahari Logistics (90) vs transport 78",
+       "percent": 90,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Sable IT Networks (88) vs IT 80",
+       "percent": 88,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Delta Civils and Plant Hire (58) vs civils 72",
+       "percent": 58,
+       "tone": "danger",
+       "value": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "perf-tab-trends",
+   "label": "Trends",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "matrix",
+     "title": "Overall score by month",
+     "icon": "trending-up",
+     "sub": "Falling scores for two months in a row raise a watch-list entry.",
+     "columns": [
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct"
+     ],
+     "rows": [
+      {
+       "name": "Kalahari Logistics",
+       "values": [
+        86,
+        88,
+        89,
+        90
+       ]
+      },
+      {
+       "name": "Sable IT Networks",
+       "values": [
+        84,
+        86,
+        87,
+        88
+       ]
+      },
+      {
+       "name": "Phoenix Scaffolding",
+       "values": [
+        74,
+        72,
+        70,
+        69
+       ]
+      },
+      {
+       "name": "Delta Civils and Plant Hire",
+       "values": [
+        66,
+        63,
+        60,
+        58
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -148,11 +148,53 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="tab-panel active" id="hse-tab-dash" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-purple"><div class="kpi-label">Courses</div><div class="kpi-val">12</div></div><div class="kpi accent-green"><div class="kpi-label">Certified vendors</div><div class="kpi-val">38</div></div><div class="kpi accent-orange"><div class="kpi-label">Expiring (30 days)</div><div class="kpi-val">5</div></div><div class="kpi accent-blue"><div class="kpi-label">Test pass rate</div><div class="kpi-val">91%</div></div></div>
 <div class="dash-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))"><div class="panel"><h3><i data-lucide="bar-chart-2"></i>Induction completion</h3><div class="score-row"><span class="score-label">Site Safety Induction</span><div class="prog-bar"><div class="prog-fill success" style="width:100%"></div></div><span class="score-val">412 vendors</span></div><div class="score-row"><span class="score-label">Working at Heights</span><div class="prog-bar"><div class="prog-fill warning" style="width:62%"></div></div><span class="score-val">71 vendors</span></div><div class="score-row"><span class="score-label">Hot Work Permit</span><div class="prog-bar"><div class="prog-fill warning" style="width:41%"></div></div><span class="score-val">29 vendors</span></div></div><div class="panel"><h3>Needs your action</h3><div class="table-wrap" data-vf="tr_actions"></div></div></div></div>
 <div class="tab-panel" id="hse-tab-courses" data-gen="1"><div class="panel"><h3><i data-lucide="graduation-cap"></i>Courses</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Content, pass mark and validity are set per course. Vendors take the test in Training and HSE.</p><div class="table-wrap" data-vf="courses"></div></div></div>
 <div class="tab-panel" id="hse-tab-learn" data-gen="1"><div class="panel"><h3>Learning centre</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Learning material is shared with vendors in their Training and HSE area.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px"><div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div style="font-weight:700;font-size:13px">Site safety basics</div><span class="badge badge-green">Mandatory</span></div><div style="font-size:22px;font-weight:800;margin:6px 0">12 min</div><div style="font-size:12px;color:var(--muted)">Video and 10-question quiz</div></div><div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div style="font-weight:700;font-size:13px">Working at heights</div><span class="badge badge-orange">Trade</span></div><div style="font-size:22px;font-weight:800;margin:6px 0">25 min</div><div style="font-size:12px;color:var(--muted)">Practical guide and test</div></div><div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div style="font-weight:700;font-size:13px">Hot work permits</div><span class="badge badge-orange">Trade</span></div><div style="font-size:22px;font-weight:800;margin:6px 0">18 min</div><div style="font-size:12px;color:var(--muted)">Permit steps and quiz</div></div><div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div style="font-weight:700;font-size:13px">Anti-bribery and conduct</div><span class="badge badge-blue">All vendors</span></div><div style="font-size:22px;font-weight:800;margin:6px 0">15 min</div><div style="font-size:12px;color:var(--muted)">Policy and declaration</div></div><div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div style="font-weight:700;font-size:13px">Data protection</div><span class="badge badge-grey">Optional</span></div><div style="font-size:22px;font-weight:800;margin:6px 0">10 min</div><div style="font-size:12px;color:var(--muted)">Short guide</div></div></div></div>
-<div class="panel"><h3><i data-lucide="plus"></i>Add learning material</h3><div class="form-grid"><div class="field"><label>Title</label><input type="text" placeholder="For example: Fire safety on site"></div><div class="field"><label>Type</label><select><option>Video</option><option>Document</option><option>Quiz</option></select></div><div class="field"><label>Audience</label><select><option>All vendors</option><option>Trade vendors</option><option>Staff</option></select></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="showToast('Add material recorded in the prototype','check-circle')">Add material</button></div></div></div>
+<div class="panel"><h3><i data-lucide="plus"></i>Add learning material</h3><div class="form-grid"><div class="field"><label>Title</label><input type="text" placeholder="For example: Fire safety on site"></div><div class="field"><label>Type</label><select><option>Video</option><option>Document</option><option>Quiz</option></select></div><div class="field"><label>Audience</label><select><option>All vendors</option><option>Trade vendors</option><option>Staff</option></select></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="fosFormSave(this,'Add learning material')">Add material</button></div></div></div>
 <div class="tab-panel" id="hse-tab-assess" data-gen="1"><div class="panel"><h3><i data-lucide="clipboard-check"></i>Test attempts</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Every attempt is recorded with score and staff member; a pass issues a certificate with an expiry date.</p><div class="table-wrap" data-vf="attempts"></div></div></div>
 <div class="tab-panel" id="hse-tab-matrix" data-gen="1"><div class="panel"><h3><i data-lucide="grid"></i>Competency by vendor and course</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Shows the best valid score per vendor and course. n/a means the course is not required for that trade.</p><div class="table-wrap"><table><thead><tr><th></th><th>Site safety</th><th>Heights</th><th>Hot work</th><th>Anti-bribery</th></tr></thead><tbody><tr><td><b>Kalahari Logistics</b></td><td><span class="badge badge-green">96%</span></td><td><span class="badge badge-grey">n/a</span></td><td><span class="badge badge-grey">n/a</span></td><td><span class="badge badge-green">92%</span></td></tr><tr><td><b>Delta Civils and Plant Hire</b></td><td><span class="badge badge-green">88%</span></td><td><span class="badge badge-orange">62%</span></td><td><span class="badge badge-grey">expired</span></td><td><span class="badge badge-blue">80%</span></td></tr><tr><td><b>Phoenix Scaffolding</b></td><td><span class="badge badge-green">90%</span></td><td><span class="badge badge-blue">84%</span></td><td><span class="badge badge-grey">n/a</span></td><td><span class="badge badge-blue">76%</span></td></tr><tr><td><b>Sable IT Networks</b></td><td><span class="badge badge-green">94%</span></td><td><span class="badge badge-grey">n/a</span></td><td><span class="badge badge-grey">n/a</span></td><td><span class="badge badge-green">95%</span></td></tr></tbody></table></div></div></div>
 <div class="tab-panel" id="hse-tab-certs" data-gen="1"><div class="panel"><h3>Certificate register</h3><div class="table-wrap" data-vf="tr_certs"></div></div></div>

@@ -2,7 +2,7 @@
 const fs = require('fs'), path = require('path');
 const E = require('./engine');
 const lib = require('./lib');
-const specs = ['00-dashboard-01-vendors', '02-procurement', '03-04-05-risk-contracts-performance', '06-07-08-training-comms-portal', '09-reports-10-appsuite'].map(n => require('./specs/' + n));
+const specs = ['00-dashboard-01-vendors', '02-procurement', '03-04-05-risk-contracts-performance', '06-07-08-training-comms-portal', '09-reports-10-appsuite', '10-builder'].map(n => require('./specs/' + n));
 const PKG = require('./specs/09-reports-10-appsuite').PKG;
 const { blockEnd, children, read, write } = E;
 
@@ -183,3 +183,6 @@ function pkgMode(id, mode){ showToast(PKG_NAME[id]+' will use '+({fos:'the FOS t
   if (!E.parts.includes(jsRel)) { const at = E.parts.indexOf(dataPart); const arr = E.parts.slice(); arr.splice(at + 1, 0, jsRel); E.parts = arr; }
 }
 console.log('applied: pages', pages.length, 'new pages', newPages.length, 'parts', E.parts.length);
+require('./dbconnect');
+require('./pagebuilder');
+require('./schema_export')(pages, newPages, PAGE_PKG);

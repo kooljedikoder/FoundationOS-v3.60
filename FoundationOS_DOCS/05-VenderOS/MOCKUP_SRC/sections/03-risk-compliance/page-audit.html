@@ -164,14 +164,74 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="tab-panel active" id="audit-tab-dash" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-red"><div class="kpi-label">Open findings</div><div class="kpi-val">9</div></div><div class="kpi accent-orange"><div class="kpi-label">Open CAPA</div><div class="kpi-val">6</div></div><div class="kpi accent-blue"><div class="kpi-label">Audits this quarter</div><div class="kpi-val">4</div></div><div class="kpi accent-green"><div class="kpi-label">Vendor health score</div><div class="kpi-val">87</div></div></div>
 <div class="dash-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))"><div class="panel"><h3><i data-lucide="shield"></i>Compliance by area</h3><div class="score-row"><span class="score-label">Documents valid</span><div class="prog-bar"><div class="prog-fill success" style="width:94%"></div></div><span class="score-val">94%</span></div><div class="score-row"><span class="score-label">Insurance valid</span><div class="prog-bar"><div class="prog-fill success" style="width:89%"></div></div><span class="score-val">89%</span></div><div class="score-row"><span class="score-label">Certifications valid</span><div class="prog-bar"><div class="prog-fill warning" style="width:82%"></div></div><span class="score-val">82%</span></div><div class="score-row"><span class="score-label">HSE induction current</span><div class="prog-bar"><div class="prog-fill warning" style="width:76%"></div></div><span class="score-val">76%</span></div></div><div class="panel"><h3>Needs your action</h3><div class="table-wrap" data-vf="rc_actions"></div></div></div></div>
 <div class="tab-panel" id="audit-tab-reviews" data-gen="1"><div class="panel"><h3>Compliance reviews</h3><div class="table-wrap" data-vf="comp_reviews"></div></div></div>
 <div class="tab-panel" id="audit-tab-riskasm" data-gen="1"><div class="panel"><h3><i data-lucide="alert-triangle"></i>Risk assessments</h3><p style="font-size:13px">Risk assessments live in the Enterprise Risk register, with likelihood, impact and mitigation per vendor.</p><button class="btn btn-primary btn-sm" onclick="showPage('erm')">Open the risk register</button></div></div>
 <div class="tab-panel" id="audit-tab-inspect" data-gen="1"><div class="panel"><h3>Site inspections</h3><div class="table-wrap" data-vf="inspections"></div></div>
-<div class="panel"><h3><i data-lucide="clipboard-check"></i>Inspection checklist</h3><div class="form-grid"><div class="field"><label>Vendor</label><select><option>Delta Civils and Plant Hire</option><option>Kalahari Logistics</option><option>Phoenix Scaffolding</option></select></div><div class="field"><label>Site</label><input type="text" placeholder="Address or site name"></div><div class="field"><label>PPE worn on site</label><label style="text-transform:none;display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox"> Yes</label></div><div class="field"><label>Permits on display</label><label style="text-transform:none;display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox"> Yes</label></div><div class="field full"><label>Findings</label><textarea rows="3" placeholder="Describe anything not compliant"></textarea></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="showToast('Save inspection recorded in the prototype','check-circle')">Save inspection</button></div></div></div>
+<div class="panel"><h3><i data-lucide="clipboard-check"></i>Inspection checklist</h3><div class="form-grid"><div class="field"><label>Vendor</label><select><option>Delta Civils and Plant Hire</option><option>Kalahari Logistics</option><option>Phoenix Scaffolding</option></select></div><div class="field"><label>Site</label><input type="text" placeholder="Address or site name"></div><div class="field"><label>PPE worn on site</label><label style="text-transform:none;display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox"> Yes</label></div><div class="field"><label>Permits on display</label><label style="text-transform:none;display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox"> Yes</label></div><div class="field full"><label>Findings</label><textarea rows="3" placeholder="Describe anything not compliant"></textarea></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="fosFormSave(this,'Inspection checklist')">Save inspection</button></div></div></div>
 <div class="tab-panel" id="audit-tab-capa" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-orange"><div class="kpi-label">Open</div><div class="kpi-val">6</div></div><div class="kpi accent-red"><div class="kpi-label">Overdue</div><div class="kpi-val">1</div></div><div class="kpi accent-green"><div class="kpi-label">Closed this month</div><div class="kpi-val">9</div></div><div class="kpi accent-blue"><div class="kpi-label">Average days to close</div><div class="kpi-val">17</div></div></div>
-<div class="table-wrap" data-vf="capa"></div></div>
+<div class="panel"><h3><i data-lucide="wrench"></i>Corrective and preventive actions (CAPA)</h3><div class="table-wrap" data-vf="capa"></div></div></div>
 <div class="tab-panel" id="audit-tab-esg" data-gen="1"><div class="panel"><h3><i data-lucide="grid"></i>ESG review by vendor</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">ESG review is a CORE-edition assessment type.</p><div class="table-wrap"><table><thead><tr><th></th><th>Environment</th><th>Social</th><th>Governance</th><th>Overall</th></tr></thead><tbody><tr><td><b>Kalahari Logistics</b></td><td><span class="badge badge-blue">78%</span></td><td><span class="badge badge-blue">84%</span></td><td><span class="badge badge-green">90%</span></td><td><span class="badge badge-blue">84%</span></td></tr><tr><td><b>Sable IT Networks</b></td><td><span class="badge badge-blue">82%</span></td><td><span class="badge badge-green">88%</span></td><td><span class="badge badge-green">86%</span></td><td><span class="badge badge-green">85%</span></td></tr><tr><td><b>Delta Civils and Plant Hire</b></td><td><span class="badge badge-orange">55%</span></td><td><span class="badge badge-orange">62%</span></td><td><span class="badge badge-blue">70%</span></td><td><span class="badge badge-orange">62%</span></td></tr></tbody></table></div></div>
 <div class="panel"><h3>ESG actions</h3><div class="table-wrap" data-vf="esg_items"></div></div></div>
 <div class="tab-panel" id="audit-tab-scoring" data-gen="1"><div class="panel"><h3><i data-lucide="bar-chart-2"></i>Assessment scores</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Scores come from the eight assessment reviews (Procurement, Technical, Finance, Legal, Compliance, HSE, ESG, Information Security).</p><div class="score-row"><span class="score-label">Kalahari Logistics</span><div class="prog-bar"><div class="prog-fill success" style="width:88%"></div></div><span class="score-val">88%</span></div><div class="score-row"><span class="score-label">Sable IT Networks</span><div class="prog-bar"><div class="prog-fill success" style="width:85%"></div></div><span class="score-val">85%</span></div><div class="score-row"><span class="score-label">Northgate Office Supplies</span><div class="prog-bar"><div class="prog-fill " style="width:76%"></div></div><span class="score-val">76%</span></div><div class="score-row"><span class="score-label">Phoenix Scaffolding</span><div class="prog-bar"><div class="prog-fill warning" style="width:68%"></div></div><span class="score-val">68%</span></div><div class="score-row"><span class="score-label">Delta Civils and Plant Hire</span><div class="prog-bar"><div class="prog-fill danger" style="width:58%"></div></div><span class="score-val">58%</span></div></div>

@@ -1,0 +1,1059 @@
+{
+ "store": {
+  "dashboard_t1": [
+   {
+    "ref": "Kalahari Logistics (Pty) Ltd",
+    "title": "Insurance certificate expires in 6 days (Score 88%)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "orange",
+     "Action Needed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Delta Civils & Plant Hire",
+    "title": "HSE induction not yet completed (Score 71%)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "red",
+     "Blocked"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Northgate Office Supplies",
+    "title": "Bank verification pending (Score 94%)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "blue",
+     "In Review"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Tswana IT Solutions",
+    "title": "Tax clearance renewal due (Score 90%)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "orange",
+     "Action Needed"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "dashboard_t2": [
+   {
+    "ref": "Insurance Certificate",
+    "title": "Expires in 6 days — upload renewal",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "orange",
+     "Action Needed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Invoice INV-55040",
+    "title": "Awaiting payment from Finance",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "blue",
+     "In Review"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "RFQ-1042",
+    "title": "Quotation due in 3 days",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "orange",
+     "Action Needed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Working at Heights Cert",
+    "title": "Expired — retraining required",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "red",
+     "Blocked"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "reg_t1": [
+   {
+    "ref": "Maru Fleet Services",
+    "title": "Document Upload",
+    "type": "Transport",
+    "owner": "",
+    "date": "2 days ago",
+    "status": [
+     "blue",
+     "In Progress"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Phoenix Scaffolding",
+    "title": "Assessment",
+    "type": "Construction",
+    "owner": "",
+    "date": "4 days ago",
+    "status": [
+     "orange",
+     "Awaiting Review"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Bright Path Catering",
+    "title": "Company Profile",
+    "type": "Hospitality",
+    "owner": "",
+    "date": "Today",
+    "status": [
+     "grey",
+     "Draft"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Sable IT Networks",
+    "title": "Approval",
+    "type": "IT Services",
+    "owner": "",
+    "date": "1 week ago",
+    "status": [
+     "green",
+     "Ready to Approve"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "docs_t1": [
+   {
+    "ref": "Delta Civils & Plant Hire",
+    "title": "Public Liability Insurance",
+    "type": "",
+    "owner": "",
+    "date": "Today",
+    "status": [
+     "blue",
+     "Pending Review"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Sable IT Networks",
+    "title": "BEE Certificate",
+    "type": "",
+    "owner": "",
+    "date": "Yesterday",
+    "status": [
+     "green",
+     "Verified"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Maru Fleet Services",
+    "title": "Fleet Registration",
+    "type": "",
+    "owner": "",
+    "date": "2 days ago",
+    "status": [
+     "red",
+     "Rejected — Illegible"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "docs_t2": [
+   {
+    "ref": "Phoenix Scaffolding",
+    "title": "Working at Heights Certificate (Expired 12 days ago)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Northgate Office Supplies",
+    "title": "Tax Clearance Certificate (Expired 3 days ago)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "warehouse_t1": [
+   {
+    "ref": "DN-4471",
+    "title": "Kalahari Logistics (PO PO-8815)",
+    "type": "",
+    "owner": "",
+    "date": "3 days ago",
+    "status": [
+     "green",
+     "Good"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "DN-4468",
+    "title": "Northgate Office Supplies (PO PO-8821)",
+    "type": "",
+    "owner": "",
+    "date": "Today",
+    "status": [
+     "blue",
+     "Pending Inspection"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "DN-4460",
+    "title": "Delta Civils & Plant Hire (PO PO-8809)",
+    "type": "",
+    "owner": "",
+    "date": "1 week ago",
+    "status": [
+     "orange",
+     "2 Units Damaged"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "DN-4455",
+    "title": "Sable IT Networks (PO PO-8790)",
+    "type": "",
+    "owner": "",
+    "date": "2 weeks ago",
+    "status": [
+     "green",
+     "Good"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "warehouse_t2": [
+   {
+    "ref": "PO-8833",
+    "title": "Maru Fleet Services (Expected Thursday)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "blue",
+     "On Track"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "PO-8830",
+    "title": "Sable IT Networks (Expected Tomorrow, 9am)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "blue",
+     "On Track"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "PO-8799",
+    "title": "Phoenix Scaffolding (Expected 2 days overdue)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "red",
+     "Late"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "perf_t1": [
+   {
+    "ref": "Sable IT Networks",
+    "title": "Q3 2026 (Delivery 98%, Quality 94%, SLA 97%, Responsiveness 95%, Cost 92%, HSE 99%)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "green",
+     "96%"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Delta Civils & Plant Hire",
+    "title": "Q3 2026 (Delivery 58%, Quality 65%, SLA 55%, Responsiveness 63%, Cost 70%, HSE 48%)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "red",
+     "61%"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "perf_t2": [
+   {
+    "ref": "Sable IT Networks",
+    "title": "Q3 2026",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "green",
+     "96%"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Delta Civils & Plant Hire",
+    "title": "Q3 2026",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "red",
+     "61%"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "selfservice_t1": [
+   {
+    "ref": "Home",
+    "title": "Journey · Action items · Activity (Replaces Dashboard + Self-Service Hub cards)",
+    "type": "",
+    "owner": "VendorOS",
+    "date": "1&ndash;4, summary",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Company & Passport",
+    "title": "Overview · Contacts · Banking & Tax · Passport · Staff Access (Replaces My Company Profile + My Vendor Passport)",
+    "type": "",
+    "owner": "CCC partner + vendor passport",
+    "date": "5&ndash;18, 35&ndash;37",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Documents",
+    "title": "All · Company · Insurance & Financials · Certifications (Replaces My Documents + 3 sub-links)",
+    "type": "",
+    "owner": "CCC documents",
+    "date": "15&ndash;18, 22",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Orders & RFQs",
+    "title": "RFQs · Purchase Orders · Deliveries (Replaces My RFQs, POs & Deliveries)",
+    "type": "",
+    "owner": "ERP purchasing",
+    "date": "39&ndash;42",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Invoices & Payments",
+    "title": "All · Outstanding · Paid (Replaces My Invoices & Payments)",
+    "type": "",
+    "owner": "ERP accounting",
+    "date": "43",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Training & HSE",
+    "title": "Courses · Certificates · Induction (Replaces My HSE Induction & Training)",
+    "type": "",
+    "owner": "CCC certifications",
+    "date": "27",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Communications",
+    "title": "Messages · Announcements · Alerts (Replaces My Communications)",
+    "type": "",
+    "owner": "Communications (Service Desk)",
+    "date": "all",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Requests",
+    "title": "New request · My requests (Replaces Requests + 6 separate request links)",
+    "type": "",
+    "owner": "Communications (Service Desk)",
+    "date": "22, 44&ndash;45",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Help & Support",
+    "title": "Chat · Email · Knowledge base (Replaces Support)",
+    "type": "",
+    "owner": "Communications (Service Desk)",
+    "date": "-",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "selfservice_t2": [
+   {
+    "ref": "Reference",
+    "title": "Unique id from the owning module (Example RFQ-1042, INV-55040, REQ-9001)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Title",
+    "title": "Human description (Example Fleet tyre supply - annual contract)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Type",
+    "title": "Record kind inside the module (Example RFQ, Purchase Order, Certificate)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Owner",
+    "title": "Who on the buyer side handles it (Example Procurement, Finance, Compliance)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Date",
+    "title": "The one date that matters (due, closes, expires) (Example Closes in 3 days)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Amount",
+    "title": "Value when money is involved (hidden when empty) (Example ₦6,240,000)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Status",
+    "title": "Shared badge vocabulary: grey draft, blue in progress, orange action needed, red blocked, green done (Example Awaiting your quotation)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Next action",
+    "title": "The single thing the vendor can do now (Example Submit quotation)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "plusprocure_t1": [
+   {
+    "ref": "Fleet Tyres",
+    "title": "1,200 units / qtr",
+    "type": "",
+    "owner": "",
+    "date": "78%",
+    "status": [
+     "orange",
+     "Raise RFQ"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Office Consumables",
+    "title": "₦34m / qtr",
+    "type": "",
+    "owner": "",
+    "date": "96%",
+    "status": [
+     "green",
+     "On Track"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "plusprocure_t2": [
+   {
+    "ref": "SRC-4021",
+    "title": "Reverse Auction (Suppliers 8)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "blue",
+     "Live"
+    ],
+    "stage": "-",
+    "next": "",
+    "amount": "₦320m"
+   },
+   {
+    "ref": "SRC-4018",
+    "title": "RFP (Suppliers 5)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "green",
+     "Awarded"
+    ],
+    "stage": "-",
+    "next": "",
+    "amount": "₦89m"
+   }
+  ],
+  "admin_t1": [
+   {
+    "ref": "Thabo M.",
+    "title": "Procurement Lead (Business Unit Head Office)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "green",
+     "Active"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Lesego K.",
+    "title": "Compliance Officer (Business Unit Head Office)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "green",
+     "Active"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Mpho S.",
+    "title": "Vendor Manager (Business Unit Francistown Branch)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Invited"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "admin_t2": [
+   {
+    "ref": "Thabo M.",
+    "title": "Procurement Lead",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "green",
+     "Active"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Lesego K.",
+    "title": "Compliance Officer",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "green",
+     "Active"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "admin_t3": [
+   {
+    "ref": "Dashboard",
+    "title": "V (UserAdm V, Exec V, VendorAdm V, Procure V, Finance V, Audit V, Warehouse V, Vendor Primary V (own), Vendor Staff V (own))",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Registration & Onboarding",
+    "title": "W (UserAdm -, Exec V, VendorAdm W, Procure V, Finance V*, Audit V*, Warehouse -, Vendor Primary W until S18, Vendor Staff W if granted)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Vendor Passport 360",
+    "title": "W (UserAdm -, Exec V, VendorAdm W, Procure V, Finance V, Audit V, Warehouse -, Vendor Primary V (own), Vendor Staff V (own))",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Document Management",
+    "title": "W (UserAdm -, Exec V, VendorAdm W, Procure V, Finance V, Audit V, Warehouse -, Vendor Primary W (own), Vendor Staff W if granted)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Supplier Assessment",
+    "title": "A (UserAdm -, Exec V, VendorAdm W, Procure A (procurement, technical), Finance A (finance), Audit A (legal, compliance), Warehouse -, Vendor Primary -, Vendor Staff -)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "HSE Induction & Certification",
+    "title": "W (UserAdm -, Exec V, VendorAdm W, Procure -, Finance -, Audit V, Warehouse -, Vendor Primary W (own), Vendor Staff W (own))",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Audit & Governance (CORE)",
+    "title": "W (UserAdm -, Exec V, VendorAdm V, Procure -, Finance -, Audit W, Warehouse -, Vendor Primary -, Vendor Staff -)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Enterprise Risk (CORE)",
+    "title": "W (UserAdm -, Exec V, VendorAdm V, Procure -, Finance -, Audit W, Warehouse -, Vendor Primary -, Vendor Staff -)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Procurement Workspace",
+    "title": "W (UserAdm -, Exec V, VendorAdm -, Procure W, Finance V, Audit -, Warehouse V, Vendor Primary RFQ/PO (own), Vendor Staff RFQ/PO if granted)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Contract Lifecycle (CORE)",
+    "title": "W (UserAdm -, Exec V, VendorAdm -, Procure W, Finance V, Audit V, Warehouse -, Vendor Primary V (own), Vendor Staff -)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Warehouse & Receiving",
+    "title": "W (UserAdm -, Exec V, VendorAdm -, Procure V, Finance -, Audit -, Warehouse W, Vendor Primary V (own deliveries), Vendor Staff -)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Finance & Payments",
+    "title": "W (UserAdm -, Exec V, VendorAdm -, Procure V, Finance W, Audit -, Warehouse -, Vendor Primary Invoices (own), Vendor Staff Invoices if granted)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Performance & SLA",
+    "title": "W (UserAdm -, Exec V, VendorAdm W, Procure W, Finance V, Audit V, Warehouse V, Vendor Primary V (own score), Vendor Staff -)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Communications",
+    "title": "W (UserAdm -, Exec V, VendorAdm W, Procure W, Finance W, Audit W, Warehouse W, Vendor Primary W (own threads), Vendor Staff W if granted)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Workflow / Integration / AI / Builder",
+    "title": "W (UserAdm W, Exec -, VendorAdm -, Procure -, Finance -, Audit -, Warehouse -, Vendor Primary -, Vendor Staff -)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "System Configuration",
+    "title": "W (UserAdm W, Exec -, VendorAdm -, Procure -, Finance -, Audit -, Warehouse -, Vendor Primary -, Vendor Staff -)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ],
+  "admin_t4": [
+   {
+    "ref": "Head Office",
+    "title": "VendorOS Enterprise (Vendors 312, Admin Thabo M.)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Lagos Operations",
+    "title": "VendorOS Enterprise (Vendors 74, Admin Boitumelo P.)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   },
+   {
+    "ref": "Abuja Projects",
+    "title": "VendorOS Enterprise (Vendors 42, Admin Naledi F.)",
+    "type": "",
+    "owner": "",
+    "date": "",
+    "status": [
+     "grey",
+     "Listed"
+    ],
+    "stage": "-",
+    "next": ""
+   }
+  ]
+ },
+ "ds": {
+  "dashboard_t1": [
+   "new",
+   "NEW dashboard_t1"
+  ],
+  "dashboard_t2": [
+   "new",
+   "NEW dashboard_t2"
+  ],
+  "reg_t1": [
+   "new",
+   "NEW reg_t1"
+  ],
+  "docs_t1": [
+   "new",
+   "NEW docs_t1"
+  ],
+  "docs_t2": [
+   "new",
+   "NEW docs_t2"
+  ],
+  "warehouse_t1": [
+   "new",
+   "NEW warehouse_t1"
+  ],
+  "warehouse_t2": [
+   "new",
+   "NEW warehouse_t2"
+  ],
+  "perf_t1": [
+   "new",
+   "NEW perf_t1"
+  ],
+  "perf_t2": [
+   "new",
+   "NEW perf_t2"
+  ],
+  "selfservice_t1": [
+   "new",
+   "NEW selfservice_t1"
+  ],
+  "selfservice_t2": [
+   "new",
+   "NEW selfservice_t2"
+  ],
+  "plusprocure_t1": [
+   "new",
+   "NEW plusprocure_t1"
+  ],
+  "plusprocure_t2": [
+   "new",
+   "NEW plusprocure_t2"
+  ],
+  "admin_t1": [
+   "new",
+   "NEW admin_t1"
+  ],
+  "admin_t2": [
+   "new",
+   "NEW admin_t2"
+  ],
+  "admin_t3": [
+   "new",
+   "NEW admin_t3"
+  ],
+  "admin_t4": [
+   "new",
+   "NEW admin_t4"
+  ]
+ }
+}

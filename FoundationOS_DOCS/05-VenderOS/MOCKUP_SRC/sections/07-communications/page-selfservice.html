@@ -2,30 +2,11 @@
         <div class="page-header"><div><div class="page-title">Vendor Portal &mdash; sitemap &amp; journey map</div><div class="page-sub">What the supplier sees after login. One sidebar, nine entries, no duplicate pages &mdash; every list uses the same standard fields and the same detail drawer.</div></div><button class="btn btn-primary btn-create" onclick="switchRole('vendorportal',document.querySelector('.role-item[data-role=vendorportal]'))"><i data-lucide="eye"></i>Preview as Vendor</button></div>
         <div class="panel">
           <h3><i data-lucide="list-tree"></i>Vendor sitemap</h3>
-          <div class="table-wrap"><table class="vf-map"><thead><tr><th>Menu</th><th>Tabs inside</th><th>Replaces</th><th>J01 stages</th><th>Data owner</th></tr></thead><tbody>
-            <tr><td>Home</td><td>Journey &middot; Action items &middot; Activity</td><td>Dashboard + Self-Service Hub cards</td><td>1&ndash;4, summary</td><td>VendorOS</td></tr>
-            <tr><td>Company &amp; Passport</td><td>Overview &middot; Contacts &middot; Banking &amp; Tax &middot; Passport &middot; Staff Access</td><td>My Company Profile + My Vendor Passport</td><td>5&ndash;18, 35&ndash;37</td><td>CCC partner + vendor passport</td></tr>
-            <tr><td>Documents</td><td>All &middot; Company &middot; Insurance &amp; Financials &middot; Certifications</td><td>My Documents + 3 sub-links</td><td>15&ndash;18, 22</td><td>CCC documents</td></tr>
-            <tr><td>Orders &amp; RFQs</td><td>RFQs &middot; Purchase Orders &middot; Deliveries</td><td>My RFQs, POs &amp; Deliveries</td><td>39&ndash;42</td><td>ERP purchasing</td></tr>
-            <tr><td>Invoices &amp; Payments</td><td>All &middot; Outstanding &middot; Paid</td><td>My Invoices &amp; Payments</td><td>43</td><td>ERP accounting</td></tr>
-            <tr><td>Training &amp; HSE</td><td>Courses &middot; Certificates &middot; Induction</td><td>My HSE Induction &amp; Training</td><td>27</td><td>CCC certifications</td></tr>
-            <tr><td>Communications</td><td>Messages &middot; Announcements &middot; Alerts</td><td>My Communications</td><td>all</td><td>Communications (Service Desk)</td></tr>
-            <tr><td>Requests</td><td>New request &middot; My requests</td><td>Requests + 6 separate request links</td><td>22, 44&ndash;45</td><td>Communications (Service Desk)</td></tr>
-            <tr><td>Help &amp; Support</td><td>Chat &middot; Email &middot; Knowledge base</td><td>Support</td><td>&mdash;</td><td>Communications (Service Desk)</td></tr>
-          </tbody></table></div>
+          <div class="table-wrap" data-vf="selfservice_t1"></div>
         </div>
         <div class="panel">
           <h3><i data-lucide="columns"></i>Global standard fields (every vendor list and detail drawer)</h3>
-          <div class="table-wrap"><table class="vf-map"><thead><tr><th>Field</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
-            <tr><td>Reference</td><td>Unique id from the owning module</td><td>RFQ-1042, INV-55040, REQ-9001</td></tr>
-            <tr><td>Title</td><td>Human description</td><td>Fleet tyre supply &mdash; annual contract</td></tr>
-            <tr><td>Type</td><td>Record kind inside the module</td><td>RFQ, Purchase Order, Certificate</td></tr>
-            <tr><td>Owner</td><td>Who on the buyer side handles it</td><td>Procurement, Finance, Compliance</td></tr>
-            <tr><td>Date</td><td>The one date that matters (due, closes, expires)</td><td>Closes in 3 days</td></tr>
-            <tr><td>Amount</td><td>Value when money is involved (hidden when empty)</td><td>₦6,240,000</td></tr>
-            <tr><td>Status</td><td>Shared badge vocabulary: grey draft, blue in progress, orange action needed, red blocked, green done</td><td>Awaiting your quotation</td></tr>
-            <tr><td>Next action</td><td>The single thing the vendor can do now</td><td>Submit quotation</td></tr>
-          </tbody></table></div>
+          <div class="table-wrap" data-vf="selfservice_t2"></div>
         </div>
       </div>
 

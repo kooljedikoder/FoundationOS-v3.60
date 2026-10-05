@@ -1,0 +1,278 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "profile",
+ "title": "My Account",
+ "subtitle": "Your details, preferences, security and activity.",
+ "workspace": "00-dashboard",
+ "package": null,
+ "origin": "generated",
+ "actions": [
+  {
+   "label": "Sign out",
+   "style": "btn-secondary",
+   "onclick": null,
+   "icon": "log-in"
+  }
+ ],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "profile-tab-account",
+   "label": "My account",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_account",
+      "version": 1,
+      "title": "Account",
+      "fields": [
+       {
+        "key": "full_name",
+        "label": "Full name",
+        "type": "text",
+        "inputType": "text",
+        "placeholder": "Refilwe Sithole",
+        "full": false
+       },
+       {
+        "key": "email",
+        "label": "Email",
+        "type": "text",
+        "inputType": "email",
+        "placeholder": "refilwe@example.com",
+        "full": false
+       },
+       {
+        "key": "phone",
+        "label": "Phone",
+        "type": "text",
+        "inputType": "tel",
+        "placeholder": "+234 802 555 0114",
+        "full": false
+       },
+       {
+        "key": "department",
+        "label": "Department",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Procurement",
+         "Finance",
+         "Audit",
+         "HSE"
+        ],
+        "full": false
+       },
+       {
+        "key": "job_title",
+        "label": "Job title",
+        "type": "text",
+        "inputType": "text",
+        "placeholder": "Procurement Manager",
+        "full": false
+       },
+       {
+        "key": "language",
+        "label": "Language",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "English",
+         "Hausa",
+         "Yoruba",
+         "Igbo"
+        ],
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "user",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Save",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "profile-tab-prefs",
+   "label": "Preferences",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_preferences",
+      "version": 1,
+      "title": "Preferences",
+      "fields": [
+       {
+        "key": "start_page",
+        "label": "Start page",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Dashboard",
+         "Task Centre",
+         "Vendor Directory"
+        ],
+        "full": false
+       },
+       {
+        "key": "time_zone",
+        "label": "Time zone",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Africa/Lagos",
+         "Africa/Johannesburg",
+         "UTC"
+        ],
+        "full": false
+       },
+       {
+        "key": "email_me_about",
+        "label": "Email me about",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Approvals and tasks",
+         "Everything",
+         "Nothing"
+        ],
+        "full": false
+       },
+       {
+        "key": "dark_mode",
+        "label": "Dark mode",
+        "type": "toggle",
+        "inputType": "check",
+        "text": "Use the dark theme",
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "sliders-horizontal",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Save preferences",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "profile-tab-security",
+   "label": "Security",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_password_and_sign_in",
+      "version": 1,
+      "title": "Password and sign-in",
+      "fields": [
+       {
+        "key": "current_password",
+        "label": "Current password",
+        "type": "text",
+        "inputType": "password",
+        "placeholder": "",
+        "full": false
+       },
+       {
+        "key": "new_password",
+        "label": "New password",
+        "type": "text",
+        "inputType": "password",
+        "placeholder": "",
+        "full": false
+       },
+       {
+        "key": "two_step_sign_in",
+        "label": "Two-step sign-in",
+        "type": "toggle",
+        "inputType": "check",
+        "text": "Ask for a code on a new device",
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "shield",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Change password",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "profile_sessions",
+     "title": "Signed-in devices",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "profile-tab-activity",
+   "label": "Activity",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "timeline",
+     "title": "My recent activity",
+     "icon": "activity",
+     "sub": null,
+     "items": [
+      {
+       "time": "Today 09:12",
+       "text": "Approved payment PAP-70",
+       "meta": "Finance",
+       "icon": "check"
+      },
+      {
+       "time": "Yesterday",
+       "text": "Scored evaluation EV-498",
+       "meta": "Procurement",
+       "icon": "edit-3"
+      },
+      {
+       "time": "2 days ago",
+       "text": "Signed in from a new device",
+       "meta": "Security",
+       "icon": "shield"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

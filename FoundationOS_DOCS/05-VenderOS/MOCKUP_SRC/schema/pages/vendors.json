@@ -1,0 +1,169 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "vendors",
+ "title": "Vendor Directory",
+ "subtitle": "Every vendor in one list. Each row opens the Vendor Passport. Contact details come from the Contact Control Center.",
+ "workspace": "01-vendor-management",
+ "package": "vendoros",
+ "origin": "generated",
+ "actions": [
+  {
+   "label": "New vendor",
+   "style": "btn-primary",
+   "onclick": "wizardReset();openModal('vendorModal')",
+   "icon": "user-plus"
+  },
+  {
+   "label": "Open in Contact Control Center",
+   "style": "btn-secondary",
+   "onclick": "showPage('ccc')",
+   "icon": "contact"
+  }
+ ],
+ "kpis": {
+  "type": "kpis",
+  "items": [
+   {
+    "label": "Vendors",
+    "value": "428",
+    "accent": "purple"
+   },
+   {
+    "label": "Preferred",
+    "value": "36",
+    "accent": "green"
+   },
+   {
+    "label": "Blacklisted",
+    "value": "3",
+    "accent": "red"
+   },
+   {
+    "label": "Archived",
+    "value": "41",
+    "accent": "blue"
+   }
+  ]
+ },
+ "tabs": [
+  {
+   "id": "vendors-tab-all",
+   "label": "All vendors",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "vendors_all",
+     "title": "All vendors",
+     "icon": "building-2",
+     "sub": null,
+     "toolbarHtml": "<input class=\"cc-in\" style=\"max-width:260px;padding:8px 10px;border:1.5px solid var(--border);border-radius:8px\" placeholder=\"Search vendors\" aria-label=\"Search vendors\">"
+    }
+   ]
+  },
+  {
+   "id": "vendors-tab-cats",
+   "label": "Categories",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "cards",
+     "title": "Vendor categories",
+     "icon": null,
+     "sub": "Categories are the Vendor Category list in Contact Control Center settings, so one list serves both.",
+     "items": [
+      {
+       "title": "Transport and Logistics",
+       "value": "64",
+       "text": "Fleet, haulage, couriers",
+       "colour": "blue",
+       "badge": "15 sub-types"
+      },
+      {
+       "title": "Construction and Civils",
+       "value": "52",
+       "text": "Plant hire, scaffolding, civils",
+       "colour": "orange",
+       "badge": ""
+      },
+      {
+       "title": "IT Services",
+       "value": "47",
+       "text": "Networks, software, support",
+       "colour": "purple",
+       "badge": ""
+      },
+      {
+       "title": "Office Supplies",
+       "value": "38",
+       "text": "Stationery, furniture",
+       "colour": "green",
+       "badge": ""
+      },
+      {
+       "title": "Professional Services",
+       "value": "31",
+       "text": "Legal, audit, consulting",
+       "colour": "grey",
+       "badge": ""
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "vendors_cat",
+     "title": "Vendors in Transport and Logistics",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "vendors-tab-preferred",
+   "label": "Preferred",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "vendors_pref",
+     "title": "Preferred vendors",
+     "icon": null,
+     "sub": "Preferred vendors score 85 or more, have no open findings and hold every mandatory document.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "vendors-tab-blacklisted",
+   "label": "Blacklisted",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "vendors_black",
+     "title": "Blacklisted vendors",
+     "icon": null,
+     "sub": "Blacklisting needs written findings and is logged. Removing a vendor from the list needs the same approval.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "vendors-tab-archived",
+   "label": "Archived",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "vendors_arch",
+     "title": "Archived vendors",
+     "icon": null,
+     "sub": "Archived vendors keep their history but cannot receive RFQs or purchase orders.",
+     "toolbarHtml": null
+    }
+   ]
+  }
+ ]
+}

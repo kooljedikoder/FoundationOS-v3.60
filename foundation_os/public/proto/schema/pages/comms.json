@@ -1,0 +1,383 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "comms",
+ "title": "Inbox & Communications",
+ "subtitle": null,
+ "workspace": "07-communications",
+ "package": "collaboration",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "comms-tab-dash",
+   "label": "Dashboard",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Open threads",
+       "value": "14",
+       "accent": "blue"
+      },
+      {
+       "label": "Unassigned",
+       "value": "3",
+       "accent": "orange"
+      },
+      {
+       "label": "Average first response",
+       "value": "2.1 h",
+       "accent": "green"
+      },
+      {
+       "label": "SLA breaches",
+       "value": "1",
+       "accent": "red"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Messages by channel",
+       "icon": "bar-chart-2",
+       "sub": null,
+       "rows": [
+        {
+         "label": "Direct messages",
+         "percent": 48,
+         "tone": "",
+         "value": null
+        },
+        {
+         "label": "Email",
+         "percent": 31,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "WhatsApp",
+         "percent": 21,
+         "tone": "warning",
+         "value": null
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "cm_actions",
+       "title": "Needs your action",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "comms-unified",
+   "label": "Unified Inbox",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "comms-dm",
+   "label": "Direct Messages",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "comms-email",
+   "label": "Email",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "comms-wa",
+   "label": "WhatsApp",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "comms-news",
+   "label": "Announcements",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "comms-alerts",
+   "label": "Alerts",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "comms-tab-meetings",
+   "label": "Meetings",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "cm_meetings",
+     "title": "Meetings",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_schedule_a_meeting",
+      "version": 1,
+      "title": "Schedule a meeting",
+      "fields": [
+       {
+        "key": "title",
+        "label": "Title",
+        "type": "text",
+        "inputType": "text",
+        "placeholder": "Meeting title",
+        "full": false
+       },
+       {
+        "key": "with_vendor",
+        "label": "With vendor",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Kalahari Logistics",
+         "Delta Civils and Plant Hire",
+         "Phoenix Scaffolding"
+        ],
+        "full": false
+       },
+       {
+        "key": "date_and_time",
+        "label": "Date and time",
+        "type": "date",
+        "inputType": "datetime-local",
+        "placeholder": "",
+        "full": false
+       },
+       {
+        "key": "agenda",
+        "label": "Agenda",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "What will be covered",
+        "full": true
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "calendar",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Schedule",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "comms-tab-tasks",
+   "label": "Tasks",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "html",
+     "title": "Tasks from conversations",
+     "icon": "check-square",
+     "sub": null,
+     "html": "<p style=\"font-size:13px;margin-bottom:10px\">Tasks created from messages, meetings and surveys appear in the Task Centre.</p><button class=\"btn btn-primary btn-sm\" onclick=\"showPage('tasks')\">Open the Task Centre</button>"
+    }
+   ]
+  },
+  {
+   "id": "comms-tab-tickets",
+   "label": "Support tickets",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Open tickets",
+       "value": "3",
+       "accent": "orange"
+      },
+      {
+       "label": "Average response",
+       "value": "3.2 h",
+       "accent": "green"
+      },
+      {
+       "label": "Satisfaction",
+       "value": "94%",
+       "accent": "purple"
+      },
+      {
+       "label": "Waiting for vendor",
+       "value": "2",
+       "accent": "blue"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "cm_tickets",
+     "title": "Support tickets",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "comms-tab-surveys",
+   "label": "Surveys",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "cm_surveys",
+     "title": "Surveys",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_new_survey",
+      "version": 1,
+      "title": "New survey",
+      "fields": [
+       {
+        "key": "title",
+        "label": "Title",
+        "type": "text",
+        "inputType": "text",
+        "placeholder": "Survey title",
+        "full": false
+       },
+       {
+        "key": "audience",
+        "label": "Audience",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "All vendors",
+         "New vendors",
+         "Preferred vendors"
+        ],
+        "full": false
+       },
+       {
+        "key": "questions",
+        "label": "Questions",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "One question per line",
+        "full": true
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "clipboard-list",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Create survey",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "comms-tab-plans",
+   "label": "Improvement plans",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "html",
+     "title": "Improvement plans",
+     "icon": "target",
+     "sub": null,
+     "html": "<p style=\"font-size:13px;margin-bottom:10px\">Improvement plans are managed in Performance. This tab lists the ones with open conversations.</p><button class=\"btn btn-primary btn-sm\" onclick=\"showPage('perf')\">Open Performance</button>"
+    }
+   ]
+  },
+  {
+   "id": "comms-tab-share",
+   "label": "Document sharing",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "cm_share",
+     "title": "Shared documents",
+     "icon": null,
+     "sub": "Files come from the shared document store, so a document shared here is the same record as in Document Management.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "comms-tab-feed",
+   "label": "Activity feed",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "timeline",
+     "title": "Activity feed",
+     "icon": "activity",
+     "sub": null,
+     "items": [
+      {
+       "time": "Today 10:40",
+       "text": "Kalahari Logistics replied on PO-8821",
+       "meta": "Procurement",
+       "icon": "message-square"
+      },
+      {
+       "time": "Today 09:15",
+       "text": "Announcement published: Q4 delivery calendar",
+       "meta": "Procurement",
+       "icon": "bell"
+      },
+      {
+       "time": "Yesterday",
+       "text": "Survey SRV-12 opened to all vendors",
+       "meta": "Procurement",
+       "icon": "clipboard-list"
+      },
+      {
+       "time": "2 days ago",
+       "text": "Ticket TKT-908 opened by Northgate Office Supplies",
+       "meta": "Finance",
+       "icon": "life-buoy"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

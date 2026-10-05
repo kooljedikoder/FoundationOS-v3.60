@@ -1,0 +1,50 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "mycomms",
+ "title": "Communications",
+ "subtitle": null,
+ "workspace": "08-vendor-portal",
+ "package": "vendorportal",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "mc-messages",
+   "label": "Messages",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "mycomms-tab-news",
+   "label": "Announcements",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "mc_news",
+     "title": "Announcements",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "mycomms-tab-alerts",
+   "label": "Alerts",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "mc_alerts",
+     "title": "Alerts",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  }
+ ]
+}

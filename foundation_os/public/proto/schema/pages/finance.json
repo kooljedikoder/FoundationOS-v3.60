@@ -1,0 +1,103 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "finance",
+ "title": "Finance & Payments",
+ "subtitle": null,
+ "workspace": "02-procurement",
+ "package": "commerce",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "fin-invoices",
+   "label": "Invoices",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "finance-tab-payments",
+   "label": "Payments",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Paid this month",
+       "value": "₦212m",
+       "accent": "green"
+      },
+      {
+       "label": "Scheduled",
+       "value": "₦64m",
+       "accent": "blue"
+      },
+      {
+       "label": "On hold",
+       "value": "₦6m",
+       "accent": "orange"
+      },
+      {
+       "label": "Average days to pay",
+       "value": "24",
+       "accent": "purple"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "payments",
+     "title": "Payments",
+     "icon": null,
+     "sub": "Payments are read from the ERP payment records. Bank detail changes pause a payment until they are re-verified.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "finance-tab-routing",
+   "label": "Approval routing",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "flow",
+     "title": "Payment approval routing",
+     "icon": "workflow",
+     "sub": "Under ₦5m: Finance Officer. ₦5m to ₦50m: Finance Manager. Over ₦50m: Finance Director.",
+     "steps": [
+      {
+       "label": "Invoice received",
+       "colour": "#2563eb"
+      },
+      {
+       "label": "Three-way match",
+       "colour": "#7c3aed"
+      },
+      {
+       "label": "Approver by amount",
+       "colour": "#d97706"
+      },
+      {
+       "label": "Payment scheduled",
+       "colour": "#16a34a"
+      },
+      {
+       "label": "Released",
+       "colour": "#16a34a"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "pay_approvals",
+     "title": "Waiting for approval",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  }
+ ]
+}

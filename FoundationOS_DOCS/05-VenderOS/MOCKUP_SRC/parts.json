@@ -133,6 +133,9 @@
  "js/200-block1-data-map-overlay-ccc-vendoros-erp-fos-de.js",
  "js/201-workspace-data.js",
  "js/202-appsuite.js",
+ "js/203-db-connect.js",
+ "js/204-page-builder.js",
+ "js/205-converted-lists.js",
  "js/201-block1-mobile-bottom-menu-role-aware.js",
  "js/202-block1-ccc-prototype-client-talks-to-proto-api-.js",
  "shell/203-markup.html"

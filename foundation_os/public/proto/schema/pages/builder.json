@@ -1,0 +1,40 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "builder",
+ "title": "Dynamic Form Builder",
+ "subtitle": null,
+ "workspace": "10-administration",
+ "package": "automation",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "builder-new",
+   "label": "New Form",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "builder-existing",
+   "label": "Existing Forms",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "builder-tab-pages",
+   "label": "Pages",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "html",
+     "title": "Pages as data",
+     "icon": "layout-template",
+     "sub": "Every page in the product is a JSON schema: header, KPI strip, tabs and blocks. Open one, change it, preview it and save it. Saved pages are stored in the database and appear in the menu. This is the rule for every app: if a page is not in a schema, the builder cannot see it.",
+     "html": "<div id=\"fosPagesBody\"><p style=\"font-size:13px\">Loading the page schemas...</p></div>"
+    }
+   ]
+  }
+ ]
+}

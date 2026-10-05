@@ -1,0 +1,539 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "audit",
+ "title": "Audit & Governance",
+ "subtitle": null,
+ "workspace": "03-risk-compliance",
+ "package": "risk",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "audit-tab-dash",
+   "label": "Dashboard",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Open findings",
+       "value": "9",
+       "accent": "red"
+      },
+      {
+       "label": "Open CAPA",
+       "value": "6",
+       "accent": "orange"
+      },
+      {
+       "label": "Audits this quarter",
+       "value": "4",
+       "accent": "blue"
+      },
+      {
+       "label": "Vendor health score",
+       "value": "87",
+       "accent": "green"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Compliance by area",
+       "icon": "shield",
+       "sub": null,
+       "rows": [
+        {
+         "label": "Documents valid",
+         "percent": 94,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Insurance valid",
+         "percent": 89,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Certifications valid",
+         "percent": 82,
+         "tone": "warning",
+         "value": null
+        },
+        {
+         "label": "HSE induction current",
+         "percent": 76,
+         "tone": "warning",
+         "value": null
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "rc_actions",
+       "title": "Needs your action",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "audit-tab-reviews",
+   "label": "Compliance reviews",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "comp_reviews",
+     "title": "Compliance reviews",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "audit-tab-riskasm",
+   "label": "Risk assessments",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "html",
+     "title": "Risk assessments",
+     "icon": "alert-triangle",
+     "sub": null,
+     "html": "<p style=\"font-size:13px\">Risk assessments live in the Enterprise Risk register, with likelihood, impact and mitigation per vendor.</p><button class=\"btn btn-primary btn-sm\" onclick=\"showPage('erm')\">Open the risk register</button>"
+    }
+   ]
+  },
+  {
+   "id": "audit-tab-inspect",
+   "label": "Site inspections",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "inspections",
+     "title": "Site inspections",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_inspection_checklist",
+      "version": 1,
+      "title": "Inspection checklist",
+      "fields": [
+       {
+        "key": "vendor",
+        "label": "Vendor",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Delta Civils and Plant Hire",
+         "Kalahari Logistics",
+         "Phoenix Scaffolding"
+        ],
+        "full": false
+       },
+       {
+        "key": "site",
+        "label": "Site",
+        "type": "text",
+        "inputType": "text",
+        "placeholder": "Address or site name",
+        "full": false
+       },
+       {
+        "key": "ppe_worn_on_site",
+        "label": "PPE worn on site",
+        "type": "toggle",
+        "inputType": "check",
+        "text": "Yes",
+        "full": false
+       },
+       {
+        "key": "permits_on_display",
+        "label": "Permits on display",
+        "type": "toggle",
+        "inputType": "check",
+        "text": "Yes",
+        "full": false
+       },
+       {
+        "key": "findings",
+        "label": "Findings",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "Describe anything not compliant",
+        "full": true
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "clipboard-check",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Save inspection",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "audit-audits",
+   "label": "Audits",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "audit-tab-capa",
+   "label": "CAPA",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Open",
+       "value": "6",
+       "accent": "orange"
+      },
+      {
+       "label": "Overdue",
+       "value": "1",
+       "accent": "red"
+      },
+      {
+       "label": "Closed this month",
+       "value": "9",
+       "accent": "green"
+      },
+      {
+       "label": "Average days to close",
+       "value": "17",
+       "accent": "blue"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "capa",
+     "title": "Corrective and preventive actions (CAPA)",
+     "icon": "wrench",
+     "sub": null,
+     "reuse": true
+    }
+   ]
+  },
+  {
+   "id": "audit-tab-esg",
+   "label": "ESG",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "matrix",
+     "title": "ESG review by vendor",
+     "icon": "grid",
+     "sub": "ESG review is a CORE-edition assessment type.",
+     "columns": [
+      "Environment",
+      "Social",
+      "Governance",
+      "Overall"
+     ],
+     "rows": [
+      {
+       "name": "Kalahari Logistics",
+       "values": [
+        78,
+        84,
+        90,
+        84
+       ]
+      },
+      {
+       "name": "Sable IT Networks",
+       "values": [
+        82,
+        88,
+        86,
+        85
+       ]
+      },
+      {
+       "name": "Delta Civils and Plant Hire",
+       "values": [
+        55,
+        62,
+        70,
+        62
+       ]
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "esg_items",
+     "title": "ESG actions",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "audit-tab-scoring",
+   "label": "Vendor scoring",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "bars",
+     "title": "Assessment scores",
+     "icon": "bar-chart-2",
+     "sub": "Scores come from the eight assessment reviews (Procurement, Technical, Finance, Legal, Compliance, HSE, ESG, Information Security).",
+     "rows": [
+      {
+       "label": "Kalahari Logistics",
+       "percent": 88,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Sable IT Networks",
+       "percent": 85,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Northgate Office Supplies",
+       "percent": 76,
+       "tone": "",
+       "value": null
+      },
+      {
+       "label": "Phoenix Scaffolding",
+       "percent": 68,
+       "tone": "warning",
+       "value": null
+      },
+      {
+       "label": "Delta Civils and Plant Hire",
+       "percent": 58,
+       "tone": "danger",
+       "value": null
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "Full assessment",
+     "icon": "clipboard-check",
+     "sub": null,
+     "html": "<button class=\"btn btn-primary btn-sm\" onclick=\"showPage('assessment')\">Open Supplier Assessment</button>"
+    }
+   ]
+  },
+  {
+   "id": "audit-tab-health",
+   "label": "Health score",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Average health",
+       "value": "87",
+       "accent": "green"
+      },
+      {
+       "label": "Vendors below 70",
+       "value": "5",
+       "accent": "red"
+      },
+      {
+       "label": "Improving",
+       "value": "14",
+       "accent": "blue"
+      },
+      {
+       "label": "Declining",
+       "value": "4",
+       "accent": "orange"
+      }
+     ]
+    },
+    {
+     "type": "bars",
+     "title": "Health score parts",
+     "icon": "bar-chart-2",
+     "sub": "Health score is a weighted mix. The weights are set in Administration.",
+     "rows": [
+      {
+       "label": "Documents",
+       "percent": 94,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Performance",
+       "percent": 86,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Compliance findings",
+       "percent": 78,
+       "tone": "",
+       "value": null
+      },
+      {
+       "label": "HSE",
+       "percent": 76,
+       "tone": "warning",
+       "value": null
+      },
+      {
+       "label": "Financial standing",
+       "percent": 90,
+       "tone": "success",
+       "value": null
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "health_watch",
+     "title": "Vendors below 70",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "audit-tab-renewals",
+   "label": "Renewals",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "rc_renewals",
+     "title": "Renewals due",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "audit-tab-expiring",
+   "label": "Expiring documents",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "expiring",
+     "title": "Expiring documents",
+     "icon": "file-text",
+     "sub": "The same expiring-documents list as Document Management.",
+     "reuse": true
+    }
+   ]
+  },
+  {
+   "id": "audit-tab-reports",
+   "label": "Reports",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "cards",
+     "title": "Compliance and risk reports",
+     "icon": null,
+     "sub": null,
+     "items": [
+      {
+       "title": "Compliance report",
+       "value": "",
+       "text": "Documents, insurance, certifications",
+       "colour": "green",
+       "badge": "Reports and BI"
+      },
+      {
+       "title": "Risk report",
+       "value": "",
+       "text": "Register, mitigations, trend",
+       "colour": "red",
+       "badge": "Reports and BI"
+      }
+     ]
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_run_a_report",
+      "version": 1,
+      "title": "Run a report",
+      "fields": [
+       {
+        "key": "report",
+        "label": "Report",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Compliance",
+         "Risk"
+        ],
+        "full": false
+       },
+       {
+        "key": "period",
+        "label": "Period",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Last 30 days",
+         "This quarter",
+         "This year"
+        ],
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "bar-chart-2",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Open in Reports and BI",
+       "style": "btn-primary",
+       "onclick": "showPage('reports')"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

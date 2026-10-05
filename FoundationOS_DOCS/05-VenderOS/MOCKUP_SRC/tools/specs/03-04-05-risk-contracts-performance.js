@@ -28,7 +28,7 @@ const riskPages = [{
       form('Inspection checklist', [['Vendor', 'select', ['Delta Civils and Plant Hire', 'Kalahari Logistics', 'Phoenix Scaffolding']], ['Site', 'text', 'Address or site name'], ['PPE worn on site', 'check', 'Yes'], ['Permits on display', 'check', 'Yes'], ['Findings', 'textarea', 'Describe anything not compliant', true]], [['Save inspection', 'btn-primary']], { icon: 'clipboard-check' })
     ] },
     { label: 'Audits', id: 'wrap' },
-    { label: 'CAPA', id: 'capa', blocks: [kpis([['Open', '6', 'orange'], ['Overdue', '1', 'red'], ['Closed this month', '9', 'green'], ['Average days to close', '17', 'blue']]), `<div class="table-wrap" data-vf="capa"></div>`] },
+    { label: 'CAPA', id: 'capa', blocks: [kpis([['Open', '6', 'orange'], ['Overdue', '1', 'red'], ['Closed this month', '9', 'green'], ['Average days to close', '17', 'blue']]), L.listRef('capa', 'Corrective and preventive actions (CAPA)', null, 'wrench')] },
     { label: 'ESG', id: 'esg', blocks: [
       matrix('ESG review by vendor', ['Environment', 'Social', 'Governance', 'Overall'], [['Kalahari Logistics', [78, 84, 90, 84]], ['Sable IT Networks', [82, 88, 86, 85]], ['Delta Civils and Plant Hire', [55, 62, 70, 62]]], { sub: 'ESG review is a CORE-edition assessment type.' }),
       list('esg_items', 'ESG actions', [R('ESG-12', 'Delta Civils: provide an environmental management plan', 'ESG action', 'Compliance', 'Due in 20 days', '', ['orange', 'Requested'], 'S29', 'Send reminder')])
@@ -47,7 +47,7 @@ const riskPages = [{
       R('RN-40', 'ISO 45001 certificate: Kalahari Logistics', 'Certificate renewal', 'Compliance', 'In 40 days', '', ['orange', 'Due soon'], 'S16', 'Send reminder'),
       R('RN-38', 'Tax clearance: Phoenix Scaffolding', 'Tax renewal', 'Finance', 'Expired', '', ['red', 'Expired'], 'S14', 'Request new certificate')
     ])] },
-    { label: 'Expiring documents', id: 'expiring', blocks: [panel('Expiring documents', 'file-text', '<div class="table-wrap" data-vf="expiring"></div>', 'The same expiring-documents list as Document Management.')] },
+    { label: 'Expiring documents', id: 'expiring', blocks: [L.listRef('expiring', 'Expiring documents', 'The same expiring-documents list as Document Management.', 'file-text')] },
     { label: 'Reports', id: 'reports', blocks: [cards('Compliance and risk reports', [['Compliance report', '', 'Documents, insurance, certifications', 'green', 'Reports and BI'], ['Risk report', '', 'Register, mitigations, trend', 'red', 'Reports and BI']]), form('Run a report', [['Report', 'select', ['Compliance', 'Risk']], ['Period', 'select', ['Last 30 days', 'This quarter', 'This year']]], [['Open in Reports and BI', 'btn-primary', "showPage('reports')"]], { icon: 'bar-chart-2' })] }
   ]
 }, {
@@ -82,7 +82,7 @@ const contractPages = [{
       R('SLA-12', 'Kalahari Logistics: on-time delivery 95%', 'SLA', 'Procurement', 'This month 96%', '', ['green', 'Met'], 'S44', ''),
       R('SLA-14', 'Sable IT Networks: response within 4 hours', 'SLA', 'IT', 'This month 91%', '', ['red', 'Breached'], 'S44', 'Raise corrective action')
     ])] },
-    { label: 'Renewals', id: 'renewals', blocks: [panel('Obligations and renewals', 'calendar', '<div class="table-wrap" data-vf="obligations"></div>', 'The same obligations list as the Contracts tab; renewals are obligations with a renewal date.')] },
+    { label: 'Renewals', id: 'renewals', blocks: [L.listRef('obligations', 'Obligations and renewals', 'The same obligations list as the Contracts tab; renewals are obligations with a renewal date.', 'calendar')] },
     { label: 'Digital signatures', id: 'sign', blocks: [list('ct_sign', 'Signatures', [
       R('SIG-31', 'CTR-2312 Northgate Office Supplies', 'Signature request', 'Legal', 'Waiting for vendor', '₦6,240,000', ['blue', 'Sent to vendor'], 'S41', 'Send reminder'),
       R('SIG-30', 'CTR-2310 Delta Civils and Plant Hire', 'Signature request', 'Legal', 'Waiting for us', '₦34,000,000', ['orange', 'Awaiting our signatory'], 'S41', 'Sign now', APPROVE),
@@ -107,7 +107,7 @@ const perfPages = [{
     { label: 'Delivery', id: 'delivery', blocks: [kpis([['On-time delivery', '91%', 'green'], ['Late deliveries', '14', 'orange'], ['Average delay', '1.8 d', 'blue'], ['Short deliveries', '5', 'red']]), bars('On-time delivery by vendor', [['Kalahari Logistics', 96, 'success'], ['Sable IT Networks', 92, 'success'], ['Northgate Office Supplies', 84, ''], ['Phoenix Scaffolding', 71, 'warning']])] },
     { label: 'Quality', id: 'quality', blocks: [kpis([['First-pass acceptance', '94%', 'green'], ['Defect rate', '2.1%', 'orange'], ['Returns', '7', 'red'], ['Inspections', '58', 'blue']]), bars('Acceptance at inspection', [['Kalahari Logistics', 98, 'success'], ['Northgate Office Supplies', 93, 'success'], ['Phoenix Scaffolding', 81, 'warning'], ['Delta Civils and Plant Hire', 74, 'danger']])] },
     { label: 'Financial', id: 'financial', blocks: [kpis([['Invoice accuracy', '97%', 'green'], ['Disputed invoices', '2', 'red'], ['Early-payment discounts', '₦1.1m', 'purple'], ['Credit notes', '6', 'blue']]), bars('Invoice accuracy', [['Kalahari Logistics', 99, 'success'], ['Sable IT Networks', 98, 'success'], ['Northgate Office Supplies', 92, 'warning']])] },
-    { label: 'Corrective actions', id: 'actions', blocks: [panel('Corrective actions', 'wrench', '<div class="table-wrap" data-vf="capa"></div>', 'Corrective actions are CAPA records, shared with Risk and Compliance.')] },
+    { label: 'Corrective actions', id: 'actions', blocks: [L.listRef('capa', 'Corrective actions', 'Corrective actions are CAPA records, shared with Risk and Compliance.', 'wrench')] },
     { label: 'Improvement plans', id: 'plans', blocks: [list('perf_plans', 'Improvement plans', [
       R('IMP-21', 'Delta Civils and Plant Hire: safety performance plan', 'Improvement plan', 'HSE Team', 'Review in 30 days', '', ['orange', 'In progress'], 'S44', 'Review progress'),
       R('IMP-19', 'Phoenix Scaffolding: delivery reliability plan', 'Improvement plan', 'Procurement', 'Review in 14 days', '', ['blue', 'Started'], 'S44', ''),

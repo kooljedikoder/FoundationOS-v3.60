@@ -1,0 +1,279 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "passport",
+ "title": "Kalahari Logistics (Pty) Ltd",
+ "subtitle": null,
+ "workspace": "01-vendor-management",
+ "package": "vendoros",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "vp-overview",
+   "label": "Overview",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "passport-tab-company",
+   "label": "Company",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kv",
+     "title": "Company details",
+     "icon": "building-2",
+     "sub": "Read from the Contact Control Center. Edit it there; this tab never keeps a second copy.",
+     "rows": [
+      {
+       "label": "Legal name",
+       "value": "Kalahari Logistics (Pty) Ltd"
+      },
+      {
+       "label": "Trading name",
+       "value": "Kalahari Logistics"
+      },
+      {
+       "label": "Company type",
+       "value": "Private Limited Company"
+      },
+      {
+       "label": "Registration number",
+       "value": "RC 1234567"
+      },
+      {
+       "label": "Incorporated",
+       "value": "12 March 2016"
+      },
+      {
+       "label": "Years in business",
+       "value": "10 (calculated)"
+      },
+      {
+       "label": "Employees",
+       "value": "51 to 200"
+      },
+      {
+       "label": "Industry",
+       "value": "Transport and Logistics"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "passport-tab-contacts",
+   "label": "Contacts",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "pp_contacts",
+     "title": "Contact persons",
+     "icon": "users",
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "passport-tab-directors",
+   "label": "Directors",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "pp_directors",
+     "title": "Directors, owners and signatories",
+     "icon": "users",
+     "sub": "Nationality, email, phone, signing limit, signature specimen and board resolution are kept per director.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "passport-tab-banking",
+   "label": "Banking",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "pp_banks",
+     "title": "Bank accounts",
+     "icon": "landmark",
+     "sub": "A change of bank details always pauses payments until it is re-verified.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "vp-docs",
+   "label": "Documents",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "passport-tab-certs",
+   "label": "Certifications",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "pp_certs",
+     "title": "Certifications",
+     "icon": "award",
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "passport-tab-insurance",
+   "label": "Insurance",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "pp_insurance",
+     "title": "Insurance policies",
+     "icon": "shield",
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "passport-tab-products",
+   "label": "Products and services",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "pp_products",
+     "title": "Products and services",
+     "icon": "package",
+     "sub": "Vendors pick an existing ERP product or propose a new one. Brand, manufacturer and country of origin are kept for proposed products.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "passport-tab-branches",
+   "label": "Branches",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "pp_branches",
+     "title": "Branches and locations",
+     "icon": "map-pin",
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "vp-perf",
+   "label": "Performance",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "vp-contracts",
+   "label": "Contracts",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "vp-comms",
+   "label": "Communications",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "vp-timeline",
+   "label": "Timeline & Activity Log",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "passport-tab-notes",
+   "label": "Notes",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_add_a_note",
+      "version": 1,
+      "title": "Add a note",
+      "fields": [
+       {
+        "key": "note",
+        "label": "Note",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "Internal note about this vendor. Vendors cannot see notes.",
+        "full": true
+       },
+       {
+        "key": "visible_to",
+        "label": "Visible to",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Procurement",
+         "Finance",
+         "Audit",
+         "Everyone internal"
+        ],
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "edit-3",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Save note",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    },
+    {
+     "type": "timeline",
+     "title": "Notes",
+     "icon": "activity",
+     "sub": null,
+     "items": [
+      {
+       "time": "2 days ago",
+       "text": "Preferred for the Lagos region. Review again in January.",
+       "meta": "Boitumelo P., Procurement",
+       "icon": "message-square"
+      },
+      {
+       "time": "3 weeks ago",
+       "text": "Asked to renew the operating licence before the next award.",
+       "meta": "Compliance",
+       "icon": "message-square"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vp-staff",
+   "label": "Staff Access",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  }
+ ]
+}

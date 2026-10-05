@@ -1,0 +1,894 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "reports",
+ "title": "Reports and BI",
+ "subtitle": "Executive, vendor, spend, procurement, compliance, risk, performance and contract reports, with scheduling and an export centre.",
+ "workspace": "09-reports-bi",
+ "package": "insights",
+ "origin": "generated",
+ "actions": [
+  {
+   "label": "Schedule a report",
+   "style": "btn-primary",
+   "onclick": null,
+   "icon": "calendar"
+  },
+  {
+   "label": "Export centre",
+   "style": "btn-secondary",
+   "onclick": "subNav('reports',{tab:'reports-tab-export'})",
+   "icon": "download"
+  }
+ ],
+ "kpis": {
+  "type": "kpis",
+  "items": [
+   {
+    "label": "Reports",
+    "value": "8",
+    "accent": "purple"
+   },
+   {
+    "label": "Scheduled",
+    "value": "3",
+    "accent": "blue"
+   },
+   {
+    "label": "Exports this week",
+    "value": "17",
+    "accent": "green"
+   },
+   {
+    "label": "Last refresh",
+    "value": "5 min ago",
+    "accent": "orange"
+   }
+  ]
+ },
+ "tabs": [
+  {
+   "id": "reports-tab-exec",
+   "label": "Executive",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Active vendors",
+       "value": "428",
+       "accent": "purple"
+      },
+      {
+       "label": "Vendor health",
+       "value": "87",
+       "accent": "green"
+      },
+      {
+       "label": "Spend under management",
+       "value": "₦480m",
+       "accent": "blue"
+      },
+      {
+       "label": "Open high risks",
+       "value": "4",
+       "accent": "red"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Headline scores",
+       "icon": "bar-chart-2",
+       "sub": "One page for the board: five numbers and the trend.",
+       "rows": [
+        {
+         "label": "Vendor health",
+         "percent": 87,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Compliance",
+         "percent": 94,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "On-time delivery",
+         "percent": 91,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Risk exposure",
+         "percent": 22,
+         "tone": "warning",
+         "value": null
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "rpt_exec",
+       "title": "Executive report detail",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "Export",
+     "icon": "download",
+     "sub": null,
+     "html": "<div class=\"page-actions\"><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Executive report exported to PDF (prototype)','download')\">PDF</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Executive report exported to Excel (prototype)','download')\">Excel</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Executive report scheduled (prototype)','calendar')\">Schedule</button></div>"
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-vendor",
+   "label": "Vendor",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Registered",
+       "value": "428",
+       "accent": "purple"
+      },
+      {
+       "label": "Approved this month",
+       "value": "9",
+       "accent": "green"
+      },
+      {
+       "label": "In onboarding",
+       "value": "14",
+       "accent": "orange"
+      },
+      {
+       "label": "Blacklisted",
+       "value": "3",
+       "accent": "red"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Vendors by status",
+       "icon": "bar-chart-2",
+       "sub": "Counts come from the Contact Control Center and the vendor passports.",
+       "rows": [
+        {
+         "label": "Active",
+         "percent": 82,
+         "tone": "success",
+         "value": "351"
+        },
+        {
+         "label": "Under review",
+         "percent": 9,
+         "tone": "warning",
+         "value": "38"
+        },
+        {
+         "label": "Archived",
+         "percent": 9,
+         "tone": "",
+         "value": "39"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "rpt_vendor",
+       "title": "Vendor report detail",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "Export",
+     "icon": "download",
+     "sub": null,
+     "html": "<div class=\"page-actions\"><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Vendor report exported to PDF (prototype)','download')\">PDF</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Vendor report exported to Excel (prototype)','download')\">Excel</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Vendor report scheduled (prototype)','calendar')\">Schedule</button></div>"
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-spend",
+   "label": "Spend",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Spend this year",
+       "value": "₦480m",
+       "accent": "purple"
+      },
+      {
+       "label": "Off-contract",
+       "value": "2.0%",
+       "accent": "orange"
+      },
+      {
+       "label": "Savings",
+       "value": "₦14.2m",
+       "accent": "green"
+      },
+      {
+       "label": "Top vendor share",
+       "value": "23%",
+       "accent": "blue"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Spend by category",
+       "icon": "bar-chart-2",
+       "sub": "Read from the ERP purchase and accounting records.",
+       "rows": [
+        {
+         "label": "Logistics and fleet",
+         "percent": 34,
+         "tone": "",
+         "value": "₦163m"
+        },
+        {
+         "label": "Civils and plant",
+         "percent": 22,
+         "tone": "warning",
+         "value": "₦106m"
+        },
+        {
+         "label": "IT and telecoms",
+         "percent": 18,
+         "tone": "success",
+         "value": "₦86m"
+        },
+        {
+         "label": "Office and supplies",
+         "percent": 12,
+         "tone": "",
+         "value": "₦58m"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "rpt_spend",
+       "title": "Spend report detail",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "Export",
+     "icon": "download",
+     "sub": null,
+     "html": "<div class=\"page-actions\"><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Spend report exported to PDF (prototype)','download')\">PDF</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Spend report exported to Excel (prototype)','download')\">Excel</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Spend report scheduled (prototype)','calendar')\">Schedule</button></div>"
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-procurement",
+   "label": "Procurement",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "RFQs issued",
+       "value": "58",
+       "accent": "purple"
+      },
+      {
+       "label": "Average quotations per RFQ",
+       "value": "3.4",
+       "accent": "blue"
+      },
+      {
+       "label": "Cycle time",
+       "value": "18 d",
+       "accent": "orange"
+      },
+      {
+       "label": "Awards",
+       "value": "41",
+       "accent": "green"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Cycle time by step",
+       "icon": "bar-chart-2",
+       "sub": "Where time is spent between RFQ and purchase order.",
+       "rows": [
+        {
+         "label": "RFQ to quotes",
+         "percent": 40,
+         "tone": "",
+         "value": null
+        },
+        {
+         "label": "Evaluation",
+         "percent": 25,
+         "tone": "warning",
+         "value": null
+        },
+        {
+         "label": "Approval",
+         "percent": 20,
+         "tone": "warning",
+         "value": null
+        },
+        {
+         "label": "Award to PO",
+         "percent": 15,
+         "tone": "success",
+         "value": null
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "rpt_procurement",
+       "title": "Procurement report detail",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "Export",
+     "icon": "download",
+     "sub": null,
+     "html": "<div class=\"page-actions\"><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Procurement report exported to PDF (prototype)','download')\">PDF</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Procurement report exported to Excel (prototype)','download')\">Excel</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Procurement report scheduled (prototype)','calendar')\">Schedule</button></div>"
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-compliance",
+   "label": "Compliance",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Documents valid",
+       "value": "94%",
+       "accent": "green"
+      },
+      {
+       "label": "Expired documents",
+       "value": "17",
+       "accent": "red"
+      },
+      {
+       "label": "Expiring in 30 days",
+       "value": "14",
+       "accent": "orange"
+      },
+      {
+       "label": "Open findings",
+       "value": "9",
+       "accent": "red"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Valid by document type",
+       "icon": "bar-chart-2",
+       "sub": "Based on the active Required Documents rules.",
+       "rows": [
+        {
+         "label": "Company registration",
+         "percent": 99,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Tax clearance",
+         "percent": 91,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Insurance",
+         "percent": 89,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Certifications",
+         "percent": 82,
+         "tone": "warning",
+         "value": null
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "rpt_compliance",
+       "title": "Compliance report detail",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "Export",
+     "icon": "download",
+     "sub": null,
+     "html": "<div class=\"page-actions\"><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Compliance report exported to PDF (prototype)','download')\">PDF</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Compliance report exported to Excel (prototype)','download')\">Excel</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Compliance report scheduled (prototype)','calendar')\">Schedule</button></div>"
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-risk",
+   "label": "Risk",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Open risks",
+       "value": "31",
+       "accent": "purple"
+      },
+      {
+       "label": "High",
+       "value": "4",
+       "accent": "red"
+      },
+      {
+       "label": "Rising",
+       "value": "3",
+       "accent": "orange"
+      },
+      {
+       "label": "Mitigations overdue",
+       "value": "2",
+       "accent": "red"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Risks by level",
+       "icon": "bar-chart-2",
+       "sub": "Likelihood times impact from the risk register.",
+       "rows": [
+        {
+         "label": "High",
+         "percent": 13,
+         "tone": "danger",
+         "value": "4"
+        },
+        {
+         "label": "Medium",
+         "percent": 42,
+         "tone": "warning",
+         "value": "13"
+        },
+        {
+         "label": "Low",
+         "percent": 45,
+         "tone": "success",
+         "value": "14"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "rpt_risk",
+       "title": "Risk report detail",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "Export",
+     "icon": "download",
+     "sub": null,
+     "html": "<div class=\"page-actions\"><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Risk report exported to PDF (prototype)','download')\">PDF</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Risk report exported to Excel (prototype)','download')\">Excel</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Risk report scheduled (prototype)','calendar')\">Schedule</button></div>"
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-performance",
+   "label": "Performance",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Average score",
+       "value": "86",
+       "accent": "green"
+      },
+      {
+       "label": "SLA breaches",
+       "value": "3",
+       "accent": "red"
+      },
+      {
+       "label": "Vendors at risk",
+       "value": "4",
+       "accent": "orange"
+      },
+      {
+       "label": "Improving",
+       "value": "11",
+       "accent": "blue"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Score by dimension",
+       "icon": "bar-chart-2",
+       "sub": "Weighted scorecard dimensions.",
+       "rows": [
+        {
+         "label": "Delivery",
+         "percent": 91,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Quality",
+         "percent": 94,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "Financial",
+         "percent": 97,
+         "tone": "success",
+         "value": null
+        },
+        {
+         "label": "HSE",
+         "percent": 76,
+         "tone": "warning",
+         "value": null
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "rpt_performance",
+       "title": "Performance report detail",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "Export",
+     "icon": "download",
+     "sub": null,
+     "html": "<div class=\"page-actions\"><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Performance report exported to PDF (prototype)','download')\">PDF</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Performance report exported to Excel (prototype)','download')\">Excel</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Performance report scheduled (prototype)','calendar')\">Schedule</button></div>"
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-contracts",
+   "label": "Contract reports",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Active contracts",
+       "value": "64",
+       "accent": "purple"
+      },
+      {
+       "label": "Expiring in 30 days",
+       "value": "12",
+       "accent": "orange"
+      },
+      {
+       "label": "Obligations due",
+       "value": "9",
+       "accent": "red"
+      },
+      {
+       "label": "Annual value",
+       "value": "₦1.9bn",
+       "accent": "green"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "bars",
+       "title": "Value by status",
+       "icon": "bar-chart-2",
+       "sub": "Register, renewals and obligations.",
+       "rows": [
+        {
+         "label": "Active",
+         "percent": 78,
+         "tone": "success",
+         "value": "₦1.5bn"
+        },
+        {
+         "label": "Renewal due",
+         "percent": 14,
+         "tone": "warning",
+         "value": "₦270m"
+        },
+        {
+         "label": "Suspended",
+         "percent": 8,
+         "tone": "danger",
+         "value": "₦130m"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "collection": "rpt_contracts",
+       "title": "Contract report detail",
+       "icon": null,
+       "sub": null,
+       "toolbarHtml": null
+      }
+     ]
+    },
+    {
+     "type": "html",
+     "title": "Export",
+     "icon": "download",
+     "sub": null,
+     "html": "<div class=\"page-actions\"><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Contract report exported to PDF (prototype)','download')\">PDF</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Contract report exported to Excel (prototype)','download')\">Excel</button><button class=\"btn btn-secondary btn-sm\" onclick=\"showToast('Contract report scheduled (prototype)','calendar')\">Schedule</button></div>"
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-sched",
+   "label": "Scheduled reports",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "rpt_sched",
+     "title": "Scheduled reports",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_schedule_a_report",
+      "version": 1,
+      "title": "Schedule a report",
+      "fields": [
+       {
+        "key": "report",
+        "label": "Report",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Executive",
+         "Vendor",
+         "Spend",
+         "Procurement",
+         "Compliance",
+         "Risk",
+         "Performance",
+         "Contract"
+        ],
+        "full": false
+       },
+       {
+        "key": "how_often",
+        "label": "How often",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Daily",
+         "Weekly",
+         "Monthly"
+        ],
+        "full": false
+       },
+       {
+        "key": "send_to",
+        "label": "Send to",
+        "type": "text",
+        "inputType": "text",
+        "placeholder": "Names or emails",
+        "full": false
+       },
+       {
+        "key": "format",
+        "label": "Format",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "PDF",
+         "Excel"
+        ],
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "calendar",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Save schedule",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-export",
+   "label": "Export centre",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "rpt_exports",
+     "title": "Recent exports",
+     "icon": null,
+     "sub": "Exports are kept for 7 days and every download is logged.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "reports-tab-bi",
+   "label": "BI analytics",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "matrix",
+     "title": "Vendor spend and score (heat map)",
+     "icon": "grid",
+     "sub": "Higher is better in every column. Pick measures and a grouping to build your own view.",
+     "columns": [
+      "Spend",
+      "Score",
+      "Risk",
+      "Contract"
+     ],
+     "rows": [
+      {
+       "name": "Kalahari Logistics",
+       "values": [
+        92,
+        90,
+        82,
+        88
+       ]
+      },
+      {
+       "name": "Sable IT Networks",
+       "values": [
+        88,
+        88,
+        75,
+        91
+       ]
+      },
+      {
+       "name": "Delta Civils and Plant Hire",
+       "values": [
+        74,
+        58,
+        40,
+        60
+       ]
+      },
+      {
+       "name": "Northgate Office Supplies",
+       "values": [
+        55,
+        80,
+        90,
+        70
+       ]
+      }
+     ]
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_ask_a_question",
+      "version": 1,
+      "title": "Ask a question",
+      "fields": [
+       {
+        "key": "question",
+        "label": "Question",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "For example: which vendors spent more than ₦20m and score below 70?",
+        "full": true
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "sparkles",
+     "sub": "Answers are generated, labelled as such, and never change data.",
+     "buttons": [
+      {
+       "label": "Ask",
+       "style": "btn-primary",
+       "onclick": "showToast('The answer respects your permissions and is labelled as a suggestion','sparkles')"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

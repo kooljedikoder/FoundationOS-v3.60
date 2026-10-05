@@ -1,0 +1,112 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "calendar",
+ "title": "Calendar",
+ "subtitle": "Deadlines, expiries, audits, meetings and renewals from every workspace.",
+ "workspace": "00-dashboard",
+ "package": "collaboration",
+ "origin": "generated",
+ "actions": [
+  {
+   "label": "New event",
+   "style": "btn-primary",
+   "onclick": null,
+   "icon": "plus"
+  }
+ ],
+ "kpis": {
+  "type": "kpis",
+  "items": [
+   {
+    "label": "This week",
+    "value": "9",
+    "accent": "purple"
+   },
+   {
+    "label": "Expiries (30 days)",
+    "value": "14",
+    "accent": "orange"
+   },
+   {
+    "label": "Audits planned",
+    "value": "2",
+    "accent": "blue"
+   },
+   {
+    "label": "Meetings",
+    "value": "5",
+    "accent": "green"
+   }
+  ]
+ },
+ "tabs": [
+  {
+   "id": "calendar-tab-agenda",
+   "label": "Agenda",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "cal_agenda",
+     "title": "Upcoming",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "calendar-tab-month",
+   "label": "Month view",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "matrix",
+     "title": "October",
+     "icon": "calendar",
+     "sub": "Dates link to the record they came from.",
+     "columns": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri"
+     ],
+     "rows": [
+      {
+       "name": "Week 41",
+       "values": [
+        "",
+        "14 audit",
+        "15 expiry",
+        "",
+        "17 renewal"
+       ]
+      },
+      {
+       "name": "Week 42",
+       "values": [
+        "20 review",
+        "",
+        "22 course",
+        "",
+        "24 payment run"
+       ]
+      },
+      {
+       "name": "Week 43",
+       "values": [
+        "27",
+        "28 inspection",
+        "",
+        "30 report",
+        ""
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

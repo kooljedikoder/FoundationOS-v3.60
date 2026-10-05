@@ -1,0 +1,164 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "myhome",
+ "title": "Home",
+ "subtitle": "Where you are in onboarding, what needs you, and what has happened.",
+ "workspace": "08-vendor-portal",
+ "package": "vendorportal",
+ "origin": "generated",
+ "actions": [
+  {
+   "label": "Ask a question",
+   "style": "btn-secondary",
+   "onclick": "showPage('mycomms')",
+   "icon": "message-square"
+  }
+ ],
+ "kpis": {
+  "type": "kpis",
+  "items": [
+   {
+    "label": "Journey progress",
+    "value": "78%",
+    "accent": "purple"
+   },
+   {
+    "label": "Actions for you",
+    "value": "3",
+    "accent": "orange"
+   },
+   {
+    "label": "Documents valid",
+    "value": "13 of 15",
+    "accent": "green"
+   },
+   {
+    "label": "Unread messages",
+    "value": "2",
+    "accent": "blue"
+   }
+  ]
+ },
+ "tabs": [
+  {
+   "id": "myhome-tab-journey",
+   "label": "Journey",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "flow",
+     "title": "Your onboarding journey",
+     "icon": "workflow",
+     "sub": "You are at Approval. The buyer team is reviewing your assessment.",
+     "steps": [
+      {
+       "label": "Registered",
+       "colour": "#16a34a"
+      },
+      {
+       "label": "Documents",
+       "colour": "#16a34a"
+      },
+      {
+       "label": "Assessment",
+       "colour": "#16a34a"
+      },
+      {
+       "label": "Approval",
+       "colour": "#2563eb"
+      },
+      {
+       "label": "Passport",
+       "colour": "#9ca3af"
+      },
+      {
+       "label": "Active",
+       "colour": "#9ca3af"
+      }
+     ]
+    },
+    {
+     "type": "bars",
+     "title": "Step progress",
+     "icon": "bar-chart-2",
+     "sub": null,
+     "rows": [
+      {
+       "label": "Company and registration",
+       "percent": 100,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Documents",
+       "percent": 87,
+       "tone": "warning",
+       "value": "13 of 15"
+      },
+      {
+       "label": "Assessment",
+       "percent": 100,
+       "tone": "success",
+       "value": null
+      },
+      {
+       "label": "Approval",
+       "percent": 40,
+       "tone": "",
+       "value": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "myhome-tab-actions",
+   "label": "Action items",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "myhome_actions",
+     "title": "Action items",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "myhome-tab-activity",
+   "label": "Activity",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "timeline",
+     "title": "Recent activity",
+     "icon": "activity",
+     "sub": null,
+     "items": [
+      {
+       "time": "Today",
+       "text": "Assessment moved to Approval",
+       "meta": "Vendor Admin",
+       "icon": "check"
+      },
+      {
+       "time": "Yesterday",
+       "text": "You uploaded Tax clearance certificate",
+       "meta": "You",
+       "icon": "upload"
+      },
+      {
+       "time": "3 days ago",
+       "text": "Compliance asked for a clearer CAC certificate",
+       "meta": "Compliance",
+       "icon": "message-square"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "erm",
+ "title": "Enterprise Risk Management",
+ "subtitle": null,
+ "workspace": "03-risk-compliance",
+ "package": "risk",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "erm-register",
+   "label": "Register",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "erm-tab-mitig",
+   "label": "Mitigations",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "mitigations",
+     "title": "Mitigation actions",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "erm-tab-hist",
+   "label": "History",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "timeline",
+     "title": "Risk changes",
+     "icon": "activity",
+     "sub": null,
+     "items": [
+      {
+       "time": "This week",
+       "text": "RSK-410 Delta Civils raised to High",
+       "meta": "Audit",
+       "icon": "alert-triangle"
+      },
+      {
+       "time": "2 weeks ago",
+       "text": "RSK-402 Sable IT Networks kept at Medium",
+       "meta": "IT Security",
+       "icon": "check"
+      },
+      {
+       "time": "Last month",
+       "text": "RSK-377 Kalahari Logistics lowered to Low",
+       "meta": "Finance",
+       "icon": "check"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

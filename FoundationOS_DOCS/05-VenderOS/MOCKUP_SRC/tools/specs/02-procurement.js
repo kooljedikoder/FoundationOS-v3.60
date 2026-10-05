@@ -73,7 +73,7 @@ const awards = [
   ])
 ];
 const contractsTab = [
-  L.panel('Contracts from awards', 'file-text', '<div class="table-wrap" data-vf="contracts"></div>', 'The same contract register as the Contracts and Commercial workspace. A contract is created from an award at stage 41.')
+  L.listRef('contracts', 'Contracts from awards', 'The same contract register as the Contracts and Commercial workspace. A contract is created from an award at stage 41.', 'file-text')
 ];
 const reports = [
   cards('Procurement reports', [['Procurement report', '', 'Cycle time, quotations per RFQ, award value', 'purple', 'Reports and BI'], ['Spend report', '', 'Spend by category, vendor and month', 'blue', 'Reports and BI'], ['Contract report', '', 'Awards that became contracts', 'green', 'Reports and BI']], { sub: 'Reports run in the Reports and BI workspace. Choose one to open it with the procurement filters set.' }),

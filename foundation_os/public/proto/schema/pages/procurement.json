@@ -1,0 +1,650 @@
+{
+ "$schema": "fos-page.schema.json",
+ "schemaVersion": 1,
+ "id": "procurement",
+ "title": "Procurement Workspace",
+ "subtitle": null,
+ "workspace": "02-procurement",
+ "package": "commerce",
+ "origin": "restructured",
+ "actions": [],
+ "kpis": null,
+ "tabs": [
+  {
+   "id": "procurement-tab-dash",
+   "label": "Dashboard",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Open RFQs",
+       "value": "7",
+       "accent": "blue"
+      },
+      {
+       "label": "Quotations to evaluate",
+       "value": "11",
+       "accent": "orange"
+      },
+      {
+       "label": "Awards this month",
+       "value": "4",
+       "accent": "green"
+      },
+      {
+       "label": "Spend under management",
+       "value": "₦480m",
+       "accent": "purple"
+      }
+     ]
+    },
+    {
+     "type": "flow",
+     "title": "Source to award",
+     "icon": "workflow",
+     "sub": "Every step is a tab in this workspace. Stages 39 to 41 of the vendor journey.",
+     "steps": [
+      {
+       "label": "RFQ",
+       "colour": "#2563eb"
+      },
+      {
+       "label": "Quotations",
+       "colour": "#2563eb"
+      },
+      {
+       "label": "Evaluation",
+       "colour": "#7c3aed"
+      },
+      {
+       "label": "Finance review",
+       "colour": "#d97706"
+      },
+      {
+       "label": "Procurement review",
+       "colour": "#d97706"
+      },
+      {
+       "label": "Recommendation",
+       "colour": "#0d9488"
+      },
+      {
+       "label": "Approval",
+       "colour": "#16a34a"
+      },
+      {
+       "label": "Award",
+       "colour": "#16a34a"
+      },
+      {
+       "label": "Purchase order",
+       "colour": "#16a34a"
+      }
+     ]
+    },
+    {
+     "type": "columns",
+     "blocks": [
+      {
+       "type": "list",
+       "collection": "proc_actions",
+       "title": "Needs your action",
+       "icon": "inbox",
+       "sub": null,
+       "toolbarHtml": null
+      },
+      {
+       "type": "bars",
+       "title": "Spend by category",
+       "icon": "bar-chart-2",
+       "sub": null,
+       "rows": [
+        {
+         "label": "Logistics and fleet",
+         "percent": 34,
+         "tone": "",
+         "value": "₦163m"
+        },
+        {
+         "label": "Civils and plant",
+         "percent": 22,
+         "tone": "warning",
+         "value": "₦106m"
+        },
+        {
+         "label": "IT and telecoms",
+         "percent": 18,
+         "tone": "success",
+         "value": "₦86m"
+        },
+        {
+         "label": "Office and supplies",
+         "percent": 12,
+         "tone": "",
+         "value": "₦58m"
+        },
+        {
+         "label": "Other",
+         "percent": 14,
+         "tone": "",
+         "value": "₦67m"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "proc-rfq",
+   "label": "RFQs",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "procurement-tab-quotes",
+   "label": "Quotations",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Received",
+       "value": "24",
+       "accent": "blue"
+      },
+      {
+       "label": "Awaiting evaluation",
+       "value": "11",
+       "accent": "orange"
+      },
+      {
+       "label": "Late",
+       "value": "2",
+       "accent": "red"
+      },
+      {
+       "label": "Withdrawn",
+       "value": "1",
+       "accent": "purple"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "quotations",
+     "title": "Quotations",
+     "icon": null,
+     "sub": "Quotations come from the ERP quotation records for each RFQ; VendorOS adds the evaluation steps around them.",
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "procurement-tab-eval",
+   "label": "Evaluation",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "matrix",
+     "title": "Scoring matrix: RFQ-1042 fleet tyres",
+     "icon": "grid",
+     "sub": "Technical, commercial and HSE scores are entered by the reviewers named on the evaluation committee.",
+     "columns": [
+      "Technical",
+      "Commercial",
+      "HSE",
+      "Delivery",
+      "Total"
+     ],
+     "rows": [
+      {
+       "name": "Kalahari Logistics",
+       "values": [
+        88,
+        82,
+        90,
+        85,
+        86
+       ]
+      },
+      {
+       "name": "Delta Civils and Plant Hire",
+       "values": [
+        74,
+        91,
+        58,
+        70,
+        74
+       ]
+      },
+      {
+       "name": "Apex Machine Parts",
+       "values": [
+        81,
+        77,
+        84,
+        79,
+        80
+       ]
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "evaluations",
+     "title": "Evaluations in progress",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_enter_my_score",
+      "version": 1,
+      "title": "Enter my score",
+      "fields": [
+       {
+        "key": "bidder",
+        "label": "Bidder",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Kalahari Logistics",
+         "Delta Civils and Plant Hire",
+         "Apex Machine Parts"
+        ],
+        "full": false
+       },
+       {
+        "key": "criterion",
+        "label": "Criterion",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Technical",
+         "Commercial",
+         "HSE",
+         "Delivery"
+        ],
+        "full": false
+       },
+       {
+        "key": "score_0_to_100",
+        "label": "Score (0 to 100)",
+        "type": "number",
+        "inputType": "number",
+        "placeholder": "85",
+        "full": false
+       },
+       {
+        "key": "comment",
+        "label": "Comment",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "Reason for the score",
+        "full": true
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "edit-3",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Submit score",
+       "style": "btn-primary",
+       "onclick": null
+      },
+      {
+       "label": "Save draft",
+       "style": "btn-secondary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "procurement-tab-finrev",
+   "label": "Finance review",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Waiting for finance",
+       "value": "5",
+       "accent": "orange"
+      },
+      {
+       "label": "Budget checks done",
+       "value": "19",
+       "accent": "green"
+      },
+      {
+       "label": "Tax clearance expired",
+       "value": "1",
+       "accent": "red"
+      },
+      {
+       "label": "Average review",
+       "value": "1.4 d",
+       "accent": "blue"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "fin_reviews",
+     "title": "Finance review",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "procurement-tab-procrev",
+   "label": "Procurement review",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "proc_reviews",
+     "title": "Procurement review",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "procurement-tab-rec",
+   "label": "Recommendation",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "recommendations",
+     "title": "Recommendations",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_draft_a_recommendation",
+      "version": 1,
+      "title": "Draft a recommendation",
+      "fields": [
+       {
+        "key": "rfq",
+        "label": "RFQ",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "RFQ-1042",
+         "RFQ-1051",
+         "RFQ-1039"
+        ],
+        "full": false
+       },
+       {
+        "key": "recommended_vendor",
+        "label": "Recommended vendor",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Kalahari Logistics",
+         "Delta Civils and Plant Hire",
+         "Apex Machine Parts"
+        ],
+        "full": false
+       },
+       {
+        "key": "conditions",
+        "label": "Conditions",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "For example: delivery in two batches",
+        "full": true
+       },
+       {
+        "key": "rationale",
+        "label": "Rationale",
+        "type": "textarea",
+        "inputType": "textarea",
+        "placeholder": "Why this vendor represents best value",
+        "full": true
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "file-text",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Save recommendation",
+       "style": "btn-primary",
+       "onclick": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "procurement-tab-appr",
+   "label": "Approval",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "flow",
+     "title": "Award approval chain",
+     "icon": "workflow",
+     "sub": "The chain follows the 15-role approval matrix. Rejecting needs written findings.",
+     "steps": [
+      {
+       "label": "Procurement Head",
+       "colour": "#2563eb"
+      },
+      {
+       "label": "Finance Director",
+       "colour": "#7c3aed"
+      },
+      {
+       "label": "CEO above ₦50m",
+       "colour": "#d97706"
+      },
+      {
+       "label": "Award issued",
+       "colour": "#16a34a"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "award_approvals",
+     "title": "Awards waiting for approval",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "procurement-tab-awards",
+   "label": "Awards",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "kpis",
+     "items": [
+      {
+       "label": "Awards this month",
+       "value": "4",
+       "accent": "green"
+      },
+      {
+       "label": "Awaiting PO",
+       "value": "2",
+       "accent": "orange"
+      },
+      {
+       "label": "Value awarded",
+       "value": "₦118m",
+       "accent": "purple"
+      },
+      {
+       "label": "Savings vs budget",
+       "value": "6.1%",
+       "accent": "blue"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "collection": "awards",
+     "title": "Awards",
+     "icon": null,
+     "sub": null,
+     "toolbarHtml": null
+    }
+   ]
+  },
+  {
+   "id": "proc-po",
+   "label": "Purchase Orders",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "procurement-tab-contracts",
+   "label": "Contracts",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "list",
+     "collection": "contracts",
+     "title": "Contracts from awards",
+     "icon": "file-text",
+     "sub": "The same contract register as the Contracts and Commercial workspace. A contract is created from an award at stage 41.",
+     "reuse": true
+    }
+   ]
+  },
+  {
+   "id": "proc-delivery",
+   "label": "Deliveries & Inspection",
+   "source": "legacy",
+   "note": "Hand-written panel. The builder keeps it as is until it is converted to blocks."
+  },
+  {
+   "id": "procurement-tab-reports",
+   "label": "Reports",
+   "source": "schema",
+   "blocks": [
+    {
+     "type": "cards",
+     "title": "Procurement reports",
+     "icon": null,
+     "sub": "Reports run in the Reports and BI workspace. Choose one to open it with the procurement filters set.",
+     "items": [
+      {
+       "title": "Procurement report",
+       "value": "",
+       "text": "Cycle time, quotations per RFQ, award value",
+       "colour": "purple",
+       "badge": "Reports and BI"
+      },
+      {
+       "title": "Spend report",
+       "value": "",
+       "text": "Spend by category, vendor and month",
+       "colour": "blue",
+       "badge": "Reports and BI"
+      },
+      {
+       "title": "Contract report",
+       "value": "",
+       "text": "Awards that became contracts",
+       "colour": "green",
+       "badge": "Reports and BI"
+      }
+     ]
+    },
+    {
+     "type": "form",
+     "formflow": {
+      "id": "form_run_a_report",
+      "version": 1,
+      "title": "Run a report",
+      "fields": [
+       {
+        "key": "report",
+        "label": "Report",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Procurement",
+         "Spend",
+         "Contract"
+        ],
+        "full": false
+       },
+       {
+        "key": "period",
+        "label": "Period",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "Last 30 days",
+         "This quarter",
+         "This year"
+        ],
+        "full": false
+       },
+       {
+        "key": "format",
+        "label": "Format",
+        "type": "select",
+        "inputType": "select",
+        "options": [
+         "On screen",
+         "PDF",
+         "Excel"
+        ],
+        "full": false
+       }
+      ],
+      "submit": {
+       "action": "form_submit",
+       "collection": "proto_form_submissions"
+      }
+     },
+     "icon": "bar-chart-2",
+     "sub": null,
+     "buttons": [
+      {
+       "label": "Open in Reports and BI",
+       "style": "btn-primary",
+       "onclick": "showPage('reports')"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

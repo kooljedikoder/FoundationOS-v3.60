@@ -1,9 +1,6 @@
 <div class="page" id="page-builder">
-        <div class="page-header"><div><div class="page-title">Dynamic Form Builder</div><div class="page-sub">Click a field type to add it to the canvas. No developer required, core code never touched.</div></div><div class="page-actions"><button class="btn btn-primary btn-sm" onclick="publishForm()"><i data-lucide="check"></i>Publish</button></div></div>
-        <div class="tabs">
-          <div class="tab active" onclick="switchTab(this,'builder-new')">New Form</div>
-          <div class="tab" onclick="switchTab(this,'builder-existing')">Existing Forms</div>
-        </div>
+        <div class="page-header"><div><div class="page-title">Dynamic Form Builder</div><div class="page-sub">Click a field type to add it to the canvas. No developer required, core code never touched.</div></div><div class="page-actions"><button class="btn btn-primary btn-sm" onclick="publishForm()"><i data-lucide="check"></i>Publish</button></div></div><div class="tabs" data-gen-tabs="1"><div class="tab active" onclick="switchTab(this,'builder-new')">New Form</div><div class="tab" onclick="switchTab(this,'builder-existing')">Existing Forms</div><div class="tab" onclick="switchTab(this,'builder-tab-pages')">Pages</div></div>
+        
         <div class="tab-panel active" id="builder-new">
         <div class="builder-shell">
           <div class="builder-pane">
@@ -32,7 +29,7 @@
             <tr><td><b style="color:var(--primary)">Vendor Onboarding Extras</b></td><td>Registration &amp; Onboarding</td><td>8</td><td><span class="badge badge-grey">Draft</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showToast('Opening for edit…','file-text')">Edit</button></td></tr>
           </tbody></table></div>
         </div>
-      </div>
+      <div class="tab-panel" id="builder-tab-pages" data-gen="1"><div class="panel"><h3><i data-lucide="layout-template"></i>Pages as data</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Every page in the product is a JSON schema: header, KPI strip, tabs and blocks. Open one, change it, preview it and save it. Saved pages are stored in the database and appear in the menu. This is the rule for every app: if a page is not in a schema, the builder cannot see it.</p><div id="fosPagesBody"><p style="font-size:13px">Loading the page schemas...</p></div></div></div></div>
 
       <!-- ADMIN -->
       
