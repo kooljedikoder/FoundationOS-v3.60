@@ -31,7 +31,7 @@ Where two sources disagree the higher row wins, and the disagreement is listed i
 | | This session (A) | Zip session (B) |
 |---|---|---|
 | Mockup file | `foundation_os/public/VendorFlow_Admin_Home.html` (about 860 KB) | `app/VendorFlow_Admin_Home.html` (about 545 KB) |
-| Strongest at | Registration (16 steps, 201 CCC fields, uploads), documents pack, approvals, shared list and drawer, data map, mobile menu, schema-validated audit, PRD pack | Process Builder, Reports & BI (M10), passport ID card and QR, vendor unified inbox, vendor dashboard charts, J01 and module specs, request log |
+| Strongest at | Registration (13 steps, 201 CCC fields plus all J01 fields, uploads), documents pack, approvals, shared list and drawer, data map, mobile menu, schema-validated audit, PRD pack | Process Builder, Reports & BI (M10), passport ID card and QR, vendor unified inbox, vendor dashboard charts, J01 and module specs, request log |
 | Weakest at | Builder internals, M10, passport ID card, working inbox | Registration (7 of about 121 fields), no real forms, no CCC knowledge, CRUD buttons are toasts |
 | Locale | Nigeria, naira | Botswana, pula (its own J01 files are Nigerian: NGN, LGA, CAC) |
 | Tooling | Node patch scripts, schema checks, data-map overlay | `scripts/validate.py` (div balance, JS parse, onclick handlers, icons, duplicate IDs) |
@@ -47,7 +47,7 @@ The zip session's own project memory says: *"Unknown: CCC / FOS contact center m
 | 2 | Vendor menu | 9 single-level entries | 8 sections with tabs also shown as expanded menu links (owner requests #25, #32, #33) | **A's 9 entries, plus expanded sub-links** that deep-link to each tab |
 | 3 | Row actions | One View opening a drawer; no delete | View, Edit, Delete icons and a big Create button (request #33) | **Keep the shared list and drawer; show View/Edit/Delete icons by role and status; Delete only on drafts; big Create button on every page** |
 | 4 | Passport | Merged into Company & Passport (5 tabs) | Separate pages with QR ID card, staff passports, usage history, CEO-only request/remove | **Keep A's tab; port B's ID card, QR, staff passports and usage history into it** |
-| 5 | Registration | 16 steps, 201 fields | 4 steps, 7 fields | **A**; add the 25 J01-only fields (section 3) |
+| 5 | Registration | 13 steps, 201 CCC fields plus the J01-only fields | 4 steps, 7 fields | **A** (section 3 and spec section 6) |
 | 6 | Documents | 15-document pack, lifecycle, uploads, camera | 18 sample documents, file-manager list and cards, change-request flow | **A's pack and statuses with B's file-manager views and change-request flow** |
 | 7 | Communications | Tabs, AI summary, vendor tickets | Working vendor inbox: read, reply, filters, AI summary | **Port B's vendor inbox** |
 | 8 | Reports & BI (M10) | none | 5 tabs, report builder, schedules, export centre | **Port B** |
@@ -66,14 +66,14 @@ The zip session's own project memory says: *"Unknown: CCC / FOS contact center m
 
 | Status | Count | Share |
 |---|--:|--:|
-| have | 57 | 59% |
-| partial | 12 | 13% |
-| calc | 2 | 2% |
-| new | 25 | 26% |
+| have | 58 | 60% |
+| partial | 20 | 21% |
+| calc | 3 | 3% |
+| new | 15 | 16% |
 
-Mockup coverage: **A has 49 of 96**; **B has 4**.
+Mockup coverage: **A has 60 of 96**; **B has 4**.
 
-### Step 1: Company profile (v24)  (maps to our steps 2, 3, 4)
+### Step 1: Company profile (v24)  (maps to our steps 2, 3)
 
 | J01 field | CCC key | Database | Status | A | B | Note |
 |---|---|---|---|:-:|:-:|---|
@@ -81,33 +81,33 @@ Mockup coverage: **A has 49 of 96**; **B has 4**.
 | Registration No. | `registrationNumber` | `fos_partner_profiles.registration_number` | have | yes | no | also partners_partners.company_registry |
 | Registration Date | `incorporationDate` | `fos_partner_profiles.incorporation_date` | have | yes | no |  |
 | Company Type (Limited Liability, ...) | `companyType` | `fos_partner_profiles.company_type` | partial | yes | no | J01 lists legal forms; PRD lists 14 trade types; CCC has one select. Decide the option list (D-12) |
-| Ownership (Private, ...) | - | - | new | no | no | no field; add as a picklist or custom field |
+| Ownership (Private, ...) | `companyType` | `fos_partner_profiles.company_type` | calc | yes | n/a | derive from company type: Private Limited, Public Limited, Government Agency, NGO, Cooperative ...; no new field |
 | Years in Business | - | `fos_partner_profiles.incorporation_date` | calc | n/a | n/a | derive from registration date; do not store |
 | Registered Address | `street1` | `partners_partners.street1` | have | yes | no | plus street2 |
 | Country | `countryId` | `partners_partners.country_id` | have | no | yes |  |
 | State | `stateId` | `partners_partners.state_id` | have | yes | no |  |
-| LGA | `town` | `fos_partner_profiles.town` | partial | no | no | town/area is the nearest field; add an LGA picklist if it must be separate |
+| LGA | `town` | `fos_partner_profiles.town` | partial | yes | no | town/area is the nearest field; add an LGA picklist if it must be separate |
 | Postal Code | `zip` | `partners_partners.zip` | have | yes | no |  |
-| Telephone | `phone` | `partners_partners.phone` | have | no | no |  |
+| Telephone | `phone` | `partners_partners.phone` | have | yes | no |  |
 | Mobile | `mobile` | `partners_partners.mobile` | have | yes | no |  |
 | Email | `email` | `partners_partners.email` | have | yes | no |  |
 | Website | `website` | `partners_partners.website` | have | yes | no |  |
-| Accept Purchase Orders by Email? | - | `fos_vendor_operational_readiness.po_requirements` | new | no | no | vendor preference; readiness table holds buyer-side PO rules only |
-| Procurement Email | `email2` | `fos_partner_profiles.email2` | partial | no | no | secondary email; relabel for vendors |
+| Accept Purchase Orders by Email? | `preferredMethod` | `fos_partner_profiles.preferred_method` | partial | yes | no | preferred method (Phone, Email, WhatsApp, SMS, Mail) plus the procurement email below already answer this; a single Yes/No is derived |
+| Procurement Email | `email2` | `fos_partner_profiles.email2` | partial | yes | no | secondary email; relabel for vendors |
 | Employees | `employeeCount` | `fos_partner_profiles.employee_count` | have | yes | no |  |
 | Annual Turnover | `annualTurnover` | `fos_partner_profiles.annual_turnover` | have | yes | no |  |
 | Branches | - | `fos_contact_locations.id` | partial | no | no | count of additional locations (locations repeater) |
 | Upload Company Logo | slot `logo` | `partners_partners.avatar` | have | yes | no | CCC avatar / profile photo |
 | Upload Company Profile | slot `d3` | `documents.id` | have | yes | no | document #3 |
 
-### Step 2: Products and services (v25)  (maps to our step 6)
+### Step 2: Products and services (v25)  (maps to our step 5)
 
 | J01 field | CCC key | Database | Status | A | B | Note |
 |---|---|---|---|:-:|:-:|---|
 | Product / Service Name | `newOfferingProductName` | - | partial | no | no | offering repeater also links an ERP product (newOfferingProductId, price, minimum quantity, lead time) |
-| Category | - | `products_products.id` | new | no | no | vendor-submitted product needs a category |
-| Sub Category | - | - | new | no | no |  |
-| Description | - | - | new | no | no |  |
+| Category | - | `products_products.category_id` | partial | no | no | ERP product category; vendor picks an existing category or proposes a product |
+| Sub Category | - | `products_products.category_id` | partial | no | no | ERP category tree (child of the category); no new field |
+| Description | - | `products_products.description` | partial | no | no | ERP product description; for a proposed product |
 | Brand | - | - | new | no | no |  |
 | Manufacturer | - | - | new | no | no |  |
 | Country of Origin | - | - | new | no | no |  |
@@ -115,18 +115,18 @@ Mockup coverage: **A has 49 of 96**; **B has 4**.
 | Product Catalogue (upload) | slot `catalogue` | `documents.id` | partial | yes | no | optional document |
 | Technical Specifications (upload) | - | - | new | no | no | no slot yet |
 
-### Step 3: Business types and trade capabilities (v26)  (maps to our step 5)
+### Step 3: Business types and trade capabilities (v26)  (maps to our step 4)
 
 | J01 field | CCC key | Database | Status | A | B | Note |
 |---|---|---|---|:-:|:-:|---|
-| Business Type (Manufacturer, Importer, Distributor, Dealer, Trader, Service Provider) | `vendorCategory` | `fos_partner_profiles.vendor_category` | partial | yes | no | CCC has single-select vendor category and company type; J01 is multi-select |
-| Trade Capabilities (18 options: Electrical ... Consulting) | - | `fos_picklist_options.value` | new | no | no | needs a multi-select picklist and a vendor-capability link table |
+| Business Type (Manufacturer, Importer, Distributor, Dealer, Trader, Service Provider) | `vendorCategory` | `fos_partner_profiles.vendor_category` | have | yes | no | CCC field is already labelled "Vendor Type / Category" and is a multi-select with admin-editable options: add the 6 business types (and the PRD vendor types) as picklist values; no schema change |
+| Trade Capabilities (18 options: Electrical ... Consulting) | - | `fos_picklist_options.value` | partial | no | no | one new picklist (trade_capability, 18 values) on the same multi-select component, plus one column on the profile; no link table needed |
 | Years Experience | - | - | new | no | no |  |
 | Maximum Contract Value | - | - | new | no | no |  |
 | Operational Regions | - | - | new | no | no |  |
 | Capability Statement | - | `partners_partners.comment` | partial | no | no | free text; comment is the nearest column |
 
-### Step 4: Contacts (v27)  (maps to our step 7)
+### Step 4: Contacts (v27)  (maps to our step 6)
 
 | J01 field | CCC key | Database | Status | A | B | Note |
 |---|---|---|---|:-:|:-:|---|
@@ -134,16 +134,16 @@ Mockup coverage: **A has 49 of 96**; **B has 4**.
 | Primary contact: Job Title | `jobTitle` | `fos_partner_profiles.designation` | have | no | no |  |
 | Primary contact: Email | `email` | `partners_partners.email` | have | yes | yes |  |
 | Primary contact: Mobile | `mobile` | `partners_partners.mobile` | have | yes | no |  |
-| Primary contact: Office Phone | `phone` | `partners_partners.phone` | have | no | no |  |
+| Primary contact: Office Phone | `phone` | `partners_partners.phone` | have | yes | no |  |
 | Department contacts: Department | - | `fos_partner_profiles.organisation_unit` | partial | no | no | organisation unit exists on the person; no department on additional-contact rows |
 | Department contacts: Contact Name | `newAdditionalContactFirstName` | `partners_partners.name` | have | yes | no |  |
 | Department contacts: Position | `newAdditionalContactJobTitle` | `fos_partner_profiles.designation` | have | no | no |  |
 | Department contacts: Email | `newAdditionalContactEmail` | `partners_partners.email` | have | yes | no |  |
-| Department contacts: Phone | `newAdditionalContactPhone` | `partners_partners.phone` | have | no | no |  |
+| Department contacts: Phone | `newAdditionalContactPhone` | `partners_partners.phone` | have | yes | no |  |
 | Executive Contact | `newAdditionalContactRole` | `fos_partner_profiles.role` | have | yes | no | role picklist |
-| Notification Preferences (Email, SMS, PO alerts, Compliance reminders) | `preferredMethod` | `fos_partner_profiles.preferred_method` | partial | no | no | one preferred method exists; alert toggles are new |
+| Notification Preferences (Email, SMS, PO alerts, Compliance reminders) | `preferredMethod` | `fos_partner_profiles.preferred_method` | partial | yes | no | one preferred method exists; alert toggles are new |
 
-### Step 5: Customer references and project history (v28)  (maps to our step 8)
+### Step 5: Customer references and project history (v28)  (maps to our step 7)
 
 | J01 field | CCC key | Database | Status | A | B | Note |
 |---|---|---|---|:-:|:-:|---|
@@ -158,15 +158,15 @@ Mockup coverage: **A has 49 of 96**; **B has 4**.
 | Purchase Orders / LPOs (upload) | slot `d14` | `documents.id` | have | yes | no | document #14 |
 | Completion Certificates (upload) | - | - | new | no | no | no slot yet |
 
-### Step 6: Directors, ownership, signatories (v29)  (maps to our step 9)
+### Step 6: Directors, ownership, signatories (v29)  (maps to our step 8)
 
 | J01 field | CCC key | Database | Status | A | B | Note |
 |---|---|---|---|:-:|:-:|---|
 | Director Name | `newDirectorName` | `vendor_directors.name` | have | yes | no |  |
 | Position | `newDirectorDesignation` | `vendor_directors.position` | have | yes | no |  |
-| Nationality | - | - | new | no | no | nationalityId exists for contacts, not for director rows |
-| Director Email | - | - | new | no | no |  |
-| Director Phone | - | - | new | no | no |  |
+| Nationality | `nationalityId` | `fos_partner_profiles.nationality_id` | partial | no | no | person fields already exist for contacts; add to director rows |
+| Director Email | `newAdditionalContactEmail` | `partners_partners.email` | partial | yes | no | person email exists; add to director rows (or link the director to a contact person) |
+| Director Phone | `newAdditionalContactPhone` | `partners_partners.phone` | partial | yes | no | person phone exists; add to director rows |
 | Ownership % | `newDirectorShareholding` | `vendor_directors.shareholding_percent` | have | yes | no |  |
 | Authorized Signatory (name, position, email, phone) | `newDirectorAuthorizedSignatory` | `vendor_directors.is_signatory` | partial | yes | no | flag only |
 | Signing Limit | - | - | new | no | no |  |
@@ -175,7 +175,7 @@ Mockup coverage: **A has 49 of 96**; **B has 4**.
 | Signature Specimen (upload) | - | - | new | no | no | no slot yet |
 | Board Resolution (upload) | - | - | new | no | no | no slot yet |
 
-### Step 7: Banking, tax, VAT, payment terms (v30)  (maps to our steps 10, 11)
+### Step 7: Banking, tax, VAT, payment terms (v30)  (maps to our step 9)
 
 | J01 field | CCC key | Database | Status | A | B | Note |
 |---|---|---|---|:-:|:-:|---|
@@ -190,13 +190,13 @@ Mockup coverage: **A has 49 of 96**; **B has 4**.
 | Tax Office | `taxAuthority` | `fos_partner_profiles.tax_authority` | have | yes | no |  |
 | Preferred Payment Method | - | `partners_partners.property_outbound_payment_method_line_id` | partial | no | no | ERP property exists; no vendor-facing field in CCC |
 | Credit Terms (Days) | `paymentTerms` | `partners_partners.property_supplier_payment_term_id` | have | yes | no | picklist Immediate / 7 / 30 / 60 days |
-| Finance Contact | - | - | new | no | no | could be an additional contact with the Finance role |
+| Finance Contact | `organisationUnit` | `fos_partner_profiles.organisation_unit` | partial | yes | no | a department contact whose department is Finance (org unit picklist already has Finance); no separate field |
 | Cancelled Cheque (upload) | slot `d8` | `documents.id` | have | yes | no | document #8 |
 | Bank Reference Letter (upload) | slot `d9` | `documents.id` | have | yes | no | document #9 |
 | Tax Clearance Certificate (upload) | slot `d6` | `documents.id` | have | yes | no | document #6 |
 | VAT Certificate (upload) | slot `d7` | `documents.id` | have | yes | no | document #7 |
 
-### Step 8: Enterprise document and compliance centre (v31)  (maps to our step 12)
+### Step 8: Enterprise document and compliance centre (v31)  (maps to our step 11)
 
 | J01 field | CCC key | Database | Status | A | B | Note |
 |---|---|---|---|:-:|:-:|---|
@@ -206,7 +206,7 @@ Mockup coverage: **A has 49 of 96**; **B has 4**.
 | Reviewer Comments | - | `vendor_documents.verification_notes` | have | no | no |  |
 | Compliance dashboard (approved, pending, expired, reviewer assigned) | - | `vendor_documents.verified_by` | calc | n/a | n/a |  |
 
-### Step 10: Final review and declaration (v44)  (maps to our steps 14, 15, 16)
+### Step 10: Final review and declaration (v44)  (maps to our steps 12, 13)
 
 | J01 field | CCC key | Database | Status | A | B | Note |
 |---|---|---|---|:-:|:-:|---|
@@ -214,18 +214,12 @@ Mockup coverage: **A has 49 of 96**; **B has 4**.
 | Executive Notes | - | `fos_vendor_recommendations.rationale` | have | no | no |  |
 | Declaration: "I confirm all onboarding requirements are satisfied" | - | - | new | no | no | no declaration fields in CCC (G-08) |
 
-### 3.1 J01 fields with no CCC field yet (25): the build list
+### 3.1 J01 fields with no CCC field yet (15): the build list
 
-- **Ownership (Private, ...)** (v24) - no field; add as a picklist or custom field
-- **Accept Purchase Orders by Email?** (v24) - vendor preference; readiness table holds buyer-side PO rules only
-- **Category** (v25) - vendor-submitted product needs a category
-- **Sub Category** (v25) 
-- **Description** (v25) 
 - **Brand** (v25) 
 - **Manufacturer** (v25) 
 - **Country of Origin** (v25) 
 - **Technical Specifications (upload)** (v25) - no slot yet
-- **Trade Capabilities (18 options: Electrical ... Consulting)** (v26) - needs a multi-select picklist and a vendor-capability link table
 - **Years Experience** (v26) 
 - **Maximum Contract Value** (v26) 
 - **Operational Regions** (v26) 
@@ -233,38 +227,34 @@ Mockup coverage: **A has 49 of 96**; **B has 4**.
 - **Years** (v28) 
 - **Major Project History (Project, Client, Year, Value, Description)** (v28) - needs a project-history table keyed by partner
 - **Completion Certificates (upload)** (v28) - no slot yet
-- **Nationality** (v29) - nationalityId exists for contacts, not for director rows
-- **Director Email** (v29) 
-- **Director Phone** (v29) 
 - **Signing Limit** (v29) 
 - **Signature Specimen (upload)** (v29) - no slot yet
 - **Board Resolution (upload)** (v29) - no slot yet
-- **Finance Contact** (v30) - could be an additional contact with the Finance role
 - **Declaration: "I confirm all onboarding requirements are satisfied"** (v44) - no declaration fields in CCC (G-08)
 
-Decision D-19: add these to CCC as vendor fields (recommended: a picklist or custom field where possible, a repeater column where the row exists), or drop them. The mockup shows them marked **NEW** until decided.
+Decision D-19: add these to CCC as vendor fields (recommended: a picklist or custom field where possible, a repeater column where the row exists), or drop them. The mockup already contains them, marked **NEW** until decided. A closer look reclassified 10 of the original 25 as covered by existing CCC or ERP fields (ownership, accept-POs, product category, sub category, description, business types, nationality, director email and phone, finance contact), and one as a data-only change (business types become picklist values); see spec section 6.3.
 
 ### 3.2 Things CCC has that J01 does not ask for
 
 CCC holds fields J01 never lists and the registration still benefits from: trading name, parent company, incorporation date, social links, location presets (building, floor, office, desk), latitude and longitude, NIN, BVN, withholding tax number, tax clearance expiry, credit limit, insurance policies (type, provider, policy number, coverage, effective and expiry dates, broker), certifications (issuing body, number, issued and expiry dates, status), affiliations, assets, family members and important dates. These stay in the 16-step wizard (steps 3, 10, 11, 13).
 
-### 3.3 Wizard structure: three descriptions reconciled
+### 3.3 Wizard structure: four descriptions reconciled
 
-| J01 wizard (10 steps) | PRD M1 (16 steps) | CCC tabs (10) | Our mockup |
+| J01 wizard (10 steps) | PRD M1 (16 steps) | CCC tabs (10) | Our mockup (13 steps) |
 |---|---|---|---|
-| 1 Company profile | 2 Company, 3 Address, 4 Registration details | Basic | steps 2, 3, 4 |
-| 3 Business types | 5 Business information | Basic / Work | step 5 |
-| 2 Products | 6 Products and services | Work | step 6 |
-| 4 Contacts | 7 Contact persons | Contact | step 7 |
-| 5 References | 8 Customer references | Affiliations | step 8 |
-| 6 Directors | 9 Directors | Basic (directors) | step 9 |
-| 7 Banking, tax, payment | 10 Banking, 11 Tax | Financials & Identity | steps 10, 11 |
-| 8 Documents | 12 Required documents | Documents | step 12 |
-| (none) | 13 Compliance | Insurance + Certifications | step 13 |
-| (none) | 14 Declaration | none (gap G-08) | step 14 |
-| 9-10 Review, final | 15 Review, 16 Submit | Review | steps 15, 16 |
+| 1 Company profile | 2 Company, 3 Address, 4 Registration details | Basic + Financials & Identity | 2 Company & registration, 3 Address & contact channels |
+| 3 Business types | 5 Business information | Basic / Work | 4 Business type & capabilities |
+| 2 Products | 6 Products and services | Work | 5 Products & services |
+| 4 Contacts | 7 Contact persons | Contact | 6 Contacts |
+| 5 References | 8 Customer references | Affiliations | 7 References & projects |
+| 6 Directors | 9 Directors | Basic (directors) | 8 Directors, owners & signatories |
+| 7 Banking, tax, payment | 10 Banking, 11 Tax | Financials & Identity | 9 Banking, tax & payment |
+| (none) | 13 Compliance | Insurance + Certifications | 10 Insurance & certifications |
+| 8 Documents | 12 Required documents | Documents | 11 Required documents |
+| (none) | 14 Declaration | none (gap G-08) | 12 Declaration |
+| 9-10 Review, final | 15 Review, 16 Submit | Review | 13 Review & submit |
 
-**The 16-step navigation is the vendor-facing structure; the 10 CCC tabs are the data model.** J01's 10 steps fold into it as shown.
+**The 13-step navigation is the vendor-facing structure; the 10 CCC tabs are the data model.** Spec section 6.3 lists which similar fields were merged and which kept apart.
 
 ## 4. Review workspaces (J01 v32-v45) against the database
 
@@ -313,16 +303,16 @@ Vendor identifiers differ across files: J01 v40 `VND-2026-000123`, E02 `VND-2026
 
 | | |
 |---|---|
-| Module / spec | M1 / J01 v24-v31, v44; PRD M1 (16 steps, 7 entry paths) |
+| Module / spec | M1 / J01 v24-v31, v44; PRD M1 (16 steps, folded into 13; 7 entry paths) |
 | Tabs (merged target) | In progress \| Invitations \| Drafts \| Bulk import (entry paths: new, update, annual revalidation, invitation, self, bulk, ERP sync) |
 | Actions and roles | New Vendor (wizard), Invite vendor, Import template, Resume draft; roles: Vendor Admin W, Procurement/Finance/Audit V |
-| Mock A now | 16-step wizard from the CCC dictionary (201 fields), per-section uploads, declaration step, required-field gating; In-progress table. (0 KPIs, 1 tables, 0 tabs) |
+| Mock A now | 13-step wizard from the CCC dictionary (201 fields) plus all J01 fields, per-section uploads, declaration step, required-field gating; In-progress table. (0 KPIs, 1 tables, 0 tabs) |
 | Mock B now | 4-step modal, 7 inputs (about 3% of J01). (0 KPIs, 1 tables, 0 tabs) |
 | Data sources (audit) | CCC 3, Derived 1, VendorOS 4 |
 
 **Do next**
 
-- Keep A as the base. Add the 25 J01-only fields (section 3.1 of this guide) as marked NEW fields.
+- Keep A as the base. The J01-only fields are in the wizard already, marked NEW where no CCC field exists (section 3.1 of this guide).
 - Add Invitations tab (fos_vendor_invitations: status, expires, resend, revoke).
 - Add step status icons (Completed, Current, Pending, Error, Review, Locked) and the Help panel the M1 spec asks for.
 
@@ -897,8 +887,8 @@ Vendor identifiers differ across files: J01 v40 `VND-2026-000123`, E02 `VND-2026
 | D-15 | Locale | Botswana pula / Nigeria naira | **Nigeria naira** |
 | D-16 | Builder name and scope | "Dynamic Form Builder" / "Dynamic Forms & Builder" / standalone "Process Builder by VendorOS" | Standalone Process Builder (zip decision) shown in VendorFlow as Dynamic Form Builder; keep Block, Template, Preset vocabulary |
 | D-17 | M10 scope | as drafted by B / adjust | Confirm (B asked; no spec file) |
-| D-18 | Registration structure | 16 steps / J01 10 steps | **16 steps**, J01 folded in (section 3.3) |
-| D-19 | The 25 J01-only fields | add to CCC / drop | Add (picklists and custom fields first) |
+| D-18 | Registration structure | PRD 16 steps / J01 10 steps / 13-step flow | **13 steps** (merges registration details, banking and tax, review and submit; gives business type its own step), J01 folded in (section 3.3) |
+| D-19 | The 15 J01-only fields | add to CCC / drop | Add (picklists and custom fields first) |
 | D-20 | Review workspaces | build per J01 v32-v38 / one generic review form | Per J01: the checklists differ per stage |
 | D-21 | Vendor number versus passport number | one / two identifiers | Two: vendor number at activation, passport number for the card |
 

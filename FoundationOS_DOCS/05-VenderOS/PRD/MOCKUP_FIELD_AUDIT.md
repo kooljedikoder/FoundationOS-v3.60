@@ -101,7 +101,7 @@ The mockup is the menu contract for VendorOS (see the architecture rule). This t
 | Status | col | VendorOS | vendor_passports.status |  |
 | Onboarding Journey | panel | VendorOS | vendor_passports.status | six-stage strip derived from status |
 | In-Progress Registrations | panel | VendorOS | vendor_passports.status | status in (draft, submitted, in_review) |
-| New Vendor wizard (16 steps) | field | CCC | fos_partner_profiles.registration_number | all fields in data/field_dictionary.json; Declaration step is NEW (G-08) |
+| New Vendor wizard (13 steps) | field | CCC | fos_partner_profiles.registration_number | all fields in data/field_dictionary.json; Declaration step is NEW (G-08) |
 
 ### approval: Approval
 

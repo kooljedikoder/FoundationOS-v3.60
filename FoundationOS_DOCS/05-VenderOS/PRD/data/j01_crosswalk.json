@@ -53,13 +53,13 @@
    "st": 1,
    "v": "v24",
    "label": "Ownership (Private, ...)",
-   "ccc": "",
-   "db": "",
-   "status": "new",
-   "note": "no field; add as a picklist or custom field",
+   "ccc": "companyType",
+   "db": "fos_partner_profiles.company_type",
+   "status": "calc",
+   "note": "derive from company type: Private Limited, Public Limited, Government Agency, NGO, Cooperative ...; no new field",
    "slot": "",
-   "mockA": "no",
-   "mockB": "no"
+   "mockA": "yes",
+   "mockB": "n/a"
   },
   {
    "st": 1,
@@ -118,7 +118,7 @@
    "status": "partial",
    "note": "town/area is the nearest field; add an LGA picklist if it must be separate",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {
@@ -142,7 +142,7 @@
    "status": "have",
    "note": "",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {
@@ -185,12 +185,12 @@
    "st": 1,
    "v": "v24",
    "label": "Accept Purchase Orders by Email?",
-   "ccc": "",
-   "db": "fos_vendor_operational_readiness.po_requirements",
-   "status": "new",
-   "note": "vendor preference; readiness table holds buyer-side PO rules only",
+   "ccc": "preferredMethod",
+   "db": "fos_partner_profiles.preferred_method",
+   "status": "partial",
+   "note": "preferred method (Phone, Email, WhatsApp, SMS, Mail) plus the procurement email below already answer this; a single Yes/No is derived",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {
@@ -202,7 +202,7 @@
    "status": "partial",
    "note": "secondary email; relabel for vendors",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {
@@ -282,9 +282,9 @@
    "v": "v25",
    "label": "Category",
    "ccc": "",
-   "db": "products_products.id",
-   "status": "new",
-   "note": "vendor-submitted product needs a category",
+   "db": "products_products.category_id",
+   "status": "partial",
+   "note": "ERP product category; vendor picks an existing category or proposes a product",
    "slot": "",
    "mockA": "no",
    "mockB": "no"
@@ -294,9 +294,9 @@
    "v": "v25",
    "label": "Sub Category",
    "ccc": "",
-   "db": "",
-   "status": "new",
-   "note": "",
+   "db": "products_products.category_id",
+   "status": "partial",
+   "note": "ERP category tree (child of the category); no new field",
    "slot": "",
    "mockA": "no",
    "mockB": "no"
@@ -306,9 +306,9 @@
    "v": "v25",
    "label": "Description",
    "ccc": "",
-   "db": "",
-   "status": "new",
-   "note": "",
+   "db": "products_products.description",
+   "status": "partial",
+   "note": "ERP product description; for a proposed product",
    "slot": "",
    "mockA": "no",
    "mockB": "no"
@@ -391,8 +391,8 @@
    "label": "Business Type (Manufacturer, Importer, Distributor, Dealer, Trader, Service Provider)",
    "ccc": "vendorCategory",
    "db": "fos_partner_profiles.vendor_category",
-   "status": "partial",
-   "note": "CCC has single-select vendor category and company type; J01 is multi-select",
+   "status": "have",
+   "note": "CCC field is already labelled \"Vendor Type / Category\" and is a multi-select with admin-editable options: add the 6 business types (and the PRD vendor types) as picklist values; no schema change",
    "slot": "",
    "mockA": "yes",
    "mockB": "no"
@@ -403,8 +403,8 @@
    "label": "Trade Capabilities (18 options: Electrical ... Consulting)",
    "ccc": "",
    "db": "fos_picklist_options.value",
-   "status": "new",
-   "note": "needs a multi-select picklist and a vendor-capability link table",
+   "status": "partial",
+   "note": "one new picklist (trade_capability, 18 values) on the same multi-select component, plus one column on the profile; no link table needed",
    "slot": "",
    "mockA": "no",
    "mockB": "no"
@@ -514,7 +514,7 @@
    "status": "have",
    "note": "",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {
@@ -574,7 +574,7 @@
    "status": "have",
    "note": "",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {
@@ -598,7 +598,7 @@
    "status": "partial",
    "note": "one preferred method exists; alert toggles are new",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {
@@ -749,10 +749,10 @@
    "st": 6,
    "v": "v29",
    "label": "Nationality",
-   "ccc": "",
-   "db": "",
-   "status": "new",
-   "note": "nationalityId exists for contacts, not for director rows",
+   "ccc": "nationalityId",
+   "db": "fos_partner_profiles.nationality_id",
+   "status": "partial",
+   "note": "person fields already exist for contacts; add to director rows",
    "slot": "",
    "mockA": "no",
    "mockB": "no"
@@ -761,24 +761,24 @@
    "st": 6,
    "v": "v29",
    "label": "Director Email",
-   "ccc": "",
-   "db": "",
-   "status": "new",
-   "note": "",
+   "ccc": "newAdditionalContactEmail",
+   "db": "partners_partners.email",
+   "status": "partial",
+   "note": "person email exists; add to director rows (or link the director to a contact person)",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {
    "st": 6,
    "v": "v29",
    "label": "Director Phone",
-   "ccc": "",
-   "db": "",
-   "status": "new",
-   "note": "",
+   "ccc": "newAdditionalContactPhone",
+   "db": "partners_partners.phone",
+   "status": "partial",
+   "note": "person phone exists; add to director rows",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {
@@ -1001,12 +1001,12 @@
    "st": 7,
    "v": "v30",
    "label": "Finance Contact",
-   "ccc": "",
-   "db": "",
-   "status": "new",
-   "note": "could be an additional contact with the Finance role",
+   "ccc": "organisationUnit",
+   "db": "fos_partner_profiles.organisation_unit",
+   "status": "partial",
+   "note": "a department contact whose department is Finance (org unit picklist already has Finance); no separate field",
    "slot": "",
-   "mockA": "no",
+   "mockA": "yes",
    "mockB": "no"
   },
   {

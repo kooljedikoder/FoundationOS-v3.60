@@ -264,30 +264,50 @@ Legend: **Vendor** = what the vendor can do (E edit, R respond, V view, A act). 
 | 44 | Performance / renewal | M-08 | FLEX std / CORE adv | scorecards | V/R | Partial |
 | 45 | Revalidation / continuous lifecycle | M-08 | FLEX | scheduler | R | Partial |
 
-## 6. Registration: PRD wizard, CCC tabs and J01 crosswalk
+## 6. Registration: the 13-step flow, CCC tabs, PRD M1 and J01
 
-Three descriptions of "registration" exist and must be reconciled (DECISION D-04). **Canonical build target: the 10 CCC tabs are the data model and renderer; the 16 PRD steps are the vendor-facing progress navigation grouped over them.** The mockup wizard now follows the 16 steps (it replaced an earlier 4-step version).
+Four descriptions of "registration" exist: the PRD M1 wizard (16 steps), the J01 files (10 steps), the CCC tabs (10) and the mockup. They are reconciled as follows (DECISIONS D-04, D-18). **The CCC tabs are the data model. The vendor-facing flow is 13 steps** (recommended 2026-10-05; the mockup follows it; pending owner confirmation). Compared with the PRD's 16 steps it merges three thin steps and brings two buried topics out as steps of their own.
 
-| PRD M1 step (16) | CCC tab | J01 | Fields / repeater | Status |
-|---|---|---|---|---|
-| 1 Welcome | (shell) | S04 | none: progress, outstanding actions, help | Partial |
-| 2 Company information | Basic | S05 | companyName, tradingName, companyType, employeeCount, annualTurnover, parentCompanyId, website(s), email(s), socialLinks | Built |
-| 3 Company address | Basic | S06 | address fields + locations repeater (label, street, country, state, zip, phone), building/floor/office/desk, latitude/longitude, directions | Built |
-| 4 Registration details | Financials & Identity | S07 | registrationNumber, referenceNumber, taxAuthority; incorporationDate validated in code | Partial (G-09) |
-| 5 Business information | Basic / Work | S08 | companyType, industryId, vendor categories | Partial (G-10) |
-| 6 Products and services | Work | S09 | vendor-offering repeater (product, price, minimum quantity, lead time) | Built |
-| 7 Contact persons | Contact | S10 | primary contact + additional-contact repeater | Built |
-| 8 Customer references | Affiliations | S11 | vendor-reference repeater | Built |
-| 9 Directors | Basic | S12 | directors (name, designation, shareholding, ID type/number, authorised signatory) | Built |
-| 10 Banking details | Financials & Identity | S13 | bank-account repeater | Built |
-| 11 Tax information | Financials & Identity | S14 | taxId, withholdingTaxNumber, vatNumber, nin, bvn, currencyId, creditLimit | Built |
-| 12 Required documents | Documents | S17 | mandatory pack (§7) | Partial |
-| 13 Compliance | Financials & Identity (insurance) + Certifications | S15, S16, S21-S22 | vendor-insurance repeater (type, provider, policy number, coverage, expiry, broker) and certification repeater (name, issuing body, number, status, expiry), each row with its certificate file; compliance responses answer reviewer actions | Built (insurance and certification rows); compliance responses on a separate screen |
-| 14 Declaration | none | - | supplier declarations (conflict of interest, anti-bribery, accuracy, consent) | **GAP G-08** |
-| 15 Review | Review | S23+ | summary; reviewer fields are process values | Built |
-| 16 Submit | Review | S33 | submit action and status | Built |
+| Mockup step | PRD M1 step | J01 | CCC tab | Fields and repeaters | Uploads in the section | Status |
+|---|---|---|---|---|---|---|
+| 1 Welcome | 1 | S04 | shell | progress, outstanding actions, help | none | Partial |
+| 2 Company & registration | 2, 4 | v24; S05, S07 | Basic + Financials & Identity | `companyName`, `tradingName`, `companyType` (legal form, also gives ownership), `registrationNumber`, `incorporationDate`, years in business (calculated), `referenceNumber`, `parentCompanyId`, `employeeCount`, `annualTurnover` | logo, letter of introduction, company profile, certificate of registration, memorandum and articles, CAC documents | Built |
+| 3 Address & contact channels | 3 | v24; S06 | Basic | address, state, `town` (LGA), postal code, building, floor, latitude and longitude, directions, `phone`, `mobile`, `email`, `email2` (procurement email), `website`, `preferredMethod`; branches repeater | premises photos | Built |
+| 4 Business type & capabilities | 5 | v26; S08 | Work + Basic | `vendorCategory` (business type and what you supply, one multi-select), `industryId`, trade capabilities (NEW picklist), years of experience (NEW), maximum contract value (NEW), operational regions (NEW), capability statement | none | Partial |
+| 5 Products & services | 6 | v25; S09 | Work | offerings repeater: product, category, sub category, description (ERP product fields), brand, manufacturer, country of origin (NEW), price, minimum quantity, lead time; price-list valid-till date | price list, product catalogue, technical specifications (NEW slot) | Partial |
+| 6 Contacts | 7 | v27; S10 | Contact | primary person (title, names, role, phones, email), notification preferences (NEW toggles); department contacts repeater with department, role, email, phone (the Finance contact is a department contact) | primary contact photo | Built |
+| 7 References & projects | 8 | v28; S11 | Affiliations | customer references repeater (customer, contact, email, phone, contract value NEW, years NEW); project history repeater (NEW table) | recommendation letter, LPO or award letter, completion certificate per project (NEW) | Partial |
+| 8 Directors, owners & signatories | 9 | v29; S12 | Basic (directors) | one list: name, position, nationality, email, phone (added), ownership %, date of birth, ID type and number, authorised signatory, signing limit (NEW) | passport photograph, valid ID, signature specimen (NEW), board resolution (NEW) | Partial |
+| 9 Banking, tax & payment | 10, 11 | v30; S13, S14 | Financials & Identity | bank accounts repeater; `taxId`, `vatNumber`, `taxAuthority`, `taxClearanceExpiry`, `withholdingTaxNumber`, `nin`, `bvn`, `paymentTerms`, preferred payment method, `currencyId`, `creditLimit` | cancelled cheque, bank reference letter, tax compliance evidence, VAT certificate | Built |
+| 10 Insurance & certifications | 13 | S15, S16, S21-S22 | Financials & Identity (insurance) + Certifications | insurance repeater, certification repeater | certificate file on every row | Built |
+| 11 Required documents | 12 | v31; S17-S18 | Documents | the mandatory pack register (section 7) | duly filled registration form | Partial |
+| 12 Declaration | 14 | v44 | none | supplier declarations | none | **GAP G-08** |
+| 13 Review & submit | 15, 16 | v44; S23, S33 | Review | checklist per step, submit | none | Built |
 
-Also in CCC but absent from the PRD wizard: Work (classification, department, tags), Affiliations (organisations), Assets, Custom Fields. For vendors these are optional and hidden by default through field-visibility rules.
+**Why 13 and not 16**
+
+- *Registration details* (PRD step 4) had four fields: it is folded into Company & registration.
+- *Banking* and *Tax* are one screen in J01 and one finance review: they are one step.
+- *Review* and *Submit* are one action: one step.
+- *Compliance* held only insurance and certifications (compliance actions come after submission), so it is named for what it contains.
+- *Business type & capabilities* was buried in the Work tab. It gets its own step because it drives vendor search and RFQ invitations, and it sits directly before *Products & services* because both describe what the vendor can supply.
+
+Also in CCC but not asked for in the flow: Work (classification, department, tags), Affiliations (organisations), Assets, Custom Fields. For vendors these stay optional and hidden by default through field-visibility rules.
+
+### 6.3 Similar fields: merge or keep apart
+
+| Concept | The fields involved | Decision |
+|---|---|---|
+| Ownership (J01) and company type | J01 "Ownership: Private..." and CCC `companyType` (Private Limited, Public Limited, Government Agency, NGO, Cooperative...) | **One field.** Ownership is derived from company type; no new field |
+| Business type, supply category, trade capability, industry | J01 business types (Manufacturer, Importer, Distributor...), CCC "Vendor Type / Category" (Paper Supplier, IT Services...), J01 trade capabilities (Electrical, Welding...), CCC industry (sector) | **Four related concepts, three fields.** Keep one `vendorCategory` multi-select with two groups (Business type, What you supply); add trade capabilities as a separate multi-select; keep industry as a single select |
+| Years in business and years of experience | registration date versus "years of experience in your trade" | Calculated field plus one entered field |
+| Procurement email, Accept POs by email, preferred method | `email2`, `preferredMethod`, J01 yes/no | **One concept.** Use `email2` labelled Procurement email and `preferredMethod`; the yes/no is derived |
+| Finance contact and department contacts | J01 "Finance Contact" and the department contacts table | **One repeater** with a department (the org-unit picklist already has Finance) |
+| Directors and signatories | J01 has two tables | **One list** with an authorised-signatory flag and a signing limit |
+| Customer references and project history | two J01 tables, same client | Two repeaters in one step; a project's client reuses the reference customer |
+| Branches and operational regions | locations repeater versus states served | Keep apart: branches are places, regions are coverage |
+| Credit terms, requested credit limit, maximum contract value | payment terms (days), credit limit, capacity | Keep apart: three different questions |
+| Product category and vendor category | ERP product category versus supplier-level category | Keep apart: one classifies a product, the other the vendor |
 
 ### 6.1 Registration entry paths (PRD M1: 7)
 
@@ -640,27 +660,31 @@ Documents are uploaded **in the section where the information is entered**, not 
 
 | Step | Section | Slot | Upload | Doc # | Accepts | Camera | Required | Note |
 |--:|---|---|---|--:|---|:-:|:-:|---|
-| 2 | Company information | `d1` | Letter of Introduction | 1 | pdf |  | Yes | Signed letter on company letterhead |
-| 2 | Company information | `d3` | Company Profile | 3 | pdf |  | Yes | Brochure or profile document |
-| 2 | Company information | `logo` | Company logo | - | image |  | No | Shown on the vendor card and Passport |
-| 3 | Company address | `premises` | Premises photos (front, office, warehouse) | - | image | Yes | No | Supports the site inspection (S28); camera capture on mobile |
-| 4 | Registration details | `d2` | Certificate of Registration | 2 | pdf, image | Yes | Yes | Scan or photo of the CAC certificate |
-| 4 | Registration details | `d4` | Memorandum & Articles of Association | 4 | pdf |  | Yes | Current signed copy |
-| 4 | Registration details | `d5` | CAC Documents (CAC 2/2.5, CAC 2.1, CAC 7/2.3) | 5 | pdf |  | Yes | One file per form or one combined set |
-| 6 | Products and services | `d13` | Price List | 13 | pdf, sheet |  | Yes | Popular products and prices with a valid-till date; can be customised on request |
-| 6 | Products and services | `catalogue` | Product catalogue / specifications | - | pdf |  | No | Optional; supports S09 and procurement search |
-| 7 | Contact persons | `headshot` | Primary contact photo | - | image | Yes | No | CCC field primaryHeadshotPhoto |
-| 8 | Customer references | `d10` | Recommendation Letter from Client | 10 | pdf, image | Yes | Yes | Signed letter from a current or past client |
-| 8 | Customer references | `d14` | Client LPO / Letter of Award of Contract | 14 | pdf, image | Yes | Yes | Evidence of a real order or award |
-| 9 | Directors | `d11` | Director's Passport Photograph | 11 | image | Yes | Yes | Recent passport-style photo; camera capture on mobile |
-| 9 | Directors | `d12` | Valid Identification Card | 12 | image, pdf | Yes | Yes | National ID / NIN slip, passport or licence; front and back; NIN photo is checked |
-| 10 | Banking details | `d8` | Cancelled Cheque | 8 | image, pdf | Yes | Yes | Proof of the account entered above |
-| 10 | Banking details | `d9` | Bank Reference Letter | 9 | pdf |  | Yes | Instruction letter checked and signed by the authorised signatory |
-| 11 | Tax information | `d6` | Tax Compliance Evidence | 6 | pdf, image | Yes | Yes | Current tax compliance evidence |
-| 11 | Tax information | `d7` | VAT Registration Certificate | 7 | pdf, image | Yes | Yes | Current VAT certificate |
-| 12 | Required documents | `d15` | Duly Filled Registration Form | 15 | pdf |  | Yes | Download the form generated from this wizard, sign it, upload it |
-| 13 | Compliance (insurance and certifications) | `row-insurance` | Insurance certificate (one per insurance row) | - | pdf, image | Yes | No | Attached to each insurance row; expiry date drives reminders |
-| 13 | Compliance (insurance and certifications) | `row-certification` | Certificate file (one per certification row) | - | pdf, image | Yes | No | Attached to each certification row; expiry date drives reminders |
+| 2 | Company & registration | `d1` | Letter of Introduction | 1 | pdf |  | Yes | Signed letter on company letterhead |
+| 2 | Company & registration | `d3` | Company Profile | 3 | pdf |  | Yes | Brochure or profile document |
+| 2 | Company & registration | `logo` | Company logo | - | image |  | No | Shown on the vendor card and Passport |
+| 2 | Company & registration | `d2` | Certificate of Registration | 2 | pdf, image | Yes | Yes | Scan or photo of the CAC certificate |
+| 2 | Company & registration | `d4` | Memorandum & Articles of Association | 4 | pdf |  | Yes | Current signed copy |
+| 2 | Company & registration | `d5` | CAC Documents (CAC 2/2.5, CAC 2.1, CAC 7/2.3) | 5 | pdf |  | Yes | One file per form or one combined set |
+| 3 | Address & contact channels | `premises` | Premises photos (front, office, warehouse) | - | image | Yes | No | Supports the site inspection (S28); camera capture on mobile |
+| 5 | Products & services | `d13` | Price List | 13 | pdf, sheet |  | Yes | Popular products and prices with a valid-till date; can be customised on request |
+| 5 | Products & services | `catalogue` | Product catalogue / specifications | - | pdf |  | No | Optional; supports S09 and procurement search |
+| 5 | Products & services | `techspecs` | Technical specifications | - | pdf |  | No | J01 v25; datasheets or technical specifications of the products offered |
+| 6 | Contacts | `headshot` | Primary contact photo | - | image | Yes | No | CCC field primaryHeadshotPhoto |
+| 7 | References & projects | `d10` | Recommendation Letter from Client | 10 | pdf, image | Yes | Yes | Signed letter from a current or past client |
+| 7 | References & projects | `d14` | Client LPO / Letter of Award of Contract | 14 | pdf, image | Yes | Yes | Evidence of a real order or award |
+| 7 | References & projects | `row-project` | Completion certificate (one per project row) | - | pdf, image | Yes | No | J01 v28; attached to each project in the project history |
+| 8 | Directors, owners & signatories | `d11` | Director's Passport Photograph | 11 | image | Yes | Yes | Recent passport-style photo; camera capture on mobile |
+| 8 | Directors, owners & signatories | `d12` | Valid Identification Card | 12 | image, pdf | Yes | Yes | National ID / NIN slip, passport or licence; front and back; NIN photo is checked |
+| 8 | Directors, owners & signatories | `signature` | Signature specimen | - | pdf, image | Yes | No | J01 v29; for each authorised signatory |
+| 8 | Directors, owners & signatories | `boardres` | Board resolution | - | pdf |  | No | J01 v29; authorising the signatories |
+| 9 | Banking, tax & payment | `d8` | Cancelled Cheque | 8 | image, pdf | Yes | Yes | Proof of the account entered above |
+| 9 | Banking, tax & payment | `d9` | Bank Reference Letter | 9 | pdf |  | Yes | Instruction letter checked and signed by the authorised signatory |
+| 9 | Banking, tax & payment | `d6` | Tax Compliance Evidence | 6 | pdf, image | Yes | Yes | Current tax compliance evidence |
+| 9 | Banking, tax & payment | `d7` | VAT Registration Certificate | 7 | pdf, image | Yes | Yes | Current VAT certificate |
+| 10 | Insurance & certifications | `row-insurance` | Insurance certificate (one per insurance row) | - | pdf, image | Yes | No | Attached to each insurance row; expiry date drives reminders |
+| 10 | Insurance & certifications | `row-certification` | Certificate file (one per certification row) | - | pdf, image | Yes | No | Attached to each certification row; expiry date drives reminders |
+| 11 | Required documents | `d15` | Duly Filled Registration Form | 15 | pdf |  | Yes | Download the form generated from this wizard, sign it, upload it |
 
 Slot behaviour (PRD M2 upload rules applied per slot):
 
@@ -3129,7 +3153,7 @@ Save status always visible: Saving... → Saved → Offline → Sync Pending →
 
 | ID | Area | Gap | Sev | Fix / status |
 |---|---|---|:-:|---|
-| G-01 | Registration | Mockup wizard has 4 steps / about 8 fields vs PRD 16 steps vs CCC 10 tabs | High | **Mockup fixed 2026-10-04**: 16-step wizard with per-section uploads. The real CCC wizard still has 10 tabs; add the vendor-facing 16-step navigation |
+| G-01 | Registration | Mockup wizard had 4 steps / about 8 fields vs PRD 16 steps vs CCC 10 tabs | High | **Mockup fixed 2026-10-05**: 13-step flow (section 6) with all J01 fields, per-section uploads and a declaration step. The real CCC wizard still has 10 tabs; add the vendor-facing 13-step navigation |
 | G-02 | Vendor identity | No vendor-user → partner membership model; `users.partner_id` semantics unverified; multi-staff unsupported | High | Decide D-01, add explicit membership relation if needed |
 | G-03 | Documents | Two file paths (CCC Media vs `documents`/`VendorDocument`); seed pack is South African, not the Nigeria pack | High | D-02, D-03 |
 | G-04 | Stages 39-43 | ERP read-through only: no opportunity invitation, bid evaluation, award, QC/GRN match flow | High | Build around ERP rows (§8 M-06/M-07) |
@@ -3220,7 +3244,7 @@ Channel defaults: in-app + email; SMS/WhatsApp only when a provider adapter is c
 | D-01 | How vendor staff map to a partner | Reuse `users.partner_id` / add `vendor_partner_user` membership relation | Add explicit membership if ERP's `users.partner_id` means "the user's own partner mirror" (verify first) |
 | D-02 | Canonical document owner | `documents` (polymorphic) / Spatie media | `documents` with Spatie as storage driver; migrate CCC media |
 | D-03 | Required-document packs | One global pack / pack per country and per customer | Packs keyed by country + customer; Nigeria baseline in §7 |
-| D-04 | Registration UI | 16 PRD steps / 10 CCC tabs | CCC tabs as data model; 16 steps as vendor navigation (§6) |
+| D-04 | Registration UI | 16 PRD steps / 13-step flow / 10 CCC tabs | CCC tabs as data model; 13 steps as vendor navigation (section 6) |
 | D-05 | Declaration content | Fixed text / configurable per customer | Configurable text, versioned, accepted with timestamp and user |
 | D-06 | HSE tier | FLEX (matrix) / CORE (mockup) | FLEX |
 | D-07 | Default locale and currency | NGN / ZAR / BWP per install | Setting per installation; demo follows it |

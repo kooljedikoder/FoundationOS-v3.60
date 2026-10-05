@@ -227,7 +227,7 @@
      "note": "status in (draft, submitted, in_review)"
     },
     {
-     "l": "New Vendor wizard (16 steps)",
+     "l": "New Vendor wizard (13 steps)",
      "k": "field",
      "src": "ccc",
      "ref": "fos_partner_profiles.registration_number",

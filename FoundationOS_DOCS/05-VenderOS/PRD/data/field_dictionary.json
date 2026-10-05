@@ -46,7 +46,7 @@
   "upload_slots": [
     {
       "step": 2,
-      "section": "Company information",
+      "section": "Company & registration",
       "slot": "d1",
       "label": "Letter of Introduction",
       "doc": 1,
@@ -59,7 +59,7 @@
     },
     {
       "step": 2,
-      "section": "Company information",
+      "section": "Company & registration",
       "slot": "d3",
       "label": "Company Profile",
       "doc": 3,
@@ -72,7 +72,7 @@
     },
     {
       "step": 2,
-      "section": "Company information",
+      "section": "Company & registration",
       "slot": "logo",
       "label": "Company logo",
       "doc": null,
@@ -84,21 +84,8 @@
       "note": "Shown on the vendor card and Passport"
     },
     {
-      "step": 3,
-      "section": "Company address",
-      "slot": "premises",
-      "label": "Premises photos (front, office, warehouse)",
-      "doc": null,
-      "kinds": [
-        "image"
-      ],
-      "capture": true,
-      "required": false,
-      "note": "Supports the site inspection (S28); camera capture on mobile"
-    },
-    {
-      "step": 4,
-      "section": "Registration details",
+      "step": 2,
+      "section": "Company & registration",
       "slot": "d2",
       "label": "Certificate of Registration",
       "doc": 2,
@@ -111,8 +98,8 @@
       "note": "Scan or photo of the CAC certificate"
     },
     {
-      "step": 4,
-      "section": "Registration details",
+      "step": 2,
+      "section": "Company & registration",
       "slot": "d4",
       "label": "Memorandum & Articles of Association",
       "doc": 4,
@@ -124,8 +111,8 @@
       "note": "Current signed copy"
     },
     {
-      "step": 4,
-      "section": "Registration details",
+      "step": 2,
+      "section": "Company & registration",
       "slot": "d5",
       "label": "CAC Documents (CAC 2/2.5, CAC 2.1, CAC 7/2.3)",
       "doc": 5,
@@ -137,8 +124,21 @@
       "note": "One file per form or one combined set"
     },
     {
-      "step": 6,
-      "section": "Products and services",
+      "step": 3,
+      "section": "Address & contact channels",
+      "slot": "premises",
+      "label": "Premises photos (front, office, warehouse)",
+      "doc": null,
+      "kinds": [
+        "image"
+      ],
+      "capture": true,
+      "required": false,
+      "note": "Supports the site inspection (S28); camera capture on mobile"
+    },
+    {
+      "step": 5,
+      "section": "Products & services",
       "slot": "d13",
       "label": "Price List",
       "doc": 13,
@@ -151,8 +151,8 @@
       "note": "Popular products and prices with a valid-till date; can be customised on request"
     },
     {
-      "step": 6,
-      "section": "Products and services",
+      "step": 5,
+      "section": "Products & services",
       "slot": "catalogue",
       "label": "Product catalogue / specifications",
       "doc": null,
@@ -164,8 +164,21 @@
       "note": "Optional; supports S09 and procurement search"
     },
     {
-      "step": 7,
-      "section": "Contact persons",
+      "step": 5,
+      "section": "Products & services",
+      "slot": "techspecs",
+      "label": "Technical specifications",
+      "doc": null,
+      "kinds": [
+        "pdf"
+      ],
+      "capture": false,
+      "required": false,
+      "note": "J01 v25; datasheets or technical specifications of the products offered"
+    },
+    {
+      "step": 6,
+      "section": "Contacts",
       "slot": "headshot",
       "label": "Primary contact photo",
       "doc": null,
@@ -177,8 +190,8 @@
       "note": "CCC field primaryHeadshotPhoto"
     },
     {
-      "step": 8,
-      "section": "Customer references",
+      "step": 7,
+      "section": "References & projects",
       "slot": "d10",
       "label": "Recommendation Letter from Client",
       "doc": 10,
@@ -191,8 +204,8 @@
       "note": "Signed letter from a current or past client"
     },
     {
-      "step": 8,
-      "section": "Customer references",
+      "step": 7,
+      "section": "References & projects",
       "slot": "d14",
       "label": "Client LPO / Letter of Award of Contract",
       "doc": 14,
@@ -205,8 +218,22 @@
       "note": "Evidence of a real order or award"
     },
     {
-      "step": 9,
-      "section": "Directors",
+      "step": 7,
+      "section": "References & projects",
+      "slot": "row-project",
+      "label": "Completion certificate (one per project row)",
+      "doc": null,
+      "kinds": [
+        "pdf",
+        "image"
+      ],
+      "capture": true,
+      "required": false,
+      "note": "J01 v28; attached to each project in the project history"
+    },
+    {
+      "step": 8,
+      "section": "Directors, owners & signatories",
       "slot": "d11",
       "label": "Director's Passport Photograph",
       "doc": 11,
@@ -218,8 +245,8 @@
       "note": "Recent passport-style photo; camera capture on mobile"
     },
     {
-      "step": 9,
-      "section": "Directors",
+      "step": 8,
+      "section": "Directors, owners & signatories",
       "slot": "d12",
       "label": "Valid Identification Card",
       "doc": 12,
@@ -232,8 +259,35 @@
       "note": "National ID / NIN slip, passport or licence; front and back; NIN photo is checked"
     },
     {
-      "step": 10,
-      "section": "Banking details",
+      "step": 8,
+      "section": "Directors, owners & signatories",
+      "slot": "signature",
+      "label": "Signature specimen",
+      "doc": null,
+      "kinds": [
+        "pdf",
+        "image"
+      ],
+      "capture": true,
+      "required": false,
+      "note": "J01 v29; for each authorised signatory"
+    },
+    {
+      "step": 8,
+      "section": "Directors, owners & signatories",
+      "slot": "boardres",
+      "label": "Board resolution",
+      "doc": null,
+      "kinds": [
+        "pdf"
+      ],
+      "capture": false,
+      "required": false,
+      "note": "J01 v29; authorising the signatories"
+    },
+    {
+      "step": 9,
+      "section": "Banking, tax & payment",
       "slot": "d8",
       "label": "Cancelled Cheque",
       "doc": 8,
@@ -246,8 +300,8 @@
       "note": "Proof of the account entered above"
     },
     {
-      "step": 10,
-      "section": "Banking details",
+      "step": 9,
+      "section": "Banking, tax & payment",
       "slot": "d9",
       "label": "Bank Reference Letter",
       "doc": 9,
@@ -259,8 +313,8 @@
       "note": "Instruction letter checked and signed by the authorised signatory"
     },
     {
-      "step": 11,
-      "section": "Tax information",
+      "step": 9,
+      "section": "Banking, tax & payment",
       "slot": "d6",
       "label": "Tax Compliance Evidence",
       "doc": 6,
@@ -273,8 +327,8 @@
       "note": "Current tax compliance evidence"
     },
     {
-      "step": 11,
-      "section": "Tax information",
+      "step": 9,
+      "section": "Banking, tax & payment",
       "slot": "d7",
       "label": "VAT Registration Certificate",
       "doc": 7,
@@ -287,21 +341,8 @@
       "note": "Current VAT certificate"
     },
     {
-      "step": 12,
-      "section": "Required documents",
-      "slot": "d15",
-      "label": "Duly Filled Registration Form",
-      "doc": 15,
-      "kinds": [
-        "pdf"
-      ],
-      "capture": false,
-      "required": true,
-      "note": "Download the form generated from this wizard, sign it, upload it"
-    },
-    {
-      "step": 13,
-      "section": "Compliance (insurance and certifications)",
+      "step": 10,
+      "section": "Insurance & certifications",
       "slot": "row-insurance",
       "label": "Insurance certificate (one per insurance row)",
       "doc": null,
@@ -314,8 +355,8 @@
       "note": "Attached to each insurance row; expiry date drives reminders"
     },
     {
-      "step": 13,
-      "section": "Compliance (insurance and certifications)",
+      "step": 10,
+      "section": "Insurance & certifications",
       "slot": "row-certification",
       "label": "Certificate file (one per certification row)",
       "doc": null,
@@ -326,6 +367,19 @@
       "capture": true,
       "required": false,
       "note": "Attached to each certification row; expiry date drives reminders"
+    },
+    {
+      "step": 11,
+      "section": "Required documents",
+      "slot": "d15",
+      "label": "Duly Filled Registration Form",
+      "doc": 15,
+      "kinds": [
+        "pdf"
+      ],
+      "capture": false,
+      "required": true,
+      "note": "Download the form generated from this wizard, sign it, upload it"
     }
   ],
   "fields": [
