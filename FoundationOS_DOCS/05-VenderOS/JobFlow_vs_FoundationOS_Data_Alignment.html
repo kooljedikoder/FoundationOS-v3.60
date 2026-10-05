@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobFlow Data Alignment</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+  :root{
+    --navy:#14264E; --navy-deep:#0A1730; --purple:#5B3DF5; --purple-soft:#EEEBFF;
+    --green:#1E9E63; --green-soft:#E4F5EC; --amber:#B8761F; --amber-soft:#FBF1DD;
+    --red:#C0405A; --red-soft:#FAE7EA;
+    --bg:#F6F4EF; --surface:#FFFFFF; --surface-2:#EFEBE2;
+    --ink:#1C2233; --ink-2:#4A5169; --ink-3:#868C9E; --line:#E4E0D5;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --navy:#8FA6E8; --navy-deep:#0A1730; --purple:#9C8CFF; --purple-soft:#241F42;
+      --green:#4FCF97; --green-soft:#12331F; --amber:#E3AA55; --amber-soft:#3A2C0F;
+      --red:#F0879D; --red-soft:#3A1620;
+      --bg:#12141C; --surface:#181B26; --surface-2:#1F2330;
+      --ink:#EAEBF2; --ink-2:#B7BBCC; --ink-3:#7C8296; --line:#2A2E3D;
+    }
+  }
+
+  *{box-sizing:border-box}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);margin:0;padding:0 0 64px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+
+  header{background:linear-gradient(150deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;padding:44px 0 34px}
+  header .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.72;margin:0 0 10px}
+  header h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:2rem;margin:0 0 10px;text-wrap:balance;letter-spacing:-.01em}
+  header p{font-size:.95rem;opacity:.86;max-width:62ch;line-height:1.6;margin:0}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 13px;font-size:.72rem;font-weight:600}
+
+  .note{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--purple);border-radius:0 12px 12px 0;padding:16px 20px;margin:28px 0;font-size:.87rem;line-height:1.65;color:var(--ink-2)}
+  .note b{color:var(--ink)}
+  .note code{background:var(--surface-2);padding:1px 6px;border-radius:5px;font-family:var(--mono);font-size:.82em;color:var(--ink)}
+  .note.super{border-left-color:var(--green)}
+
+  h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.3rem;color:var(--navy);margin:44px 0 6px;text-wrap:balance}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--purple);color:#fff;font-size:.78rem;margin-right:9px;vertical-align:middle}
+  .lede{font-size:.88rem;color:var(--ink-2);line-height:1.65;margin:0 0 20px;max-width:70ch}
+
+  .scrollx{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+  table{width:100%;border-collapse:collapse;font-size:.82rem}
+  thead th{text-align:left;padding:10px 14px;font-weight:700;font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);border-bottom:1px solid var(--line);background:var(--surface-2);white-space:nowrap}
+  tbody td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2);line-height:1.55}
+  tbody tr:last-child td{border-bottom:none}
+  td.doc{font-weight:700;color:var(--ink);white-space:nowrap}
+  td code, .fmt{font-family:var(--mono);font-size:.78rem;color:var(--purple);font-variant-numeric:tabular-nums}
+  .fmt-fo{color:var(--green)}
+  .issue{display:inline-block;font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--red-soft);color:var(--red);margin-top:5px}
+
+  .entity{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:18px}
+  .entity h3{font-family:'Archivo',sans-serif;font-size:1.02rem;color:var(--ink);margin:0 0 4px}
+  .align-need{margin-top:14px;padding:12px 14px;background:var(--amber-soft);border-radius:9px;font-size:.82rem;line-height:1.6;color:var(--ink-2)}
+  .align-need b{color:var(--ink)}
+
+  .sidebyside{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media (max-width:640px){.sidebyside{grid-template-columns:1fr}}
+  .sys{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--surface-2)}
+  .sys .label{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
+  .sys.jf .label{color:var(--purple)}
+  .sys.fo .label{color:var(--green)}
+  .sys ul{margin:0;padding-left:18px;font-size:.8rem;color:var(--ink-2);line-height:1.7}
+  .sys code{font-family:var(--mono);font-size:.76rem}
+
+  ol.priority{padding-left:22px;font-size:.87rem;line-height:1.75;color:var(--ink-2)}
+  ol.priority li{margin-bottom:8px}
+  ol.priority b{color:var(--ink)}
+
+  footer{text-align:center;color:var(--ink-3);font-size:.72rem;margin-top:48px}
+  footer code{font-family:var(--mono)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Migration planning · VendrOS JobFlow → FoundationOS</p>
+    <h1>Data & Numbering Alignment</h1>
+    <p>What both systems actually store today, field by field — where the shapes line up, where a real migration hits friction, and which of JobFlow's own document-numbering formats are live bugs regardless of migration.</p>
+    <div class="badges">
+      <span class="badge">8 numbering formats compared</span>
+      <span class="badge">4 entity types mapped</span>
+      <span class="badge">Sourced from live code, not docs</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="note"><b>Naming note</b> — "VendrOS" (no "e") is the JobFlow prototype app this page compares against. "VendorOS" (with "e") elsewhere in this project's docs is a different, unrelated initiative — a vendor-onboarding/lifecycle product native to FoundationOS. Don't conflate the two.</div>
+
+  <div class="note super"><b>This is a supplement, not a replacement.</b> <code>ERP_Job_Costing_Procurement_Gap_Analysis.md</code> is the authoritative doc on whether FoundationOS's business logic actually works end to end — it does, verified live: Job Enquiry → Estimation → Quotation → Requisition → PO → Goods Receipt → Delivery, all real AureusERP code, seeded and confirmed. This page answers a narrower question: for the entities both systems track, do the field shapes and document-numbering formats actually line up?</div>
+
+  <h2><span class="n">1</span>Numbering formats — the concrete migration friction point</h2>
+  <p class="lede">JobFlow generates numbers ad hoc, inline, per function — no shared counter. FoundationOS has a real one (<code>SequenceService</code>, backed by a <code>sequences</code> table with prefix/suffix/padding/next_number per company). Several JobFlow formats aren't just differently shaped — they're actively collision-prone in a way FoundationOS's design already prevents.</p>
+
+  <div class="scrollx"><table>
+    <thead><tr><th>Document</th><th>JobFlow format</th><th>FoundationOS format</th><th>Issue</th></tr></thead>
+    <tbody>
+      <tr><td class="doc">Job / Order No.</td><td><span class="fmt">JOB-{Mdyy}-{seq4}</span></td><td><span class="fmt fmt-fo">no direct equivalent yet</span></td><td>Sequence is array length, not persisted<span class="issue">reuse risk</span></td></tr>
+      <tr><td class="doc">Purchase Order</td><td><span class="fmt">PO-{jobSuffix}-{n}</span></td><td><span class="fmt fmt-fo">PO/00001</span> (5-digit pad)</td><td>Fixed this session — job-traceable, not global</td></tr>
+      <tr><td class="doc">Requisition</td><td><span class="fmt">PR-2026-0{len+41}</span></td><td><span class="fmt fmt-fo">same Sequence mechanism as PO</span></td><td>Hardcoded year<span class="issue">not fixed</span></td></tr>
+      <tr><td class="doc">Invoice</td><td><span class="fmt">INV-2026-1{len+17}</span></td><td><span class="fmt fmt-fo">INV/2026/00001</span></td><td>Hardcoded year<span class="issue">not fixed</span></td></tr>
+      <tr><td class="doc">Payment / Receipt</td><td><span class="fmt">RCT-2026-2{pad2}</span></td><td><span class="fmt fmt-fo">Sequence-driven</span></td><td>Hardcoded year<span class="issue">not fixed</span></td></tr>
+      <tr><td class="doc">Stock move</td><td><span class="fmt">GIN-2026-{pad3}</span></td><td><span class="fmt fmt-fo">no single equivalent found</span></td><td>Hardcoded year<span class="issue">not fixed</span></td></tr>
+      <tr><td class="doc">Delivery note</td><td><span class="fmt">DN-2026-0{n}</span> (editable default)</td><td><span class="fmt fmt-fo">PDF off the Operation record</span></td><td>Not a real counter at all</td></tr>
+      <tr><td class="doc">Quotation</td><td><span class="fmt">QUO-{jobSuffix}</span></td><td><span class="fmt fmt-fo">Sequence-driven</span></td><td>Fine within a job, not company-wide</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="align-need"><b>If migration happens:</b> every JobFlow number with a hardcoded <code>2026</code> and a <code>.length</code>-based counter (Requisition, Invoice, Payment, Stock move) needs fixing regardless — those are live bugs today, not just a format to map around. The PO fix already applied this session is the template, or those documents adopt FoundationOS's real <code>SequenceService</code> outright instead of patching JobFlow twice.</div>
+
+  <h2><span class="n">2</span>Entity field-shape comparison</h2>
+
+  <div class="entity">
+    <h3>Contact — Customer / Supplier / Vendor</h3>
+    <p style="font-size:.83rem;color:var(--ink-2);margin:0">JobFlow keeps two separate, differently-shaped collections. FoundationOS keeps <b style="color:var(--ink)">one</b> entity — already the more correct model.</p>
+    <div class="sidebyside">
+      <div class="sys jf"><div class="label">JobFlow — 2 collections</div><ul>
+        <li><code>customers</code>: name, branch, contact, phone, email, address</li>
+        <li><code>suppliers</code>: name, category, contact, phone, email, address, products[] (own price list)</li>
+        <li>No tax ID, no company link, no payment terms</li>
+      </ul></div>
+      <div class="sys fo"><div class="label">FoundationOS — 1 entity</div><ul>
+        <li><code>Partner</code> (partners_partners)</li>
+        <li>supplier_rank / customer_rank distinguish role on the same row</li>
+        <li>tax_id, street1/2/city/zip/state_id/country_id, company_id, credit_limit</li>
+        <li>Real payment-terms + AR/AP account links</li>
+      </ul></div>
+    </div>
+    <div class="align-need"><b>Alignment need:</b> JobFlow's <code>address</code> is one free-text field; FoundationOS splits it into normalized FK columns — a migration needs address parsing, not a column copy. JobFlow's supplier <code>products[]</code> price list has no confirmed FoundationOS equivalent.</div>
+  </div>
+
+  <div class="entity">
+    <h3>Product / Inventory</h3>
+    <p style="font-size:.83rem;color:var(--ink-2);margin:0">Both split this into two entities, but the split line differs — and the link between them differs more.</p>
+    <div class="sidebyside">
+      <div class="sys jf"><div class="label">JobFlow — string-matched</div><ul>
+        <li><code>products</code>: industry, name, category, sku, unit, width, height, price, cost</li>
+        <li><code>inventory</code>: sku, name, unit, qty, reserved, reorder, cost, supplier (plain name string), warehouse</li>
+        <li><b style="color:var(--red)">No real FK</b> between products and inventory — matched by name/SKU string</li>
+      </ul></div>
+      <div class="sys fo"><div class="label">FoundationOS — real FK</div><ul>
+        <li><code>Product</code>: type, name, reference (SKU), barcode, price, cost, uom_id, category_id, parent_id (variants)</li>
+        <li><code>ProductQuantity</code>: quantity, reserved_quantity, product_id → FK, location_id → FK</li>
+        <li>Supplier association via PO lines, not a field on stock</li>
+      </ul></div>
+    </div>
+    <div class="align-need"><b>Alignment need — the most structurally different entity:</b> can't copy <code>inventory</code> rows straight in. Each JobFlow product/inventory pair needs resolving into one FoundationOS <code>Product</code> row plus a real <code>ProductQuantity</code> at a real <code>location_id</code>, dropping the free-text supplier name.</div>
+  </div>
+
+  <div class="entity">
+    <h3>Staff / Users</h3>
+    <div class="sidebyside">
+      <div class="sys jf"><div class="label">JobFlow — flat role</div><ul>
+        <li><code>users</code>: name, username, password, role (flat string), phone, email, status</li>
+        <li>No department, no org structure, no employee ID</li>
+      </ul></div>
+      <div class="sys fo"><div class="label">FoundationOS — real org structure</div><ul>
+        <li><code>users</code> (native) + <code>Webkul\Security\User</code> extras: partner_id, is_active, default_company_id</li>
+        <li>Real Spatie roles/permissions</li>
+        <li><code>Employee</code>: job_title, department_id, job_id, work_location_id, parent_id/coach_id</li>
+      </ul></div>
+    </div>
+    <div class="align-need"><b>Alignment need:</b> JobFlow has no department/org-structure concept at all. A migration either drops that distinction, or the operator manually assigns departments post-migration — there's no source data to infer it from.</div>
+  </div>
+
+  <div class="entity">
+    <h3>Invoices / Payments</h3>
+    <p style="font-size:.83rem;color:var(--ink-2);margin:0">Process-level completeness already covered in the companion gap-analysis doc (confirmed real and correctly separate). The field-shape gap not covered there:</p>
+    <div class="align-need" style="margin-top:12px"><b>JobFlow</b> keeps <code>paid</code>/<code>amount</code> as two plain numbers on one row. <b>FoundationOS</b>'s <code>Move</code> model has <code>amount_total</code>/<code>amount_residual</code>/<code>payment_state</code> as a real enum, not a derived boolean — needs a state-mapping table if migrating, since JobFlow's implicit "paid if paid ≥ amount" logic doesn't map 1:1 onto partial/reversed/in_payment states.</div>
+  </div>
+
+  <h2><span class="n">3</span>Session update — items 1-4 actioned, outcome reviewed</h2>
+  <div class="note super"><b>1. Fixed.</b> A new shared <code>Pages.nextDocRef()</code> helper replaced all four remaining hardcoded-year/length-based counters (Requisition, Invoice, Payment/Receipt, Stock move, plus the Dispatch delivery-note default) with a live-year, max-existing-suffix number — the same fix class already applied to Purchase Order. No more year-rollover bug, no more reuse-after-delete risk.</div>
+  <div class="note super"><b>2-4. Actioned via real data, not a schema rewrite.</b> Rather than restructuring JobFlow's collections in the legacy app, this pass aligned on real data instead: created 8 real Departments in FoundationOS (it had none before — only an unused placeholder) and assigned all 10 real seeded employees to the correct one by job title; JobFlow's demo <code>users</code> seed now uses these same 10 real names/emails/departments instead of fictional ones. The Contact-model merge and user-role→Employee structural change are <b>still open by design</b> — deferred to the React rebuild, not retrofitted into the vanilla-JS app.</div>
+  <div class="note"><b>End-to-end verified for real</b> — ran <code>Workflow.sequence()</code> and <code>Workflow.decide()</code> directly in Node against a synthetic full-production job: 27 real steps in correct Master 0-9 order, zero missing stage definitions, zero removed keys present anywhere, approving every step walked the job cleanly to <code>close</code>/<code>Completed</code> with 27 matching history entries. Separately confirmed <code>migrateStageKeys()</code> correctly remaps a job stuck on an old key to its merged equivalent.</div>
+
+  <h2><span class="n">4</span>Bug found and fixed while building the guided demo tour</h2>
+  <p class="lede">Built a "New Demo" button (next to "New Job") that pre-fills a realistic job and, on each stage, a "Next" button that fills that stage, approves it, and opens the next — a guided click-through of the whole Master 0-9 flow. Verified for real: loaded the actual app source directly in Node, walked a synthetic job through all 27 real stages, reached <code>close</code>/<code>Completed</code> — Requisition, Stock Check, PO generation and Customer Acceptance all produced real derived data via the same functions a live user's clicks trigger.</p>
+  <div class="note super">That same test caught a genuine pre-existing bug: a <code>deliv_note</code> stage form existed in both <code>STAGE_FORMS</code> and <code>FORM_SCHEMAS</code> — but <code>Workflow.sequence()</code> never actually produces a <code>deliv_note</code> key, only <code>dispatch</code>. The form was completely unreachable; its fields could never render or save. Its own <code>relationships.feedsInto</code> already said <code>['dispatch','cust_accept']</code>, confirming it was always meant to feed the real <code>dispatch</code> stage. Fixed by folding it into <code>dispatch</code> and deleting the orphaned entry.</div>
+
+  <h2><span class="n">5</span>Demo tour became a scenario picker — 4 real flows, all fixed and verified</h2>
+  <p class="lede">Extended "New Demo" into a picker: every click pops a modal listing real, distinct flows — <b>Full Production</b> (Design & Build, survey+2D+3D+production+install), <b>Buy & Sell</b> (Trading, no production/QC at all), <b>Flexo Full Walkthrough</b> (plates→printing→slitting→packing→QC→repacking), <b>Custom Furniture</b> (carpentry→upholstery→finishing). All four use real, already-existing presets — none invented. Picking a scenario from a different industry switches the whole platform to it, clearly labelled.</p>
+  <div class="note super">Auditing these presets for real surfaced three more genuine bugs, all fixed and re-verified (28/28, 19/19, 28/28, 20/20 approvals, zero stuck states): (1) two DEMO presets still referenced the now-merged-away <code>deliv_note</code> key; (2) <code>Workflow.isClosed()</code> only recognized <code>stageKey === 'close'</code> exactly, wrongly reporting a job as open once it advanced past close to Flexo's real post-close <code>review_perf</code> stage; (3) that same narrow check was baked into <code>isCurrent</code>/<code>mayAct</code> in three places, meaning <code>review_perf</code> was permanently unapprovable through the normal UI too, not just the demo tour. Generalized all three to check whether that specific stage has already been approved, not whether the job as a whole passed close. <code>repacking</code>/<code>mat_confirm</code> were also audited and confirmed genuinely working — no bug there.</div>
+
+  <h2><span class="n">6</span>After this: the React version</h2>
+  <p class="lede">JobFlow's own architecture doc already states the intended pipeline: <b>Process Builder defines flow/logic → JobFlow only ever consumes it.</b> This session's vanilla-JS fixes are a deliberate stopgap on that basis. When JobFlow's Masters 1-9 eventually get rebuilt as a real React/FoundationOS surface — the natural next step, since FoundationOS's <code>lara-builder</code> is already the React port of this same Process Builder — that rebuild is the right moment to do items 2-4 as structural changes:</p>
+  <ol class="priority">
+    <li>Build directly against FoundationOS's real <b>Partner</b> — no separate customers/suppliers to reconcile, there'd only ever be one.</li>
+    <li>Build directly against the real <b>Employee/Department</b> model — no flat role string to migrate.</li>
+    <li>Numbering comes from <b>SequenceService</b> directly, not a ported JS helper — this session's <code>nextDocRef</code> fix is a bridge for the vanilla app's remaining life, not something to carry into the rebuild.</li>
+  </ol>
+
+  <h2><span class="n">7</span>Priority order</h2>
+  <ol class="priority">
+    <li><b>Fix JobFlow's remaining hardcoded-year/length-based counters</b> (Requisition, Invoice, Payment, Stock move) — real bugs today, independent of any migration decision.</li>
+    <li><b>Decide the Contact model</b> — collapse JobFlow's separate customers/suppliers into FoundationOS's single Partner (recommended), or keep them separate? A real design decision, not column mapping.</li>
+    <li><b>Resolve supplier-as-free-text-string</b> on inventory rows into real Partner FKs before any product/stock migration — needs a name-matching pass and manual review, can't be automated blind.</li>
+    <li><b>Decide what happens to JobFlow's flat user role</b> vs FoundationOS's real Employee/department model — no source data exists to auto-populate departments.</li>
+    <li>Everything in the actual business-process chain is already covered, in far more depth, by <code>ERP_Job_Costing_Procurement_Gap_Analysis.md</code> — start there for what to build next.</li>
+  </ol>
+
+</div>
+
+<footer>Sourced directly from <code>VendrOS/server_new/jobflow/js/{data,modules}.js</code> and <code>FoundationOS/foundation_os/plugins/webkul/*</code> migrations — not from either system's own documentation.</footer>
+</body>
+</html>

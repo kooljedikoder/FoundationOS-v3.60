@@ -1,4 +1,4 @@
-# VendorFlow mockup: field-by-field data audit
+# VendorOS mockup: field-by-field data audit
 
 **Generated 2026-10-04.** Every KPI, table column, form field and panel on each mockup page is mapped to where its data comes from today. References were validated against the live `foundationos` database schema (70 tables inspected, read-only); an invalid table or column fails the build. Machine-readable copy: `data/mockup_data_map.json` (also drives the **Data map** toggle in the mockup).
 

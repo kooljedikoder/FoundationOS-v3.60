@@ -1,0 +1,5 @@
+# prototype data and uploads are not served directly
+<FilesMatch "\.(sqlite|sqlite-wal|sqlite-shm)$">
+  Require all denied
+</FilesMatch>
+Options -Indexes

@@ -1,4 +1,4 @@
-# VendorFlow / VendorOS — PRD & Build Specification (v2, AI-ready)
+# VendorOS / VendorOS — PRD & Build Specification (v2, AI-ready)
 
 **Status:** working build spec, 2026-10-04. Supersedes the narrative PRD page inside `foundation_os/public/VendorFlow_Admin_Home.html` for build purposes (that page stays as the readable overview).
 **Machine-readable companions:** `data/field_dictionary.json` (registration fields), `data/mandatory_documents.json` (mandatory document pack).
@@ -75,7 +75,7 @@ FLEX is a **complete vendor lifecycle**, not a reduced tier. CORE inherits FLEX.
 | F-E6 | Advanced security, integrations, workflow, reporting | - | Yes | Yes |
 | F-P1..P9 | Strategic sourcing workspace, category management, spend analytics, RFI/RFP/eTender, reverse auctions, evaluation committees, award management, strategic contract workspace, supplier collaboration/forecasts | - | - | Yes |
 
-Notes: F-E1..E6 restate F-B6..B8, F-D7 and F-C7 as CORE governance groups; build each once. Platform extensions (VendorFlow Studio, AI Copilot, Dynamic Form Builder) operate across editions and are **not** edition tiers.
+Notes: F-E1..E6 restate F-B6..B8, F-D7 and F-C7 as CORE governance groups; build each once. Platform extensions (VendorOS Studio, AI Copilot, Dynamic Form Builder) operate across editions and are **not** edition tiers.
 
 **Mockup tier corrections required (G-05):** Induction & Certification must be FLEX (F-B5, currently tagged CORE). ESG is CORE (F-B8/E3), not FLEX Supplier Assessment. Editions & Licensing is an admin page, not PLUS-gated. AI Copilot and Dynamic Form Builder are platform extensions.
 
@@ -724,7 +724,7 @@ Each module has a build block (tier, pages, stages, data owner, build status, ro
 
 <details><summary>Source detail from the PRD page (M-01)</summary>
 
-The Vendor Registration & Onboarding Centre is the entry point into the VendorFlow ecosystem. Its purpose is to collect, validate, assess and approve all information required before a company becomes an approved supplier. The module replaces paper forms, email submissions and manual vendor onboarding with a guided digital workflow. This module is the foundation of every other VendorFlow module. No Purchase Order, RFQ, Contract or Payment can exist unless a vendor has successfully completed this process.
+The Vendor Registration & Onboarding Centre is the entry point into the VendorOS ecosystem. Its purpose is to collect, validate, assess and approve all information required before a company becomes an approved supplier. The module replaces paper forms, email submissions and manual vendor onboarding with a guided digital workflow. This module is the foundation of every other VendorOS module. No Purchase Order, RFQ, Contract or Payment can exist unless a vendor has successfully completed this process.
 
 #### Scope
 
@@ -843,7 +843,7 @@ _Layout mock_ — header: Header — Logo · Company · Reg. Reference · Search
 
 #### Header contains
 
-- VendorFlow Logo
+- VendorOS Logo
 - Current Company
 - Registration Reference
 - Global Search
@@ -1943,7 +1943,7 @@ Configurable KPIs, each with Target, Actual, Variance, Trend and Weighting:
 
 <details><summary>Source detail from the PRD page (M-09)</summary>
 
-Provides enterprise-wide oversight of vendor compliance, governance, regulatory obligations, internal controls and audit activities — continuous monitoring, scheduled/ad-hoc audits, non-conformity management, corrective actions and full audit trails, establishing VendorFlow as a Governance, Risk and Compliance (GRC) platform.
+Provides enterprise-wide oversight of vendor compliance, governance, regulatory obligations, internal controls and audit activities — continuous monitoring, scheduled/ad-hoc audits, non-conformity management, corrective actions and full audit trails, establishing VendorOS as a Governance, Risk and Compliance (GRC) platform.
 
 #### Scope
 
@@ -2383,7 +2383,7 @@ Business Rule: sensitive documents are never sent directly via WhatsApp — only
 
 <details><summary>Source detail from the PRD page (M-14)</summary>
 
-The primary digital gateway through which suppliers interact with VendorFlow — secure, role-based access to manage company profile, submit documents, respond to RFQs, monitor contracts, track invoices/payments, complete HSE training and communicate with procurement, fully responsive across desktop, tablet and mobile.
+The primary digital gateway through which suppliers interact with VendorOS — secure, role-based access to manage company profile, submit documents, respond to RFQs, monitor contracts, track invoices/payments, complete HSE training and communicate with procurement, fully responsive across desktop, tablet and mobile.
 
 #### Scope
 
@@ -2513,7 +2513,7 @@ The primary digital gateway through which suppliers interact with VendorFlow —
 
 <details><summary>Source detail from the PRD page (M-15)</summary>
 
-The operational control room of VendorFlow Enterprise. It allows system administrators to configure, manage, secure, monitor, and maintain every aspect of the platform without modifying source code — a highly configurable, multi-company, multi-country, multi-business-unit platform adaptable to any organization s policies, governance model, workflows, branding, security requirements, and operational processes.
+The operational control room of VendorOS Enterprise. It allows system administrators to configure, manage, secure, monitor, and maintain every aspect of the platform without modifying source code — a highly configurable, multi-company, multi-country, multi-business-unit platform adaptable to any organization s policies, governance model, workflows, branding, security requirements, and operational processes.
 
 #### Scope
 
@@ -2552,7 +2552,7 @@ The operational control room of VendorFlow Enterprise. It allows system administ
 
 #### Success Criteria
 
-The module is successful when administrators can fully configure VendorFlow without developer intervention.
+The module is successful when administrators can fully configure VendorOS without developer intervention.
 
 #### Configuration Flow
 
@@ -2613,7 +2613,7 @@ The module is successful when administrators can fully configure VendorFlow with
 
 <details><summary>Source detail from the PRD page (M-16)</summary>
 
-The orchestration engine (BPMS) automating every business process in VendorFlow. Business analysts and administrators design, configure, execute, monitor and optimize workflows using a visual low-code/no-code designer — every approval, notification, escalation, SLA, reminder and integration runs through this engine.
+The orchestration engine (BPMS) automating every business process in VendorOS. Business analysts and administrators design, configure, execute, monitor and optimize workflows using a visual low-code/no-code designer — every approval, notification, escalation, SLA, reminder and integration runs through this engine.
 
 #### Scope
 
@@ -2634,7 +2634,7 @@ The orchestration engine (BPMS) automating every business process in VendorFlow.
 
 #### Module Dependencies
 
-- Every VendorFlow module — this is the engine underneath approvals, notifications and escalations platform-wide
+- Every VendorOS module — this is the engine underneath approvals, notifications and escalations platform-wide
 
 #### Success Criteria
 
@@ -2733,7 +2733,7 @@ The enterprise integration layer — secure, scalable, real-time integration wit
 
 #### Module Dependencies
 
-- Every VendorFlow module — this is the connective layer to external systems
+- Every VendorOS module — this is the connective layer to external systems
 
 #### Success Criteria
 
@@ -2839,7 +2839,7 @@ The intelligence layer — AI, ML, NLP, OCR, predictive analytics and generative
 
 #### Module Dependencies
 
-- Every VendorFlow module — the AI layer sits across the whole platform
+- Every VendorOS module — the AI layer sits across the whole platform
 
 #### Success Criteria
 
@@ -2906,11 +2906,11 @@ Each prediction displays Probability, Confidence Level, Suggested Mitigations an
 - Predictive Risk Engine
 - AI Governance Framework
 
-> Module 18 marks the completion of the core 20-module VendorFlow Gold Build Specification.
+> Module 18 marks the completion of the core 20-module VendorOS Gold Build Specification.
 
 </details>
 
-### M-19 — VendorFlow PLUS — Enterprise Procurement Hub
+### M-19 — VendorOS PLUS — Enterprise Procurement Hub
 
 | | |
 |---|---|
@@ -2928,7 +2928,7 @@ Each prediction displays Probability, Confidence Level, Suggested Mitigations an
 
 <details><summary>Source detail from the PRD page (M-19)</summary>
 
-A complete enterprise procurement platform digitizing the entire procurement lifecycle — demand planning, sourcing, supplier collaboration, purchasing, contract execution, inventory integration, invoice processing, payment tracking, performance and analytics. Unlike Module 6 (Procurement Workspace within VendorFlow), PLUS is a complete standalone Source-to-Pay (S2P) solution.
+A complete enterprise procurement platform digitizing the entire procurement lifecycle — demand planning, sourcing, supplier collaboration, purchasing, contract execution, inventory integration, invoice processing, payment tracking, performance and analytics. Unlike Module 6 (Procurement Workspace within VendorOS), PLUS is a complete standalone Source-to-Pay (S2P) solution.
 
 #### Scope
 
@@ -3039,7 +3039,7 @@ Monitors Budget Allocation, Commitments, Actual Spend, Remaining Budget and Budg
 
 <details><summary>Source detail from the PRD page (M-21)</summary>
 
-Transforms VendorFlow into a true Low-Code Enterprise Application Platform (LCAP). Instead of developers building new screens, modules, menus, dashboards or business objects, administrators visually create, modify and deploy them with drag-and-drop tools — extending VendorFlow far beyond supplier management while remaining fully upgradeable.
+Transforms VendorOS into a true Low-Code Enterprise Application Platform (LCAP). Instead of developers building new screens, modules, menus, dashboards or business objects, administrators visually create, modify and deploy them with drag-and-drop tools — extending VendorOS far beyond supplier management while remaining fully upgradeable.
 
 #### Scope — 9 Design Studios
 
@@ -3057,7 +3057,7 @@ Transforms VendorFlow into a true Low-Code Enterprise Application Platform (LCAP
 
 </details>
 
-### M-22 — VendorFlow Suite Product Architecture, Editions & Commercial Framework
+### M-22 — VendorOS Suite Product Architecture, Editions & Commercial Framework
 
 | | |
 |---|---|
@@ -3074,7 +3074,7 @@ Transforms VendorFlow into a true Low-Code Enterprise Application Platform (LCAP
 
 <details><summary>Source detail from the PRD page (M-22)</summary>
 
-Defines how the complete VendorFlow ecosystem is packaged, licensed, deployed, upgraded and expanded. Rather than one product, VendorFlow is a modular platform where customers start small and grow without replacing software or migrating data — every edition shares the same platform, database, security model, reporting engine, APIs and mobile app; customers simply unlock modules as they grow.
+Defines how the complete VendorOS ecosystem is packaged, licensed, deployed, upgraded and expanded. Rather than one product, VendorOS is a modular platform where customers start small and grow without replacing software or migrating data — every edition shares the same platform, database, security model, reporting engine, APIs and mobile app; customers simply unlock modules as they grow.
 
 #### Scope — Functional Module Marketplace
 
@@ -3254,7 +3254,7 @@ Channel defaults: in-app + email; SMS/WhatsApp only when a provider adapter is c
 
 ## Appendix A. PRD overview sections (source)
 
-### VendorFlow Enterprise v2 Sitemap
+### VendorOS Enterprise v2 Sitemap
 
 The full navigation tree behind this prototype — 10 main workspaces, each exposing its functionality through tabs, drawers and forms rather than hundreds of disconnected pages.
 
@@ -3279,7 +3279,7 @@ The full navigation tree behind this prototype — 10 main workspaces, each expo
 #### Full tree
 
 ```text
-VendorFlow
+VendorOS
 ├── Dashboard (Executive Overview, KPIs, Vendor Health, Spend, Compliance, Risk, Activity, Tasks, Watch List)
 ├── Vendor Management
 │   ├── Vendor Directory · Vendor Passport 360 (Overview, Company, Contacts, Directors, Banking, Tax,
@@ -3318,13 +3318,13 @@ VendorFlow
 
 ### Two-Level Workspace Architecture
 
-Rather than ~250 disconnected screens, VendorFlow is built as 10 enterprise workspaces (daily-use, tabbed, dashboard-first) sitting on top of a detailed workflow engine — the step-by-step process screens (like the 45-step Registration & Onboarding journey) that a workspace drills down into.
+Rather than ~250 disconnected screens, VendorOS is built as 10 enterprise workspaces (daily-use, tabbed, dashboard-first) sitting on top of a detailed workflow engine — the step-by-step process screens (like the 45-step Registration & Onboarding journey) that a workspace drills down into.
 
 - **Layer 1** — Operational Workspaces
 - **Layer 2** — Detailed Workflow Engine
 
 ```text
-VendorFlow
+VendorOS
 ├── Executive Dashboard
 ├── Vendor Passport ──────────► View Registration Journey (detailed workflow)
 ├── Performance & Compliance ──► Risk, Audit, CAPA, Scoring detail screens
@@ -3356,7 +3356,7 @@ Every module's own spec file lists a Dashboard as its first Scope item (e.g. "Pr
 
 ### User Roles & Lifecycles
 
-Every persona in VendorFlow has its own workflow, not just a filtered menu. Switch roles from the profile menu (top right) to preview each one — the sidebar, dashboard welcome banner, and available modules all change to match.
+Every persona in VendorOS has its own workflow, not just a filtered menu. Switch roles from the profile menu (top right) to preview each one — the sidebar, dashboard welcome banner, and available modules all change to match.
 
 #### Executive
 

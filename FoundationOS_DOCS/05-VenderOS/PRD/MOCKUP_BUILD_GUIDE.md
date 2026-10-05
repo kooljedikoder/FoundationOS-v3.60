@@ -1,4 +1,4 @@
-# VendorFlow mockup build guide (combined)
+# VendorOS mockup build guide (combined)
 
 **Date:** 2026-10-05. **Status:** working guide for finishing the mockup page by page, tab by tab, field by field.
 **Marries:** (1) the FoundationOS session (this repo: CCC, VendorOS, ERP, live database, PRD pack, audit) and (2) the zip session (`vendorflow-project.zip`: Gold Build specs M1-M23, Journey 01 v24-v45 field files, E01-E10 workspaces, the zip mockup, Process Builder, 45 logged requests).
@@ -885,7 +885,7 @@ Vendor identifiers differ across files: J01 v40 `VND-2026-000123`, E02 `VND-2026
 | D-13 | Vendor menu | 9 entries only / entries plus expanded tab links | **Entries plus expanded tab links** (meets owner requests #25, #32, #33) |
 | D-14 | Row icons on vendor lists | view only / view, edit, delete | View, Edit, Delete by role and status; Delete only on drafts |
 | D-15 | Locale | Botswana pula / Nigeria naira | **Nigeria naira** |
-| D-16 | Builder name and scope | "Dynamic Form Builder" / "Dynamic Forms & Builder" / standalone "Process Builder by VendorOS" | Standalone Process Builder (zip decision) shown in VendorFlow as Dynamic Form Builder; keep Block, Template, Preset vocabulary |
+| D-16 | Builder name and scope | "Dynamic Form Builder" / "Dynamic Forms & Builder" / standalone "Process Builder by VendorOS" | Standalone Process Builder (zip decision) shown in VendorOS as Dynamic Form Builder; keep Block, Template, Preset vocabulary |
 | D-17 | M10 scope | as drafted by B / adjust | Confirm (B asked; no spec file) |
 | D-18 | Registration structure | PRD 16 steps / J01 10 steps / 13-step flow | **13 steps** (merges registration details, banking and tax, review and submit; gives business type its own step), J01 folded in (section 3.3) |
 | D-19 | The 15 J01-only fields | add to CCC / drop | Add (picklists and custom fields first) |

@@ -1,0 +1,3 @@
+proto.sqlite*
+uploads/*
+!uploads/.htaccess
