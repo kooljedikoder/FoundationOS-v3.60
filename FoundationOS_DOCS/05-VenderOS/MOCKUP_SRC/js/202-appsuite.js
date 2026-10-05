@@ -1,6 +1,6 @@
 /* ---------- AppSuite: package switches (mockup of the FOS module registry) ---------- */
 const PKG_REQ = {"core":[],"ccc":["core"],"documents":["core","ccc"],"collaboration":["core","ccc"],"training":["core","ccc"],"insights":["core"],"commerce":["core","ccc","documents"],"risk":["core","ccc","documents"],"automation":["core"],"vendoros":["core","ccc","documents","collaboration"],"vendorportal":["vendoros","collaboration"],"erp":["core","ccc"],"filament":["core"]};
-const PKG_NAME = {"core":"FOS Core","ccc":"Contact Control Center","documents":"Documents","collaboration":"Collaboration","training":"Training and Competency","insights":"Insights (KPIs, scorecards, reports)","commerce":"Commerce","risk":"Risk and Compliance","automation":"Automation and Platform","vendoros":"VendorOS Core","vendorportal":"Vendor Portal","erp":"ERP plugin (Webkul)","filament":"Filament (installer and test surface)"};
+const PKG_NAME = {"core":"FOS Core","ccc":"Contact Control Center","documents":"Documents","collaboration":"Collaboration","training":"Training and Competency","insights":"Insights (KPIs, scorecards, reports)","commerce":"Commerce","risk":"Risk and Compliance","automation":"Automation and Platform","vendoros":"VendorOS Core","vendorportal":"Vendor Portal","erp":"ERP plugins (Webkul, 9 installed)","filament":"Filament (installer and test surface)"};
 const PKG_OFF = {};
 function pkgToggle(id, on){
   const msg = document.getElementById('pkgMsg');

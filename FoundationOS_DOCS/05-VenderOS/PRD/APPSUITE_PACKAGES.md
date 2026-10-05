@@ -80,7 +80,7 @@ Apps are mounted in a context: tenant, vendor, project, contract. A conversation
 2. **FOS owns the partner tables.** ERP (Webkul) is a plugin that can be removed, switched off or uninstalled without breaking anything. An uninstall never drops a FOS table (ADR-056).
 3. **Laravel first.** The product uses no Filament. Filament is the installer, a test surface and a harvest source, shown in an iframe or harvested with the same UI (ADR-057).
 4. **Distributions.** Before shipping or uploading, a build can contain only the apps a job needs, and AppSuite shows only those (ADR-059). The mockup page AppSuite, tab Distribution, shows how: choose the apps, needs are added automatically, and the result is a distribution manifest.
-5. **Plugins are packages too.** ERP and Filament are listed in AppSuite as removable plugins with no menu entries of their own.
+5. **Plugins are packages too, and they are temporary.** Today the 9 Webkul ERP plugins (accounts, employees, inventories, invoices, maintenance, manufacturing, products, purchases, sales) have their own menu pages and menu manager, shown in FOS through an iframe (`/erp-view`), and the Filament pieces (control panel, Composer installer, Spatie Media Library plugin) have their own screens. All of them are replaced by the HTML design ported into FOS, and no ERP screen is used in the product. Each is removed only after its replacement page works and FOS owns the data. maintenance and manufacturing have no PRD page yet and need a keep or drop decision.
 
 ### Distribution manifest (what the build produces)
 
