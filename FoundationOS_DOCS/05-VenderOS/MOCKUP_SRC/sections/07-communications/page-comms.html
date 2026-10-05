@@ -1,16 +1,9 @@
 <div class="page" id="page-comms">
-        <div class="page-header"><div><div class="page-title">Inbox &amp; Communications</div><div class="page-sub">Unified inbox — Direct Messages, Email, WhatsApp, Announcements and Alerts in one place, linked to the relevant vendor, RFQ, contract or invoice.</div></div></div>
+        <div class="page-header"><div><div class="page-title">Inbox &amp; Communications</div><div class="page-sub">Unified inbox — Direct Messages, Email, WhatsApp, Announcements and Alerts in one place, linked to the relevant vendor, RFQ, contract or invoice.</div></div></div><div class="tabs" data-gen-tabs="1"><div class="tab active" onclick="switchTab(this,'comms-tab-dash')">Dashboard</div><div class="tab" onclick="switchTab(this,'comms-unified')">Unified Inbox</div><div class="tab" onclick="switchTab(this,'comms-dm')">Direct Messages</div><div class="tab" onclick="switchTab(this,'comms-email')">Email</div><div class="tab" onclick="switchTab(this,'comms-wa')">WhatsApp</div><div class="tab" onclick="switchTab(this,'comms-news')">Announcements</div><div class="tab" onclick="switchTab(this,'comms-alerts')">Alerts</div><div class="tab" onclick="switchTab(this,'comms-tab-meetings')">Meetings</div><div class="tab" onclick="switchTab(this,'comms-tab-tasks')">Tasks</div><div class="tab" onclick="switchTab(this,'comms-tab-tickets')">Support tickets</div><div class="tab" onclick="switchTab(this,'comms-tab-surveys')">Surveys</div><div class="tab" onclick="switchTab(this,'comms-tab-plans')">Improvement plans</div><div class="tab" onclick="switchTab(this,'comms-tab-share')">Document sharing</div><div class="tab" onclick="switchTab(this,'comms-tab-feed')">Activity feed</div></div>
 
-        <div class="tabs">
-          <div class="tab active" onclick="switchTab(this,'comms-unified')">Unified Inbox</div>
-          <div class="tab" onclick="switchTab(this,'comms-dm')">Direct Messages</div>
-          <div class="tab" onclick="switchTab(this,'comms-email')">Email<span class="badge badge-blue" style="margin-left:5px">2</span></div>
-          <div class="tab" onclick="switchTab(this,'comms-wa')">WhatsApp</div>
-          <div class="tab" onclick="switchTab(this,'comms-news')">Announcements</div>
-          <div class="tab" onclick="switchTab(this,'comms-alerts')">Alerts</div>
-        </div>
+        
 
-        <div class="tab-panel active" id="comms-unified">
+        <div class="tab-panel" id="comms-unified">
           <div class="panel" style="background:linear-gradient(135deg,var(--p50),var(--surface));border-color:var(--p200)">
             <h3><i data-lucide="sparkles" style="color:var(--primary)"></i>AI Summary</h3>
             <p style="font-size:13px;color:var(--text-2);line-height:1.7">You have <b>7 unread items</b> across channels. Priority: Kalahari Logistics still owes an insurance certificate (Direct Message + Alert), Northgate submitted invoice INV-55040 by email, and Delta Civils' WhatsApp confirms Thursday delivery. Everything else is routine.</p>
@@ -116,7 +109,116 @@
           <div class="announce-card"><div class="announce-icon" style="background:var(--danger-bg)"><i data-lucide="alert-triangle" style="color:var(--danger)"></i></div><div><div style="font-size:13px;font-weight:700;margin-bottom:3px">SLA Breach Risk — Phoenix Scaffolding</div><div style="font-size:12px;color:var(--text-2)">HSE assessment score is 55% — below the approval threshold.</div><div class="chat-meta">12 minutes ago</div></div></div>
           <div class="announce-card"><div class="announce-icon" style="background:var(--warning-bg)"><i data-lucide="alert-triangle" style="color:var(--warning)"></i></div><div><div style="font-size:13px;font-weight:700;margin-bottom:3px">Insurance certificate expires in 6 days</div><div style="font-size:12px;color:var(--text-2)">Kalahari Logistics' Public Liability Insurance needs renewal.</div><div class="chat-meta">1 hour ago</div></div></div>
         </div>
-      </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="tab-panel active" id="comms-tab-dash" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-blue"><div class="kpi-label">Open threads</div><div class="kpi-val">14</div></div><div class="kpi accent-orange"><div class="kpi-label">Unassigned</div><div class="kpi-val">3</div></div><div class="kpi accent-green"><div class="kpi-label">Average first response</div><div class="kpi-val">2.1 h</div></div><div class="kpi accent-red"><div class="kpi-label">SLA breaches</div><div class="kpi-val">1</div></div></div>
+<div class="dash-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))"><div class="panel"><h3><i data-lucide="bar-chart-2"></i>Messages by channel</h3><div class="score-row"><span class="score-label">Direct messages</span><div class="prog-bar"><div class="prog-fill " style="width:48%"></div></div><span class="score-val">48%</span></div><div class="score-row"><span class="score-label">Email</span><div class="prog-bar"><div class="prog-fill success" style="width:31%"></div></div><span class="score-val">31%</span></div><div class="score-row"><span class="score-label">WhatsApp</span><div class="prog-bar"><div class="prog-fill warning" style="width:21%"></div></div><span class="score-val">21%</span></div></div><div class="panel"><h3>Needs your action</h3><div class="table-wrap" data-vf="cm_actions"></div></div></div></div>
+<div class="tab-panel" id="comms-tab-meetings" data-gen="1"><div class="panel"><h3>Meetings</h3><div class="table-wrap" data-vf="cm_meetings"></div></div>
+<div class="panel"><h3><i data-lucide="calendar"></i>Schedule a meeting</h3><div class="form-grid"><div class="field"><label>Title</label><input type="text" placeholder="Meeting title"></div><div class="field"><label>With vendor</label><select><option>Kalahari Logistics</option><option>Delta Civils and Plant Hire</option><option>Phoenix Scaffolding</option></select></div><div class="field"><label>Date and time</label><input type="datetime-local" placeholder=""></div><div class="field full"><label>Agenda</label><textarea rows="3" placeholder="What will be covered"></textarea></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="showToast('Schedule recorded in the prototype','check-circle')">Schedule</button></div></div></div>
+<div class="tab-panel" id="comms-tab-tasks" data-gen="1"><div class="panel"><h3><i data-lucide="check-square"></i>Tasks from conversations</h3><p style="font-size:13px;margin-bottom:10px">Tasks created from messages, meetings and surveys appear in the Task Centre.</p><button class="btn btn-primary btn-sm" onclick="showPage('tasks')">Open the Task Centre</button></div></div>
+<div class="tab-panel" id="comms-tab-tickets" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-orange"><div class="kpi-label">Open tickets</div><div class="kpi-val">3</div></div><div class="kpi accent-green"><div class="kpi-label">Average response</div><div class="kpi-val">3.2 h</div></div><div class="kpi accent-purple"><div class="kpi-label">Satisfaction</div><div class="kpi-val">94%</div></div><div class="kpi accent-blue"><div class="kpi-label">Waiting for vendor</div><div class="kpi-val">2</div></div></div>
+<div class="panel"><h3>Support tickets</h3><div class="table-wrap" data-vf="cm_tickets"></div></div></div>
+<div class="tab-panel" id="comms-tab-surveys" data-gen="1"><div class="panel"><h3>Surveys</h3><div class="table-wrap" data-vf="cm_surveys"></div></div>
+<div class="panel"><h3><i data-lucide="clipboard-list"></i>New survey</h3><div class="form-grid"><div class="field"><label>Title</label><input type="text" placeholder="Survey title"></div><div class="field"><label>Audience</label><select><option>All vendors</option><option>New vendors</option><option>Preferred vendors</option></select></div><div class="field full"><label>Questions</label><textarea rows="3" placeholder="One question per line"></textarea></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="showToast('Create survey recorded in the prototype','check-circle')">Create survey</button></div></div></div>
+<div class="tab-panel" id="comms-tab-plans" data-gen="1"><div class="panel"><h3><i data-lucide="target"></i>Improvement plans</h3><p style="font-size:13px;margin-bottom:10px">Improvement plans are managed in Performance. This tab lists the ones with open conversations.</p><button class="btn btn-primary btn-sm" onclick="showPage('perf')">Open Performance</button></div></div>
+<div class="tab-panel" id="comms-tab-share" data-gen="1"><div class="panel"><h3>Shared documents</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Files come from the shared document store, so a document shared here is the same record as in Document Management.</p><div class="table-wrap" data-vf="cm_share"></div></div></div>
+<div class="tab-panel" id="comms-tab-feed" data-gen="1"><div class="panel"><h3><i data-lucide="activity"></i>Activity feed</h3><div class="timeline"><div class="tl-item"><div class="tl-dot"><i data-lucide="message-square"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">Today 10:40</div><div class="tl-text">Kalahari Logistics replied on PO-8821</div><div class="tl-meta">Procurement</div></div></div><div class="tl-item"><div class="tl-dot"><i data-lucide="bell"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">Today 09:15</div><div class="tl-text">Announcement published: Q4 delivery calendar</div><div class="tl-meta">Procurement</div></div></div><div class="tl-item"><div class="tl-dot"><i data-lucide="clipboard-list"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">Yesterday</div><div class="tl-text">Survey SRV-12 opened to all vendors</div><div class="tl-meta">Procurement</div></div></div><div class="tl-item"><div class="tl-dot"><i data-lucide="life-buoy"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">2 days ago</div><div class="tl-text">Ticket TKT-908 opened by Northgate Office Supplies</div><div class="tl-meta">Finance</div></div></div></div></div></div></div>
 
       <!-- VENDOR PORTAL MAP -->
       

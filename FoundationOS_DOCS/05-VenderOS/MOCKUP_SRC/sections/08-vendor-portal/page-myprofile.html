@@ -5,14 +5,8 @@
           <div class="kpi accent-green"><div class="kpi-label">Onboarded</div><div class="kpi-val">14 mo</div></div>
           <div class="kpi accent-blue"><div class="kpi-label">Active Contacts</div><div class="kpi-val">2</div></div>
           <div class="kpi accent-orange"><div class="kpi-label">Profile Completeness</div><div class="kpi-val">96%</div></div>
-        </div>
-        <div class="tabs">
-          <div class="tab active" onclick="switchTab(this,'mp-overview')">Overview</div>
-          <div class="tab" onclick="switchTab(this,'mp-contacts')">Contacts</div>
-          <div class="tab" onclick="switchTab(this,'mp-banking')">Banking &amp; Tax</div>
-          <div class="tab" onclick="switchTab(this,'mp-passport')">Passport</div>
-          <div class="tab" onclick="switchTab(this,'mp-staff')">Staff Access</div>
-        </div>
+        </div><div class="tabs" data-gen-tabs="1"><div class="tab active" onclick="switchTab(this,'mp-overview')">Overview</div><div class="tab" onclick="switchTab(this,'mp-contacts')">Contacts</div><div class="tab" onclick="switchTab(this,'mp-banking')">Banking &amp; Tax</div><div class="tab" onclick="switchTab(this,'mp-passport')">Passport</div><div class="tab" onclick="switchTab(this,'mp-staff')">Staff Access</div><div class="tab" onclick="switchTab(this,'myprofile-tab-contracts')">Contracts</div></div>
+        
         <div class="tab-panel active" id="mp-overview"><div class="panel">
           <dl class="vf-fields">
             <div class="vf-f"><dt>Company</dt><dd>Kalahari Logistics (Pty) Ltd</dd></div>
@@ -58,7 +52,7 @@
           <p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">People at your company who can sign in to this portal. The primary contact controls this list.</p>
           <div class="table-wrap" data-vf="staff"></div>
         </div>
-      </div>
+      <div class="tab-panel" id="myprofile-tab-contracts" data-gen="1"><div class="panel"><h3><i data-lucide="file-text"></i>Your contracts</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Contracts you have with the buyer. Obligations and renewal dates are shown in the drawer.</p><div class="table-wrap" data-vf="contracts"></div></div></div></div>
 
       <!-- MY DOCUMENTS -->
       

@@ -1,6 +1,6 @@
 <div class="page" id="page-perf">
         <div class="page-header"><div><div class="page-title">Vendor Performance &amp; SLA</div><div class="page-sub">Continuous KPI, SLA and scorecard monitoring across the vendor base.</div></div></div>
-        <div class="edition-note flex-only"><i data-lucide="layers"></i><b>FLEX</b> shows KPI scorecards and vendor reviews. SLA breach analytics and continuous improvement tracking unlock in CORE.</div>
+        <div class="edition-note flex-only"><i data-lucide="layers"></i><b>FLEX</b> shows KPI scorecards and vendor reviews. SLA breach analytics and continuous improvement tracking unlock in CORE.</div><div class="tabs" data-gen-tabs="1"><div class="tab active" onclick="switchTab(this,'perf-dash')">Dashboard</div><div class="tab" onclick="switchTab(this,'perf-tab-score')">Scorecards</div><div class="tab" onclick="switchTab(this,'perf-tab-ratings')">Ratings</div><div class="tab" onclick="switchTab(this,'perf-tab-delivery')">Delivery</div><div class="tab" onclick="switchTab(this,'perf-tab-quality')">Quality</div><div class="tab" onclick="switchTab(this,'perf-tab-financial')">Financial</div><div class="tab" onclick="switchTab(this,'perf-tab-actions')">Corrective actions</div><div class="tab" onclick="switchTab(this,'perf-tab-plans')">Improvement plans</div><div class="tab" onclick="switchTab(this,'perf-tab-bench')">Benchmarking</div><div class="tab" onclick="switchTab(this,'perf-tab-trends')">Trends</div></div><div class="tab-panel active" id="perf-dash" data-gen-wrap="1">
         <div class="panel core-detail"><h3><i data-lucide="gauge"></i>Top &amp; Bottom Performers</h3><div class="table-wrap"><table><thead><tr><th>Vendor</th><th>Review period</th><th>Overall Score</th><th>Delivery</th><th>Quality</th><th>SLA</th><th>Responsiveness</th><th>Cost</th><th>HSE</th></tr></thead><tbody>
           <tr><td>Sable IT Networks</td><td>Q3 2026</td><td><span class="badge badge-green">96%</span></td><td>98%</td><td>94%</td><td>97%</td><td>95%</td><td>92%</td><td>99%</td></tr>
           <tr><td>Delta Civils &amp; Plant Hire</td><td>Q3 2026</td><td><span class="badge badge-red">61%</span></td><td>58%</td><td>65%</td><td>55%</td><td>63%</td><td>70%</td><td>48%</td></tr>
@@ -10,6 +10,130 @@
           <tr><td>Delta Civils &amp; Plant Hire</td><td>Q3 2026</td><td><span class="badge badge-red">61%</span></td></tr>
         </tbody></table></div></div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="tab-panel" id="perf-tab-score" data-gen="1"><div class="panel"><h3><i data-lucide="grid"></i>KPI scorecards</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Scores are the weighted KPIs set in Administration. Open a vendor for its full scorecard.</p><div class="table-wrap"><table><thead><tr><th></th><th>Delivery</th><th>Quality</th><th>Financial</th><th>Overall</th></tr></thead><tbody><tr><td><b>Kalahari Logistics</b></td><td><span class="badge badge-green">92%</span></td><td><span class="badge badge-green">88%</span></td><td><span class="badge badge-green">90%</span></td><td><span class="badge badge-green">90%</span></td></tr><tr><td><b>Sable IT Networks</b></td><td><span class="badge badge-green">85%</span></td><td><span class="badge badge-green">90%</span></td><td><span class="badge badge-green">88%</span></td><td><span class="badge badge-green">88%</span></td></tr><tr><td><b>Northgate Office Supplies</b></td><td><span class="badge badge-blue">78%</span></td><td><span class="badge badge-blue">80%</span></td><td><span class="badge badge-blue">82%</span></td><td><span class="badge badge-blue">80%</span></td></tr><tr><td><b>Phoenix Scaffolding</b></td><td><span class="badge badge-blue">70%</span></td><td><span class="badge badge-orange">65%</span></td><td><span class="badge badge-blue">72%</span></td><td><span class="badge badge-orange">69%</span></td></tr><tr><td><b>Delta Civils and Plant Hire</b></td><td><span class="badge badge-orange">58%</span></td><td><span class="badge badge-orange">62%</span></td><td><span class="badge badge-orange">55%</span></td><td><span class="badge badge-orange">58%</span></td></tr></tbody></table></div></div></div>
+<div class="tab-panel" id="perf-tab-ratings" data-gen="1"><div class="panel"><h3>Buyer ratings</h3><div class="table-wrap" data-vf="perf_ratings"></div></div></div>
+<div class="tab-panel" id="perf-tab-delivery" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-green"><div class="kpi-label">On-time delivery</div><div class="kpi-val">91%</div></div><div class="kpi accent-orange"><div class="kpi-label">Late deliveries</div><div class="kpi-val">14</div></div><div class="kpi accent-blue"><div class="kpi-label">Average delay</div><div class="kpi-val">1.8 d</div></div><div class="kpi accent-red"><div class="kpi-label">Short deliveries</div><div class="kpi-val">5</div></div></div>
+<div class="panel"><h3><i data-lucide="bar-chart-2"></i>On-time delivery by vendor</h3><div class="score-row"><span class="score-label">Kalahari Logistics</span><div class="prog-bar"><div class="prog-fill success" style="width:96%"></div></div><span class="score-val">96%</span></div><div class="score-row"><span class="score-label">Sable IT Networks</span><div class="prog-bar"><div class="prog-fill success" style="width:92%"></div></div><span class="score-val">92%</span></div><div class="score-row"><span class="score-label">Northgate Office Supplies</span><div class="prog-bar"><div class="prog-fill " style="width:84%"></div></div><span class="score-val">84%</span></div><div class="score-row"><span class="score-label">Phoenix Scaffolding</span><div class="prog-bar"><div class="prog-fill warning" style="width:71%"></div></div><span class="score-val">71%</span></div></div></div>
+<div class="tab-panel" id="perf-tab-quality" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-green"><div class="kpi-label">First-pass acceptance</div><div class="kpi-val">94%</div></div><div class="kpi accent-orange"><div class="kpi-label">Defect rate</div><div class="kpi-val">2.1%</div></div><div class="kpi accent-red"><div class="kpi-label">Returns</div><div class="kpi-val">7</div></div><div class="kpi accent-blue"><div class="kpi-label">Inspections</div><div class="kpi-val">58</div></div></div>
+<div class="panel"><h3><i data-lucide="bar-chart-2"></i>Acceptance at inspection</h3><div class="score-row"><span class="score-label">Kalahari Logistics</span><div class="prog-bar"><div class="prog-fill success" style="width:98%"></div></div><span class="score-val">98%</span></div><div class="score-row"><span class="score-label">Northgate Office Supplies</span><div class="prog-bar"><div class="prog-fill success" style="width:93%"></div></div><span class="score-val">93%</span></div><div class="score-row"><span class="score-label">Phoenix Scaffolding</span><div class="prog-bar"><div class="prog-fill warning" style="width:81%"></div></div><span class="score-val">81%</span></div><div class="score-row"><span class="score-label">Delta Civils and Plant Hire</span><div class="prog-bar"><div class="prog-fill danger" style="width:74%"></div></div><span class="score-val">74%</span></div></div></div>
+<div class="tab-panel" id="perf-tab-financial" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-green"><div class="kpi-label">Invoice accuracy</div><div class="kpi-val">97%</div></div><div class="kpi accent-red"><div class="kpi-label">Disputed invoices</div><div class="kpi-val">2</div></div><div class="kpi accent-purple"><div class="kpi-label">Early-payment discounts</div><div class="kpi-val">₦1.1m</div></div><div class="kpi accent-blue"><div class="kpi-label">Credit notes</div><div class="kpi-val">6</div></div></div>
+<div class="panel"><h3><i data-lucide="bar-chart-2"></i>Invoice accuracy</h3><div class="score-row"><span class="score-label">Kalahari Logistics</span><div class="prog-bar"><div class="prog-fill success" style="width:99%"></div></div><span class="score-val">99%</span></div><div class="score-row"><span class="score-label">Sable IT Networks</span><div class="prog-bar"><div class="prog-fill success" style="width:98%"></div></div><span class="score-val">98%</span></div><div class="score-row"><span class="score-label">Northgate Office Supplies</span><div class="prog-bar"><div class="prog-fill warning" style="width:92%"></div></div><span class="score-val">92%</span></div></div></div>
+<div class="tab-panel" id="perf-tab-actions" data-gen="1"><div class="panel"><h3><i data-lucide="wrench"></i>Corrective actions</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Corrective actions are CAPA records, shared with Risk and Compliance.</p><div class="table-wrap" data-vf="capa"></div></div></div>
+<div class="tab-panel" id="perf-tab-plans" data-gen="1"><div class="panel"><h3>Improvement plans</h3><div class="table-wrap" data-vf="perf_plans"></div></div>
+<div class="panel"><h3><i data-lucide="target"></i>Start an improvement plan</h3><div class="form-grid"><div class="field"><label>Vendor</label><select><option>Delta Civils and Plant Hire</option><option>Phoenix Scaffolding</option></select></div><div class="field full"><label>Goal</label><textarea rows="3" placeholder="What should improve, and by when"></textarea></div><div class="field"><label>Review date</label><input type="date" placeholder=""></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="showToast('Create plan recorded in the prototype','check-circle')">Create plan</button></div></div></div>
+<div class="tab-panel" id="perf-tab-bench" data-gen="1"><div class="panel"><h3><i data-lucide="bar-chart-2"></i>Overall score against category average</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Benchmarks compare a vendor with the average of its own category.</p><div class="score-row"><span class="score-label">Kalahari Logistics (90) vs transport 78</span><div class="prog-bar"><div class="prog-fill success" style="width:90%"></div></div><span class="score-val">90%</span></div><div class="score-row"><span class="score-label">Sable IT Networks (88) vs IT 80</span><div class="prog-bar"><div class="prog-fill success" style="width:88%"></div></div><span class="score-val">88%</span></div><div class="score-row"><span class="score-label">Delta Civils and Plant Hire (58) vs civils 72</span><div class="prog-bar"><div class="prog-fill danger" style="width:58%"></div></div><span class="score-val">58%</span></div></div></div>
+<div class="tab-panel" id="perf-tab-trends" data-gen="1"><div class="panel"><h3><i data-lucide="trending-up"></i>Overall score by month</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Falling scores for two months in a row raise a watch-list entry.</p><div class="table-wrap"><table><thead><tr><th></th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th></tr></thead><tbody><tr><td><b>Kalahari Logistics</b></td><td><span class="badge badge-green">86%</span></td><td><span class="badge badge-green">88%</span></td><td><span class="badge badge-green">89%</span></td><td><span class="badge badge-green">90%</span></td></tr><tr><td><b>Sable IT Networks</b></td><td><span class="badge badge-blue">84%</span></td><td><span class="badge badge-green">86%</span></td><td><span class="badge badge-green">87%</span></td><td><span class="badge badge-green">88%</span></td></tr><tr><td><b>Phoenix Scaffolding</b></td><td><span class="badge badge-blue">74%</span></td><td><span class="badge badge-blue">72%</span></td><td><span class="badge badge-blue">70%</span></td><td><span class="badge badge-orange">69%</span></td></tr><tr><td><b>Delta Civils and Plant Hire</b></td><td><span class="badge badge-orange">66%</span></td><td><span class="badge badge-orange">63%</span></td><td><span class="badge badge-orange">60%</span></td><td><span class="badge badge-orange">58%</span></td></tr></tbody></table></div></div></div></div>
 
       <!-- COMMS -->
       

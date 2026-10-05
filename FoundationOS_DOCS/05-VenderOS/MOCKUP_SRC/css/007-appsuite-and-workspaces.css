@@ -1,0 +1,22 @@
+/* ---------- AppSuite packages and workspace blocks ---------- */
+.pkg-sw{position:relative;display:inline-block;width:44px;height:24px}
+.pkg-sw input{opacity:0;width:0;height:0;position:absolute}
+.pkg-sw span{position:absolute;inset:0;background:var(--border);border-radius:99px;transition:background .2s;cursor:pointer}
+.pkg-sw span:before{content:"";position:absolute;left:3px;top:3px;width:18px;height:18px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.pkg-sw input:checked+span{background:var(--success)}
+.pkg-sw input:checked+span:before{transform:translateX(20px)}
+.pkg-sw input:disabled+span{opacity:.6;cursor:not-allowed}
+.pkg-sw input:focus-visible+span{outline:2px solid var(--primary);outline-offset:2px}
+body.vendor-mode #workspaceHealth{display:none}
+body.pkg-off-core [data-pkg="core"]{display:none!important}
+body.pkg-off-ccc [data-pkg="ccc"]{display:none!important}
+body.pkg-off-documents [data-pkg="documents"]{display:none!important}
+body.pkg-off-collaboration [data-pkg="collaboration"]{display:none!important}
+body.pkg-off-training [data-pkg="training"]{display:none!important}
+body.pkg-off-insights [data-pkg="insights"]{display:none!important}
+body.pkg-off-commerce [data-pkg="commerce"]{display:none!important}
+body.pkg-off-contracts [data-pkg="contracts"]{display:none!important}
+body.pkg-off-risk [data-pkg="risk"]{display:none!important}
+body.pkg-off-automation [data-pkg="automation"]{display:none!important}
+body.pkg-off-vendoros [data-pkg="vendoros"]{display:none!important}
+body.pkg-off-vendorportal [data-pkg="vendorportal"]{display:none!important}

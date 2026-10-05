@@ -262,24 +262,36 @@
       <button type="button" class="mob-btn" onclick="toggleDataMap()"><i data-lucide="database"></i>Data map</button>
     </div>
 
-    <div class="nav-section" data-section="vendorhub"><div class="nav-section-title" style="cursor:default">Supplier Portal</div><div class="nav-section-body">
-      <div class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')"><i data-lucide="layout-dashboard"></i><span class="nav-label">Home</span></div>
+    <div class="nav-section" data-section="vendorhub" data-pkg="vendorportal"><div class="nav-section-title" style="cursor:default">Supplier Portal</div><div class="nav-section-body">
+      <div class="nav-item active" data-page="myhome" onclick="showPage('myhome')"><i data-lucide="layout-dashboard"></i><span class="nav-label">Home</span></div>
       <div class="nav-item" data-page="myprofile" onclick="showPage('myprofile')"><i data-lucide="building-2"></i><span class="nav-label">Company &amp; Passport</span></div>
       <div class="nav-item" data-page="mydocuments" onclick="showPage('mydocuments')"><i data-lucide="folder"></i><span class="nav-label">Documents</span><span class="nav-count warn" id="navDocsCount">8</span></div>
       <div class="nav-item" data-page="myrfqpo" onclick="showPage('myrfqpo')"><i data-lucide="shopping-cart"></i><span class="nav-label">Orders &amp; RFQs</span><span class="nav-count">2</span></div>
       <div class="nav-item" data-page="myinvoices" onclick="showPage('myinvoices')"><i data-lucide="banknote"></i><span class="nav-label">Invoices &amp; Payments</span></div>
       <div class="nav-item" data-page="myhse" onclick="showPage('myhse')"><i data-lucide="graduation-cap"></i><span class="nav-label">Training &amp; HSE</span><span class="nav-count warn">1</span></div>
       <div class="nav-item" data-page="mycomms" onclick="showPage('mycomms')"><i data-lucide="message-square"></i><span class="nav-label">Communications</span><span class="nav-count">1</span></div>
+      <div class="nav-item" data-page="mynotifications" onclick="showPage('mynotifications')"><i data-lucide="bell"></i><span class="nav-label">Notifications</span></div>
       <div class="nav-item" data-page="requests" onclick="showPage('requests')"><i data-lucide="clipboard-check"></i><span class="nav-label">Requests</span></div>
       <div class="nav-item" data-page="support" onclick="showPage('support')"><i data-lucide="help-circle"></i><span class="nav-label">Help &amp; Support</span></div>
     </div></div>
     <div class="nav-section" data-section="dashboard">
       <div class="nav-item active" data-page="dashboard" data-tier="flex" onclick="navClick(this)"><i data-lucide="layout-dashboard"></i><span class="nav-label">Dashboard</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div data-pkg="collaboration" class="nav-item" data-page="tasks" data-tier="flex" onclick="navClick(this)"><i data-lucide="check-square"></i><span class="nav-label">Task Centre</span><span class="tier-chip flex" >F</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div data-pkg="collaboration" class="nav-item" data-page="calendar" data-tier="flex" onclick="navClick(this)"><i data-lucide="calendar"></i><span class="nav-label">Calendar</span><span class="tier-chip flex" >F</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div class="nav-item" data-page="profile" data-tier="flex" onclick="navClick(this)"><i data-lucide="user"></i><span class="nav-label">My Account</span><span class="tier-chip flex" >F</span><i data-lucide="lock" class="lock-ic"></i></div>
     </div>
 
     <div class="nav-section" data-section="vendor"><div class="nav-section-title" onclick="toggleSection(this)">Vendor Management<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-vendor">
 
-      <div class="nav-item" data-page="reg" data-tier="flex" onclick="navGroupClick(this,'g-reg')"><i data-lucide="user-plus"></i><span class="nav-label">Registration &amp; Onboarding</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-reg"></i></div>
+      <div data-pkg="vendoros" class="nav-item" data-page="vendors" data-tier="flex" onclick="navGroupClick(this,'g-vendors')"><i data-lucide="building-2"></i><span class="nav-label">Vendor Directory</span><span class="tier-chip flex" >F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-vendors"></i></div>
+      <div class="nav-sub-wrap" id="g-vendors"><div class="nav-sub">
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('vendors',{tab:'vendors-tab-all'})"><i data-lucide="chevron-right"></i><span class="nav-label">All vendors</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('vendors',{tab:'vendors-tab-cats'})"><i data-lucide="chevron-right"></i><span class="nav-label">Categories</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('vendors',{tab:'vendors-tab-preferred'})"><i data-lucide="chevron-right"></i><span class="nav-label">Preferred</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('vendors',{tab:'vendors-tab-blacklisted'})"><i data-lucide="chevron-right"></i><span class="nav-label">Blacklisted</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('vendors',{tab:'vendors-tab-archived'})"><i data-lucide="chevron-right"></i><span class="nav-label">Archived</span></div>
+      </div></div>
+      <div data-pkg="vendoros" class="nav-item" data-page="reg" data-tier="flex" onclick="navGroupClick(this,'g-reg')"><i data-lucide="user-plus"></i><span class="nav-label">Registration &amp; Onboarding</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-reg"></i></div>
       <div class="nav-sub-wrap" id="g-reg"><div class="nav-sub">
         <div class="nav-item" onclick="subNav('reg',{})"><i data-lucide="building-2"></i><span class="nav-label">Company Profile</span></div>
         <div class="nav-item" onclick="subNav('reg',{})"><i data-lucide="users"></i><span class="nav-label">Contacts &amp; Directors</span></div>
@@ -288,8 +300,7 @@
         <div class="nav-item" onclick="showPage('approval')"><i data-lucide="check-circle"></i><span class="nav-label">Approval</span></div>
         <div class="nav-item" onclick="subNav('passport',{})"><i data-lucide="badge-check"></i><span class="nav-label">Vendor Passport Issued</span></div>
       </div></div>
-
-      <div class="nav-item" data-page="passport" data-tier="flex" onclick="navGroupClick(this,'g-passport')"><i data-lucide="badge-check"></i><span class="nav-label">Vendor Passport 360</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron open" id="chev-g-passport"></i></div>
+      <div data-pkg="vendoros" class="nav-item" data-page="passport" data-tier="flex" onclick="navGroupClick(this,'g-passport')"><i data-lucide="badge-check"></i><span class="nav-label">Vendor Passport 360</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron open" id="chev-g-passport"></i></div>
       <div class="nav-sub-wrap open" id="g-passport"><div class="nav-sub">
         <div class="nav-item" onclick="subNav('passport',{tab:'vp-overview'})"><i data-lucide="building-2"></i><span class="nav-label">Overview</span></div>
 
@@ -305,16 +316,86 @@
         <div class="nav-item" onclick="subNav('passport',{tab:'vp-staff'})"><i data-lucide="users"></i><span class="nav-label">Staff Access (List/Card)</span></div>
         <div class="nav-item" onclick="subNav('passport',{tab:'vp-comms'})"><i data-lucide="message-square"></i><span class="nav-label">Communications</span></div>
         <div class="nav-item" onclick="subNav('passport',{tab:'vp-timeline'})"><i data-lucide="activity"></i><span class="nav-label">Timeline &amp; Activity Log</span></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('passport',{tab:'passport-tab-company'})"><i data-lucide="chevron-right"></i><span class="nav-label">Company</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('passport',{tab:'passport-tab-contacts'})"><i data-lucide="chevron-right"></i><span class="nav-label">Contacts</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('passport',{tab:'passport-tab-directors'})"><i data-lucide="chevron-right"></i><span class="nav-label">Directors</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('passport',{tab:'passport-tab-banking'})"><i data-lucide="chevron-right"></i><span class="nav-label">Banking</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('passport',{tab:'passport-tab-certs'})"><i data-lucide="chevron-right"></i><span class="nav-label">Certifications</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('passport',{tab:'passport-tab-insurance'})"><i data-lucide="chevron-right"></i><span class="nav-label">Insurance</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('passport',{tab:'passport-tab-products'})"><i data-lucide="chevron-right"></i><span class="nav-label">Products and services</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('passport',{tab:'passport-tab-branches'})"><i data-lucide="chevron-right"></i><span class="nav-label">Branches</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('passport',{tab:'passport-tab-notes'})"><i data-lucide="chevron-right"></i><span class="nav-label">Notes</span></div>
       </div></div>
-
-      <div class="nav-item" data-page="docs" data-tier="flex" onclick="navGroupClick(this,'g-docs')"><i data-lucide="folder"></i><span class="nav-label">Document Management</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-docs"></i></div>
+      <div data-pkg="documents" class="nav-item" data-page="docs" data-tier="flex" onclick="navGroupClick(this,'g-docs')"><i data-lucide="folder"></i><span class="nav-label">Document Management</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-docs"></i></div>
       <div class="nav-sub-wrap" id="g-docs"><div class="nav-sub">
         <div class="nav-item" onclick="subNav('docs',{target:'docs-queue',tier:'flex'})"><i data-lucide="list"></i><span class="nav-label">Document Queue</span></div>
         <div class="nav-item" onclick="subNav('docs',{tier:'flex'});setTimeout(function(){docWizardReset();openModal('docModal')},260)"><i data-lucide="plus"></i><span class="nav-label">Upload Document</span></div>
         <div class="nav-item" onclick="subNav('docs',{target:'docs-expiring',tier:'flex'})"><i data-lucide="clock"></i><span class="nav-label">Expiring Documents</span></div>
       </div></div>
-
-      <div class="nav-item" data-page="assessment" data-tier="flex" onclick="navGroupClick(this,'g-assess')"><i data-lucide="clipboard-check"></i><span class="nav-label">Supplier Assessment</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-assess"></i></div>
+      <div data-pkg="vendoros" class="nav-item" data-page="assessment" data-tier="flex" onclick="navGroupClick(this,'g-assess')"><i data-lucide="clipboard-check"></i><span class="nav-label">Supplier Assessment</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-assess"></i></div>
       <div class="nav-sub-wrap" id="g-assess"><div class="nav-sub">
         <div class="nav-item" onclick="subNav('assessment',{target:'sa-procurement',tier:'flex'})"><i data-lucide="shopping-cart"></i><span class="nav-label">Procurement</span></div>
         <div class="nav-item" onclick="subNav('assessment',{target:'sa-technical',tier:'flex'})"><i data-lucide="gauge"></i><span class="nav-label">Technical</span></div>
@@ -327,9 +408,397 @@
       </div></div>
     </div></div>
 
-    <div class="nav-section" data-section="hse"><div class="nav-section-title" onclick="toggleSection(this)">HSE &amp; Risk<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-hse">
+    <div class="nav-section" data-section="procurement"><div class="nav-section-title" onclick="toggleSection(this)">Procurement<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-procurement">
 
-      <div class="nav-item" data-page="hse" data-tier="flex" onclick="navGroupClick(this,'g-hse')"><i data-lucide="shield-check"></i><span class="nav-label">Induction &amp; Certification</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-hse"></i></div>
+      <div data-pkg="commerce" class="nav-item" data-page="procurement" data-tier="flex" onclick="navGroupClick(this,'g-proc')"><i data-lucide="shopping-cart"></i><span class="nav-label">Procurement Workspace</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-proc"></i></div>
+      <div class="nav-sub-wrap" id="g-proc"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('procurement',{tab:'proc-rfq'})"><i data-lucide="file-text"></i><span class="nav-label">RFQs</span></div>
+        <div class="nav-item" onclick="subNav('procurement',{tab:'proc-po'})"><i data-lucide="clipboard-check"></i><span class="nav-label">Purchase Orders</span></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-dash'})"><i data-lucide="chevron-right"></i><span class="nav-label">Dashboard</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-quotes'})"><i data-lucide="chevron-right"></i><span class="nav-label">Quotations</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-eval'})"><i data-lucide="chevron-right"></i><span class="nav-label">Evaluation</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-finrev'})"><i data-lucide="chevron-right"></i><span class="nav-label">Finance review</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-procrev'})"><i data-lucide="chevron-right"></i><span class="nav-label">Procurement review</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-rec'})"><i data-lucide="chevron-right"></i><span class="nav-label">Recommendation</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-appr'})"><i data-lucide="chevron-right"></i><span class="nav-label">Approval</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-awards'})"><i data-lucide="chevron-right"></i><span class="nav-label">Awards</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-contracts'})"><i data-lucide="chevron-right"></i><span class="nav-label">Contracts</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('procurement',{tab:'procurement-tab-reports'})"><i data-lucide="chevron-right"></i><span class="nav-label">Reports</span></div>
+      </div></div>
+      <div data-pkg="commerce" class="nav-item" data-page="warehouse" data-tier="flex" onclick="navClick(this)"><i data-lucide="hard-hat"></i><span class="nav-label">Warehouse &amp; Receiving</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div data-pkg="commerce" class="nav-item" data-page="finance" data-tier="flex" onclick="navGroupClick(this,'g-finance')"><i data-lucide="banknote"></i><span class="nav-label">Finance &amp; Payments</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-finance"></i></div>
+      <div class="nav-sub-wrap" id="g-finance"><div class="nav-sub">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('finance',{tab:'finance-tab-payments'})"><i data-lucide="chevron-right"></i><span class="nav-label">Payments</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('finance',{tab:'finance-tab-routing'})"><i data-lucide="chevron-right"></i><span class="nav-label">Approval routing</span></div>
+      </div></div>
+      <div data-pkg="commerce" class="nav-item" data-page="plusprocure" data-hide-roles="warehouse" data-tier="plus" onclick="navGroupClick(this,'g-plus')"><i data-lucide="rocket"></i><span class="nav-label">PLUS Procurement Hub</span><span class="tier-chip plus">P</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-plus"></i></div>
+      <div class="nav-sub-wrap" id="g-plus"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-demand',tier:'plus'})"><i data-lucide="line-chart"></i><span class="nav-label">Demand Planning</span></div>
+        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-sourcing',tier:'plus'})"><i data-lucide="shopping-cart"></i><span class="nav-label">Sourcing Events</span></div>
+        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-collab',tier:'plus'})"><i data-lucide="users"></i><span class="nav-label">Supplier Collaboration</span></div>
+        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-analytics',tier:'plus'})"><i data-lucide="bar-chart-3"></i><span class="nav-label">Analytics</span></div>
+      </div></div>
+    </div></div>
+
+    <div class="nav-section" data-section="risk"><div class="nav-section-title" onclick="toggleSection(this)">Risk &amp; Compliance<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-risk">
+
+      <div data-pkg="risk" class="nav-item" data-page="audit" data-tier="core" onclick="navGroupClick(this,'g-audit')"><i data-lucide="scale"></i><span class="nav-label">Audit &amp; Governance</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-audit"></i></div>
+      <div class="nav-sub-wrap" id="g-audit"><div class="nav-sub">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-dash'})"><i data-lucide="chevron-right"></i><span class="nav-label">Dashboard</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-reviews'})"><i data-lucide="chevron-right"></i><span class="nav-label">Compliance reviews</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-riskasm'})"><i data-lucide="chevron-right"></i><span class="nav-label">Risk assessments</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-inspect'})"><i data-lucide="chevron-right"></i><span class="nav-label">Site inspections</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-capa'})"><i data-lucide="chevron-right"></i><span class="nav-label">CAPA</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-esg'})"><i data-lucide="chevron-right"></i><span class="nav-label">ESG</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-scoring'})"><i data-lucide="chevron-right"></i><span class="nav-label">Vendor scoring</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-health'})"><i data-lucide="chevron-right"></i><span class="nav-label">Health score</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-renewals'})"><i data-lucide="chevron-right"></i><span class="nav-label">Renewals</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-expiring'})"><i data-lucide="chevron-right"></i><span class="nav-label">Expiring documents</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('audit',{tab:'audit-tab-reports'})"><i data-lucide="chevron-right"></i><span class="nav-label">Reports</span></div>
+      </div></div>
+      <div data-pkg="risk" class="nav-item" data-page="erm" data-tier="core" onclick="navGroupClick(this,'g-erm')"><i data-lucide="alert-triangle"></i><span class="nav-label">Enterprise Risk Mgmt</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-erm"></i></div>
+      <div class="nav-sub-wrap" id="g-erm"><div class="nav-sub">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('erm',{tab:'erm-tab-mitig'})"><i data-lucide="chevron-right"></i><span class="nav-label">Mitigations</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('erm',{tab:'erm-tab-hist'})"><i data-lucide="chevron-right"></i><span class="nav-label">History</span></div>
+      </div></div>
+    </div></div>
+
+    <div class="nav-section" data-section="contracts"><div class="nav-section-title" onclick="toggleSection(this)">Contracts &amp; Commercial<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-contracts">
+
+      <div data-pkg="contracts" class="nav-item" data-page="clm" data-hide-roles="warehouse" data-tier="core" onclick="navGroupClick(this,'g-clm')"><i data-lucide="file-text"></i><span class="nav-label">Contract Lifecycle Mgmt</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-clm"></i></div>
+      <div class="nav-sub-wrap" id="g-clm"><div class="nav-sub">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('clm',{tab:'clm-tab-dash'})"><i data-lucide="chevron-right"></i><span class="nav-label">Dashboard</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('clm',{tab:'clm-tab-templates'})"><i data-lucide="chevron-right"></i><span class="nav-label">Templates</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('clm',{tab:'clm-tab-pricing'})"><i data-lucide="chevron-right"></i><span class="nav-label">Pricing</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('clm',{tab:'clm-tab-terms'})"><i data-lucide="chevron-right"></i><span class="nav-label">Terms</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('clm',{tab:'clm-tab-slas'})"><i data-lucide="chevron-right"></i><span class="nav-label">SLAs</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('clm',{tab:'clm-tab-renewals'})"><i data-lucide="chevron-right"></i><span class="nav-label">Renewals</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('clm',{tab:'clm-tab-sign'})"><i data-lucide="chevron-right"></i><span class="nav-label">Digital signatures</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('clm',{tab:'clm-tab-spend'})"><i data-lucide="chevron-right"></i><span class="nav-label">Spend analysis</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('clm',{tab:'clm-tab-reports'})"><i data-lucide="chevron-right"></i><span class="nav-label">Reports</span></div>
+      </div></div>
+    </div></div>
+
+    <div class="nav-section" data-section="performance"><div class="nav-section-title" onclick="toggleSection(this)">Performance<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-performance">
+
+      <div data-pkg="insights" class="nav-item" data-page="perf" data-tier="flex" onclick="navGroupClick(this,'g-perf')"><i data-lucide="gauge"></i><span class="nav-label">Performance &amp; SLA</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-perf"></i></div>
+      <div class="nav-sub-wrap" id="g-perf"><div class="nav-sub">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('perf',{tab:'perf-tab-score'})"><i data-lucide="chevron-right"></i><span class="nav-label">Scorecards</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('perf',{tab:'perf-tab-ratings'})"><i data-lucide="chevron-right"></i><span class="nav-label">Ratings</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('perf',{tab:'perf-tab-delivery'})"><i data-lucide="chevron-right"></i><span class="nav-label">Delivery</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('perf',{tab:'perf-tab-quality'})"><i data-lucide="chevron-right"></i><span class="nav-label">Quality</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('perf',{tab:'perf-tab-financial'})"><i data-lucide="chevron-right"></i><span class="nav-label">Financial</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('perf',{tab:'perf-tab-actions'})"><i data-lucide="chevron-right"></i><span class="nav-label">Corrective actions</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('perf',{tab:'perf-tab-plans'})"><i data-lucide="chevron-right"></i><span class="nav-label">Improvement plans</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('perf',{tab:'perf-tab-bench'})"><i data-lucide="chevron-right"></i><span class="nav-label">Benchmarking</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('perf',{tab:'perf-tab-trends'})"><i data-lucide="chevron-right"></i><span class="nav-label">Trends</span></div>
+      </div></div>
+    </div></div>
+
+    <div class="nav-section" data-section="training"><div class="nav-section-title" onclick="toggleSection(this)">Training &amp; Competency<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-training">
+
+      <div data-pkg="training" class="nav-item" data-page="hse" data-tier="flex" onclick="navGroupClick(this,'g-hse')"><i data-lucide="shield-check"></i><span class="nav-label">Induction &amp; Certification</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-hse"></i></div>
       <div class="nav-sub-wrap" id="g-hse"><div class="nav-sub">
         <div class="nav-item" onclick="subNav('hse',{target:'hse-sitesafety',tier:'core'})"><i data-lucide="shield-check"></i><span class="nav-label">Site Safety Induction</span></div>
         <div class="nav-item" onclick="subNav('hse',{target:'hse-heights',tier:'core'})"><i data-lucide="hard-hat"></i><span class="nav-label">Working at Heights</span></div>
@@ -341,59 +810,166 @@
           <div class="nav-item" onclick="subNav('hse',{target:'hse-certtable',tier:'core'})"><i data-lucide="badge-check"></i><span class="nav-label">Kalahari Logistics</span></div>
           <div class="nav-item" onclick="subNav('hse',{target:'hse-certtable',tier:'core'})"><i data-lucide="alert-circle"></i><span class="nav-label">Delta Civils &amp; Plant Hire</span></div>
         </div></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('hse',{tab:'hse-tab-dash'})"><i data-lucide="chevron-right"></i><span class="nav-label">Dashboard</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('hse',{tab:'hse-tab-courses'})"><i data-lucide="chevron-right"></i><span class="nav-label">Courses</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('hse',{tab:'hse-tab-learn'})"><i data-lucide="chevron-right"></i><span class="nav-label">Learning centre</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('hse',{tab:'hse-tab-assess'})"><i data-lucide="chevron-right"></i><span class="nav-label">Assessments</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('hse',{tab:'hse-tab-matrix'})"><i data-lucide="chevron-right"></i><span class="nav-label">Competency matrix</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('hse',{tab:'hse-tab-certs'})"><i data-lucide="chevron-right"></i><span class="nav-label">Certificates</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('hse',{tab:'hse-tab-expiry'})"><i data-lucide="chevron-right"></i><span class="nav-label">Expiry tracking</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('hse',{tab:'hse-tab-reports'})"><i data-lucide="chevron-right"></i><span class="nav-label">Reports</span></div>
       </div></div>
-
-      <div class="nav-item" data-page="audit" data-tier="core" onclick="navClick(this)"><i data-lucide="scale"></i><span class="nav-label">Audit &amp; Governance</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i></div>
-      <div class="nav-item" data-page="erm" data-tier="core" onclick="navClick(this)"><i data-lucide="alert-triangle"></i><span class="nav-label">Enterprise Risk Mgmt</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i></div>
     </div></div>
 
-    <div class="nav-section" data-section="procurement"><div class="nav-section-title" onclick="toggleSection(this)">Procurement &amp; Contracts<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-procurement">
+    <div class="nav-section" data-section="comms"><div class="nav-section-title" onclick="toggleSection(this)">Communications<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-comms">
 
-      <div class="nav-item" data-page="procurement" data-tier="flex" onclick="navGroupClick(this,'g-proc')"><i data-lucide="shopping-cart"></i><span class="nav-label">Procurement Workspace</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-proc"></i></div>
-      <div class="nav-sub-wrap" id="g-proc"><div class="nav-sub">
-        <div class="nav-item" onclick="subNav('procurement',{tab:'proc-rfq'})"><i data-lucide="file-text"></i><span class="nav-label">RFQs</span></div>
-        <div class="nav-item" onclick="subNav('procurement',{tab:'proc-po'})"><i data-lucide="clipboard-check"></i><span class="nav-label">Purchase Orders</span></div>
+      <div data-pkg="collaboration" class="nav-item" data-page="comms" data-tier="flex" onclick="navGroupClick(this,'g-comms')"><i data-lucide="message-square"></i><span class="nav-label">Inbox &amp; Communications</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-comms"></i></div>
+      <div class="nav-sub-wrap" id="g-comms"><div class="nav-sub">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('comms',{tab:'comms-tab-dash'})"><i data-lucide="chevron-right"></i><span class="nav-label">Dashboard</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('comms',{tab:'comms-tab-meetings'})"><i data-lucide="chevron-right"></i><span class="nav-label">Meetings</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('comms',{tab:'comms-tab-tasks'})"><i data-lucide="chevron-right"></i><span class="nav-label">Tasks</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('comms',{tab:'comms-tab-tickets'})"><i data-lucide="chevron-right"></i><span class="nav-label">Support tickets</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('comms',{tab:'comms-tab-surveys'})"><i data-lucide="chevron-right"></i><span class="nav-label">Surveys</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('comms',{tab:'comms-tab-plans'})"><i data-lucide="chevron-right"></i><span class="nav-label">Improvement plans</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('comms',{tab:'comms-tab-share'})"><i data-lucide="chevron-right"></i><span class="nav-label">Document sharing</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('comms',{tab:'comms-tab-feed'})"><i data-lucide="chevron-right"></i><span class="nav-label">Activity feed</span></div>
       </div></div>
+      <div data-pkg="vendorportal" class="nav-item" data-page="selfservice" data-tier="flex" onclick="navClick(this)"><i data-lucide="users"></i><span class="nav-label">Vendor Portal (map &amp; preview)</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+    </div></div>
 
-      <div class="nav-item" data-page="clm" data-hide-roles="warehouse" data-tier="core" onclick="navClick(this)"><i data-lucide="file-text"></i><span class="nav-label">Contract Lifecycle Mgmt</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i></div>
-      <div class="nav-item" data-page="warehouse" data-tier="flex" onclick="navClick(this)"><i data-lucide="hard-hat"></i><span class="nav-label">Warehouse &amp; Receiving</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+    <div class="nav-section" data-section="reports"><div class="nav-section-title" onclick="toggleSection(this)">Reports &amp; BI<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-reports">
 
-      <div class="nav-item" data-page="plusprocure" data-hide-roles="warehouse" data-tier="plus" onclick="navGroupClick(this,'g-plus')"><i data-lucide="rocket"></i><span class="nav-label">PLUS Procurement Hub</span><span class="tier-chip plus">P</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-plus"></i></div>
-      <div class="nav-sub-wrap" id="g-plus"><div class="nav-sub">
-        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-demand',tier:'plus'})"><i data-lucide="line-chart"></i><span class="nav-label">Demand Planning</span></div>
-        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-sourcing',tier:'plus'})"><i data-lucide="shopping-cart"></i><span class="nav-label">Sourcing Events</span></div>
-        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-collab',tier:'plus'})"><i data-lucide="users"></i><span class="nav-label">Supplier Collaboration</span></div>
-        <div class="nav-item" onclick="subNav('plusprocure',{tab:'pp-analytics',tier:'plus'})"><i data-lucide="bar-chart-3"></i><span class="nav-label">Analytics</span></div>
+      <div data-pkg="insights" class="nav-item" data-page="reports" data-tier="core" onclick="navGroupClick(this,'g-reports')"><i data-lucide="bar-chart-2"></i><span class="nav-label">Reports &amp; BI</span><span class="tier-chip core" >C</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-reports"></i></div>
+      <div class="nav-sub-wrap" id="g-reports"><div class="nav-sub">
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-exec'})"><i data-lucide="chevron-right"></i><span class="nav-label">Executive</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-vendor'})"><i data-lucide="chevron-right"></i><span class="nav-label">Vendor</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-spend'})"><i data-lucide="chevron-right"></i><span class="nav-label">Spend</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-procurement'})"><i data-lucide="chevron-right"></i><span class="nav-label">Procurement</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-compliance'})"><i data-lucide="chevron-right"></i><span class="nav-label">Compliance</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-risk'})"><i data-lucide="chevron-right"></i><span class="nav-label">Risk</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-performance'})"><i data-lucide="chevron-right"></i><span class="nav-label">Performance</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-contracts'})"><i data-lucide="chevron-right"></i><span class="nav-label">Contract reports</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-sched'})"><i data-lucide="chevron-right"></i><span class="nav-label">Scheduled reports</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-export'})"><i data-lucide="chevron-right"></i><span class="nav-label">Export centre</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('reports',{tab:'reports-tab-bi'})"><i data-lucide="chevron-right"></i><span class="nav-label">BI analytics</span></div>
       </div></div>
     </div></div>
 
-    <div class="nav-section" data-section="financeperf"><div class="nav-section-title" onclick="toggleSection(this)">Finance &amp; Performance<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-financeperf">
-      <div class="nav-item" data-page="finance" data-tier="flex" onclick="navClick(this)"><i data-lucide="banknote"></i><span class="nav-label">Finance &amp; Payments</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
-      <div class="nav-item" data-page="perf" data-tier="flex" onclick="navClick(this)"><i data-lucide="gauge"></i><span class="nav-label">Performance &amp; SLA</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
-    </div></div>
+    <div class="nav-section" data-section="admin"><div class="nav-section-title" onclick="toggleSection(this)">Administration &amp; Platform<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-admin">
 
-    <div class="nav-section" data-section="collab"><div class="nav-section-title" onclick="toggleSection(this)">Collaboration<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-collab">
-      <div class="nav-item" data-page="comms" data-tier="flex" onclick="navClick(this)"><i data-lucide="message-square"></i><span class="nav-label">Inbox &amp; Communications</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
-
-      <div class="nav-item" data-page="selfservice" data-tier="flex" onclick="navClick(this)"><i data-lucide="users"></i><span class="nav-label">Vendor Portal (map &amp; preview)</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
-    </div></div>
-
-    <div class="nav-section" data-section="automation"><div class="nav-section-title" onclick="toggleSection(this)">Automation &amp; Platform<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-automation">
-
-      <div class="nav-item" data-page="workflow" data-tier="flex" onclick="navGroupClick(this,'g-wf')"><i data-lucide="workflow"></i><span class="nav-label">Workflow Automation</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-wf"></i></div>
-      <div class="nav-sub-wrap" id="g-wf"><div class="nav-sub">
-        <div class="nav-item" onclick="subNav('workflow',{tab:'wf-rules',tier:'flex'})"><i data-lucide="zap"></i><span class="nav-label">Automation Rules</span></div>
-        <div class="nav-item" onclick="subNav('workflow',{tab:'wf-kanban',tier:'flex'})"><i data-lucide="layout-template"></i><span class="nav-label">Vendor Lifecycle Kanban</span></div>
-      </div></div>
-
-      <div class="nav-item" data-page="integration" data-tier="core" onclick="navClick(this)"><i data-lucide="plug"></i><span class="nav-label">Integration Hub &amp; API</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i></div>
-      <div class="nav-item" data-page="ai" data-tier="platform" onclick="navClick(this)"><i data-lucide="bot"></i><span class="nav-label">AI Copilot</span><span class="tier-chip platform" title="Platform extension (all editions)">S</span><i data-lucide="lock" class="lock-ic"></i></div>
-      <div class="nav-item" data-page="builder" data-tier="platform" onclick="navClick(this)"><i data-lucide="layout-template"></i><span class="nav-label">Dynamic Form Builder</span><span class="tier-chip platform" title="Platform extension (all editions)">S</span><i data-lucide="lock" class="lock-ic"></i></div>
-    </div></div>
-
-    <div class="nav-section" data-section="admin"><div class="nav-section-title" onclick="toggleSection(this)">Administration<i data-lucide="chevron-right" class="sec-chev"></i></div><div class="nav-section-body" id="secbody-admin">
-
-      <div class="nav-item" data-page="ccc" data-tier="flex" onclick="navGroupClick(this,'g-ccc')"><i data-lucide="contact"></i><span class="nav-label">Contact Control Center</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-ccc"></i></div>
+      <div data-pkg="ccc" class="nav-item" data-page="ccc" data-tier="flex" onclick="navGroupClick(this,'g-ccc')"><i data-lucide="contact"></i><span class="nav-label">Contact Control Center</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-ccc"></i></div>
       <div class="nav-sub-wrap" id="g-ccc"><div class="nav-sub">
         <div class="nav-item" onclick="subNav('ccc',{tab:'cc-dash'})"><i data-lucide="chevron-right"></i><span class="nav-label">Dashboard</span></div>
         <div class="nav-item" onclick="subNav('ccc',{tab:'cc-dir'})"><i data-lucide="chevron-right"></i><span class="nav-label">Directory</span></div>
@@ -407,23 +983,50 @@
         <div class="nav-item" onclick="subNav('ccc',{tab:'cc-users'})"><i data-lucide="chevron-right"></i><span class="nav-label">Users and access</span></div>
         <div class="nav-item" onclick="subNav('ccc',{tab:'cc-cmp'})"><i data-lucide="chevron-right"></i><span class="nav-label">Compare</span></div>
       </div></div>
-
-      <div class="nav-item" data-page="admin" data-tier="flex" onclick="navGroupClick(this,'g-admin')"><i data-lucide="settings"></i><span class="nav-label">System Configuration</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-admin"></i></div>
+      <div data-pkg="core" class="nav-item" data-page="admin" data-tier="flex" onclick="navGroupClick(this,'g-admin')"><i data-lucide="settings"></i><span class="nav-label">System Configuration</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-admin"></i></div>
       <div class="nav-sub-wrap" id="g-admin"><div class="nav-sub">
         <div class="nav-item" onclick="subNav('admin',{})"><i data-lucide="users"></i><span class="nav-label">Users</span></div>
         <div class="nav-item" onclick="subNav('admin',{target:'admin-roles'})"><i data-lucide="shield"></i><span class="nav-label">Roles &amp; Permissions</span></div>
         <div class="nav-item" onclick="subNav('admin',{target:'admin-bu',tier:'core',label:'Business Units'})"><i data-lucide="building-2"></i><span class="nav-label">Business Units</span></div>
       </div></div>
-
-      <div class="nav-item" data-page="editions" data-tier="flex" onclick="navClick(this)"><i data-lucide="layers"></i><span class="nav-label">Editions &amp; Licensing</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
-      <div class="nav-item" data-page="role-guide" data-tier="flex" onclick="navClick(this)"><i data-lucide="users"></i><span class="nav-label">Role &amp; Menu Guide</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
-
+      <div class="nav-item" data-page="appsuite" data-tier="flex" onclick="navGroupClick(this,'g-appsuite')"><i data-lucide="layers"></i><span class="nav-label">AppSuite</span><span class="tier-chip flex" >F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-appsuite"></i></div>
+      <div class="nav-sub-wrap" id="g-appsuite"><div class="nav-sub">
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('appsuite',{tab:'appsuite-tab-packages'})"><i data-lucide="chevron-right"></i><span class="nav-label">Packages</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('appsuite',{tab:'appsuite-tab-engines'})"><i data-lucide="chevron-right"></i><span class="nav-label">Shared apps</span></div>
+        <div data-gen-sub="1" class="nav-item" onclick="subNav('appsuite',{tab:'appsuite-tab-install'})"><i data-lucide="chevron-right"></i><span class="nav-label">Install</span></div>
+      </div></div>
+      <div data-pkg="core" class="nav-item" data-page="editions" data-tier="flex" onclick="navClick(this)"><i data-lucide="layers"></i><span class="nav-label">Editions &amp; Licensing</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div data-pkg="core" class="nav-item" data-page="role-guide" data-tier="flex" onclick="navClick(this)"><i data-lucide="users"></i><span class="nav-label">Role &amp; Menu Guide</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div data-pkg="automation" class="nav-item" data-page="workflow" data-tier="flex" onclick="navGroupClick(this,'g-wf')"><i data-lucide="workflow"></i><span class="nav-label">Workflow Automation</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-wf"></i></div>
+      <div class="nav-sub-wrap" id="g-wf"><div class="nav-sub">
+        <div class="nav-item" onclick="subNav('workflow',{tab:'wf-rules',tier:'flex'})"><i data-lucide="zap"></i><span class="nav-label">Automation Rules</span></div>
+        <div class="nav-item" onclick="subNav('workflow',{tab:'wf-kanban',tier:'flex'})"><i data-lucide="layout-template"></i><span class="nav-label">Vendor Lifecycle Kanban</span></div>
+      </div></div>
+      <div data-pkg="automation" class="nav-item" data-page="integration" data-tier="core" onclick="navClick(this)"><i data-lucide="plug"></i><span class="nav-label">Integration Hub &amp; API</span><span class="tier-chip core">C</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div data-pkg="automation" class="nav-item" data-page="ai" data-tier="platform" onclick="navClick(this)"><i data-lucide="bot"></i><span class="nav-label">AI Copilot</span><span class="tier-chip platform" title="Platform extension (all editions)">S</span><i data-lucide="lock" class="lock-ic"></i></div>
+      <div data-pkg="automation" class="nav-item" data-page="builder" data-tier="platform" onclick="navClick(this)"><i data-lucide="layout-template"></i><span class="nav-label">Dynamic Form Builder</span><span class="tier-chip platform" title="Platform extension (all editions)">S</span><i data-lucide="lock" class="lock-ic"></i></div>
       <div class="nav-item" data-page="prd" data-tier="flex" onclick="navGroupClick(this,'g-help')"><i data-lucide="help-circle"></i><span class="nav-label">Help &amp; Support</span><span class="tier-chip flex">F</span><i data-lucide="lock" class="lock-ic"></i><i data-lucide="chevron-right" class="nav-chevron" id="chev-g-help"></i></div>
       <div class="nav-sub-wrap open" id="g-help"><div class="nav-sub">
         <div class="nav-item" onclick="subNav('prd',{})"><i data-lucide="file-text"></i><span class="nav-label">PRD — Full Specification</span></div>
         <div class="nav-item" onclick="subNav('support',{})"><i data-lucide="message-square"></i><span class="nav-label">Support</span></div>
       </div></div>
     </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </aside>
 

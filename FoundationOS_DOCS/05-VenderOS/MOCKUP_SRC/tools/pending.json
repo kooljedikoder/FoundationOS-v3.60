@@ -1,0 +1,827 @@
+[
+ {
+  "key": "00-dashboard",
+  "name": "Dashboard",
+  "num": "-",
+  "pages": [
+   [
+    "Executive overview and KPIs",
+    "Built",
+    "role dashboards with KPI cards"
+   ],
+   [
+    "Vendor health",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Spend",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Compliance",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Risk",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Activity",
+    "Built",
+    "Recent Activity"
+   ],
+   [
+    "Tasks",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Watch list",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ]
+  ],
+  "tabs": [
+   [
+    "Dashboard has no tabs in the PRD; role switch is the only selector",
+    "Built",
+    ""
+   ]
+  ]
+ },
+ {
+  "key": "01-vendor-management",
+  "name": "Vendor Management",
+  "num": "1",
+  "pages": [
+   [
+    "Vendor Directory",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Vendor Passport 360",
+    "Built",
+    ""
+   ],
+   [
+    "New Vendor wizard",
+    "Built",
+    "13 steps, opens from New Vendor"
+   ],
+   [
+    "Registration and onboarding",
+    "Built",
+    ""
+   ],
+   [
+    "Approval",
+    "Built",
+    "queue, chain, history"
+   ],
+   [
+    "Vendor categories view",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Preferred vendors view",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Blacklisted vendors view",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Archived vendors view",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Document Management",
+    "Partial",
+    "built, but the PRD tree has no page for it; kept under Vendor Management until decided"
+   ],
+   [
+    "Supplier Assessment",
+    "Partial",
+    "built, but the PRD tree has no page for it; kept under Vendor Management until decided"
+   ]
+  ],
+  "tabs": [
+   [
+    "Passport: Overview",
+    "Built",
+    ""
+   ],
+   [
+    "Passport: Documents",
+    "Built",
+    ""
+   ],
+   [
+    "Passport: Performance",
+    "Built",
+    ""
+   ],
+   [
+    "Passport: Contracts",
+    "Built",
+    ""
+   ],
+   [
+    "Passport: Communications",
+    "Built",
+    ""
+   ],
+   [
+    "Passport: Timeline and Activity Log",
+    "Built",
+    ""
+   ],
+   [
+    "Passport: Staff Access",
+    "Built",
+    "not in the PRD tab list, keep"
+   ],
+   [
+    "Passport: Company",
+    "Built",
+    "built"
+   ],
+   [
+    "Passport: Contacts",
+    "Built",
+    "built"
+   ],
+   [
+    "Passport: Directors",
+    "Built",
+    "built"
+   ],
+   [
+    "Passport: Banking",
+    "Built",
+    "built"
+   ],
+   [
+    "Passport: Tax",
+    "Built",
+    "built"
+   ],
+   [
+    "Passport: Certifications",
+    "Built",
+    "built"
+   ],
+   [
+    "Passport: Insurance",
+    "Built",
+    "built"
+   ],
+   [
+    "Passport: Products and Services",
+    "Built",
+    "built"
+   ],
+   [
+    "Passport: Branches",
+    "Built",
+    "built"
+   ],
+   [
+    "Passport: Notes",
+    "Built",
+    "built"
+   ]
+  ]
+ },
+ {
+  "key": "02-procurement",
+  "name": "Procurement",
+  "num": "2",
+  "pages": [
+   [
+    "Procurement dashboard",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "RFQs",
+    "Built",
+    "tab"
+   ],
+   [
+    "Purchase Orders",
+    "Built",
+    "tab"
+   ],
+   [
+    "Deliveries and inspection",
+    "Built",
+    "tab, plus Warehouse and Receiving page"
+   ],
+   [
+    "Quotations",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Bid, technical and commercial evaluation",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Finance review",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Procurement review",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Recommendation",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Approval",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Awards",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Contracts (from awards)",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Reports",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Finance and Payments",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "PLUS Procurement Hub",
+    "Built",
+    "PLUS edition"
+   ]
+  ],
+  "tabs": [
+   [
+    "Hub: Demand Planning, Sourcing Events, Supplier Collaboration, Analytics",
+    "Built",
+    ""
+   ],
+   [
+    "Warehouse: Receiving Workflow, Delivery Notes Archive, Expected Deliveries",
+    "Built",
+    ""
+   ],
+   [
+    "Finance and Payments: Invoices, Payments, Approval routing",
+    "Built",
+    "built"
+   ]
+  ]
+ },
+ {
+  "key": "03-risk-compliance",
+  "name": "Risk and Compliance",
+  "num": "3",
+  "pages": [
+   [
+    "Risk and Compliance dashboard",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Compliance reviews",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Risk assessments (risk register)",
+    "Built",
+    "page Enterprise Risk Management"
+   ],
+   [
+    "Site inspections",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Audits",
+    "Built",
+    "page Audit and Governance, audit plan"
+   ],
+   [
+    "CAPA",
+    "Built",
+    "panel on the Audit page"
+   ],
+   [
+    "ESG",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Vendor scoring",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Health score",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Renewals",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Expiring documents",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Reports",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ]
+  ],
+  "tabs": [
+   [
+    "Audit page: Findings, CAPA, Audit plan",
+    "Built",
+    "built"
+   ],
+   [
+    "Risk page: Register, Mitigations, History",
+    "Built",
+    "built"
+   ]
+  ]
+ },
+ {
+  "key": "04-contracts-commercial",
+  "name": "Contracts and Commercial",
+  "num": "4",
+  "pages": [
+   [
+    "Contracts dashboard",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Contracts register",
+    "Built",
+    ""
+   ],
+   [
+    "Obligations and renewals",
+    "Built",
+    "panel"
+   ],
+   [
+    "Templates",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Pricing",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Terms",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "SLAs",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Digital signatures",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Spend analysis",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Reports",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ]
+  ],
+  "tabs": [
+   [
+    "Contracts: Register, Obligations, Renewals, Documents",
+    "Built",
+    "built"
+   ]
+  ]
+ },
+ {
+  "key": "05-performance",
+  "name": "Performance",
+  "num": "5",
+  "pages": [
+   [
+    "Performance dashboard",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "KPI scorecards",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Ratings",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Delivery performance",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Quality performance",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Financial performance",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Corrective actions",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Improvement plans",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Benchmarking",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Trends",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ]
+  ],
+  "tabs": [
+   [
+    "Performance: Dashboard, Scorecards, Ratings, Delivery, Quality, Financial, Actions, Plans, Benchmarking, Trends",
+    "Built",
+    "built"
+   ]
+  ]
+ },
+ {
+  "key": "06-training-competency",
+  "name": "Training and Competency",
+  "num": "6",
+  "pages": [
+   [
+    "Training dashboard",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Courses",
+    "Built",
+    "panel on the Induction page"
+   ],
+   [
+    "Learning centre",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Induction",
+    "Built",
+    "three courses and the test"
+   ],
+   [
+    "Assessments",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Competency matrix",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Certificates",
+    "Built",
+    "Certification Register"
+   ],
+   [
+    "Expiry tracking",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Reports",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ]
+  ],
+  "tabs": [
+   [
+    "Training: Dashboard, Courses, Learning Centre, Induction, Assessments, Matrix, Certificates, Expiry",
+    "Built",
+    "built"
+   ]
+  ]
+ },
+ {
+  "key": "07-communications",
+  "name": "Communications",
+  "num": "7",
+  "pages": [
+   [
+    "Communications dashboard",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Messages",
+    "Built",
+    "Unified Inbox, Direct Messages"
+   ],
+   [
+    "Announcements",
+    "Built",
+    "tab"
+   ],
+   [
+    "Meetings",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Tasks",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Support tickets",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Surveys",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Improvement plans",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Document sharing",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Activity feed",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Vendor portal preview (map and journey)",
+    "Built",
+    "page selfservice"
+   ]
+  ],
+  "tabs": [
+   [
+    "Inbox: Unified, Direct, Email, WhatsApp, Announcements, Alerts",
+    "Built",
+    ""
+   ],
+   [
+    "Inbox: Meetings, Tasks, Surveys, Documents, Feed",
+    "Built",
+    "built"
+   ]
+  ]
+ },
+ {
+  "key": "08-vendor-portal",
+  "name": "Vendor Portal",
+  "num": "8",
+  "pages": [
+   [
+    "Home",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Company and Passport (profile)",
+    "Built",
+    ""
+   ],
+   [
+    "Documents",
+    "Built",
+    ""
+   ],
+   [
+    "Contracts",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Orders and RFQs",
+    "Built",
+    ""
+   ],
+   [
+    "Invoices and Payments",
+    "Built",
+    ""
+   ],
+   [
+    "Training and HSE",
+    "Built",
+    ""
+   ],
+   [
+    "Requests",
+    "Built",
+    ""
+   ],
+   [
+    "Communications",
+    "Built",
+    "no tabs yet"
+   ],
+   [
+    "Help and Support",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Notifications",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ]
+  ],
+  "tabs": [
+   [
+    "Company and Passport: Overview, Contacts, Banking and Tax, Passport, Staff Access",
+    "Built",
+    ""
+   ],
+   [
+    "Documents: All, Company, Tax and Banking, Identity and Forms, Commercial and Certifications",
+    "Built",
+    ""
+   ],
+   [
+    "Orders: RFQs, Purchase Orders, Deliveries",
+    "Built",
+    ""
+   ],
+   [
+    "Invoices: All, Outstanding, Paid",
+    "Built",
+    ""
+   ],
+   [
+    "Training: Courses, Certificates, Induction",
+    "Built",
+    ""
+   ],
+   [
+    "Requests: New request, My requests",
+    "Built",
+    ""
+   ],
+   [
+    "Home: Journey, Action items, Activity",
+    "Built",
+    "built"
+   ],
+   [
+    "Communications: Messages, Announcements, Alerts",
+    "Built",
+    "built"
+   ],
+   [
+    "Help and Support: Chat, Email, Knowledge base",
+    "Built",
+    "built"
+   ],
+   [
+    "Contracts tab inside Company and Passport",
+    "Built",
+    "built"
+   ]
+  ]
+ },
+ {
+  "key": "09-reports-bi",
+  "name": "Reports and BI",
+  "num": "9",
+  "pages": [
+   [
+    "Executive report",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Vendor report",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Spend report",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Procurement report",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Compliance report",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Risk report",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Performance report",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Contract reports",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Scheduled reports",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "Export centre",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ],
+   [
+    "BI analytics",
+    "Built",
+    "built as a tab or page (generated from tools/specs)"
+   ]
+  ],
+  "tabs": [
+   [
+    "Whole workspace",
+    "Built",
+    "built"
+   ]
+  ]
+ }
+]

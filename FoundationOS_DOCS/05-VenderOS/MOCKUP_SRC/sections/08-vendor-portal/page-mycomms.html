@@ -5,7 +5,7 @@
           <div class="kpi accent-blue"><div class="kpi-label">Active Threads</div><div class="kpi-val">1</div></div>
           <div class="kpi accent-orange"><div class="kpi-label">Announcements</div><div class="kpi-val">2</div></div>
           <div class="kpi accent-red"><div class="kpi-label">Alerts</div><div class="kpi-val">1</div></div>
-        </div>
+        </div><div class="tabs" data-gen-tabs="1"><div class="tab active" onclick="switchTab(this,'mc-messages')">Messages</div><div class="tab" onclick="switchTab(this,'mycomms-tab-news')">Announcements</div><div class="tab" onclick="switchTab(this,'mycomms-tab-alerts')">Alerts</div></div><div class="tab-panel active" id="mc-messages" data-gen-wrap="1">
         <div class="panel" style="background:linear-gradient(135deg,var(--p50),var(--surface));border-color:var(--p200)">
           <h3><i data-lucide="sparkles" style="color:var(--primary)"></i>AI Summary</h3>
           <p style="font-size:13px;color:var(--text-2);line-height:1.7">Compliance is waiting on your insurance certificate renewal — that's the one item needing action. Everything else (HSE policy update, portal maintenance notice) is informational only.</p>
@@ -41,6 +41,21 @@
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="tab-panel" id="mycomms-tab-news" data-gen="1"><div class="panel"><h3>Announcements</h3><div class="table-wrap" data-vf="mc_news"></div></div></div>
+<div class="tab-panel" id="mycomms-tab-alerts" data-gen="1"><div class="panel"><h3>Alerts</h3><div class="table-wrap" data-vf="mc_alerts"></div></div></div></div>
 
       <!-- INVOICES & PAYMENTS -->
       

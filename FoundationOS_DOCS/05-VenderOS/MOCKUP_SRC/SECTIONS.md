@@ -26,19 +26,19 @@ The 45-stage Registration and Onboarding journey and similar processes. Four-pan
 
 | # | Workspace | Folder | Parts | Size |
 |---|---|---|---|---|
-| - | Dashboard | `sections/00-dashboard/` | 1 | 12 KB |
-| 1 | Vendor Management | `sections/01-vendor-management/` | 5 | 23 KB |
-| 2 | Procurement | `sections/02-procurement/` | 4 | 23 KB |
-| 3 | Risk and Compliance | `sections/03-risk-compliance/` | 2 | 4 KB |
-| 4 | Contracts and Commercial | `sections/04-contracts-commercial/` | 1 | 2 KB |
-| 5 | Performance | `sections/05-performance/` | 1 | 2 KB |
-| 6 | Training and Competency | `sections/06-training-competency/` | 1 | 5 KB |
-| 7 | Communications | `sections/07-communications/` | 2 | 16 KB |
-| 8 | Vendor Portal | `sections/08-vendor-portal/` | 7 | 20 KB |
-| 9 | Reports and BI | `sections/09-reports-bi/` | none yet | - |
-| - | Administration | `sections/10-administration/` | 7 | 34 KB |
+| - | Dashboard | `sections/00-dashboard/` | 4 | 24 KB |
+| 1 | Vendor Management | `sections/01-vendor-management/` | 6 | 35 KB |
+| 2 | Procurement | `sections/02-procurement/` | 4 | 38 KB |
+| 3 | Risk and Compliance | `sections/03-risk-compliance/` | 2 | 16 KB |
+| 4 | Contracts and Commercial | `sections/04-contracts-commercial/` | 1 | 11 KB |
+| 5 | Performance | `sections/05-performance/` | 1 | 12 KB |
+| 6 | Training and Competency | `sections/06-training-competency/` | 1 | 15 KB |
+| 7 | Communications | `sections/07-communications/` | 2 | 23 KB |
+| 8 | Vendor Portal | `sections/08-vendor-portal/` | 9 | 27 KB |
+| 9 | Reports and BI | `sections/09-reports-bi/` | 1 | 22 KB |
+| - | Administration | `sections/10-administration/` | 8 | 52 KB |
 | - | Contact Control Center (FOS module) | `sections/11-contact-control-center/` | 13 | 334 KB |
-| - | Specification and Support | `sections/12-spec-docs/` | 38 | 412 KB |
+| - | Specification and Support | `sections/12-spec-docs/` | 38 | 414 KB |
 
 ---
 
@@ -68,11 +68,11 @@ The 45-stage Registration and Onboarding journey and similar processes. Four-pan
 
 | Menu entry | Page | Edition | Submenu and tabs |
 |---|---|---|---|
-| Registration & Onboarding | `reg` | FLEX | Company Profile, Contacts & Directors, Document Upload, Assessment Scoring, Approval, Vendor Passport Issued |
+| reg | `reg` | - | - |
 | approval | `approval` | - | - |
-| Vendor Passport 360 | `passport` | FLEX | Overview, Documents, Certificate of Incorporation, Insurance, Tax Clearance, Performance, Contracts, Staff Access (List/Card), Communications, Timeline & Activity Log |
-| Document Management | `docs` | FLEX | Document Queue (FLEX), Upload Document (FLEX), Expiring Documents (FLEX) |
-| Supplier Assessment | `assessment` | FLEX | Procurement (FLEX), Technical (FLEX), Finance (FLEX), Legal (FLEX), Compliance (FLEX), HSE (FLEX), ESG (CORE), Information Security (FLEX) |
+| passport | `passport` | - | - |
+| docs | `docs` | - | - |
+| assessment | `assessment` | - | - |
 
 ---
 
@@ -87,10 +87,10 @@ The 45-stage Registration and Onboarding journey and similar processes. Four-pan
 
 | Menu entry | Page | Edition | Submenu and tabs |
 |---|---|---|---|
-| Procurement Workspace | `procurement` | FLEX | RFQs, Purchase Orders |
-| Warehouse & Receiving | `warehouse` | FLEX | - |
-| PLUS Procurement Hub | `plusprocure` | PLUS | Demand Planning (PLUS), Sourcing Events (PLUS), Supplier Collaboration (PLUS), Analytics (PLUS) |
-| Finance & Payments | `finance` | FLEX | - |
+| procurement | `procurement` | - | - |
+| warehouse | `warehouse` | - | - |
+| plusprocure | `plusprocure` | - | - |
+| finance | `finance` | - | - |
 
 ---
 
@@ -105,8 +105,8 @@ The 45-stage Registration and Onboarding journey and similar processes. Four-pan
 
 | Menu entry | Page | Edition | Submenu and tabs |
 |---|---|---|---|
-| Audit & Governance | `audit` | CORE | - |
-| Enterprise Risk Mgmt | `erm` | CORE | - |
+| audit | `audit` | - | - |
+| erm | `erm` | - | - |
 
 ---
 
@@ -121,7 +121,7 @@ The 45-stage Registration and Onboarding journey and similar processes. Four-pan
 
 | Menu entry | Page | Edition | Submenu and tabs |
 |---|---|---|---|
-| Contract Lifecycle Mgmt | `clm` | CORE | - |
+| clm | `clm` | - | - |
 
 ---
 
@@ -136,7 +136,7 @@ The 45-stage Registration and Onboarding journey and similar processes. Four-pan
 
 | Menu entry | Page | Edition | Submenu and tabs |
 |---|---|---|---|
-| Performance & SLA | `perf` | FLEX | - |
+| perf | `perf` | - | - |
 
 ---
 
@@ -151,7 +151,7 @@ The 45-stage Registration and Onboarding journey and similar processes. Four-pan
 
 | Menu entry | Page | Edition | Submenu and tabs |
 |---|---|---|---|
-| Induction & Certification | `hse` | FLEX | Site Safety Induction (CORE), Working at Heights (CORE), Hot Work Permit (CORE), Take Certification Test (CORE), Certification Register, Kalahari Logistics (CORE), Delta Civils & Plant Hire (CORE) |
+| hse | `hse` | - | - |
 
 ---
 
@@ -166,8 +166,8 @@ The 45-stage Registration and Onboarding journey and similar processes. Four-pan
 
 | Menu entry | Page | Edition | Submenu and tabs |
 |---|---|---|---|
-| Inbox & Communications | `comms` | FLEX | - |
-| Vendor Portal (map & preview) | `selfservice` | FLEX | - |
+| comms | `comms` | - | - |
+| selfservice | `selfservice` | - | - |
 
 ---
 
@@ -216,13 +216,13 @@ The 45-stage Registration and Onboarding journey and similar processes. Four-pan
 
 | Menu entry | Page | Edition | Submenu and tabs |
 |---|---|---|---|
-| System Configuration | `admin` | FLEX | Users, Roles & Permissions, Business Units (CORE) |
-| Editions & Licensing | `editions` | FLEX | - |
-| Role & Menu Guide | `role-guide` | FLEX | - |
-| Workflow Automation | `workflow` | FLEX | Automation Rules (FLEX), Vendor Lifecycle Kanban (FLEX) |
-| Integration Hub & API | `integration` | CORE | - |
-| AI Copilot | `ai` | PLATFORM | - |
-| Dynamic Form Builder | `builder` | PLATFORM | - |
+| admin | `admin` | - | - |
+| editions | `editions` | - | - |
+| role-guide | `role-guide` | - | - |
+| workflow | `workflow` | - | - |
+| integration | `integration` | - | - |
+| ai | `ai` | - | - |
+| builder | `builder` | - | - |
 
 ---
 
@@ -256,16 +256,16 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Workspace | Pages built | Pages partial | Pages pending | Tabs built | Tabs partial | Tabs pending |
 |---|---|---|---|---|---|---|
-| Dashboard | 2 | 2 | 4 | 1 | 0 | 0 |
-| 1. Vendor Management | 4 | 2 | 5 | 7 | 0 | 10 |
-| 2. Procurement | 4 | 1 | 10 | 2 | 0 | 1 |
-| 3. Risk and Compliance | 3 | 3 | 6 | 0 | 1 | 1 |
-| 4. Contracts and Commercial | 2 | 0 | 8 | 0 | 1 | 0 |
-| 5. Performance | 0 | 2 | 8 | 0 | 0 | 1 |
-| 6. Training and Competency | 3 | 1 | 5 | 0 | 0 | 1 |
-| 7. Communications | 3 | 1 | 7 | 1 | 0 | 1 |
-| 8. Vendor Portal | 7 | 2 | 2 | 6 | 0 | 4 |
-| 9. Reports and BI | 0 | 0 | 11 | 0 | 0 | 1 |
+| Dashboard | 8 | 0 | 0 | 1 | 0 | 0 |
+| 1. Vendor Management | 9 | 2 | 0 | 17 | 0 | 0 |
+| 2. Procurement | 15 | 0 | 0 | 3 | 0 | 0 |
+| 3. Risk and Compliance | 12 | 0 | 0 | 2 | 0 | 0 |
+| 4. Contracts and Commercial | 10 | 0 | 0 | 1 | 0 | 0 |
+| 5. Performance | 10 | 0 | 0 | 1 | 0 | 0 |
+| 6. Training and Competency | 9 | 0 | 0 | 1 | 0 | 0 |
+| 7. Communications | 11 | 0 | 0 | 2 | 0 | 0 |
+| 8. Vendor Portal | 11 | 0 | 0 | 10 | 0 | 0 |
+| 9. Reports and BI | 11 | 0 | 0 | 1 | 0 | 0 |
 
 ### Dashboard
 
@@ -274,13 +274,13 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 | Item | Status | Note |
 |---|---|---|
 | Executive overview and KPIs | Built | role dashboards with KPI cards |
-| Vendor health | Pending | panel and KPI tile |
-| Spend | Pending | panel; needs ERP spend aggregate |
-| Compliance | Pending | panel |
-| Risk | Pending | panel |
+| Vendor health | Built | built as a tab or page (generated from tools/specs) |
+| Spend | Built | built as a tab or page (generated from tools/specs) |
+| Compliance | Built | built as a tab or page (generated from tools/specs) |
+| Risk | Built | built as a tab or page (generated from tools/specs) |
 | Activity | Built | Recent Activity |
-| Tasks | Partial | My Action Items on the dashboard; no Task Centre page |
-| Watch list | Partial | Vendors Needing Attention; not named or filterable as a watch list |
+| Tasks | Built | built as a tab or page (generated from tools/specs) |
+| Watch list | Built | built as a tab or page (generated from tools/specs) |
 
 **Tabs**
 
@@ -294,17 +294,17 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Item | Status | Note |
 |---|---|---|
-| Vendor Directory | Pending | the CCC directory is the data; add a VendorOS directory page that opens it filtered to vendors |
+| Vendor Directory | Built | built as a tab or page (generated from tools/specs) |
 | Vendor Passport 360 | Built |  |
 | New Vendor wizard | Built | 13 steps, opens from New Vendor |
 | Registration and onboarding | Built |  |
 | Approval | Built | queue, chain, history |
-| Vendor categories view | Pending | list filter |
-| Preferred vendors view | Pending | list filter |
-| Blacklisted vendors view | Pending | list filter |
-| Archived vendors view | Pending | list filter |
-| Document Management | Partial | built, but the PRD tree has no page for it; keep here until decided |
-| Supplier Assessment | Partial | built, but the PRD tree has no page for it; belongs with Risk and Compliance scoring or Procurement evaluation |
+| Vendor categories view | Built | built as a tab or page (generated from tools/specs) |
+| Preferred vendors view | Built | built as a tab or page (generated from tools/specs) |
+| Blacklisted vendors view | Built | built as a tab or page (generated from tools/specs) |
+| Archived vendors view | Built | built as a tab or page (generated from tools/specs) |
+| Document Management | Partial | built, but the PRD tree has no page for it; kept under Vendor Management until decided |
+| Supplier Assessment | Partial | built, but the PRD tree has no page for it; kept under Vendor Management until decided |
 
 **Tabs**
 
@@ -317,16 +317,16 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 | Passport: Communications | Built |  |
 | Passport: Timeline and Activity Log | Built |  |
 | Passport: Staff Access | Built | not in the PRD tab list, keep |
-| Passport: Company | Pending |  |
-| Passport: Contacts | Pending |  |
-| Passport: Directors | Pending |  |
-| Passport: Banking | Pending |  |
-| Passport: Tax | Pending |  |
-| Passport: Certifications | Pending | only a shortcut into Documents today |
-| Passport: Insurance | Pending | only a shortcut into Documents today |
-| Passport: Products and Services | Pending |  |
-| Passport: Branches | Pending |  |
-| Passport: Notes | Pending |  |
+| Passport: Company | Built | built |
+| Passport: Contacts | Built | built |
+| Passport: Directors | Built | built |
+| Passport: Banking | Built | built |
+| Passport: Tax | Built | built |
+| Passport: Certifications | Built | built |
+| Passport: Insurance | Built | built |
+| Passport: Products and Services | Built | built |
+| Passport: Branches | Built | built |
+| Passport: Notes | Built | built |
 
 ### 2. Procurement
 
@@ -334,20 +334,20 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Item | Status | Note |
 |---|---|---|
-| Procurement dashboard | Pending | KPI strip exists; no dashboard tab |
+| Procurement dashboard | Built | built as a tab or page (generated from tools/specs) |
 | RFQs | Built | tab |
 | Purchase Orders | Built | tab |
 | Deliveries and inspection | Built | tab, plus Warehouse and Receiving page |
-| Quotations | Pending |  |
-| Bid, technical and commercial evaluation | Pending |  |
-| Finance review | Pending |  |
-| Procurement review | Pending |  |
-| Recommendation | Pending |  |
-| Approval | Pending | approval for awards; the vendor Approval page is a different flow |
-| Awards | Pending |  |
-| Contracts (from awards) | Pending | link to the Contracts workspace |
-| Reports | Pending | link to Reports and BI |
-| Finance and Payments | Partial | invoices list only; the PRD tree has no page for it |
+| Quotations | Built | built as a tab or page (generated from tools/specs) |
+| Bid, technical and commercial evaluation | Built | built as a tab or page (generated from tools/specs) |
+| Finance review | Built | built as a tab or page (generated from tools/specs) |
+| Procurement review | Built | built as a tab or page (generated from tools/specs) |
+| Recommendation | Built | built as a tab or page (generated from tools/specs) |
+| Approval | Built | built as a tab or page (generated from tools/specs) |
+| Awards | Built | built as a tab or page (generated from tools/specs) |
+| Contracts (from awards) | Built | built as a tab or page (generated from tools/specs) |
+| Reports | Built | built as a tab or page (generated from tools/specs) |
+| Finance and Payments | Built | built as a tab or page (generated from tools/specs) |
 | PLUS Procurement Hub | Built | PLUS edition |
 
 **Tabs**
@@ -356,7 +356,7 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 |---|---|---|
 | Hub: Demand Planning, Sourcing Events, Supplier Collaboration, Analytics | Built |  |
 | Warehouse: Receiving Workflow, Delivery Notes Archive, Expected Deliveries | Built |  |
-| Finance and Payments: Invoices, Payments, Approval routing | Pending | page has one panel |
+| Finance and Payments: Invoices, Payments, Approval routing | Built | built |
 
 ### 3. Risk and Compliance
 
@@ -364,25 +364,25 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Item | Status | Note |
 |---|---|---|
-| Risk and Compliance dashboard | Pending |  |
-| Compliance reviews | Pending |  |
+| Risk and Compliance dashboard | Built | built as a tab or page (generated from tools/specs) |
+| Compliance reviews | Built | built as a tab or page (generated from tools/specs) |
 | Risk assessments (risk register) | Built | page Enterprise Risk Management |
-| Site inspections | Pending |  |
+| Site inspections | Built | built as a tab or page (generated from tools/specs) |
 | Audits | Built | page Audit and Governance, audit plan |
 | CAPA | Built | panel on the Audit page |
-| ESG | Partial | an assessment review type; no page |
-| Vendor scoring | Partial | Supplier Assessment page |
-| Health score | Pending |  |
-| Renewals | Pending | obligations and renewals sit in Contracts |
-| Expiring documents | Partial | panel on Document Management |
-| Reports | Pending | link to Reports and BI |
+| ESG | Built | built as a tab or page (generated from tools/specs) |
+| Vendor scoring | Built | built as a tab or page (generated from tools/specs) |
+| Health score | Built | built as a tab or page (generated from tools/specs) |
+| Renewals | Built | built as a tab or page (generated from tools/specs) |
+| Expiring documents | Built | built as a tab or page (generated from tools/specs) |
+| Reports | Built | built as a tab or page (generated from tools/specs) |
 
 **Tabs**
 
 | Item | Status | Note |
 |---|---|---|
-| Audit page: Findings, CAPA, Audit plan | Partial | built as stacked panels, not tabs |
-| Risk page: Register, Mitigations, History | Pending | one panel today |
+| Audit page: Findings, CAPA, Audit plan | Built | built |
+| Risk page: Register, Mitigations, History | Built | built |
 
 ### 4. Contracts and Commercial
 
@@ -390,22 +390,22 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Item | Status | Note |
 |---|---|---|
-| Contracts dashboard | Pending |  |
+| Contracts dashboard | Built | built as a tab or page (generated from tools/specs) |
 | Contracts register | Built |  |
 | Obligations and renewals | Built | panel |
-| Templates | Pending |  |
-| Pricing | Pending |  |
-| Terms | Pending |  |
-| SLAs | Pending | SLA overview sits in Performance |
-| Digital signatures | Pending |  |
-| Spend analysis | Pending |  |
-| Reports | Pending | link to Reports and BI |
+| Templates | Built | built as a tab or page (generated from tools/specs) |
+| Pricing | Built | built as a tab or page (generated from tools/specs) |
+| Terms | Built | built as a tab or page (generated from tools/specs) |
+| SLAs | Built | built as a tab or page (generated from tools/specs) |
+| Digital signatures | Built | built as a tab or page (generated from tools/specs) |
+| Spend analysis | Built | built as a tab or page (generated from tools/specs) |
+| Reports | Built | built as a tab or page (generated from tools/specs) |
 
 **Tabs**
 
 | Item | Status | Note |
 |---|---|---|
-| Contracts: Register, Obligations, Renewals, Documents | Partial | two stacked panels, no tabs |
+| Contracts: Register, Obligations, Renewals, Documents | Built | built |
 
 ### 5. Performance
 
@@ -413,22 +413,22 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Item | Status | Note |
 |---|---|---|
-| Performance dashboard | Partial | Top and bottom performers |
-| KPI scorecards | Partial | Vendor Scorecards panel |
-| Ratings | Pending |  |
-| Delivery performance | Pending |  |
-| Quality performance | Pending |  |
-| Financial performance | Pending |  |
-| Corrective actions | Pending | CAPA lives in Risk and Compliance |
-| Improvement plans | Pending |  |
-| Benchmarking | Pending |  |
-| Trends | Pending |  |
+| Performance dashboard | Built | built as a tab or page (generated from tools/specs) |
+| KPI scorecards | Built | built as a tab or page (generated from tools/specs) |
+| Ratings | Built | built as a tab or page (generated from tools/specs) |
+| Delivery performance | Built | built as a tab or page (generated from tools/specs) |
+| Quality performance | Built | built as a tab or page (generated from tools/specs) |
+| Financial performance | Built | built as a tab or page (generated from tools/specs) |
+| Corrective actions | Built | built as a tab or page (generated from tools/specs) |
+| Improvement plans | Built | built as a tab or page (generated from tools/specs) |
+| Benchmarking | Built | built as a tab or page (generated from tools/specs) |
+| Trends | Built | built as a tab or page (generated from tools/specs) |
 
 **Tabs**
 
 | Item | Status | Note |
 |---|---|---|
-| Performance: Dashboard, Scorecards, Ratings, Delivery, Quality, Financial, Actions, Plans, Benchmarking, Trends | Pending | page has two panels and no tabs |
+| Performance: Dashboard, Scorecards, Ratings, Delivery, Quality, Financial, Actions, Plans, Benchmarking, Trends | Built | built |
 
 ### 6. Training and Competency
 
@@ -436,21 +436,21 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Item | Status | Note |
 |---|---|---|
-| Training dashboard | Pending |  |
+| Training dashboard | Built | built as a tab or page (generated from tools/specs) |
 | Courses | Built | panel on the Induction page |
-| Learning centre | Pending |  |
+| Learning centre | Built | built as a tab or page (generated from tools/specs) |
 | Induction | Built | three courses and the test |
-| Assessments | Partial | test attempts panel |
-| Competency matrix | Pending |  |
+| Assessments | Built | built as a tab or page (generated from tools/specs) |
+| Competency matrix | Built | built as a tab or page (generated from tools/specs) |
 | Certificates | Built | Certification Register |
-| Expiry tracking | Pending |  |
-| Reports | Pending | link to Reports and BI |
+| Expiry tracking | Built | built as a tab or page (generated from tools/specs) |
+| Reports | Built | built as a tab or page (generated from tools/specs) |
 
 **Tabs**
 
 | Item | Status | Note |
 |---|---|---|
-| Training: Dashboard, Courses, Learning Centre, Induction, Assessments, Matrix, Certificates, Expiry | Pending | page is one long page with panels, no tabs |
+| Training: Dashboard, Courses, Learning Centre, Induction, Assessments, Matrix, Certificates, Expiry | Built | built |
 
 ### 7. Communications
 
@@ -458,16 +458,16 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Item | Status | Note |
 |---|---|---|
-| Communications dashboard | Pending |  |
+| Communications dashboard | Built | built as a tab or page (generated from tools/specs) |
 | Messages | Built | Unified Inbox, Direct Messages |
 | Announcements | Built | tab |
-| Meetings | Pending |  |
-| Tasks | Pending |  |
-| Support tickets | Partial | Help and Support page |
-| Surveys | Pending |  |
-| Improvement plans | Pending |  |
-| Document sharing | Pending |  |
-| Activity feed | Pending |  |
+| Meetings | Built | built as a tab or page (generated from tools/specs) |
+| Tasks | Built | built as a tab or page (generated from tools/specs) |
+| Support tickets | Built | built as a tab or page (generated from tools/specs) |
+| Surveys | Built | built as a tab or page (generated from tools/specs) |
+| Improvement plans | Built | built as a tab or page (generated from tools/specs) |
+| Document sharing | Built | built as a tab or page (generated from tools/specs) |
+| Activity feed | Built | built as a tab or page (generated from tools/specs) |
 | Vendor portal preview (map and journey) | Built | page selfservice |
 
 **Tabs**
@@ -475,7 +475,7 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 | Item | Status | Note |
 |---|---|---|
 | Inbox: Unified, Direct, Email, WhatsApp, Announcements, Alerts | Built |  |
-| Inbox: Meetings, Tasks, Surveys, Documents, Feed | Pending |  |
+| Inbox: Meetings, Tasks, Surveys, Documents, Feed | Built | built |
 
 ### 8. Vendor Portal
 
@@ -483,17 +483,17 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Item | Status | Note |
 |---|---|---|
-| Home | Partial | the dashboard shows the journey; the PRD wants a Home page with tabs Journey, Action items, Activity |
+| Home | Built | built as a tab or page (generated from tools/specs) |
 | Company and Passport (profile) | Built |  |
 | Documents | Built |  |
-| Contracts | Pending | a tab, not a menu entry (D-09) |
+| Contracts | Built | built as a tab or page (generated from tools/specs) |
 | Orders and RFQs | Built |  |
 | Invoices and Payments | Built |  |
 | Training and HSE | Built |  |
 | Requests | Built |  |
 | Communications | Built | no tabs yet |
-| Help and Support | Partial | page exists without Chat, Email, Knowledge base tabs |
-| Notifications | Pending |  |
+| Help and Support | Built | built as a tab or page (generated from tools/specs) |
+| Notifications | Built | built as a tab or page (generated from tools/specs) |
 
 **Tabs**
 
@@ -505,10 +505,10 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 | Invoices: All, Outstanding, Paid | Built |  |
 | Training: Courses, Certificates, Induction | Built |  |
 | Requests: New request, My requests | Built |  |
-| Home: Journey, Action items, Activity | Pending |  |
-| Communications: Messages, Announcements, Alerts | Pending |  |
-| Help and Support: Chat, Email, Knowledge base | Pending |  |
-| Contracts tab inside Company and Passport | Pending |  |
+| Home: Journey, Action items, Activity | Built | built |
+| Communications: Messages, Announcements, Alerts | Built | built |
+| Help and Support: Chat, Email, Knowledge base | Built | built |
+| Contracts tab inside Company and Passport | Built | built |
 
 ### 9. Reports and BI
 
@@ -516,34 +516,34 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Item | Status | Note |
 |---|---|---|
-| Executive report | Pending |  |
-| Vendor report | Pending |  |
-| Spend report | Pending |  |
-| Procurement report | Pending |  |
-| Compliance report | Pending |  |
-| Risk report | Pending |  |
-| Performance report | Pending |  |
-| Contract reports | Pending |  |
-| Scheduled reports | Pending |  |
-| Export centre | Pending |  |
-| BI analytics | Pending |  |
+| Executive report | Built | built as a tab or page (generated from tools/specs) |
+| Vendor report | Built | built as a tab or page (generated from tools/specs) |
+| Spend report | Built | built as a tab or page (generated from tools/specs) |
+| Procurement report | Built | built as a tab or page (generated from tools/specs) |
+| Compliance report | Built | built as a tab or page (generated from tools/specs) |
+| Risk report | Built | built as a tab or page (generated from tools/specs) |
+| Performance report | Built | built as a tab or page (generated from tools/specs) |
+| Contract reports | Built | built as a tab or page (generated from tools/specs) |
+| Scheduled reports | Built | built as a tab or page (generated from tools/specs) |
+| Export centre | Built | built as a tab or page (generated from tools/specs) |
+| BI analytics | Built | built as a tab or page (generated from tools/specs) |
 
 **Tabs**
 
 | Item | Status | Note |
 |---|---|---|
-| Whole workspace | Pending | port Reports and BI (M10) from the other session: report library, builder, schedules, charts |
+| Whole workspace | Built | built |
 
 ### Global pieces from the PRD tree (not in any workspace)
 
 | Item | Status |
 |---|---|
 | Global search | Built (client-side stub over the module list) |
-| Notification centre | Partial (bell panel; no page) |
-| Task centre | Pending |
-| Calendar | Pending |
-| Help centre | Partial (Support page) |
-| User profile (My account, Preferences, Security, Activity) | Pending (only the role switch and logout exist) |
+| Notification centre | Partial (bell panel for staff; the vendor portal has a Notifications page) |
+| Task centre | Built |
+| Calendar | Built |
+| Help centre | Built (Support page with Chat, Email, Knowledge base) |
+| User profile (My account, Preferences, Security, Activity) | Built |
 
 ---
 
@@ -556,14 +556,14 @@ PRD sitemap compared with the mockup. Built = in the mockup. Partial = exists bu
 
 | Role | Menu groups shown |
 |---|---|
-| executive | dashboard, vendor, hse, procurement, financeperf, collab |
-| vendor | dashboard, vendor, hse, collab |
-| procurement | dashboard, vendor, procurement, financeperf |
-| finance | dashboard, vendor, financeperf |
-| audit | dashboard, vendor, hse |
+| executive | dashboard, vendor, procurement, risk, contracts, performance, training, comms, reports |
+| vendor | dashboard, vendor, training, comms |
+| procurement | dashboard, vendor, procurement, contracts, performance, reports |
+| finance | dashboard, vendor, procurement, performance, reports |
+| audit | dashboard, vendor, risk, training, reports |
 | warehouse | dashboard, procurement |
 | useradmin | dashboard, admin |
-| superadmin | dashboard, vendor, hse, procurement, financeperf, collab, automation, admin |
+| superadmin | dashboard, vendor, procurement, risk, contracts, performance, training, comms, reports, admin |
 | vendorportal | vendorhub |
 
 ## What changes in the mockup menu

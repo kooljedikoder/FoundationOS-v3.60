@@ -5,7 +5,7 @@
           <div class="kpi accent-orange"><div class="kpi-label">Medium Risk</div><div class="kpi-val">96</div></div>
           <div class="kpi accent-red"><div class="kpi-label">High Risk</div><div class="kpi-val">20</div></div>
           <div class="kpi accent-purple"><div class="kpi-label">Governance Score</div><div class="kpi-val">88%</div></div>
-        </div>
+        </div><div class="tabs" data-gen-tabs="1"><div class="tab active" onclick="switchTab(this,'erm-register')">Register</div><div class="tab" onclick="switchTab(this,'erm-tab-mitig')">Mitigations</div><div class="tab" onclick="switchTab(this,'erm-tab-hist')">History</div></div><div class="tab-panel active" id="erm-register" data-gen-wrap="1">
         <div class="panel"><h3><i data-lucide="alert-triangle"></i>Risk Register</h3><div class="table-wrap"><table><thead><tr><th>Vendor</th><th>Risk Category</th><th>Score</th><th>Trend</th></tr></thead><tbody>
           <tr><td>Delta Civils &amp; Plant Hire</td><td>HSE / Safety</td><td><span class="badge badge-red">High</span></td><td>▲ Rising</td></tr>
           <tr><td>Sable IT Networks</td><td>Cybersecurity</td><td><span class="badge badge-orange">Medium</span></td><td>▬ Stable</td></tr>
@@ -14,6 +14,21 @@
       
         <div class="panel"><h3><i data-lucide="shield-alert"></i>Risk register (likelihood x impact)</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:8px">Each risk links to a vendor or category with a mitigation owner; the trend column needs risk history.</p><div class="table-wrap" data-vf="risks"></div></div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="tab-panel" id="erm-tab-mitig" data-gen="1"><div class="panel"><h3>Mitigation actions</h3><div class="table-wrap" data-vf="mitigations"></div></div></div>
+<div class="tab-panel" id="erm-tab-hist" data-gen="1"><div class="panel"><h3><i data-lucide="activity"></i>Risk changes</h3><div class="timeline"><div class="tl-item"><div class="tl-dot"><i data-lucide="alert-triangle"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">This week</div><div class="tl-text">RSK-410 Delta Civils raised to High</div><div class="tl-meta">Audit</div></div></div><div class="tl-item"><div class="tl-dot"><i data-lucide="check"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">2 weeks ago</div><div class="tl-text">RSK-402 Sable IT Networks kept at Medium</div><div class="tl-meta">IT Security</div></div></div><div class="tl-item"><div class="tl-dot"><i data-lucide="check"></i></div><div class="tl-line"></div><div class="tl-body"><div class="tl-time">Last month</div><div class="tl-text">RSK-377 Kalahari Logistics lowered to Low</div><div class="tl-meta">Finance</div></div></div></div></div></div></div>
 
       <!-- PROCUREMENT -->
       

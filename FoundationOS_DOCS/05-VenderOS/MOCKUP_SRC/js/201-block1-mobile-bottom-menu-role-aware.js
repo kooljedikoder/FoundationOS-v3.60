@@ -1,6 +1,6 @@
 /* ===== Mobile bottom menu (role-aware) ===== */
 const BN = {
-  vendorportal:[['Home','layout-dashboard','dashboard'],['Documents','folder','mydocuments'],['Orders','shopping-cart','myrfqpo'],['Invoices','banknote','myinvoices'],['More','menu',null]],
+  vendorportal:[['Home','layout-dashboard','myhome'],['Documents','folder','mydocuments'],['Orders','shopping-cart','myrfqpo'],['Invoices','banknote','myinvoices'],['More','menu',null]],
   vendor:[['Home','layout-dashboard','dashboard'],['Register','user-plus','reg'],['Documents','folder','docs'],['Inbox','message-square','comms'],['More','menu',null]],
   procurement:[['Home','layout-dashboard','dashboard'],['Procure','shopping-cart','procurement'],['Vendors','user-plus','reg'],['Finance','banknote','finance'],['More','menu',null]],
   finance:[['Home','layout-dashboard','dashboard'],['Finance','banknote','finance'],['Perf','gauge','perf'],['Vendors','user-plus','reg'],['More','menu',null]],

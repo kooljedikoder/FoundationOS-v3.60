@@ -8,17 +8,17 @@ const ROLES = {
   warehouse:  {name:'Warona W.',   avatar:'WW', landing:'dashboard', label:'Warehouse',        title:'Warehouse Supervisor',          dept:'Warehouse &amp; Logistics',company:'VendorOS Enterprise', reportsTo:'the Operations Manager', desc:'Warehouse — deliveries, receiving and quality'},
   useradmin:  {name:'Kagiso U.',   avatar:'KU', landing:'dashboard', label:'User Admin',       title:'System Administrator',          dept:'IT Administration',       company:'VendorOS Enterprise', reportsTo:'the CTO', desc:'User Admin — users, roles, system configuration'},
   superadmin: {name:'Refilwe S.',  avatar:'RS', landing:'dashboard', label:'Super Admin',      title:'Super Administrator',           dept:'Platform Operations',     company:'VendorOS Enterprise', reportsTo:'the CEO', desc:'Super Admin — full unrestricted access to every module'},
-  vendorportal:{name:'David K.',   avatar:'DK', landing:'dashboard', label:'Vendor (Portal)',  title:'Company Representative',        dept:'Supplier Account',        company:'Kalahari Logistics (Pty) Ltd', desc:'Vendor Portal — your own company profile, RFQs, invoices and training'}
+  vendorportal:{name:'David K.',   avatar:'DK', landing:'myhome', label:'Vendor (Portal)',  title:'Company Representative',        dept:'Supplier Account',        company:'Kalahari Logistics (Pty) Ltd', desc:'Vendor Portal — your own company profile, RFQs, invoices and training'}
 };
 const ROLE_SECTIONS = {
-  executive:   ['dashboard','vendor','hse','procurement','financeperf','collab'],
-  vendor:      ['dashboard','vendor','hse','collab'],
-  procurement: ['dashboard','vendor','procurement','financeperf'],
-  finance:     ['dashboard','vendor','financeperf'],
-  audit:       ['dashboard','vendor','hse'],
+  executive:   ['dashboard','vendor','procurement','risk','contracts','performance','training','comms','reports'],
+  vendor:      ['dashboard','vendor','training','comms'],
+  procurement: ['dashboard','vendor','procurement','contracts','performance','reports'],
+  finance:     ['dashboard','vendor','procurement','performance','reports'],
+  audit:       ['dashboard','vendor','risk','training','reports'],
   warehouse:   ['dashboard','procurement'],
   useradmin:   ['dashboard','admin'],
-  superadmin:  ['dashboard','vendor','hse','procurement','financeperf','collab','automation','admin'],
+  superadmin:  ['dashboard','vendor','procurement','risk','contracts','performance','training','comms','reports','admin'],
   vendorportal:['vendorhub']
 };
 function applyRoleSections(role){

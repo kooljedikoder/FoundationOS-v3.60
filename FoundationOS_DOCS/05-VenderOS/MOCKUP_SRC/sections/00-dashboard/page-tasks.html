@@ -1,0 +1,9 @@
+<div class="page" id="page-tasks">
+        <div class="page-header"><div><div class="page-title">Task Centre</div><div class="page-sub">Everything waiting for you across every workspace, in one list.</div></div><div class="page-actions"><button type="button" class="btn btn-primary btn-sm" onclick="showToast('New task recorded in the prototype','check-circle')"><i data-lucide="plus"></i>New task</button></div></div>
+        <div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-purple"><div class="kpi-label">Open tasks</div><div class="kpi-val">14</div></div><div class="kpi accent-orange"><div class="kpi-label">Due today</div><div class="kpi-val">4</div></div><div class="kpi accent-red"><div class="kpi-label">Overdue</div><div class="kpi-val">2</div></div><div class="kpi accent-green"><div class="kpi-label">Done this week</div><div class="kpi-val">23</div></div></div>
+        <div class="tabs" data-gen-tabs="1"><div class="tab active" onclick="switchTab(this,'tasks-tab-mine')">My tasks</div><div class="tab" onclick="switchTab(this,'tasks-tab-team')">My team</div><div class="tab" onclick="switchTab(this,'tasks-tab-done')">Done</div></div>
+        <div class="tab-panel active" id="tasks-tab-mine" data-gen="1"><div class="panel"><h3>My tasks</h3><div class="table-wrap" data-vf="tasks_mine"></div></div></div>
+<div class="tab-panel" id="tasks-tab-team" data-gen="1"><div class="panel"><h3>Team tasks</h3><div class="table-wrap" data-vf="tasks_team"></div></div></div>
+<div class="tab-panel" id="tasks-tab-done" data-gen="1"><div class="panel"><h3>Completed this week</h3><div class="table-wrap" data-vf="tasks_done"></div></div></div>
+      </div>
+      

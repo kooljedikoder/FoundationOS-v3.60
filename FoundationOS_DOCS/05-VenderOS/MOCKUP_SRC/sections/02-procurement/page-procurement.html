@@ -6,13 +6,9 @@
           <div class="kpi accent-orange"><div class="kpi-label">Awaiting Evaluation</div><div class="kpi-val">3</div></div>
           <div class="kpi accent-green"><div class="kpi-label">POs Issued (30d)</div><div class="kpi-val">62</div></div>
           <div class="kpi accent-purple"><div class="kpi-label">Spend Under Management</div><div class="kpi-val">₦480m</div></div>
-        </div>
-        <div class="tabs">
-          <div class="tab active" onclick="switchTab(this,'proc-rfq')">RFQs</div>
-          <div class="tab" onclick="switchTab(this,'proc-po')">Purchase Orders</div>
-          <div class="tab" onclick="switchTab(this,'proc-delivery')">Deliveries &amp; Inspection</div>
-        </div>
-        <div class="tab-panel active" id="proc-rfq"><div class="table-wrap"><table><thead><tr><th>RFQ</th><th>Description</th><th>Vendors Invited</th><th>Closes</th><th>Status</th><th class="actions-col">Actions</th></tr></thead><tbody>
+        </div><div class="tabs" data-gen-tabs="1"><div class="tab active" onclick="switchTab(this,'procurement-tab-dash')">Dashboard</div><div class="tab" onclick="switchTab(this,'proc-rfq')">RFQs</div><div class="tab" onclick="switchTab(this,'procurement-tab-quotes')">Quotations</div><div class="tab" onclick="switchTab(this,'procurement-tab-eval')">Evaluation</div><div class="tab" onclick="switchTab(this,'procurement-tab-finrev')">Finance review</div><div class="tab" onclick="switchTab(this,'procurement-tab-procrev')">Procurement review</div><div class="tab" onclick="switchTab(this,'procurement-tab-rec')">Recommendation</div><div class="tab" onclick="switchTab(this,'procurement-tab-appr')">Approval</div><div class="tab" onclick="switchTab(this,'procurement-tab-awards')">Awards</div><div class="tab" onclick="switchTab(this,'proc-po')">Purchase Orders</div><div class="tab" onclick="switchTab(this,'procurement-tab-contracts')">Contracts</div><div class="tab" onclick="switchTab(this,'proc-delivery')">Deliveries &amp; Inspection</div><div class="tab" onclick="switchTab(this,'procurement-tab-reports')">Reports</div></div>
+        
+        <div class="tab-panel" id="proc-rfq"><div class="table-wrap"><table><thead><tr><th>RFQ</th><th>Description</th><th>Vendors Invited</th><th>Closes</th><th>Status</th><th class="actions-col">Actions</th></tr></thead><tbody>
           <tr><td>RFQ-1042</td><td>Fleet tyre supply — annual contract</td><td>6</td><td>3 days</td><td><span class="badge badge-blue">Open</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showPage('passport')"><i data-lucide="badge-check"></i>View Vendor</button> <button class="btn btn-secondary btn-sm" onclick="emailToVendor('RFQ-1042','Kalahari Logistics','procurement@kalaharilogistics.com.ng')"><i data-lucide="mail"></i>Email to Vendor</button></td></tr>
           <tr><td>RFQ-1039</td><td>Office furniture — HQ refurbishment</td><td>4</td><td>Closed</td><td><span class="badge badge-green">Awarded</span></td><td class="actions-col"><button class="btn btn-secondary btn-sm" onclick="showPage('passport')"><i data-lucide="badge-check"></i>View Vendor</button></td></tr>
         </tbody></table></div></div>
@@ -70,7 +66,152 @@
             </div>
           </div>
         </div>
-      </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="tab-panel active" id="procurement-tab-dash" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-blue"><div class="kpi-label">Open RFQs</div><div class="kpi-val">7</div></div><div class="kpi accent-orange"><div class="kpi-label">Quotations to evaluate</div><div class="kpi-val">11</div></div><div class="kpi accent-green"><div class="kpi-label">Awards this month</div><div class="kpi-val">4</div></div><div class="kpi accent-purple"><div class="kpi-label">Spend under management</div><div class="kpi-val">₦480m</div></div></div>
+<div class="panel"><h3><i data-lucide="workflow"></i>Source to award</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Every step is a tab in this workspace. Stages 39 to 41 of the vendor journey.</p><div class="life-chain"><span class="life-step" style="background:#2563eb">RFQ</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#2563eb">Quotations</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#7c3aed">Evaluation</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#d97706">Finance review</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#d97706">Procurement review</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#0d9488">Recommendation</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#16a34a">Approval</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#16a34a">Award</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#16a34a">Purchase order</span></div></div>
+<div class="dash-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))"><div class="panel"><h3><i data-lucide="inbox"></i>Needs your action</h3><div class="table-wrap" data-vf="proc_actions"></div></div><div class="panel"><h3><i data-lucide="bar-chart-2"></i>Spend by category</h3><div class="score-row"><span class="score-label">Logistics and fleet</span><div class="prog-bar"><div class="prog-fill " style="width:34%"></div></div><span class="score-val">₦163m</span></div><div class="score-row"><span class="score-label">Civils and plant</span><div class="prog-bar"><div class="prog-fill warning" style="width:22%"></div></div><span class="score-val">₦106m</span></div><div class="score-row"><span class="score-label">IT and telecoms</span><div class="prog-bar"><div class="prog-fill success" style="width:18%"></div></div><span class="score-val">₦86m</span></div><div class="score-row"><span class="score-label">Office and supplies</span><div class="prog-bar"><div class="prog-fill " style="width:12%"></div></div><span class="score-val">₦58m</span></div><div class="score-row"><span class="score-label">Other</span><div class="prog-bar"><div class="prog-fill " style="width:14%"></div></div><span class="score-val">₦67m</span></div></div></div></div>
+<div class="tab-panel" id="procurement-tab-quotes" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-blue"><div class="kpi-label">Received</div><div class="kpi-val">24</div></div><div class="kpi accent-orange"><div class="kpi-label">Awaiting evaluation</div><div class="kpi-val">11</div></div><div class="kpi accent-red"><div class="kpi-label">Late</div><div class="kpi-val">2</div></div><div class="kpi accent-purple"><div class="kpi-label">Withdrawn</div><div class="kpi-val">1</div></div></div>
+<div class="panel"><h3>Quotations</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Quotations come from the ERP quotation records for each RFQ; VendorOS adds the evaluation steps around them.</p><div class="table-wrap" data-vf="quotations"></div></div></div>
+<div class="tab-panel" id="procurement-tab-eval" data-gen="1"><div class="panel"><h3><i data-lucide="grid"></i>Scoring matrix: RFQ-1042 fleet tyres</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Technical, commercial and HSE scores are entered by the reviewers named on the evaluation committee.</p><div class="table-wrap"><table><thead><tr><th></th><th>Technical</th><th>Commercial</th><th>HSE</th><th>Delivery</th><th>Total</th></tr></thead><tbody><tr><td><b>Kalahari Logistics</b></td><td><span class="badge badge-green">88%</span></td><td><span class="badge badge-blue">82%</span></td><td><span class="badge badge-green">90%</span></td><td><span class="badge badge-green">85%</span></td><td><span class="badge badge-green">86%</span></td></tr><tr><td><b>Delta Civils and Plant Hire</b></td><td><span class="badge badge-blue">74%</span></td><td><span class="badge badge-green">91%</span></td><td><span class="badge badge-orange">58%</span></td><td><span class="badge badge-blue">70%</span></td><td><span class="badge badge-blue">74%</span></td></tr><tr><td><b>Apex Machine Parts</b></td><td><span class="badge badge-blue">81%</span></td><td><span class="badge badge-blue">77%</span></td><td><span class="badge badge-blue">84%</span></td><td><span class="badge badge-blue">79%</span></td><td><span class="badge badge-blue">80%</span></td></tr></tbody></table></div></div>
+<div class="panel"><h3>Evaluations in progress</h3><div class="table-wrap" data-vf="evaluations"></div></div>
+<div class="panel"><h3><i data-lucide="edit-3"></i>Enter my score</h3><div class="form-grid"><div class="field"><label>Bidder</label><select><option>Kalahari Logistics</option><option>Delta Civils and Plant Hire</option><option>Apex Machine Parts</option></select></div><div class="field"><label>Criterion</label><select><option>Technical</option><option>Commercial</option><option>HSE</option><option>Delivery</option></select></div><div class="field"><label>Score (0 to 100)</label><input type="number" placeholder="85"></div><div class="field full"><label>Comment</label><textarea rows="3" placeholder="Reason for the score"></textarea></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="showToast('Submit score recorded in the prototype','check-circle')">Submit score</button><button type="button" class="btn btn-secondary btn-sm" onclick="showToast('Save draft recorded in the prototype','check-circle')">Save draft</button></div></div></div>
+<div class="tab-panel" id="procurement-tab-finrev" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-orange"><div class="kpi-label">Waiting for finance</div><div class="kpi-val">5</div></div><div class="kpi accent-green"><div class="kpi-label">Budget checks done</div><div class="kpi-val">19</div></div><div class="kpi accent-red"><div class="kpi-label">Tax clearance expired</div><div class="kpi-val">1</div></div><div class="kpi accent-blue"><div class="kpi-label">Average review</div><div class="kpi-val">1.4 d</div></div></div>
+<div class="panel"><h3>Finance review</h3><div class="table-wrap" data-vf="fin_reviews"></div></div></div>
+<div class="tab-panel" id="procurement-tab-procrev" data-gen="1"><div class="panel"><h3>Procurement review</h3><div class="table-wrap" data-vf="proc_reviews"></div></div></div>
+<div class="tab-panel" id="procurement-tab-rec" data-gen="1"><div class="panel"><h3>Recommendations</h3><div class="table-wrap" data-vf="recommendations"></div></div>
+<div class="panel"><h3><i data-lucide="file-text"></i>Draft a recommendation</h3><div class="form-grid"><div class="field"><label>RFQ</label><select><option>RFQ-1042</option><option>RFQ-1051</option><option>RFQ-1039</option></select></div><div class="field"><label>Recommended vendor</label><select><option>Kalahari Logistics</option><option>Delta Civils and Plant Hire</option><option>Apex Machine Parts</option></select></div><div class="field full"><label>Conditions</label><textarea rows="3" placeholder="For example: delivery in two batches"></textarea></div><div class="field full"><label>Rationale</label><textarea rows="3" placeholder="Why this vendor represents best value"></textarea></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="showToast('Save recommendation recorded in the prototype','check-circle')">Save recommendation</button></div></div></div>
+<div class="tab-panel" id="procurement-tab-appr" data-gen="1"><div class="panel"><h3><i data-lucide="workflow"></i>Award approval chain</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">The chain follows the 15-role approval matrix. Rejecting needs written findings.</p><div class="life-chain"><span class="life-step" style="background:#2563eb">Procurement Head</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#7c3aed">Finance Director</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#d97706">CEO above ₦50m</span><span class="life-arrow">&rarr;</span><span class="life-step" style="background:#16a34a">Award issued</span></div></div>
+<div class="panel"><h3>Awards waiting for approval</h3><div class="table-wrap" data-vf="award_approvals"></div></div></div>
+<div class="tab-panel" id="procurement-tab-awards" data-gen="1"><div class="kpis kpis-4" data-gen-block="kpis"><div class="kpi accent-green"><div class="kpi-label">Awards this month</div><div class="kpi-val">4</div></div><div class="kpi accent-orange"><div class="kpi-label">Awaiting PO</div><div class="kpi-val">2</div></div><div class="kpi accent-purple"><div class="kpi-label">Value awarded</div><div class="kpi-val">₦118m</div></div><div class="kpi accent-blue"><div class="kpi-label">Savings vs budget</div><div class="kpi-val">6.1%</div></div></div>
+<div class="panel"><h3>Awards</h3><div class="table-wrap" data-vf="awards"></div></div></div>
+<div class="tab-panel" id="procurement-tab-contracts" data-gen="1"><div class="panel"><h3><i data-lucide="file-text"></i>Contracts from awards</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">The same contract register as the Contracts and Commercial workspace. A contract is created from an award at stage 41.</p><div class="table-wrap" data-vf="contracts"></div></div></div>
+<div class="tab-panel" id="procurement-tab-reports" data-gen="1"><div class="panel"><h3>Procurement reports</h3><p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Reports run in the Reports and BI workspace. Choose one to open it with the procurement filters set.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px"><div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div style="font-weight:700;font-size:13px">Procurement report</div><span class="badge badge-purple">Reports and BI</span></div><div style="font-size:12px;color:var(--muted)">Cycle time, quotations per RFQ, award value</div></div><div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div style="font-weight:700;font-size:13px">Spend report</div><span class="badge badge-blue">Reports and BI</span></div><div style="font-size:12px;color:var(--muted)">Spend by category, vendor and month</div></div><div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><div style="font-weight:700;font-size:13px">Contract report</div><span class="badge badge-green">Reports and BI</span></div><div style="font-size:12px;color:var(--muted)">Awards that became contracts</div></div></div></div>
+<div class="panel"><h3><i data-lucide="bar-chart-2"></i>Run a report</h3><div class="form-grid"><div class="field"><label>Report</label><select><option>Procurement</option><option>Spend</option><option>Contract</option></select></div><div class="field"><label>Period</label><select><option>Last 30 days</option><option>This quarter</option><option>This year</option></select></div><div class="field"><label>Format</label><select><option>On screen</option><option>PDF</option><option>Excel</option></select></div></div><div class="page-actions" style="margin-top:12px"><button type="button" class="btn btn-primary btn-sm" onclick="showPage('reports')">Open in Reports and BI</button></div></div></div></div>
 
       <!-- CLM -->
       
