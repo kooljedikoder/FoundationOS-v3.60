@@ -12,22 +12,21 @@ FOS is the parent app. It owns the shared base. Everything else is an app that p
 
 | App | What it provides | Needs | Works with (optional) | Reused by |
 |---|---|---|---|---|
-| FOS Core | Users, roles, departments, module registry, audit log, search | none | | everything |
+| FOS Core | Access control (users, roles, permissions), settings, products and services, custom fields, media, module registry, audit log, search | none | | everything |
 | Contact Control Center | Contacts, directory, profiles, assets, settings lists | Core | | everything |
 | Documents | Uploads, review, expiry, per-section slots, document centre | Core, CCC | | VendorOS, Contracts, Risk, Training, Collaboration |
 | Collaboration | Inbox, direct messages, email, WhatsApp, announcements, meetings, tasks, surveys, tickets | Core, CCC | Documents | VendorOS, Vendor Portal, Contracts |
 | Training and Competency | Courses, tests, certificates, matrix, expiry | Core, CCC | Documents, Collaboration | VendorOS, staff HR, site access |
 | Insights | KPI definitions and targets, scorecards, dashboards, reports, schedules, exports, BI | Core | | every app |
-| Commerce | Products and services, quotations, RFQs, purchase orders, receiving, invoices, expenses, payments | Core, CCC | Documents, Insights | VendorOS, sales, projects |
-| Contracts | Register, templates, pricing, SLAs, signatures, renewals | Core, CCC, Documents | Commerce, Insights | VendorOS, sales |
+| Commerce | Quotations, RFQs, purchase orders, receiving, invoices, expenses, payments, contracts, templates, SLAs, signatures | Core, CCC, Documents | Insights | VendorOS, CRM, projects |
 | Risk and Compliance | Audits, findings, CAPA, risk register, inspections, ESG | Core, CCC, Documents | Insights, Training | VendorOS, HR, operations |
 | Automation and Platform | Workflow rules, approval chains, integrations, AI copilot, form builder | Core | | everything |
-| **VendorOS Core** | Vendor directory, registration, approval, passport, assessment | Core, CCC, Documents, Collaboration | Commerce, Training, Risk, Contracts, Insights | Vendor Portal |
+| **VendorOS Core** | Vendor directory, registration, approval, passport, assessment | Core, CCC, Documents, Collaboration | Commerce, Training, Risk, Insights | Vendor Portal |
 | Vendor Portal | Vendor-facing home, company, documents, orders, invoices, training, messages, notifications | VendorOS Core, Collaboration | Commerce, Training | |
 
 Why these groupings:
 
-- **Commerce is one app.** Product and service, quotation, invoice and expense share the same documents, tax, partner and currency rules, and the ERP already owns them as one family (`products_*`, `purchases_*`, `accounts_*`). Inside the app they are feature switches (Catalog, Quotes, Purchasing, Billing, Expenses), so a site can run quotes and invoices without purchasing.
+- **Commerce is one app, and contracts are inside it.** Quotation, purchase order, invoice, expense and contract share the same documents, tax, partner and currency rules, and the ERP already owns them as one family (`products_*`, `purchases_*`, `accounts_*`). Inside the app they are feature switches (Catalog, Quotes, Purchasing, Billing, Expenses), so a site can run quotes and invoices without purchasing.
 - **Training, Collaboration, Documents and CCC are apps of their own** because other products need them with no vendor in sight (staff training, project chat, a file store, a contact book).
 - **KPI is a service, not a menu app.** See section 5.
 - **VendorOS Core is deliberately small.** It is the vendor lifecycle glue: it decides what a vendor is, what documents they owe and how they are approved. Everything it uses comes from another app.
@@ -69,7 +68,7 @@ Apps are mounted in a context: tenant, vendor, project, contract. A conversation
 
 | ID | Decision | Recommendation |
 |---|---|---|
-| AS-1 | Is Contracts its own app or part of Commerce? | Own app (it also serves sales and HR) |
+| AS-1 | Contracts | Merged into Commerce (decided) |
 | AS-2 | Do approval chains live in Automation or in each app? | One engine in Automation; apps register their chains |
 | AS-3 | Is the Vendor Portal a separate app? | Yes, so an internal-only site can leave it off |
 | AS-4 | Which ports ship first? | Contacts, Documents, Conversations (they exist today) |

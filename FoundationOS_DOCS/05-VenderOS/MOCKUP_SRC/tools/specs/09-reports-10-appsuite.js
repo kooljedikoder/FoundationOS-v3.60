@@ -36,14 +36,13 @@ const reports = {
 // ---------- AppSuite page (turn packages on and off)
 const PKG = [
   // [id, name, provides, requires, pages, locked, data mode, works with (optional)]
-  ['core', 'FOS Core', 'Users, roles, departments, module registry, audit log, search', '-', 'admin,editions,role-guide', true, 'fos', ''],
+  ['core', 'FOS Core', 'Access control (users, roles, permissions), settings, products and services, custom fields, media, module registry, audit log, search', '-', 'admin,editions,role-guide', true, 'fos', ''],
   ['ccc', 'Contact Control Center', 'Contacts, directory, profiles, assets, settings lists', 'core', 'ccc', false, 'fos', ''],
   ['documents', 'Documents', 'Uploads, review, expiry, per-section slots, document centre', 'core, ccc', 'docs', false, 'fos', ''],
   ['collaboration', 'Collaboration', 'Inbox, direct messages, email, WhatsApp, announcements, meetings, tasks, surveys, tickets', 'core, ccc', 'comms,tasks,calendar', false, 'fos', 'documents'],
   ['training', 'Training and Competency', 'Courses, tests, certificates, competency matrix, expiry', 'core, ccc', 'hse', false, 'own', 'documents, collaboration'],
   ['insights', 'Insights (KPIs, scorecards, reports)', 'KPI definitions and targets, scorecards, dashboards, reports, schedules, exports, BI', 'core', 'perf,reports', false, 'fos', ''],
-  ['commerce', 'Commerce', 'Products and services, quotations, RFQs, purchase orders, receiving, invoices, expenses, payments', 'core, ccc', 'procurement,warehouse,finance,plusprocure', false, 'hybrid', 'documents, insights'],
-  ['contracts', 'Contracts', 'Register, templates, pricing, SLAs, signatures, renewals', 'core, ccc, documents', 'clm', false, 'own', 'commerce, insights'],
+  ['commerce', 'Commerce', 'Quotations, RFQs, purchase orders, receiving, invoices, expenses, payments, contracts, templates, SLAs, signatures', 'core, ccc, documents', 'procurement,warehouse,finance,plusprocure,clm', false, 'hybrid', 'insights'],
   ['risk', 'Risk and Compliance', 'Audits, findings, CAPA, risk register, inspections, ESG', 'core, ccc, documents', 'audit,erm', false, 'own', 'insights, training'],
   ['automation', 'Automation and Platform', 'Workflow rules, approval chains, integrations, AI copilot, form builder', 'core', 'workflow,integration,ai,builder', false, 'fos', ''],
   ['vendoros', 'VendorOS Core', 'Vendor lifecycle: directory, registration, approval, passport, assessment', 'core, ccc, documents, collaboration', 'vendors,reg,approval,passport,assessment', false, 'hybrid', 'commerce, training, risk, contracts, insights'],
@@ -60,13 +59,13 @@ const appsuite = {
   tabs: [
     { id: 'packages', label: 'Packages', blocks: [panel('Installed packages', 'layers', `<div class="table-wrap"><table><thead><tr><th>Package</th><th>Needs</th><th>Data</th><th>On</th></tr></thead><tbody>${rows}</tbody></table></div><p id="pkgMsg" style="font-size:12.5px;color:var(--muted);margin-top:10px">Turning a package off hides its menu entries and tabs. Its data stays. A package that others need cannot be turned off until they are.</p>`, 'FOS Core is always on. This list is the mockup of the FOS module registry (fos_modules).')] },
     { id: 'engines', label: 'Shared apps', blocks: [
-      flow('How VendorOS Core sits on the other apps', [['FOS Core', '#475569'], ['Contact Control Center', '#2563eb'], ['Documents', '#7c3aed'], ['Collaboration', '#0d9488'], ['VendorOS Core', '#4f46e5'], ['Vendor Portal', '#16a34a']], { sub: 'VendorOS Core needs FOS Core, Contact Control Center, Documents and Collaboration. It works with Commerce, Training, Risk, Contracts and Insights when they are on, and hides their tabs when they are off.' }),
+      flow('How VendorOS Core sits on the other apps', [['FOS Core', '#475569'], ['Contact Control Center', '#2563eb'], ['Documents', '#7c3aed'], ['Collaboration', '#0d9488'], ['VendorOS Core', '#4f46e5'], ['Vendor Portal', '#16a34a']], { sub: 'VendorOS Core needs FOS Core, Contact Control Center, Documents and Collaboration. It works with Commerce, Training, Risk and Insights when they are on, and hides their tabs when they are off.' }),
       cards('Apps that other apps reuse', [
         ['Contact Control Center', 'Everything', 'One contact book for staff, customers, vendors and partners', 'purple', 'Reused'],
         ['Documents', '6 apps', 'Vendor documents, contract files, HSE certificates, shared files', 'purple', 'Reused'],
         ['Collaboration', '4 apps', 'Tenant inbox, vendor threads, contract and PO conversations', 'purple', 'Reused'],
         ['Training and Competency', '3 apps', 'Vendor induction, staff training, site access rules', 'purple', 'Reused'],
-        ['Commerce', '4 apps', 'Products, quotations, invoices and expenses for vendors, customers and projects', 'blue', 'Reused'],
+        ['Commerce', '4 apps', 'Quotations, invoices, expenses and contracts for vendors, customers and projects', 'blue', 'Reused'],
         ['Insights', 'Every app', 'KPIs, scorecards, reports; every dashboard strip reads from it', 'blue', 'Reused']
       ], { sub: 'An app is built once and mounted at different levels (tenant, vendor, project, contract). The level is a context value, not a copy of the app.' }),
       panel('KPIs are a service, not a menu app', 'bar-chart-2', '<p style="font-size:13px">Each app registers its KPIs (name, query, target) with Insights. Dashboards, scorecards and the strip at the top of every workspace read them. Turn an app off and its KPIs disappear from the dashboards; the history stays.</p>')
