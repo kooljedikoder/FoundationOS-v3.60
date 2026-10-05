@@ -1,6 +1,6 @@
 # AppSuite packages: apps, ports and the choice of data
 
-Status: proposal for owner decision. Nothing in the real app changed. The mockup page **AppSuite** (Administration and Platform menu) shows it working: turn an app on or off and its menu entries disappear, and an app that others need cannot be turned off.
+Status: accepted by the owner on 5 Oct 2026 (ADR-058 and ADR-059); the build is still to do. Nothing in the real app changed. The mockup page **AppSuite** (Administration and Platform menu) shows it working: turn an app on or off and its menu entries disappear, and an app that others need cannot be turned off.
 
 Builds on `foundation_os/docs/APPSUITE_LARAVEL_FIRST_ARCHITECTURE.md`: `fos_modules` is the runtime switch, a manifest (`foundation_module.json`) describes the package, installing registers it disabled, enabling runs its migrations, disabling never deletes data.
 
@@ -73,3 +73,23 @@ Apps are mounted in a context: tenant, vendor, project, contract. A conversation
 | AS-3 | Is the Vendor Portal a separate app? | Yes, so an internal-only site can leave it off |
 | AS-4 | Which ports ship first? | Contacts, Documents, Conversations (they exist today) |
 | AS-5 | Mixed mode in the first build? | Defer; ship Inside FOS and Standalone |
+
+## 8. Rules added by the owner (5 Oct 2026)
+
+1. **FOS base first.** An installed app is formatted to use the FOS base and core. For contacts and the core apps the install asks: use the FOS tables, or the app's own tables.
+2. **FOS owns the partner tables.** ERP (Webkul) is a plugin that can be removed, switched off or uninstalled without breaking anything. An uninstall never drops a FOS table (ADR-056).
+3. **Laravel first.** The product uses no Filament. Filament is the installer, a test surface and a harvest source, shown in an iframe or harvested with the same UI (ADR-057).
+4. **Distributions.** Before shipping or uploading, a build can contain only the apps a job needs, and AppSuite shows only those (ADR-059). The mockup page AppSuite, tab Distribution, shows how: choose the apps, needs are added automatically, and the result is a distribution manifest.
+5. **Plugins are packages too.** ERP and Filament are listed in AppSuite as removable plugins with no menu entries of their own.
+
+### Distribution manifest (what the build produces)
+
+| Field | Meaning |
+|---|---|
+|  | Name of the distribution |
+|  | The FOS base version |
+|  | Apps included, with the ones added only because another app needs them |
+|  | Apps left out (not shown in AppSuite, no routes, no migrations) |
+|  | For each shared need: FOS tables or the app's own |
+|  |  for a product build;  for a build that includes the installer and test surface |
+|  | The menu entries that remain |

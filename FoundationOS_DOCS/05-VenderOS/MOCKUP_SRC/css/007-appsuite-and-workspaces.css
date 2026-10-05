@@ -19,3 +19,5 @@ body.pkg-off-risk [data-pkg="risk"]{display:none!important}
 body.pkg-off-automation [data-pkg="automation"]{display:none!important}
 body.pkg-off-vendoros [data-pkg="vendoros"]{display:none!important}
 body.pkg-off-vendorportal [data-pkg="vendorportal"]{display:none!important}
+body.pkg-off-erp [data-pkg="erp"]{display:none!important}
+body.pkg-off-filament [data-pkg="filament"]{display:none!important}

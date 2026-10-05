@@ -39,26 +39,37 @@ Rules that hold (decided with the owner): apps are installable packages switched
 
 ## 4. Where we are going
 
-1. Decide the open items below and write them as ADRs (the AI decision log stops at ADR-054, 17 Sep).
+1. Make FOS own the partner tables and the shared reference tables (ADR-056), and prove that uninstalling the ERP plugins leaves FOS, CCC and VendorOS working.
 2. Build the foundations in FOS Core: the page and form schema store and renderer, the app manifest with ports, the Insights KPI registry.
 3. Fix the structural gaps before new features: vendor-user to partner membership, one document owner, test database migration order.
 4. Port the pages in this order: contact form, document centre, vendor registration, then workspace by workspace (Vendor Management, Procurement and Commerce, Risk, Performance, Training, Communications, Vendor Portal, Reports).
 5. CRM: harvest and port as its own product on the same base.
 
-## 5. Decisions the owner still has to make
+## 5. Decisions
+
+**Decided by the owner on 5 Oct 2026** (ADR-055 to ADR-061 in `AI/DECISIONS.md`):
+
+| # | Decision | Answer |
+|---|---|---|
+| 1 | Is FOS an ERP? | No. FOS is a base starter app with core apps, the foundation for any Laravel app (like LaraDashboard). ERP is an optional plugin family |
+| 2 | Who owns the partner tables? | FOS. Webkul ERP and Filament apps are plugins that can be installed, switched off or uninstalled without breaking FOS |
+| 3 | Filament | Only the installer, a test surface and a harvest source, shown in an iframe or harvested with the same UI. The product uses no Filament. Laravel first, always |
+| 4 | AppSuite packages | Accepted. Installing an app formats it to use the FOS base and core, and asks where contacts and the core apps get their data (FOS tables or the app's own) |
+| 5 | Distributions | A build can contain only the apps a job needs; AppSuite shows only those |
+| 6 | Page schema | Accepted: every page, tab and form is a schema the builder can edit |
+| 7 | Contracts | Part of Commerce. CRM is a separate product |
+
+**Still open:**
 
 | # | Decision | Suggested |
 |---|---|---|
-| 1 | Is FOS "not an ERP"? The docs say so; the app ships 17 ERP plugins | Say FOS owns the data; ERP is a module family inside it |
-| 2 | Filament: harvest tool only, or shipped panels (`/control-panel`, `/erp`)? | Shipped, optional adapter |
-| 3 | Webkul Partner permanent, or FOS owns `partners_partners`? | FOS owns the schema |
-| 4 | Two module systems (`fos_modules` and the old nwidart `modules/Review`) | One: `fos_modules` |
-| 5 | CCC and VendorOS code lives in `app/`, but CLAUDE.md says core must not reference modules | Move into packages, or write the exception down |
-| 6 | AppSuite packages proposal (12 apps, ports, install choice) | Accept as the target |
-| 7 | Page schema format (page schema plus FormFlow) | Accept and record as an ADR |
-| 8 | Menu groups in the real sidebar (still the older nine) | Regroup to Dashboard plus 9 workspaces |
-| 9 | Finance and Payments, Document Management, Supplier Assessment have no PRD home | Keep where they are until decided |
-| 10 | Mockup branch merge and push | Commit main first, then merge |
+| 8 | CCC and VendorOS code lives in `app/`, but CLAUDE.md says core must not reference modules | Move them into packages, or write the exception down |
+| 9 | Two module systems (`fos_modules` and the old nwidart `modules/Review`) | One: `fos_modules` |
+| 10 | Menu groups in the real sidebar (still the older nine) | Regroup to Dashboard plus 9 workspaces |
+| 11 | Finance and Payments, Document Management and Supplier Assessment have no PRD home | Keep where they are |
+| 12 | Mockup branch merge and push | Commit main first, then merge |
+
+**What the decisions change in the code:** the 12 `*_if_missing` migrations from ADR-054 become the real FOS migrations (no deferring to a plugin); plugin rollbacks must stop dropping FOS tables; Settings, departments, teams, banks, countries, states and currencies move to FOS ownership; a Laravel-only install profile must boot without Filament.
 
 ## 6. Housekeeping before the next big step
 

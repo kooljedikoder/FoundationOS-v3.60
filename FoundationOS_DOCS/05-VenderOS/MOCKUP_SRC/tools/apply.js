@@ -185,4 +185,5 @@ function pkgMode(id, mode){ showToast(PKG_NAME[id]+' will use '+({fos:'the FOS t
 console.log('applied: pages', pages.length, 'new pages', newPages.length, 'parts', E.parts.length);
 require('./dbconnect');
 require('./pagebuilder');
+require('./distribution');
 require('./schema_export')(pages, newPages, PAGE_PKG);
