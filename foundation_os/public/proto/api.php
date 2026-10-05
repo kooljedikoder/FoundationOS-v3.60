@@ -77,6 +77,7 @@ if ($r === 'contact') {
         'assets' => q($db, 'SELECT * FROM fos_assets WHERE partner_id = ?', [$id]),
         'documents' => q($db, "SELECT id, name, file_name, mime_type, size, custom_properties, created_at FROM media WHERE model_type = 'partner' AND model_id = ? ORDER BY id", [$id]),
         'extra' => $draft ? json_decode($draft['payload'], true) : null,
+        'tags' => q($db, 'SELECT t.id, t.name, t.color, (SELECT COUNT(*) FROM partners_partner_tag x WHERE x.tag_id = t.id AND x.partner_id = ?) AS assigned FROM partners_tags t ORDER BY t.name', [$id]),
     ]);
 }
 if ($r === 'users') {
@@ -100,6 +101,17 @@ if ($r === 'organisations') { out(q($db, 'SELECT o.*, c.name AS country FROM fos
 if ($r === 'affiliation_taxonomies') { out(q($db, 'SELECT * FROM fos_affiliation_taxonomies ORDER BY category, sort_order, name')); }
 if ($r === 'rules') { out(q($db, 'SELECT * FROM fos_field_visibility_rules ORDER BY "group", COALESCE("order", 999), id')); }
 if ($r === 'setting_get') { $row = one($db, 'SELECT v FROM proto_settings WHERE k = ?', [$_GET['k'] ?? '']); out(['value' => $row['v'] ?? null]); }
+if ($r === 'export') {
+    $w = ['p.deleted_at IS NULL']; $par = [];
+    if (!empty($_GET['type'])) { $w[] = 'f.primary_type = ?'; $par[] = $_GET['type']; }
+    if (!empty($_GET['status'])) { $w[] = 'f.status = ?'; $par[] = $_GET['status']; }
+    if (!empty($_GET['q'])) { $w[] = '(p.name LIKE ? OR p.email LIKE ? OR p.phone LIKE ?)'; $like = '%' . $_GET['q'] . '%'; array_push($par, $like, $like, $like); }
+    $rows = q($db, 'SELECT p.name, f.primary_type AS type, f.status, p.email, p.phone, p.city, c.name AS country FROM partners_partners p LEFT JOIN fos_partner_profiles f ON f.partner_id = p.id LEFT JOIN countries c ON c.id = p.country_id WHERE ' . implode(' AND ', $w) . ' ORDER BY p.name', $par);
+    header('Content-Type: text/csv; charset=utf-8'); header('Content-Disposition: attachment; filename="contacts-' . date('Ymd') . '.csv"');
+    $o = fopen('php://output', 'w'); fputcsv($o, ['name', 'type', 'status', 'email', 'phone', 'city', 'country']);
+    foreach ($rows as $x) { fputcsv($o, array_map(fn ($v) => preg_match('/^([=@]|[+\-][A-Za-z(])/', (string) $v) ? "'" . $v : $v, array_values($x))); }
+    fclose($o); exit;
+}
 if ($r === 'audit') { out(q($db, 'SELECT * FROM proto_audit ORDER BY id DESC LIMIT 100')); }
 if ($r === 'document_file') {
     $row = one($db, 'SELECT file_name, mime_type, custom_properties FROM media WHERE id = ?', [(int) ($_GET['id'] ?? 0)]);
@@ -194,6 +206,27 @@ if ($r === 'contact_save') {
     $db->commit();
     audit($db, $actor, empty($body['id']) ? 'contact.create' : 'contact.update', 'partner:' . $id, ['type' => $type, 'step' => $body['step'] ?? null]);
     out(['ok' => true, 'id' => $id]);
+}
+if ($r === 'tag_toggle') {
+    $pid = (int) ($body['partner_id'] ?? 0); $tid = (int) ($body['tag_id'] ?? 0);
+    if (one($db, 'SELECT 1 x FROM partners_partner_tag WHERE partner_id = ? AND tag_id = ?', [$pid, $tid])) { q($db, 'DELETE FROM partners_partner_tag WHERE partner_id = ? AND tag_id = ?', [$pid, $tid]); $on = false; }
+    else { q($db, 'INSERT INTO partners_partner_tag (partner_id, tag_id) VALUES (?, ?)', [$pid, $tid]); $on = true; }
+    audit($db, $actor, $on ? 'tag.add' : 'tag.remove', 'partner:' . $pid, ['tag' => $tid]); out(['ok' => true, 'assigned' => $on]);
+}
+if ($r === 'contact_import') {
+    $rows = array_slice((array) ($body['rows'] ?? []), 0, 500); $made = 0; $errors = [];
+    $now = date('Y-m-d H:i:s'); $okTypes = ['individual', 'staff', 'customer', 'partner', 'vendor', 'other'];
+    foreach ($rows as $i => $row) {
+        $name = trim((string) ($row['name'] ?? '')); $type = strtolower(trim((string) ($row['type'] ?? 'other'))); if ($type === 'employee') { $type = 'staff'; }
+        $email = trim((string) ($row['email'] ?? ''));
+        if ($name === '') { $errors[] = 'Row ' . ($i + 2) . ': name is required'; continue; }
+        if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) { $errors[] = 'Row ' . ($i + 2) . ': invalid email'; continue; }
+        if (!in_array($type, $okTypes, true)) { $errors[] = 'Row ' . ($i + 2) . ': unknown type ' . $type; continue; }
+        q($db, 'INSERT INTO partners_partners (account_type, name, email, phone, city, created_at, updated_at) VALUES (?,?,?,?,?,?,?)', [in_array($type, ['vendor', 'partner', 'customer'], true) ? 'company' : 'individual', $name, $email ?: null, trim((string) ($row['phone'] ?? '')) ?: null, trim((string) ($row['city'] ?? '')) ?: null, $now, $now]);
+        $pid = (int) $db->lastInsertId();
+        q($db, 'INSERT INTO fos_partner_profiles (partner_id, primary_type, status, registration_source, created_at, updated_at) VALUES (?,?,?,?,?,?)', [$pid, $type, 'pending', 'Import', $now, $now]); $made++;
+    }
+    audit($db, $actor, 'contact.import', 'partners', ['created' => $made, 'errors' => count($errors)]); out(['ok' => true, 'created' => $made, 'errors' => $errors]);
 }
 if ($r === 'contact_status') {
     $id = (int) ($body['id'] ?? 0); $status = (string) ($body['status'] ?? '');
